@@ -5,10 +5,15 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 ## Grupo N7
 
 Integrantes:
+
 [Fernández Manoukian Tomás](https://github.com/Tomymanoukian)
+
 [Mombru Melanie](https://github.com/melmombru)
+
 [Mundani Vegega Ezequiel](https://github.com/InspectorDave)
+
 [Tardá Rocío](https://github.com/rociotarda)
+
 [Tardá Agustín](https://github.com/AgustinTardaFIUBA)
 
 Corrector: Diego Sánchez
