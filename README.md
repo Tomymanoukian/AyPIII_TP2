@@ -14,6 +14,9 @@ Integrantes:
 
 Corrector: Diego Sánchez
 
+### Informe (solo lectura)
+https://www.overleaf.com/read/symqnddvrxgk
+
 ### Pre-requisitos
 
 Listado de software/herramientas necesarias para el proyecto
