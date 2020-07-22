@@ -14,8 +14,7 @@ Integrantes:
 
 Corrector: Diego Sánchez
 
-### Informe (solo lectura)
-https://www.overleaf.com/read/symqnddvrxgk
+### [Informe (solo lectura)](https://www.overleaf.com/read/symqnddvrxgk)
 
 ### Pre-requisitos
 
