@@ -31,7 +31,3 @@ Explicación de como ejecutar las pruebas
 ## Ejecutando la aplicación
 
 Explicación de como ejecutar la aplicación
-
-## Licencia
-
-Este repositorio está bajo la Licencia MIT
