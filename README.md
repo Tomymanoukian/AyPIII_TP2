@@ -21,9 +21,8 @@ Corrector: Diego Sánchez
 Listado de software/herramientas necesarias para el proyecto
 
 ```
-java 14.0.1
-maven 3.6.0
-...
+Java 14.0.1
+Maven 3.6.0
 ```
 
 ## Ejecutando las pruebas
