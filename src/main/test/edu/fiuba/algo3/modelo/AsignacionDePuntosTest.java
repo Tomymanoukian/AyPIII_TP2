@@ -1,16 +1,19 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class AsignacionDePuntosTest {
     @Test
     public void testVerdaderoFalsoClasicoJugador1AsertaYJugador2FallaAsignandoCorrectamenteLosPuntajes(){
-        /*String consigna = "El Sol es azul";
+        String consigna = "El Sol es azul";
         VerdaderoFalsoClasico preguntaVerderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoFalsa(consigna);
 
-        Kahoot kahoot = new Kahoot();
-        kahoot.setNombreJugador1("Juan");
-        kahoot.setNombreJugador2("Maria");
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
         Respuesta respuestaJugador1 = new Respuesta("Falso");
         Respuesta respuestaJugador2 = new Respuesta("Verdadero");
 
@@ -22,7 +25,6 @@ public class AsignacionDePuntosTest {
         assertEquals(1,kahoot.getPuntajeJugador1());
         assertEquals(0,kahoot.getPuntajeJugador2());
 
-         */
     }
 }
 

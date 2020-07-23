@@ -4,8 +4,8 @@ public class Jugador {
     private int puntos;
     private String nombre;
 
-    public Jugador(String unNombre){
-        if(unNombre.equals("")){
+    public Jugador(String unNombre) {
+        if (unNombre.equals("")) {
             throw new JugadorSinNombreException();
         }
         nombre = unNombre;
@@ -21,20 +21,19 @@ public class Jugador {
     }
 
     public void aumentarPuntos(int unPuntaje) {
-        if(unPuntaje < 0){
+        if (unPuntaje < 0) {
             throw new PuntosNegativoException();
-        }else{
-            puntos += unPuntaje;
         }
+        puntos += unPuntaje;
     }
 
     public void disminuirPuntos(int unPuntaje) {
-        if(unPuntaje < 0){
+        if (unPuntaje < 0) {
             throw new PuntosNegativoException();
         }
-        if(puntos <= 0){
+        if (puntos <= 0) {
             puntos = 0;
-        }else{
+        } else {
             puntos -= unPuntaje;
         }
     }
