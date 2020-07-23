@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class VerdaderoFalsoClasicoTest {
 
@@ -40,4 +41,17 @@ public class VerdaderoFalsoClasicoTest {
         assertEquals(0, vofClasicoFalsaCorrecta.calcularPuntajePara(verdadera));
     }
 
+    @Test
+    public void testVoFClasicoLanzaExcepciónSiSeLaDaUnaRespuestaNoValidaEnCalcularPuntaje(){
+        Respuesta verdadera = new Respuesta("Verdadero");
+        Respuesta falsa = new Respuesta("Falso");
+        Respuesta otra = new Respuesta("foo");
+
+        VerdaderoFalsoClasico vofClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoVerdadera("bar");
+
+        vofClasico.calcularPuntajePara(verdadera);
+        vofClasico.calcularPuntajePara(falsa);
+
+        assertThrows(RespuestaNoValidaException.class, ()-> vofClasico.calcularPuntajePara(otra));
+    }
 }

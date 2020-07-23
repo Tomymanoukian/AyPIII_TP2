@@ -35,6 +35,9 @@ public class VerdaderoFalsoClasico extends Pregunta {
     }
 
     public int calcularPuntajePara(Respuesta unaRespuesta) {
+        if (!unaRespuesta.esIgualA(verdadero) && !unaRespuesta.esIgualA(falso)) {
+            throw new RespuestaNoValidaException();
+        }
         int puntaje = 0;
         if (unaRespuesta.esIgualA(respuesCorrecta)) {
             puntaje = 1;
