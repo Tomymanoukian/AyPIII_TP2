@@ -25,10 +25,10 @@ Java 14.0.1
 Maven 3.6.0
 ```
 
-## Ejecutando las pruebas
+## Ejecución de las pruebas
 
 Explicación de como ejecutar las pruebas
 
-## Ejecutando la aplicación
+## Ejecución de la aplicación
 
 Explicación de como ejecutar la aplicación
