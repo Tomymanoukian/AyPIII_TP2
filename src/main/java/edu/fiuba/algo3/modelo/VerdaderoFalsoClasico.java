@@ -6,11 +6,11 @@ public class VerdaderoFalsoClasico extends Pregunta {
     private static final Respuesta falso = new Respuesta("Falso");
 
 
-
-    public VerdaderoFalsoClasico(String unaConsigna){
+    public VerdaderoFalsoClasico(String unaConsigna) {
         consigna = unaConsigna;
     }
-    public static VerdaderoFalsoClasico crearVerdaderoFalsoVerdadera(String unaConsigna){
+
+    public static VerdaderoFalsoClasico crearVerdaderoFalsoVerdadera(String unaConsigna) {
         VerdaderoFalsoClasico verdaderoFalsoClasico = new VerdaderoFalsoClasico(unaConsigna);
         verdaderoFalsoClasico.setRespuestaCorrectaVerdadero();
         return verdaderoFalsoClasico;
@@ -30,8 +30,15 @@ public class VerdaderoFalsoClasico extends Pregunta {
         respuesCorrecta = verdadero;
     }
 
-
     public Respuesta getRespuestaCorrecta() {
         return respuesCorrecta;
+    }
+
+    public int calcularPuntajePara(Respuesta unaRespuesta) {
+        int puntaje = 0;
+        if (unaRespuesta.esIgualA(respuesCorrecta)) {
+            puntaje = 1;
+        }
+        return puntaje;
     }
 }
