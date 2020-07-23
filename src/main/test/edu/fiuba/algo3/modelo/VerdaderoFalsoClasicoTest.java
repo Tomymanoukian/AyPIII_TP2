@@ -42,7 +42,7 @@ public class VerdaderoFalsoClasicoTest {
     }
 
     @Test
-    public void testVoFClasicoLanzaEzepciónSiSeLaDaUnaRespuestaNoValidaEnCalcularPuntaje(){
+    public void testVoFClasicoLanzaExcepciónSiSeLaDaUnaRespuestaNoValidaEnCalcularPuntaje(){
         Respuesta verdadera = new Respuesta("Verdadero");
         Respuesta falsa = new Respuesta("Falso");
         Respuesta otra = new Respuesta("foo");
