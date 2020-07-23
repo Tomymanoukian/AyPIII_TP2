@@ -4,6 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class AsignacionDePuntosTest {
+
     @Test
     public void testVerdaderoFalsoClasicoJugador1AsertaYJugador2FallaAsignandoCorrectamenteLosPuntajes(){
         String consigna = "El Sol es azul";
