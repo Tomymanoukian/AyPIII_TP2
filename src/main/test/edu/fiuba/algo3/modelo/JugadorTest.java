@@ -54,6 +54,16 @@ public class JugadorTest {
     }
 
     @Test
+    public void testJugadorConPuntosDisminuyeSusPuntosPorDebajoDeCeroComoResultadoTieneCeroPuntos(){
+
+        Jugador jugador = new Jugador("Juan");
+        jugador.aumentarPuntos(3);
+        jugador.disminuirPuntos(5);
+
+        assertEquals(0, jugador.getPuntos());
+    }
+
+    @Test
     public void testJugadorNoPuedeDisminuirUnPuntajeNegativo(){
         Jugador jugador = new Jugador("Pedro");
 

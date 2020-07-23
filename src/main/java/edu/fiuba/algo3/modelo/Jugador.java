@@ -31,7 +31,7 @@ public class Jugador {
         if (unPuntaje < 0) {
             throw new PuntosNegativoException();
         }
-        if (puntos <= 0) {
+        if (puntos-unPuntaje < 0) {
             puntos = 0;
         } else {
             puntos -= unPuntaje;
