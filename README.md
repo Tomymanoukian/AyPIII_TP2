@@ -9,8 +9,8 @@ Integrantes:
 - [Fernández Manoukian, Tomás](https://github.com/Tomymanoukian)
 - [Mombru, Melanie](https://github.com/melmombru)
 - [Mundani Vegega, Ezequiel](https://github.com/InspectorDave)
-- [Tardá, Rocío](https://github.com/rociotarda)
 - [Tardá, Agustín](https://github.com/AgustinTardaFIUBA)
+- [Tardá, Rocío](https://github.com/rociotarda)
 
 Corrector: Diego Sánchez
 
