@@ -2,7 +2,7 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo 7
+## Grupo 7 (Turno 2)
 
 Integrantes:
 
