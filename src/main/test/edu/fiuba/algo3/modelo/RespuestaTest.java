@@ -14,7 +14,7 @@ public class RespuestaTest {
     @Test
     public void testCreoDosRespuestasDistintas(){
         Respuesta respuesta1 = new Respuesta("unaRespuesta");
-        Respuesta respuesta2 = new Respuesta("otraRespuesta");
+        Respuesta respuesta2 = new Respuesta("diferenteRespuesta");
 
         assert(!respuesta1.esIgualA(respuesta2));
     }
