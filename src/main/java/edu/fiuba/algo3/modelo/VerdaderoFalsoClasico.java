@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.List;
+
 public class VerdaderoFalsoClasico extends Pregunta {
     private Respuesta respuesCorrecta;
     private static final Respuesta verdadero = new Respuesta("Verdadero");
@@ -10,13 +12,13 @@ public class VerdaderoFalsoClasico extends Pregunta {
         consigna = unaConsigna;
     }
 
-    public static VerdaderoFalsoClasico crearVerdaderoFalsoVerdadera(String unaConsigna) {
+    public static VerdaderoFalsoClasico crearVerdaderoFalsoCorrectaVerdadero(String unaConsigna) {
         VerdaderoFalsoClasico verdaderoFalsoClasico = new VerdaderoFalsoClasico(unaConsigna);
         verdaderoFalsoClasico.setRespuestaCorrectaVerdadero();
         return verdaderoFalsoClasico;
     }
 
-    public static VerdaderoFalsoClasico crearVerdaderoFalsoFalsa(String unaConsigna) {
+    public static VerdaderoFalsoClasico crearVerdaderoFalsoCorrectoFalso(String unaConsigna) {
         VerdaderoFalsoClasico verdaderoFalsoClasico = new VerdaderoFalsoClasico(unaConsigna);
         verdaderoFalsoClasico.setRespuestaCorrectaFalso();
         return verdaderoFalsoClasico;
@@ -34,12 +36,15 @@ public class VerdaderoFalsoClasico extends Pregunta {
         return respuesCorrecta;
     }
 
-    public int calcularPuntajePara(Respuesta unaRespuesta) {
-        if (!unaRespuesta.esIgualA(verdadero) && !unaRespuesta.esIgualA(falso)) {
+    @Override
+    public int calcularPuntajePara(List<Respuesta> respuestas) {
+        Respuesta respuesta = respuestas.get(0);
+
+        if (!respuesta.esIgualA(verdadero) && !respuesta.esIgualA(falso)) {
             throw new RespuestaNoValidaException();
         }
         int puntaje = 0;
-        if (unaRespuesta.esIgualA(respuesCorrecta)) {
+        if (respuesta.esIgualA(respuesCorrecta)) {
             puntaje = 1;
         }
         return puntaje;

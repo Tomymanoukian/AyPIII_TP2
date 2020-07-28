@@ -10,7 +10,7 @@ public class VerdaderoFalsoClasicoTest {
 
     @Test
     public void testCrearUnaPreguntaVerdaderoYFalsoClasicoIndicandoleLaRespuestaCorrectaVerdadera() {
-        VerdaderoFalsoClasico vofVerdaderaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoVerdadera("foo");
+        VerdaderoFalsoClasico vofVerdaderaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("foo");
         Respuesta respuestaCorrecta = new Respuesta("Verdadero");
 
         assert(vofVerdaderaCorrecta.getRespuestaCorrecta().esIgualA(respuestaCorrecta));
@@ -19,7 +19,7 @@ public class VerdaderoFalsoClasicoTest {
 
     @Test
     public void testCrearUnaPreguntaVerdaderoYFalsoClasicoLaRespuestaCorrectaFalso() {
-        VerdaderoFalsoClasico vofFalsaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoFalsa("bar");
+        VerdaderoFalsoClasico vofFalsaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso("bar");
         Respuesta respuestaCorrecta = new Respuesta("Falso");
 
         assert(vofFalsaCorrecta.getRespuestaCorrecta().esIgualA(respuestaCorrecta));
@@ -29,8 +29,8 @@ public class VerdaderoFalsoClasicoTest {
     @Test
     public void testCalcularPuntajeParaFuncionaCorrectamente() {
 
-        VerdaderoFalsoClasico vofClasicoVerdaderaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoVerdadera("foo");
-        VerdaderoFalsoClasico vofClasicoFalsaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoFalsa("bar");
+        VerdaderoFalsoClasico vofClasicoVerdaderaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("foo");
+        VerdaderoFalsoClasico vofClasicoFalsaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso("bar");
         Respuesta verdadera = new Respuesta("Verdadero");
         Respuesta falsa = new Respuesta("Falso");
 
@@ -42,12 +42,12 @@ public class VerdaderoFalsoClasicoTest {
     }
 
     @Test
-    public void testVoFClasicoLanzaExcepciónSiSeLaDaUnaRespuestaNoValidaEnCalcularPuntaje(){
+    public void testVoFClasicoLanzaExcepcionSiSeLaDaUnaRespuestaNoValidaEnCalcularPuntaje(){
         Respuesta verdadera = new Respuesta("Verdadero");
         Respuesta falsa = new Respuesta("Falso");
         Respuesta otra = new Respuesta("foo");
 
-        VerdaderoFalsoClasico vofClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoVerdadera("bar");
+        VerdaderoFalsoClasico vofClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("bar");
 
         vofClasico.calcularPuntajePara(verdadera);
         vofClasico.calcularPuntajePara(falsa);

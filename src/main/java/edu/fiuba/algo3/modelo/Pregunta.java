@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.List;
+
 public abstract class Pregunta {
     protected String consigna;
 
@@ -7,5 +9,5 @@ public abstract class Pregunta {
         return  consigna;
     }
 
-    public abstract int calcularPuntajePara(Respuesta unaRespuesta);
+    public abstract int calcularPuntajePara(List<Respuesta> respuestas);
 }

@@ -8,7 +8,7 @@ public class CreacionDePreguntasTest {
     @Test
     public void testCrearUnaPreguntaVerdaderoYFalsoClasicoIndicandoleLaRespuestaCorrectaVerdadera() {
         String consigna = "Smalltalk es mejor que Java?";
-        VerdaderoFalsoClasico preguntaVerdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoVerdadera(consigna);
+        VerdaderoFalsoClasico preguntaVerdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero(consigna);
         Respuesta respuestaCorrecta = new Respuesta("Verdadero");
 
         assert(preguntaVerdaderoFalsoClasico.getRespuestaCorrecta().esIgualA(respuestaCorrecta));
@@ -18,7 +18,7 @@ public class CreacionDePreguntasTest {
     @Test
     public void testCrearUnaPreguntaVerdaderoYFalsoClasicoLaRespuestaCorrectaFalso() {
         String consigna = "Java es mejor que Smalltalk?";
-        VerdaderoFalsoClasico preguntaVerdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoFalsa(consigna);
+        VerdaderoFalsoClasico preguntaVerdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso(consigna);
         Respuesta respuestaCorrecta = new Respuesta("Falso");
 
         assert(preguntaVerdaderoFalsoClasico.getRespuestaCorrecta().esIgualA(respuestaCorrecta));
