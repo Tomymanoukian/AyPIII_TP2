@@ -1,0 +1,134 @@
+package edu.fiuba.algo3.modelo;
+
+import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class MultipleChoiceClasicoTest {
+    @Test
+    public void testCrearMultipleChoiceClasico() {
+
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        String consigna = "Indicar cuáles de las siguientes opciones son colores";
+
+        Respuesta respuestaCorrecta1 = new Respuesta("Amarillo");
+        Respuesta respuestaCorrecta2 = new Respuesta("Azul");
+        Respuesta respuestaIncorrecta1 = new Respuesta("Tractor");
+
+        respuestasCorrectas.agregar(respuestaCorrecta1);
+        respuestasCorrectas.agregar(respuestaCorrecta2);
+        respuestasIncorrectas.agregar(respuestaIncorrecta1);
+
+        MultipleChoiceClasico multipleChoiceClasico = MultipleChoiceClasico.crearMultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
+
+        assertEquals("Indicar cuáles de las siguientes opciones son colores", multipleChoiceClasico.getConsigna());
+        assert (multipleChoiceClasico.getRespuestasCorrectas().contieneTodo(respuestasCorrectas));
+        assert (multipleChoiceClasico.getRespuestasIncorrectas().contieneTodo(respuestasIncorrectas));
+    }
+
+    @Test
+    public void testCalculaPuntajeParaTodasRespuestasCorrectas() {
+
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        String consigna = "Indicar cuáles de las siguientes opciones son colores";
+
+        Respuesta respuestaCorrecta1 = new Respuesta("Amarillo");
+        Respuesta respuestaCorrecta2 = new Respuesta("Azul");
+        Respuesta respuestaIncorrecta1 = new Respuesta("Tractor");
+
+        respuestasCorrectas.agregar(respuestaCorrecta1);
+        respuestasCorrectas.agregar(respuestaCorrecta2);
+        respuestasIncorrectas.agregar(respuestaIncorrecta1);
+
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
+
+        ListaRespuestas respuestasElegidas = new ListaRespuestas();
+        Respuesta respuestaElegida1 = new Respuesta("Amarillo");
+        Respuesta respuestaElegida2 = new Respuesta("Azul");
+        respuestasElegidas.agregar(respuestaElegida1);
+        respuestasElegidas.agregar(respuestaElegida2);
+
+        assertEquals(1, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas));
+    }
+
+    @Test
+    public void testCalculaPuntajeDeUnaListaDeRespuestasConUnaIncorrecta() {
+
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        String consigna = "Indicar cuáles de las siguientes opciones son colores";
+
+        Respuesta respuestaCorrecta = new Respuesta("Amarillo");
+        Respuesta respuestaIncorrecta = new Respuesta("Tractor");
+
+        respuestasCorrectas.agregar(respuestaCorrecta);
+        respuestasIncorrectas.agregar(respuestaIncorrecta);
+
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
+
+        ListaRespuestas respuestasElegidas = new ListaRespuestas();
+        Respuesta respuestaElegida = new Respuesta("Tractor");
+
+        respuestasElegidas.agregar(respuestaElegida);
+
+        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas));
+    }
+
+    @Test
+    public void testCalculaPuntajeDeUnaListaDeRespuestasConUnaCorrectaYUnaIncorrecta() {
+
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        String consigna = "Indicar cuáles de las siguientes opciones son colores";
+
+        Respuesta respuestaCorrecta1 = new Respuesta("Amarillo");
+        Respuesta respuestaCorrecta2 = new Respuesta("Azul");
+        Respuesta respuestaIncorrecta = new Respuesta("Tractor");
+
+        respuestasCorrectas.agregar(respuestaCorrecta1);
+        respuestasCorrectas.agregar(respuestaCorrecta2);
+        respuestasIncorrectas.agregar(respuestaIncorrecta);
+
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
+
+        ListaRespuestas respuestasElegidas = new ListaRespuestas();
+        Respuesta respuestaElegida1 = new Respuesta("Amarillo");
+        Respuesta respuestaElegida2 = new Respuesta("Tractor");
+
+        respuestasElegidas.agregar(respuestaElegida1);
+        respuestasElegidas.agregar(respuestaElegida2);
+
+        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas));
+    }
+
+    @Test
+    public void testCalculaPuntajeDeUnaListaDeRespuestasConAlgunasCorrectas() {
+
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        String consigna = "Indicar cuáles de las siguientes opciones son colores";
+
+        Respuesta respuestaCorrecta1 = new Respuesta("Amarillo");
+        Respuesta respuestaCorrecta2 = new Respuesta("Azul");
+        Respuesta respuestaCorrecta3 = new Respuesta("Verde");
+        Respuesta respuestaIncorrecta = new Respuesta("Tractor");
+
+        respuestasCorrectas.agregar(respuestaCorrecta1);
+        respuestasCorrectas.agregar(respuestaCorrecta2);
+        respuestasCorrectas.agregar(respuestaCorrecta3);
+        respuestasIncorrectas.agregar(respuestaIncorrecta);
+
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
+
+        ListaRespuestas respuestasElegidas = new ListaRespuestas();
+        Respuesta respuestaElegida1 = new Respuesta("Amarillo");
+        Respuesta respuestaElegida2 = new Respuesta("Azul");
+
+        respuestasElegidas.agregar(respuestaElegida1);
+        respuestasElegidas.agregar(respuestaElegida2);
+
+        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas));
+    }
+}
