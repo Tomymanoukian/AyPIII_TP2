@@ -19,5 +19,4 @@ public class RespuestaTest {
         assert(!respuesta1.esIgualA(respuesta2));
     }
 
-
 }
