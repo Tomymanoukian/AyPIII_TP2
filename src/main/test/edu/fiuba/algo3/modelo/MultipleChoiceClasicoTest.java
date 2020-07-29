@@ -20,11 +20,11 @@ public class MultipleChoiceClasicoTest {
         respuestasCorrectas.agregar(respuestaCorrecta2);
         respuestasIncorrectas.agregar(respuestaIncorrecta1);
 
-        MultipleChoiceClasico multipleChoiceClasico = MultipleChoiceClasico.crearMultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         assertEquals("Indicar cuáles de las siguientes opciones son colores", multipleChoiceClasico.getConsigna());
-        assert (multipleChoiceClasico.getRespuestasCorrectas().contieneTodo(respuestasCorrectas));
-        assert (multipleChoiceClasico.getRespuestasIncorrectas().contieneTodo(respuestasIncorrectas));
+        assert (multipleChoiceClasico.getRespuestasCorrectas().contieneLoMismo(respuestasCorrectas));
+        assert (multipleChoiceClasico.getRespuestasIncorrectas().contieneLoMismo(respuestasIncorrectas));
     }
 
     @Test
