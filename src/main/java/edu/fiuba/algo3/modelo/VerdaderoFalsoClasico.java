@@ -38,6 +38,9 @@ public class VerdaderoFalsoClasico extends Pregunta {
 
     @Override
     public int calcularPuntajePara(ListaRespuestas respuestas) {
+        if(respuestas.cantRespuestas() != 1){
+            throw new CantidadDeRespuestasInvalidaException();
+        }
         Respuesta respuesta = respuestas.obtener(0);
 
         if (!respuesta.esIgualA(verdadero) && !respuesta.esIgualA(falso)) {
