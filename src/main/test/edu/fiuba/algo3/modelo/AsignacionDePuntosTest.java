@@ -1,11 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import javafx.css.converter.LadderConverter;
+//import javafx.css.converter.LagregarerConverter;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 
 public class AsignacionDePuntosTest {
@@ -57,8 +53,8 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceParcialJugadorAciertaTodasLasRespuestasCorrectasSumandoleCorrectamenteLosPuntosDeLasRespuestasCorrectas(){
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        List<Respuesta> respuestasCorrectas = new ArrayList<>();
-        List<Respuesta> respuestasIncorrectas = new ArrayList<>();
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
 
         Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
         Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
@@ -67,14 +63,15 @@ public class AsignacionDePuntosTest {
         Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
 
 
-        respuestasCorrectas.add(respuestaCorrectaTierra);
-        respuestasCorrectas.add(respuestaCorrectaMarte);
-        respuestasCorrectas.add(respuestaCorrectaJupiter);
+        respuestasCorrectas.agregar(respuestaCorrectaTierra);
+        respuestasCorrectas.agregar(respuestaCorrectaMarte);
+        respuestasCorrectas.agregar(respuestaCorrectaJupiter);
 
-        respuestasIncorrectas.add(respuestaInorrectaAzul);
-        respuestasIncorrectas.add(respuestaIncorrectaAmarillo);
+        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
+        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
 
-        List<Respuesta> respuestasJugador = new ArrayList<>(respuestasCorrectas);
+        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        respuestasJugador.agregarTodo(respuestasCorrectas);
 
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna,respuestasCorrectas, respuestasIncorrectas);
@@ -94,8 +91,8 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceParcialJugadorAciertaTodasLasRespuestasCorrectasYUnaIncorrectaSumandoleCeroPuntos(){
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        List<Respuesta> respuestasCorrectas = new ArrayList<>();
-        List<Respuesta> respuestasIncorrectas = new ArrayList<>();
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
 
         Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
         Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
@@ -103,13 +100,14 @@ public class AsignacionDePuntosTest {
         Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
 
 
-        respuestasCorrectas.add(respuestaCorrectaTierra);
-        respuestasCorrectas.add(respuestaCorrectaMarte);
-        respuestasIncorrectas.add(respuestaInorrectaAzul);
-        respuestasIncorrectas.add(respuestaIncorrectaAmarillo);
+        respuestasCorrectas.agregar(respuestaCorrectaTierra);
+        respuestasCorrectas.agregar(respuestaCorrectaMarte);
+        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
+        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
 
-        List<Respuesta> respuestasJugador = new ArrayList<>(respuestasCorrectas);
-        respuestasJugador.add(respuestaInorrectaAzul);
+        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        respuestasJugador.agregarTodo(respuestasCorrectas);
+        respuestasJugador.agregar(respuestaInorrectaAzul);
 
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna,respuestasCorrectas, respuestasIncorrectas);
@@ -129,9 +127,9 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceParcialJugadorAciertaAlgunasCorrectasYNingunaIncorrectaSumandoleCeroPuntos(){
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        List<Respuesta> respuestasCorrectas = new ArrayList<>();
-        List<Respuesta> respuestasIncorrectas = new ArrayList<>();
-        List<Respuesta> respuestasJugador = new ArrayList<>();
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasJugador = new ListaRespuestas();
 
         Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
         Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
@@ -140,14 +138,14 @@ public class AsignacionDePuntosTest {
         Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
 
 
-        respuestasCorrectas.add(respuestaCorrectaTierra);
-        respuestasCorrectas.add(respuestaCorrectaMarte);
-        respuestasCorrectas.add(respuestaCorrectaJupiter);
-        respuestasIncorrectas.add(respuestaInorrectaAzul);
-        respuestasIncorrectas.add(respuestaIncorrectaAmarillo);
+        respuestasCorrectas.agregar(respuestaCorrectaTierra);
+        respuestasCorrectas.agregar(respuestaCorrectaMarte);
+        respuestasCorrectas.agregar(respuestaCorrectaJupiter);
+        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
+        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
 
-        respuestasJugador.add(respuestaCorrectaMarte);
-        respuestasJugador.add(respuestaCorrectaJupiter);
+        respuestasJugador.agregar(respuestaCorrectaMarte);
+        respuestasJugador.agregar(respuestaCorrectaJupiter);
 
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna,respuestasCorrectas, respuestasIncorrectas);
@@ -167,8 +165,8 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceParcialJugadorNoAciertaNingunaCorrectasSumandoleCeroPuntos(){
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        List<Respuesta> respuestasCorrectas = new ArrayList<>();
-        List<Respuesta> respuestasIncorrectas = new ArrayList<>();
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
 
         Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
         Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
@@ -177,13 +175,14 @@ public class AsignacionDePuntosTest {
         Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
 
 
-        respuestasCorrectas.add(respuestaCorrectaTierra);
-        respuestasCorrectas.add(respuestaCorrectaMarte);
-        respuestasCorrectas.add(respuestaCorrectaJupiter);
-        respuestasIncorrectas.add(respuestaInorrectaAzul);
-        respuestasIncorrectas.add(respuestaIncorrectaAmarillo);
+        respuestasCorrectas.agregar(respuestaCorrectaTierra);
+        respuestasCorrectas.agregar(respuestaCorrectaMarte);
+        respuestasCorrectas.agregar(respuestaCorrectaJupiter);
+        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
+        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
 
-        List<Respuesta> respuestasJugador = new ArrayList<>(respuestasIncorrectas);
+        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        respuestasJugador.agregarTodo(respuestasIncorrectas);
 
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna,respuestasCorrectas, respuestasIncorrectas);
@@ -203,8 +202,8 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceClasicoJugadorAciertaTodasLasRespuestasCorrectasSumandoleUnPunto(){
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        List<Respuesta> respuestasCorrectas = new ArrayList<>();
-        List<Respuesta> respuestasIncorrectas = new ArrayList<>();
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
 
         Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
         Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
@@ -213,13 +212,14 @@ public class AsignacionDePuntosTest {
         Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
 
 
-        respuestasCorrectas.add(respuestaCorrectaTierra);
-        respuestasCorrectas.add(respuestaCorrectaMarte);
-        respuestasCorrectas.add(respuestaCorrectaJupiter);
-        respuestasIncorrectas.add(respuestaInorrectaAzul);
-        respuestasIncorrectas.add(respuestaIncorrectaAmarillo);
+        respuestasCorrectas.agregar(respuestaCorrectaTierra);
+        respuestasCorrectas.agregar(respuestaCorrectaMarte);
+        respuestasCorrectas.agregar(respuestaCorrectaJupiter);
+        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
+        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
 
-        List<Respuesta> respuestasJugador = new ArrayList<>(respuestasCorrectas);
+        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        respuestasJugador.agregarTodo(respuestasCorrectas);
 
 
         MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna,respuestasCorrectas, respuestasIncorrectas);
@@ -239,8 +239,8 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceClasicoJugadorAciertaTodasLasRespuestasCorrectasYUnaIncorrectaSumandoleCeroPuntos(){
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        List<Respuesta> respuestasCorrectas = new ArrayList<>();
-        List<Respuesta> respuestasIncorrectas = new ArrayList<>();
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
 
         Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
         Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
@@ -249,14 +249,15 @@ public class AsignacionDePuntosTest {
         Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
 
 
-        respuestasCorrectas.add(respuestaCorrectaTierra);
-        respuestasCorrectas.add(respuestaCorrectaMarte);
-        respuestasCorrectas.add(respuestaCorrectaJupiter);
-        respuestasIncorrectas.add(respuestaInorrectaAzul);
-        respuestasIncorrectas.add(respuestaIncorrectaAmarillo);
+        respuestasCorrectas.agregar(respuestaCorrectaTierra);
+        respuestasCorrectas.agregar(respuestaCorrectaMarte);
+        respuestasCorrectas.agregar(respuestaCorrectaJupiter);
+        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
+        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
 
-        List<Respuesta> respuestasJugador = new ArrayList<>(respuestasCorrectas);
-        respuestasJugador.add(respuestaIncorrectaAmarillo);
+        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        respuestasJugador.agregarTodo(respuestasCorrectas);
+        respuestasJugador.agregar(respuestaIncorrectaAmarillo);
 
 
         MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna,respuestasCorrectas, respuestasIncorrectas);
@@ -276,8 +277,8 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceClasicoJugadorNoAciertaNingunaRespuestasCorrectasSumandoleCeroPuntos(){
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        List<Respuesta> respuestasCorrectas = new ArrayList<>();
-        List<Respuesta> respuestasIncorrectas = new ArrayList<>();
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
 
         Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
         Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
@@ -286,14 +287,16 @@ public class AsignacionDePuntosTest {
         Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
 
 
-        respuestasCorrectas.add(respuestaCorrectaTierra);
-        respuestasCorrectas.add(respuestaCorrectaMarte);
-        respuestasCorrectas.add(respuestaCorrectaJupiter);
-        respuestasIncorrectas.add(respuestaInorrectaAzul);
-        respuestasIncorrectas.add(respuestaIncorrectaAmarillo);
+        respuestasCorrectas.agregar(respuestaCorrectaTierra);
+        respuestasCorrectas.agregar(respuestaCorrectaMarte);
+        respuestasCorrectas.agregar(respuestaCorrectaJupiter);
+        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
+        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
 
-        List<Respuesta> respuestasJugador = new ArrayList<>(respuestasCorrectas);
-        respuestasJugador.add(respuestaIncorrectaAmarillo);
+        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        respuestasJugador.agregarTodo(respuestasIncorrectas);
+
+        respuestasJugador.agregar(respuestaIncorrectaAmarillo);
 
 
         MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna,respuestasCorrectas, respuestasIncorrectas);

@@ -17,7 +17,7 @@ public class VerdaderoFalsoConPenalidad extends Pregunta{
     }
 
     @Override
-    public int calcularPuntajePara(List<Respuesta> respuestas) {
+    public int calcularPuntajePara(ListaRespuestas respuestas) {
         return 0;
     }
 }
