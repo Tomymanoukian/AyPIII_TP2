@@ -67,4 +67,21 @@ public class VerdaderoFalsoClasicoTest {
 
         assertThrows(RespuestaNoValidaException.class, ()-> vofClasico.calcularPuntajePara(listaOtra));
     }
+
+    @Test
+    public void testVoFClasicoLanzaExcepcionSiSeIngresaMasDeUnaRespuesta(){
+        VerdaderoFalsoClasico vofClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("bar");
+
+        Respuesta verdadera = new Respuesta("Verdadero");
+        Respuesta falsa = new Respuesta("Falso");
+
+        ListaRespuestas lista =  new ListaRespuestas();
+
+        assertThrows(CantidadDeRespuestasInvalidaException.class, ()-> vofClasico.calcularPuntajePara(lista));
+
+        lista.agregar(verdadera);
+        lista.agregar(falsa);
+
+        assertThrows(CantidadDeRespuestasInvalidaException.class, ()-> vofClasico.calcularPuntajePara(lista));
+    }
 }
