@@ -4,10 +4,10 @@ import java.util.Collection;
 import java.util.List;
 
 public class MultipleChoiceParcial extends Pregunta {
-    private List<Respuesta> respuestasCorrectas;
-    private List<Respuesta> respuestasIncorrectas;
+    private ListaRespuestas respuestasCorrectas;
+    private ListaRespuestas respuestasIncorrectas;
 
-    public MultipleChoiceParcial(String unaConsigna, List<Respuesta> unasRespuestasCorrectas, List<Respuesta> unasRespuestasIncorrectas) {
+    public MultipleChoiceParcial(String unaConsigna, ListaRespuestas unasRespuestasCorrectas, ListaRespuestas unasRespuestasIncorrectas) {
         super();
         consigna = unaConsigna;
         respuestasCorrectas = unasRespuestasCorrectas;
@@ -15,20 +15,19 @@ public class MultipleChoiceParcial extends Pregunta {
     }
 
     @Override
-    public int calcularPuntajePara(List<Respuesta> respuestas){
-        /*if(respuestas.obtenerCoincidencias(respuestasIncorrectas) > 0) {
+    public int calcularPuntajePara(ListaRespuestas respuestas){
+        if(respuestas.obtenerCoincidencias(respuestasIncorrectas) > 0) {
             return 0;
         }else {
             return respuestas.obtenerCoincidencias(respuestasCorrectas);
-        }*/
-        return 0;
+        }
     }
 
-    public List<Respuesta> getRespuestasCorrectas() {
+    public ListaRespuestas getRespuestasCorrectas() {
         return respuestasCorrectas;
     }
 
-    public List<Respuesta> getRespuestasIncorrectas() {
+    public ListaRespuestas getRespuestasIncorrectas() {
         return respuestasIncorrectas;
     }
 }

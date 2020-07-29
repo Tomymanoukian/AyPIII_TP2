@@ -9,5 +9,5 @@ public abstract class Pregunta {
         return  consigna;
     }
 
-    public abstract int calcularPuntajePara(List<Respuesta> respuestas);
+    public abstract int calcularPuntajePara(ListaRespuestas respuestas);
 }

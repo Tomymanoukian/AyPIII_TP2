@@ -37,8 +37,8 @@ public class VerdaderoFalsoClasico extends Pregunta {
     }
 
     @Override
-    public int calcularPuntajePara(List<Respuesta> respuestas) {
-        Respuesta respuesta = respuestas.get(0);
+    public int calcularPuntajePara(ListaRespuestas respuestas) {
+        Respuesta respuesta = respuestas.obtener(0);
 
         if (!respuesta.esIgualA(verdadero) && !respuesta.esIgualA(falso)) {
             throw new RespuestaNoValidaException();

@@ -3,10 +3,10 @@ package edu.fiuba.algo3.modelo;
 import java.util.List;
 
 public class MultipleChoiceClasico extends Pregunta{
-    private List<Respuesta> respuestasCorrectas;
-    private List<Respuesta> respuestasIncorrectas;
+    private ListaRespuestas respuestasCorrectas;
+    private ListaRespuestas respuestasIncorrectas;
 
-    public MultipleChoiceClasico(String unaConsigna, List<Respuesta> unasRespuestasCorrectas, List<Respuesta> unasRespuestasIncorrectas) {
+    public MultipleChoiceClasico(String unaConsigna, ListaRespuestas unasRespuestasCorrectas, ListaRespuestas unasRespuestasIncorrectas) {
         super();
         consigna = unaConsigna;
         respuestasCorrectas = unasRespuestasCorrectas;
@@ -14,7 +14,7 @@ public class MultipleChoiceClasico extends Pregunta{
     }
 
     @Override
-    public int calcularPuntajePara(List<Respuesta> unasRespuestas) {
+    public int calcularPuntajePara(ListaRespuestas unasRespuestas) {
         return 0;
     }
 }
