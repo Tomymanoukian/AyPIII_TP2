@@ -13,8 +13,24 @@ public class MultipleChoiceClasico extends Pregunta{
         respuestasIncorrectas = unasRespuestasIncorrectas;
     }
 
+    public String getConsigna() {
+        return super.getConsigna();
+    }
+
+    public ListaRespuestas getRespuestasCorrectas() {
+        return respuestasCorrectas;
+    }
+
+    public ListaRespuestas getRespuestasIncorrectas() {
+        return respuestasIncorrectas;
+    }
+
+
     @Override
     public int calcularPuntajePara(ListaRespuestas unasRespuestas) {
+        if(unasRespuestas.contieneLoMismo(respuestasCorrectas)) {
+            return 1;
+        }
         return 0;
     }
 }
