@@ -11,7 +11,7 @@ public class Respuesta {
         return this.getRespuesta().equals(unaRespuesta.getRespuesta());
     }
 
-    private String getRespuesta() {
+    public String getRespuesta() {
         return respuesta;
     }
 }

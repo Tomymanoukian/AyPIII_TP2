@@ -28,7 +28,6 @@ public class ListaRespuestas {
     }
 
     public boolean contieneTodo(ListaRespuestas otraLista){
-
         return  listaRespuestas.containsAll(otraLista.obtenerLista());
     }
 
@@ -43,23 +42,28 @@ public class ListaRespuestas {
     }
 
     public List<Respuesta> obtenerLista(){
-
         return listaRespuestas;
     }
 
     public int obtenerCoincidencias(ListaRespuestas otraLista){
-
         return otraLista.calculoDeCoincidencias(listaRespuestas);
     }
 
     public int calculoDeCoincidencias(List<Respuesta> otraLista){
         int coincidencias = 0;
-        Iterator<Respuesta> iterador = otraLista.iterator();
+        Iterator<Respuesta> iterador1 = otraLista.iterator();
+        Iterator<Respuesta> iterador2 = listaRespuestas.iterator();
 
         for(int i = 0; i < otraLista.size(); i++){
-            if(listaRespuestas.contains(iterador.next())){
-                coincidencias ++;
+            Respuesta otraRespuesta = iterador1.next();
+
+            for(int j = 0; j < listaRespuestas.size(); j++) {
+                Respuesta respuesta = iterador2.next();
+                if(respuesta.getRespuesta() == otraRespuesta.getRespuesta()){
+                    coincidencias ++;
+                }
             }
+            iterador2 = listaRespuestas.iterator();
         }
         return coincidencias;
     }

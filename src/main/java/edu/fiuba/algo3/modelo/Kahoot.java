@@ -12,7 +12,7 @@ public class Kahoot {
         jugador1 = unJugador;
         jugador2 = otroJugador;
     }
-
+/*
     public void setRespuestaJugador1(Respuesta respuestaDelJugador1) {
         respuestasJugador1.limpiar();
         respuestasJugador1.agregar(respuestaDelJugador1);
@@ -23,13 +23,15 @@ public class Kahoot {
         respuestasJugador2.agregar(respuestaDelJugador2);
     }
 
+ */
+
     public void setRespuestaJugador1(ListaRespuestas respuestasJugador) {
-        respuestasJugador1.limpiar();
+        respuestasJugador1 = new ListaRespuestas();
         respuestasJugador1.agregarTodo(respuestasJugador);
     }
 
     public void setRespuestaJugador2(ListaRespuestas respuestasJugador) {
-        respuestasJugador2.limpiar();
+        respuestasJugador2 = new ListaRespuestas();
         respuestasJugador2.agregarTodo(respuestasJugador);
     }
 

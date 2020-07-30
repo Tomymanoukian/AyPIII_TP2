@@ -28,12 +28,29 @@ public class VerdaderoFalsoClasicoTest {
 
     @Test
     public void testCalcularPuntajeParaFuncionaCorrectamente() {
+        VerdaderoFalsoClasico vofClasicoVerdaderaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("foo");
+        VerdaderoFalsoClasico vofClasicoFalsaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso("bar");
+
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+
+        Respuesta verdadera = new Respuesta("Verdadero");
+        respuestasCorrectas.agregar(verdadera);
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        Respuesta falsa = new Respuesta("Falso");
+        respuestasIncorrectas.agregar(falsa);
+
+        assertEquals(1, vofClasicoVerdaderaCorrecta.calcularPuntajePara(respuestasCorrectas));
+        assertEquals(0, vofClasicoVerdaderaCorrecta.calcularPuntajePara(respuestasIncorrectas));
+
+    }
+
+    public void testCalcularPuntajeParaFuncionaCorrectamenteAlAsertarConLaFalsa() {
 
         VerdaderoFalsoClasico vofClasicoVerdaderaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("foo");
         VerdaderoFalsoClasico vofClasicoFalsaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso("bar");
 
-        Respuesta verdadera = new Respuesta("Verdadero");
         Respuesta falsa = new Respuesta("Falso");
+        Respuesta verdadera = new Respuesta("Verdadero");
 
         ListaRespuestas listaVerdadera =  new ListaRespuestas();
         ListaRespuestas listaFalsa =  new ListaRespuestas();
@@ -45,6 +62,7 @@ public class VerdaderoFalsoClasicoTest {
 
         assertEquals(1, vofClasicoFalsaCorrecta.calcularPuntajePara(listaFalsa));
         assertEquals(0, vofClasicoFalsaCorrecta.calcularPuntajePara(listaVerdadera));
+
     }
 
     @Test
@@ -52,6 +70,7 @@ public class VerdaderoFalsoClasicoTest {
         Respuesta verdadera = new Respuesta("Verdadero");
         Respuesta falsa = new Respuesta("Falso");
         Respuesta otra = new Respuesta("foo");
+
 
         ListaRespuestas listaVerdadera =  new ListaRespuestas();
         ListaRespuestas listaFalsa =  new ListaRespuestas();
