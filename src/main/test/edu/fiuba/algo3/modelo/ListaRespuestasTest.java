@@ -1,11 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ListaRespuestasTest {
 
@@ -18,6 +20,7 @@ public class ListaRespuestasTest {
         assertEquals(respuesta, listaRespuestas.obtener(0));
     }
 
+    @Test
     public void testAgregoTodosLosElementosDeUnaListaAOtra(){
         ListaRespuestas listaRespuestas = new ListaRespuestas();
         Respuesta respuesta1 = new Respuesta("Respuesta1");
@@ -32,6 +35,7 @@ public class ListaRespuestasTest {
         assert(otraListaRespuestas.contieneTodo(listaRespuestas));
     }
 
+    @Test
     public void testCompruebaQueUnaListaContieneTodosLosElementosDeOtraLista(){
         ListaRespuestas listaRespuestas = new ListaRespuestas();
         Respuesta respuesta1 = new Respuesta("Respuesta1");
@@ -58,6 +62,7 @@ public class ListaRespuestasTest {
         assert(!otraListaRespuestas.contieneTodo(listaRespuestas));
     }
 
+    @Test
     public void testObtieneCorrectamenteUnElementoDeLaLista(){
         ListaRespuestas listaRespuestas = new ListaRespuestas();
         Respuesta respuesta1 = new Respuesta("Respuesta1");
@@ -69,6 +74,7 @@ public class ListaRespuestasTest {
         assertEquals(respuesta2, listaRespuestas.obtener(1));
     }
 
+    @Test
     public void testObtieneLaListaDeRespuestasCorrectamente(){
         ListaRespuestas listaRespuestas = new ListaRespuestas();
         Respuesta respuesta1 = new Respuesta("Respuesta1");
@@ -83,6 +89,7 @@ public class ListaRespuestasTest {
         assertEquals(listDeRespuestas, listaRespuestas.obtenerLista());
     }
 
+    @Test
     public void testObtieneCantidadDeCoincidenciasCorrectamenteDevolviendo2(){
         ListaRespuestas listaRespuestas = new ListaRespuestas();
         Respuesta respuesta1 = new Respuesta("Respuesta1");
@@ -99,6 +106,7 @@ public class ListaRespuestasTest {
         assertEquals(2, listaRespuestas.obtenerCoincidencias(otraListaRespuestas));
     }
 
+    @Test
     public void testObtieneCeroCantidadDeCoincidenciasEntreDosListas(){
         ListaRespuestas listaRespuestas = new ListaRespuestas();
         Respuesta respuesta1 = new Respuesta("Respuesta1");
@@ -115,4 +123,35 @@ public class ListaRespuestasTest {
         assertEquals(0, listaRespuestas.obtenerCoincidencias(otraListaRespuestas));
     }
 
+    @Test
+    public void listaDeRespuestasSeCreaConUnArrayListDeRespuestas(){
+        Respuesta respuesta1 = new Respuesta("respuesta1");
+        Respuesta respuesta2 = new Respuesta("respuesta2");
+        Respuesta respuesta3 = new Respuesta("respuesta3");
+
+        List<Respuesta> arrayList = new ArrayList<>(Arrays.asList(respuesta1, respuesta2, respuesta3));
+
+        ListaRespuestas lista = new ListaRespuestas(arrayList);
+
+        assertEquals(arrayList, lista.obtenerLista());
+    }
+
+    @Test
+    public void testContieneLoMismoFuncionaCorrectamente(){
+        Respuesta respuesta1 = new Respuesta("respuesta1");
+        Respuesta respuesta2 = new Respuesta("respuesta2");
+        Respuesta respuesta3 = new Respuesta("respuesta3");
+        Respuesta respuesta4 = new Respuesta("respuesta4");
+
+        List<Respuesta> arrayListTresRespuestas = new ArrayList<>(Arrays.asList(respuesta1, respuesta2, respuesta3));
+        List<Respuesta> arrayListCuatroRespuestas = new ArrayList<>(Arrays.asList(respuesta1, respuesta2, respuesta3, respuesta4));
+
+        ListaRespuestas listaConTresRespuestas = new ListaRespuestas(arrayListTresRespuestas);
+        ListaRespuestas listaConCuatroRespuestas = new ListaRespuestas(arrayListCuatroRespuestas);
+        ListaRespuestas otralistaConCuatroRespuestas = new ListaRespuestas(arrayListCuatroRespuestas);
+
+        assertTrue(listaConCuatroRespuestas.contieneLoMismo(otralistaConCuatroRespuestas));
+        assertFalse(listaConTresRespuestas.contieneLoMismo(listaConCuatroRespuestas));
+        assertFalse(listaConCuatroRespuestas.contieneLoMismo(listaConTresRespuestas));
+    }
 }

@@ -8,6 +8,13 @@ public class ListaRespuestas {
 
     private List<Respuesta>  listaRespuestas = new ArrayList<>();
 
+    public ListaRespuestas(){
+    }
+
+    public ListaRespuestas(List<Respuesta> unaLista){
+        listaRespuestas.addAll(unaLista);
+    }
+
     public void limpiar(){
         listaRespuestas.clear();
     }
@@ -22,6 +29,12 @@ public class ListaRespuestas {
 
     public boolean contieneTodo(ListaRespuestas otraLista){
         return  listaRespuestas.containsAll(otraLista.obtenerLista());
+    }
+
+    public boolean contieneLoMismo(ListaRespuestas otraLista){
+
+        return  listaRespuestas.containsAll(otraLista.obtenerLista()) &&
+                listaRespuestas.size() == otraLista.obtenerLista().size();
     }
 
     public Respuesta obtener(int posicion){
