@@ -1,0 +1,89 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class Jugador {
+-nombre
+-puntos
++aumentarPuntos (unPuntaje)
++disminuirPuntos (unPuntaje)
+}
+
+class Kahoot {
++evaluarRespuestas(unaPregunta)
++getPuntajeJugador1()
++getPuntajeJugador2()
+}
+
+class Pregunta {
+-consigna
+{abstract}+evaluarRespuestaPara(unasRespuestas)
+}
+
+class Respuesta {
+-respuestaCorrecta
+-puntaje
++aplicarPuntajeA ()
++esIgualA ()
+}
+
+class ListaRespuestas {
+
++aplicarPuntajesA()
++obtenerCoincidencias()
++calculoDeCoincidencias()
++contieneLoMismo()
+}
+
+class VerdaderoFalso {
+-respuestaCorrecta
+-respuestaIncorrecta
++evaluarRespuestaPara()
+}
+
+class VerdaderoFalsoClasico {
++{static}crearVerdaderoFalsoCorrectaVerdadero()
++{static}crearVerdaderoFalsoCorrectaVerdadero()
++calcularPuntajePara()
+}
+
+class VerdaderoFalsoConPenalidad {
++{static}crearVerdaderoFalsoCorrectoFalso()
++{static}crearVerdaderoFalsoCorrectoVerdadero()
+}
+
+class MultipleChoiceClasico {
++calcularPuntajePara()
++evaluarRespuestaPara()
+}
+
+class MultipleChoiceParcial {
++evaluarRespuestaPara()
++aplicarPuntajePara()
+}
+
+
+Pregunta <|-- VerdaderoFalso
+Pregunta <|-- MultipleChoiceClasico
+Pregunta <|-- MultipleChoiceParcial
+
+MultipleChoiceClasico --> "2    " ListaRespuestas
+MultipleChoiceParcial --> "2  " ListaRespuestas
+
+VerdaderoFalso <|-- VerdaderoFalsoClasico
+VerdaderoFalso <|-- VerdaderoFalsoConPenalidad
+
+Jugador " 2" <- Kahoot
+Respuesta "2..*" <-- Pregunta
+Kahoot .> Pregunta
+Respuesta "2    " <-- Kahoot
+
+Respuesta -----> ListaRespuestas
+
+together {
+class MultipleChoiceClasico
+class MultipleChoiceParcial
+}
+
+@enduml
