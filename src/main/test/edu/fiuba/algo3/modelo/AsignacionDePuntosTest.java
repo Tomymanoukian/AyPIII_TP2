@@ -1,13 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
 //import javafx.css.converter.LagregarerConverter;
+
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 public class AsignacionDePuntosTest {
 
     @Test
-    public void testVerdaderoFalsoClasicoJugador1AsertaYJugador2FallaSumandoCorrectamenteLosPuntajes(){
+    public void testVerdaderoFalsoClasicoJugador1AsertaYJugador2FallaSumandoCorrectamenteLosPuntajes() {
         String consigna = "El Sol es azul";
         VerdaderoFalsoClasico preguntaVerderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso(consigna);
 
@@ -16,26 +18,17 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot(juan, maria);
 
-        ListaRespuestas respuestasElegidasJugador1 = new ListaRespuestas();
-        Respuesta respuestaJugador1 = new Respuesta("Falso");
-        respuestasElegidasJugador1.agregar(respuestaJugador1);
-
-
-        ListaRespuestas respuestasElegidasJugador2 = new ListaRespuestas();
-        Respuesta respuestaJugador2 = new Respuesta("Verdadero");
-        respuestasElegidasJugador2.agregar(respuestaJugador2);
-
-        kahoot.setRespuestaJugador1(respuestasElegidasJugador1);
-        kahoot.setRespuestaJugador2(respuestasElegidasJugador2);
+        kahoot.setRespuestaJugador1(preguntaVerderoFalsoClasico.getRespuestaCorrecta());
+        kahoot.setRespuestaJugador2(preguntaVerderoFalsoClasico.getRespuestaIncorrecta());
 
         kahoot.evaluarRespuestas(preguntaVerderoFalsoClasico);
 
-        assertEquals(1,kahoot.getPuntajeJugador1());
-        assertEquals(0,kahoot.getPuntajeJugador2());
+        assertEquals(1, kahoot.getPuntajeJugador1());
+        assertEquals(0, kahoot.getPuntajeJugador2());
     }
 
     @Test
-    public void testVerdaderoFalsoConPernalidadJugador1AsertaYJugador2FallaSumandoleCorrectamenteLosPuntajes(){
+    public void testVerdaderoFalsoConPenalidadJugador1AsertaYJugador2FallaSumandoleCorrectamenteLosPuntajes() {
         String consigna = "El Sol es azul";
         VerdaderoFalsoConPenalidad preguntaVerderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoFalso(consigna);
 
@@ -44,34 +37,26 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot(juan, maria);
 
-        ListaRespuestas respuestasElegidasJugador1 = new ListaRespuestas();
-        Respuesta respuestaJugador1 = new Respuesta("Falso");
-        respuestasElegidasJugador1.agregar(respuestaJugador1);
-
-        ListaRespuestas respuestasElegidasJugador2 = new ListaRespuestas();
-        Respuesta respuestaJugador2 = new Respuesta("Verdadero");
-        respuestasElegidasJugador2.agregar(respuestaJugador2);
-
-        kahoot.setRespuestaJugador1(respuestasElegidasJugador1);
-        kahoot.setRespuestaJugador2(respuestasElegidasJugador2);
+        kahoot.setRespuestaJugador1(preguntaVerderoFalsoConPenalidad.getRespuestaCorrecta());
+        kahoot.setRespuestaJugador2(preguntaVerderoFalsoConPenalidad.getRespuestaIncorrecta());
 
         kahoot.evaluarRespuestas(preguntaVerderoFalsoConPenalidad);
 
-        assertEquals(1,kahoot.getPuntajeJugador1());
-        assertEquals(-1,kahoot.getPuntajeJugador2());
+        assertEquals(1, kahoot.getPuntajeJugador1());
+        assertEquals(-1, kahoot.getPuntajeJugador2());
     }
 
     @Test
-    public void testMultipleChoiceParcialJugadorAciertaTodasLasRespuestasCorrectasSumandoleCorrectamenteLosPuntosDeLasRespuestasCorrectas(){
+    public void testMultipleChoiceParcialJugadorAciertaTodasLasRespuestasCorrectasSumandoleCorrectamenteLosPuntosDeLasRespuestasCorrectas() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
         ListaRespuestas respuestasCorrectas = new ListaRespuestas();
         ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
-        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter");
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul");
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
+        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
+        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
+        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter", 1);
+        Respuesta respuestaInorrectaAzul = new Respuesta("Azul", 0);
+        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
 
 
         respuestasCorrectas.agregar(respuestaCorrectaTierra);
@@ -85,7 +70,7 @@ public class AsignacionDePuntosTest {
         respuestasJugador.agregarTodo(respuestasCorrectas);
 
 
-        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna,respuestasCorrectas, respuestasIncorrectas);
+        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         Jugador juan = new Jugador("Juan");
         Jugador maria = new Jugador("Maria");
@@ -96,19 +81,19 @@ public class AsignacionDePuntosTest {
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
-        assertEquals(3,kahoot.getPuntajeJugador1());
+        assertEquals(3, kahoot.getPuntajeJugador1());
     }
 
     @Test
-    public void testMultipleChoiceParcialJugadorAciertaTodasLasRespuestasCorrectasYUnaIncorrectaSumandoleCeroPuntos(){
+    public void testMultipleChoiceParcialJugadorAciertaTodasLasRespuestasCorrectasYUnaIncorrectaSumandoleCeroPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
         ListaRespuestas respuestasCorrectas = new ListaRespuestas();
         ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
-        Respuesta respuestaIncorrectaAzul = new Respuesta("Azul");
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
+        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
+        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
+        Respuesta respuestaIncorrectaAzul = new Respuesta("Azul", 0);
+        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
 
 
         respuestasCorrectas.agregar(respuestaCorrectaTierra);
@@ -121,7 +106,7 @@ public class AsignacionDePuntosTest {
         respuestasJugador.agregar(respuestaIncorrectaAzul);
 
 
-        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna,respuestasCorrectas, respuestasIncorrectas);
+        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         Jugador juan = new Jugador("Juan");
         Jugador maria = new Jugador("Maria");
@@ -132,21 +117,21 @@ public class AsignacionDePuntosTest {
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
-        assertEquals(0,kahoot.getPuntajeJugador1());
+        assertEquals(0, kahoot.getPuntajeJugador1());
     }
 
     @Test
-    public void testMultipleChoiceParcialJugadorAciertaAlgunasCorrectasYNingunaIncorrectaSumandoleCeroPuntos(){
+    public void testMultipleChoiceParcialJugadorAciertaAlgunasCorrectasYNingunaIncorrectaSumandoleCeroPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
         ListaRespuestas respuestasCorrectas = new ListaRespuestas();
         ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
         ListaRespuestas respuestasJugador = new ListaRespuestas();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
-        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter");
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul");
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
+        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
+        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
+        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter", 1);
+        Respuesta respuestaInorrectaAzul = new Respuesta("Azul", 0);
+        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
 
 
         respuestasCorrectas.agregar(respuestaCorrectaTierra);
@@ -159,7 +144,7 @@ public class AsignacionDePuntosTest {
         respuestasJugador.agregar(respuestaCorrectaJupiter);
 
 
-        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna,respuestasCorrectas, respuestasIncorrectas);
+        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         Jugador juan = new Jugador("Juan");
         Jugador maria = new Jugador("Maria");
@@ -170,20 +155,20 @@ public class AsignacionDePuntosTest {
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
-        assertEquals(2,kahoot.getPuntajeJugador1());
+        assertEquals(2, kahoot.getPuntajeJugador1());
     }
 
     @Test
-    public void testMultipleChoiceParcialJugadorNoAciertaNingunaCorrectasSumandoleCeroPuntos(){
+    public void testMultipleChoiceParcialJugadorNoAciertaNingunaCorrectasSumandoleCeroPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
         ListaRespuestas respuestasCorrectas = new ListaRespuestas();
         ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
-        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter");
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul");
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
+        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
+        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
+        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter", 1);
+        Respuesta respuestaInorrectaAzul = new Respuesta("Azul", 0);
+        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
 
 
         respuestasCorrectas.agregar(respuestaCorrectaTierra);
@@ -196,7 +181,7 @@ public class AsignacionDePuntosTest {
         respuestasJugador.agregarTodo(respuestasIncorrectas);
 
 
-        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna,respuestasCorrectas, respuestasIncorrectas);
+        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         Jugador juan = new Jugador("Juan");
         Jugador maria = new Jugador("Maria");
@@ -207,20 +192,20 @@ public class AsignacionDePuntosTest {
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
-        assertEquals(0,kahoot.getPuntajeJugador1());
+        assertEquals(0, kahoot.getPuntajeJugador1());
     }
 
     @Test
-    public void testMultipleChoiceClasicoJugadorAciertaTodasLasRespuestasCorrectasSumandoleUnPunto(){
+    public void testMultipleChoiceClasicoJugadorAciertaTodasLasRespuestasCorrectasSumandoleUnPunto() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
         ListaRespuestas respuestasCorrectas = new ListaRespuestas();
         ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
-        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter");
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul");
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
+        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
+        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
+        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter", 1);
+        Respuesta respuestaInorrectaAzul = new Respuesta("Azul", 0);
+        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
 
 
         respuestasCorrectas.agregar(respuestaCorrectaTierra);
@@ -233,7 +218,7 @@ public class AsignacionDePuntosTest {
         respuestasJugador.agregarTodo(respuestasCorrectas);
 
 
-        MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna,respuestasCorrectas, respuestasIncorrectas);
+        MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         Jugador juan = new Jugador("Juan");
         Jugador maria = new Jugador("Maria");
@@ -244,20 +229,20 @@ public class AsignacionDePuntosTest {
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceClasico);
 
-        assertEquals(1,kahoot.getPuntajeJugador1());
+        assertEquals(1, kahoot.getPuntajeJugador1());
     }
 
     @Test
-    public void testMultipleChoiceClasicoJugadorAciertaTodasLasRespuestasCorrectasYUnaIncorrectaSumandoleCeroPuntos(){
+    public void testMultipleChoiceClasicoJugadorAciertaTodasLasRespuestasCorrectasYUnaIncorrectaSumandoleCeroPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
         ListaRespuestas respuestasCorrectas = new ListaRespuestas();
         ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
-        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter");
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul");
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
+        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
+        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
+        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter", 1);
+        Respuesta respuestaInorrectaAzul = new Respuesta("Azul", 0);
+        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
 
 
         respuestasCorrectas.agregar(respuestaCorrectaTierra);
@@ -271,7 +256,7 @@ public class AsignacionDePuntosTest {
         respuestasJugador.agregar(respuestaIncorrectaAmarillo);
 
 
-        MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna,respuestasCorrectas, respuestasIncorrectas);
+        MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         Jugador juan = new Jugador("Juan");
         Jugador maria = new Jugador("Maria");
@@ -282,20 +267,20 @@ public class AsignacionDePuntosTest {
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceClasico);
 
-        assertEquals(0,kahoot.getPuntajeJugador1());
+        assertEquals(0, kahoot.getPuntajeJugador1());
     }
 
     @Test
-    public void testMultipleChoiceClasicoJugadorNoAciertaNingunaRespuestasCorrectasSumandoleCeroPuntos(){
+    public void testMultipleChoiceClasicoJugadorNoAciertaNingunaRespuestasCorrectasSumandoleCeroPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
         ListaRespuestas respuestasCorrectas = new ListaRespuestas();
         ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
-        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter");
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul");
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
+        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
+        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
+        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter", 1);
+        Respuesta respuestaInorrectaAzul = new Respuesta("Azul", 0);
+        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
 
 
         respuestasCorrectas.agregar(respuestaCorrectaTierra);
@@ -310,7 +295,7 @@ public class AsignacionDePuntosTest {
         respuestasJugador.agregar(respuestaIncorrectaAmarillo);
 
 
-        MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna,respuestasCorrectas, respuestasIncorrectas);
+        MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         Jugador juan = new Jugador("Juan");
         Jugador maria = new Jugador("Maria");
@@ -321,7 +306,7 @@ public class AsignacionDePuntosTest {
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceClasico);
 
-        assertEquals(0,kahoot.getPuntajeJugador1());
+        assertEquals(0, kahoot.getPuntajeJugador1());
     }
 
 }

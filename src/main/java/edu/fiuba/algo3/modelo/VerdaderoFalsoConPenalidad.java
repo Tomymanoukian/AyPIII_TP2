@@ -1,23 +1,37 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.List;
-
-public class VerdaderoFalsoConPenalidad extends Pregunta{
-    private Respuesta respuesCorrecta;
-    private static final Respuesta verdadero = new Respuesta("Verdadero");
-    private static final Respuesta falso = new Respuesta("Falso");
-
+public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
     public VerdaderoFalsoConPenalidad(String unaConsigna) {
         super();
         consigna = unaConsigna;
     }
 
     public static VerdaderoFalsoConPenalidad crearVerdaderoFalsoCorrectoFalso(String unaConsigna) {
-        return new VerdaderoFalsoConPenalidad(unaConsigna);
+        VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad = new VerdaderoFalsoConPenalidad(unaConsigna);
+        verdaderoFalsoConPenalidad.setRespuestaCorrectaFalso();
+
+        return verdaderoFalsoConPenalidad;
     }
 
-    @Override
-    public int calcularPuntajePara(ListaRespuestas respuestas) {
-        return 0;
+    public static VerdaderoFalsoConPenalidad crearVerdaderoFalsoCorrectoVerdadero(String unaConsigna) {
+        VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad = new VerdaderoFalsoConPenalidad(unaConsigna);
+        verdaderoFalsoConPenalidad.setRespuestaCorrectaVerdadero();
+
+        return verdaderoFalsoConPenalidad;
     }
+
+
+    private void setRespuestaCorrectaFalso() {
+        respuestaIncorrecta = new Respuesta("Verdadero", -1);
+        respuestaCorrecta = new Respuesta("Falso", 1);
+    }
+
+    private void setRespuestaCorrectaVerdadero() {
+        respuestaCorrecta = new Respuesta("Verdadero", 1);
+        respuestaIncorrecta = new Respuesta("Falso", -1);
+    }
+
+
+
+
 }

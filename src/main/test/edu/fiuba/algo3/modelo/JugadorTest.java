@@ -32,50 +32,36 @@ public class JugadorTest {
     public void testJugadorAumentaSusPuntosEn5(){
 
         Jugador jugador = new Jugador("Juan");
-        jugador.aumentarPuntos(5);
+        jugador.modificarPuntos(5);
 
         assertEquals(5, jugador.getPuntos());
     }
 
     @Test
-    public void testJugadorNoPuedeAumentarUnPuntajeNegativo(){
-        Jugador jugador = new Jugador("Pedro");
-
-        assertThrows(PuntosNegativoException.class, ()-> jugador.aumentarPuntos(-1));
-    }
-
-    @Test
-    public void testJugadorSinPuntosDisminuyeSusPuntosEn1YSeMantieneEnCero(){
+    public void testJugadorSinPuntosDisminuyeSusPuntosEnUnoYTieneUnPuntajeDeMenosUno(){
 
         Jugador jugador = new Jugador("Juan");
-        jugador.disminuirPuntos(1);
+        jugador.modificarPuntos(-1);
 
-        assertEquals(0, jugador.getPuntos());
+        assertEquals(-1, jugador.getPuntos());
     }
 
     @Test
-    public void testJugadorConPuntosDisminuyeSusPuntosPorDebajoDeCeroComoResultadoTieneCeroPuntos(){
+    public void testJugadorConPuntosDisminuyeSusPuntosPorDebajoDeCeroComoResultadoTienePuntajeNegativo(){
 
         Jugador jugador = new Jugador("Juan");
-        jugador.aumentarPuntos(3);
-        jugador.disminuirPuntos(5);
+        jugador.modificarPuntos(3);
+        jugador.modificarPuntos(-5);
 
-        assertEquals(0, jugador.getPuntos());
+        assertEquals(-2, jugador.getPuntos());
     }
 
     @Test
-    public void testJugadorNoPuedeDisminuirUnPuntajeNegativo(){
-        Jugador jugador = new Jugador("Pedro");
-
-        assertThrows(PuntosNegativoException.class, ()-> jugador.disminuirPuntos(-1));
-    }
-
-    @Test
-    public void testJugadorCon4PuntosDisminuyeSusPuntosEn2(){
+    public void testJugadorConCuatroPuntosDisminuyeSusPuntosEnDos(){
 
         Jugador jugador = new Jugador("Juan");
-        jugador.aumentarPuntos(4);
-        jugador.disminuirPuntos(2);
+        jugador.modificarPuntos(4);
+        jugador.modificarPuntos(-2);
 
         assertEquals(2, jugador.getPuntos());
     }

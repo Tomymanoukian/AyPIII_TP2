@@ -31,6 +31,7 @@ public class ListaRespuestasTest {
         listaRespuestas.agregar(respuesta3);
 
         ListaRespuestas otraListaRespuestas = new ListaRespuestas();
+        otraListaRespuestas.agregarTodo(listaRespuestas);
 
         assert(otraListaRespuestas.contieneTodo(listaRespuestas));
     }
