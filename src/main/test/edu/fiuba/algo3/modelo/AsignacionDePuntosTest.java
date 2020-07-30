@@ -20,6 +20,7 @@ public class AsignacionDePuntosTest {
         Respuesta respuestaJugador1 = new Respuesta("Falso");
         respuestasElegidasJugador1.agregar(respuestaJugador1);
 
+
         ListaRespuestas respuestasElegidasJugador2 = new ListaRespuestas();
         Respuesta respuestaJugador2 = new Respuesta("Verdadero");
         respuestasElegidasJugador2.agregar(respuestaJugador2);

@@ -21,7 +21,6 @@ public class ListaRespuestas {
     }
 
     public boolean contieneTodo(ListaRespuestas otraLista){
-
         return  listaRespuestas.containsAll(otraLista.obtenerLista());
     }
 
@@ -30,12 +29,10 @@ public class ListaRespuestas {
     }
 
     public List<Respuesta> obtenerLista(){
-
         return listaRespuestas;
     }
 
     public int obtenerCoincidencias(ListaRespuestas otraLista){
-
         return otraLista.calculoDeCoincidencias(listaRespuestas);
     }
 
