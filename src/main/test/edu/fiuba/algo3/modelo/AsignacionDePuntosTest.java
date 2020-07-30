@@ -16,11 +16,16 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot(juan, maria);
 
+        ListaRespuestas respuestasElegidasJugador1 = new ListaRespuestas();
         Respuesta respuestaJugador1 = new Respuesta("Falso");
-        Respuesta respuestaJugador2 = new Respuesta("Verdadero");
+        respuestasElegidasJugador1.agregar(respuestaJugador1);
 
-        kahoot.setRespuestaJugador1(respuestaJugador1);
-        kahoot.setRespuestaJugador2(respuestaJugador2);
+        ListaRespuestas respuestasElegidasJugador2 = new ListaRespuestas();
+        Respuesta respuestaJugador2 = new Respuesta("Verdadero");
+        respuestasElegidasJugador2.agregar(respuestaJugador2);
+
+        kahoot.setRespuestaJugador1(respuestasElegidasJugador1);
+        kahoot.setRespuestaJugador2(respuestasElegidasJugador2);
 
         kahoot.evaluarRespuestas(preguntaVerderoFalsoClasico);
 
@@ -38,11 +43,16 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot(juan, maria);
 
+        ListaRespuestas respuestasElegidasJugador1 = new ListaRespuestas();
         Respuesta respuestaJugador1 = new Respuesta("Falso");
-        Respuesta respuestaJugador2 = new Respuesta("Verdadero");
+        respuestasElegidasJugador1.agregar(respuestaJugador1);
 
-        kahoot.setRespuestaJugador1(respuestaJugador1);
-        kahoot.setRespuestaJugador2(respuestaJugador2);
+        ListaRespuestas respuestasElegidasJugador2 = new ListaRespuestas();
+        Respuesta respuestaJugador2 = new Respuesta("Verdadero");
+        respuestasElegidasJugador2.agregar(respuestaJugador2);
+
+        kahoot.setRespuestaJugador1(respuestasElegidasJugador1);
+        kahoot.setRespuestaJugador2(respuestasElegidasJugador2);
 
         kahoot.evaluarRespuestas(preguntaVerderoFalsoConPenalidad);
 
@@ -96,18 +106,18 @@ public class AsignacionDePuntosTest {
 
         Respuesta respuestaCorrectaTierra = new Respuesta("Tierra");
         Respuesta respuestaCorrectaMarte = new Respuesta("Marte");
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul");
+        Respuesta respuestaIncorrectaAzul = new Respuesta("Azul");
         Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo");
 
 
         respuestasCorrectas.agregar(respuestaCorrectaTierra);
         respuestasCorrectas.agregar(respuestaCorrectaMarte);
-        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
+        respuestasIncorrectas.agregar(respuestaIncorrectaAzul);
         respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
 
         ListaRespuestas respuestasJugador = new ListaRespuestas();
         respuestasJugador.agregarTodo(respuestasCorrectas);
-        respuestasJugador.agregar(respuestaInorrectaAzul);
+        respuestasJugador.agregar(respuestaIncorrectaAzul);
 
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna,respuestasCorrectas, respuestasIncorrectas);

@@ -28,17 +28,35 @@ public class VerdaderoFalsoClasicoTest {
 
     @Test
     public void testCalcularPuntajeParaFuncionaCorrectamente() {
+        VerdaderoFalsoClasico vofClasicoVerdaderaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("foo");
+        VerdaderoFalsoClasico vofClasicoFalsaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso("bar");
+
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        Respuesta verdadera = new Respuesta("Verdadero");
+        respuestasCorrectas.agregar(verdadera);
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        Respuesta falsa = new Respuesta("Falso");
+        respuestasIncorrectas.agregar(falsa);
+
+        assertEquals(1, vofClasicoVerdaderaCorrecta.calcularPuntajePara(respuestasCorrectas));
+        assertEquals(0, vofClasicoVerdaderaCorrecta.calcularPuntajePara(respuestasIncorrectas));
+
+    }
+
+    public void testCalcularPuntajeParaFuncionaCorrectamenteAlAsertarConLaFalsa() {
 
         VerdaderoFalsoClasico vofClasicoVerdaderaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("foo");
         VerdaderoFalsoClasico vofClasicoFalsaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso("bar");
-        Respuesta verdadera = new Respuesta("Verdadero");
+
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
         Respuesta falsa = new Respuesta("Falso");
+        respuestasCorrectas.agregar(falsa);
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        Respuesta verdadera = new Respuesta("Verdadero");
+        respuestasCorrectas.agregar(verdadera);
 
-        assertEquals(1, vofClasicoVerdaderaCorrecta.calcularPuntajePara(verdadera));
-        assertEquals(0, vofClasicoVerdaderaCorrecta.calcularPuntajePara(falsa));
-
-        assertEquals(1, vofClasicoFalsaCorrecta.calcularPuntajePara(falsa));
-        assertEquals(0, vofClasicoFalsaCorrecta.calcularPuntajePara(verdadera));
+        assertEquals(1, vofClasicoFalsaCorrecta.calcularPuntajePara(respuestasCorrectas));
+        assertEquals(0, vofClasicoFalsaCorrecta.calcularPuntajePara(respuestasIncorrectas));
     }
 
     @Test
@@ -47,11 +65,20 @@ public class VerdaderoFalsoClasicoTest {
         Respuesta falsa = new Respuesta("Falso");
         Respuesta otra = new Respuesta("foo");
 
+        ListaRespuestas otrasRespuestas = new ListaRespuestas();
+        otrasRespuestas.agregar(otra);
+
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        respuestasCorrectas.agregar(verdadera);
+
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        respuestasIncorrectas.agregar(falsa);
+
         VerdaderoFalsoClasico vofClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("bar");
 
-        vofClasico.calcularPuntajePara(verdadera);
-        vofClasico.calcularPuntajePara(falsa);
+        vofClasico.calcularPuntajePara(respuestasCorrectas);
+        vofClasico.calcularPuntajePara(respuestasIncorrectas);
 
-        assertThrows(RespuestaNoValidaException.class, ()-> vofClasico.calcularPuntajePara(otra));
+        assertThrows(RespuestaNoValidaException.class, ()-> vofClasico.calcularPuntajePara(otrasRespuestas));
     }
 }
