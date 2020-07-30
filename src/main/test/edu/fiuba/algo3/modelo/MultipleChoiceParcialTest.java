@@ -27,8 +27,56 @@ public class MultipleChoiceParcialTest {
         assert( multipleChoiceParcial.getRespuestasCorrectas().contieneTodo(respuestasCorrectas));
         assert( multipleChoiceParcial.getRespuestasIncorrectas().contieneTodo(respuestasIncorrectas));
     }
+    @Test
+    public void testAplicaPuntajeAUnJugadorDeDosRespuestasCorrectas(){
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
 
-    public void testCalculaPuntajeDeDosRespuestasCorrectas(){
+        Respuesta respuestaCorrectaAlpha = new Respuesta("Alpha",1);
+        Respuesta respuestaCorrectaBetta = new Respuesta("Betta",1);
+        Respuesta respuestaIncorrectaJota = new Respuesta("Jota",0);
+
+        respuestasCorrectas.agregar(respuestaCorrectaAlpha);
+        respuestasCorrectas.agregar(respuestaCorrectaBetta);
+        respuestasIncorrectas.agregar(respuestaIncorrectaJota);
+
+        MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
+
+        Jugador jugador = new Jugador("Pepe");
+        ListaRespuestas respuestasElegidas = new ListaRespuestas();
+        respuestasElegidas.agregar(respuestaCorrectaAlpha);
+        respuestasElegidas.agregar(respuestaCorrectaBetta);
+
+        multipleChoiceParcial.evaluarRespuestaPara(respuestasElegidas,jugador);
+
+        assertEquals(2, jugador.getPuntos());
+    }
+    @Test
+    public void testAplicaPuntajeDeUnaListaDeRespuestasAdivinandoUno(){
+        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
+        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
+
+        Respuesta respuestaCorrectaAlpha = new Respuesta("Alpha",1);
+        Respuesta respuestaCorrectaBetta = new Respuesta("Betta",1);
+        Respuesta respuestaIncorrectaJota = new Respuesta("Jota",0);
+
+        respuestasCorrectas.agregar(respuestaCorrectaAlpha);
+        respuestasCorrectas.agregar(respuestaCorrectaBetta);
+        respuestasIncorrectas.agregar(respuestaIncorrectaJota);
+
+        MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
+
+        Jugador jugador = new Jugador("Pepe");
+        ListaRespuestas respuestasElegidas = new ListaRespuestas();
+        respuestasElegidas.agregar(respuestaCorrectaAlpha);
+
+        multipleChoiceParcial.evaluarRespuestaPara(respuestasElegidas, jugador);
+        assertEquals(1, jugador.getPuntos());
+    }
+    @Test
+    public void testAplicaPuntajeDeUnaRespuestaCorrectaYOtraIncorrectaSumandoCeroPuntos(){
         ListaRespuestas respuestasCorrectas = new ListaRespuestas();
         ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
@@ -43,61 +91,16 @@ public class MultipleChoiceParcialTest {
 
         MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
 
+        Jugador jugador = new Jugador("Pepe");
         ListaRespuestas respuestasElegidas = new ListaRespuestas();
-        Respuesta respuestaAlpha = new Respuesta("Alpha");
-        Respuesta respuestaBetta = new Respuesta("Betta");
-        respuestasElegidas.agregar(respuestaAlpha);
-        respuestasElegidas.agregar(respuestaBetta);
+        respuestasElegidas.agregar(respuestaCorrectaAlpha);
+        respuestasElegidas.agregar(respuestaIncorrectaJota);
 
-        assertEquals(2, multipleChoiceParcial.calcularPuntajePara(respuestasElegidas));
+        multipleChoiceParcial.evaluarRespuestaPara(respuestasElegidas, jugador);
+        assertEquals(0, jugador.getPuntos());
     }
-    public void testCalculaPuntajeDeUnaListaDeRespuestasAdivinando1(){
-        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
-        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
-        String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
-
-        Respuesta respuestaCorrectaAlpha = new Respuesta("Alpha");
-        Respuesta respuestaCorrectaBetta = new Respuesta("Betta");
-        Respuesta respuestaIncorrectaJota = new Respuesta("Jota");
-
-        respuestasCorrectas.agregar(respuestaCorrectaAlpha);
-        respuestasCorrectas.agregar(respuestaCorrectaBetta);
-        respuestasIncorrectas.agregar(respuestaIncorrectaJota);
-
-        MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
-
-        ListaRespuestas respuestasElegidas = new ListaRespuestas();
-        Respuesta respuestaAlpha = new Respuesta("Alpha");
-        respuestasElegidas.agregar(respuestaAlpha);
-
-        assertEquals(1, multipleChoiceParcial.calcularPuntajePara(respuestasElegidas));
-    }
-
-    public void testCalculaPuntajeDeUnaRespuestaCorrectaYOtraIncorrectaDevolviendo0(){
-        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
-        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
-        String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
-
-        Respuesta respuestaCorrectaAlpha = new Respuesta("Alpha");
-        Respuesta respuestaCorrectaBetta = new Respuesta("Betta");
-        Respuesta respuestaIncorrectaJota = new Respuesta("Jota");
-
-        respuestasCorrectas.agregar(respuestaCorrectaAlpha);
-        respuestasCorrectas.agregar(respuestaCorrectaBetta);
-        respuestasIncorrectas.agregar(respuestaIncorrectaJota);
-
-        MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
-
-        ListaRespuestas respuestasElegidas = new ListaRespuestas();
-        Respuesta respuestaAlpha = new Respuesta("Alpha");
-        Respuesta respuestaJota = new Respuesta("Jota");
-        respuestasElegidas.agregar(respuestaAlpha);
-        respuestasElegidas.agregar(respuestaJota);
-
-        assertEquals(0, multipleChoiceParcial.calcularPuntajePara(respuestasElegidas));
-    }
-
-    public void testCalculaPuntajeDeTodasLasRespuestasIncorrectas(){
+    @Test
+    public void testAplicaElPuntajeDeTodasLasRespuestasIncorrectas(){
         ListaRespuestas respuestasCorrectas = new ListaRespuestas();
         ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
@@ -112,12 +115,12 @@ public class MultipleChoiceParcialTest {
 
         MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
 
+        Jugador jugador = new Jugador("Pepe");
         ListaRespuestas respuestasElegidas = new ListaRespuestas();
-        Respuesta respuestaJota = new Respuesta("Jota");
-        Respuesta respuestaDobleV = new Respuesta("DobleV");
-        respuestasElegidas.agregar(respuestaDobleV);
-        respuestasElegidas.agregar(respuestaJota);
+        respuestasElegidas.agregar(respuestaInorrectaDobleV);
+        respuestasElegidas.agregar(respuestaIncorrectaJota);
 
-        assertEquals(0, multipleChoiceParcial.calcularPuntajePara(respuestasElegidas));
+        multipleChoiceParcial.evaluarRespuestaPara(respuestasElegidas, jugador);
+        assertEquals(0, jugador.getPuntos());
     }
 }

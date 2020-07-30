@@ -20,21 +20,8 @@ public class Jugador {
         return nombre;
     }
 
-    public void aumentarPuntos(int unPuntaje) {
-        if (unPuntaje < 0) {
-            throw new PuntosNegativoException();
-        }
-        puntos += unPuntaje;
-    }
 
-    public void disminuirPuntos(int unPuntaje) {
-        if (unPuntaje < 0) {
-            throw new PuntosNegativoException();
-        }
-        if (puntos-unPuntaje < 0) {
-            puntos = 0;
-        } else {
-            puntos -= unPuntaje;
-        }
+    public void modificarPuntos(int unPuntaje) {
+        puntos += unPuntaje;
     }
 }

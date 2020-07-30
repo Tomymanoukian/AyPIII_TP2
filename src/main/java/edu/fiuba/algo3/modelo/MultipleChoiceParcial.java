@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.Collection;
-import java.util.List;
-
 public class MultipleChoiceParcial extends Pregunta {
-    private ListaRespuestas respuestasCorrectas;
-    private ListaRespuestas respuestasIncorrectas;
+    private final ListaRespuestas respuestasCorrectas;
+    private final ListaRespuestas respuestasIncorrectas;
 
     public MultipleChoiceParcial(String unaConsigna, ListaRespuestas unasRespuestasCorrectas, ListaRespuestas unasRespuestasIncorrectas) {
         super();
@@ -15,12 +12,14 @@ public class MultipleChoiceParcial extends Pregunta {
     }
 
     @Override
-    public int calcularPuntajePara(ListaRespuestas respuestas){
-        if(respuestas.obtenerCoincidencias(respuestasIncorrectas) > 0) {
-            return 0;
-        }else {
-            return respuestas.obtenerCoincidencias(respuestasCorrectas);
+    public void evaluarRespuestaPara(ListaRespuestas respuestas, Jugador jugador) {
+        if (respuestas.obtenerCoincidencias(respuestasIncorrectas) == 0) {
+            this.aplicarPuntajePara(respuestas, jugador);
         }
+    }
+
+    public void aplicarPuntajePara(ListaRespuestas respuestas, Jugador jugador) {
+        respuestas.aplicarPuntajesA(jugador);
     }
 
     public ListaRespuestas getRespuestasCorrectas() {

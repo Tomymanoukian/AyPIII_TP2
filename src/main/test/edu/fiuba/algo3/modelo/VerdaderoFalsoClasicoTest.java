@@ -26,24 +26,6 @@ public class VerdaderoFalsoClasicoTest {
         Assert.assertEquals("bar", vofFalsaCorrecta.getConsigna());
     }
 
-    @Test
-    public void testCalcularPuntajeParaFuncionaCorrectamente() {
-        VerdaderoFalsoClasico vofClasicoVerdaderaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("foo");
-        VerdaderoFalsoClasico vofClasicoFalsaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso("bar");
-
-        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
-
-        Respuesta verdadera = new Respuesta("Verdadero");
-        respuestasCorrectas.agregar(verdadera);
-        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
-        Respuesta falsa = new Respuesta("Falso");
-        respuestasIncorrectas.agregar(falsa);
-
-        assertEquals(1, vofClasicoVerdaderaCorrecta.calcularPuntajePara(respuestasCorrectas));
-        assertEquals(0, vofClasicoVerdaderaCorrecta.calcularPuntajePara(respuestasIncorrectas));
-
-    }
-
     public void testCalcularPuntajeParaFuncionaCorrectamenteAlAsertarConLaFalsa() {
 
         VerdaderoFalsoClasico vofClasicoVerdaderaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("foo");
@@ -66,10 +48,11 @@ public class VerdaderoFalsoClasicoTest {
     }
 
     @Test
-    public void testVoFClasicoLanzaExcepcionSiSeLaDaUnaRespuestaNoValidaEnCalcularPuntaje(){
+    public void testVoFClasicoLanzaExcepcionSiSeLaDaUnaRespuestaNoValidaAlEvaluarRespuestas(){
         Respuesta verdadera = new Respuesta("Verdadero");
         Respuesta falsa = new Respuesta("Falso");
         Respuesta otra = new Respuesta("foo");
+        Jugador jugador = new Jugador("Pedro");
 
 
         ListaRespuestas listaVerdadera =  new ListaRespuestas();
@@ -84,23 +67,24 @@ public class VerdaderoFalsoClasicoTest {
         vofClasico.calcularPuntajePara(listaVerdadera);
         vofClasico.calcularPuntajePara(listaFalsa);
 
-        assertThrows(RespuestaNoValidaException.class, ()-> vofClasico.calcularPuntajePara(listaOtra));
+        assertThrows(RespuestaNoValidaException.class, ()-> vofClasico.evaluarRespuestaPara(listaOtra, jugador ));
     }
 
     @Test
     public void testVoFClasicoLanzaExcepcionSiSeIngresaMasDeUnaRespuesta(){
         VerdaderoFalsoClasico vofClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("bar");
+        Jugador jugador = new Jugador("Pedro");
 
         Respuesta verdadera = new Respuesta("Verdadero");
         Respuesta falsa = new Respuesta("Falso");
 
         ListaRespuestas lista =  new ListaRespuestas();
 
-        assertThrows(CantidadDeRespuestasInvalidaException.class, ()-> vofClasico.calcularPuntajePara(lista));
+        assertThrows(CantidadDeRespuestasInvalidaException.class, ()-> vofClasico.evaluarRespuestaPara(lista, jugador));
 
         lista.agregar(verdadera);
         lista.agregar(falsa);
 
-        assertThrows(CantidadDeRespuestasInvalidaException.class, ()-> vofClasico.calcularPuntajePara(lista));
+        assertThrows(CantidadDeRespuestasInvalidaException.class, ()-> vofClasico.evaluarRespuestaPara(lista, jugador));
     }
 }
