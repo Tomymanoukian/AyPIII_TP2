@@ -2,71 +2,68 @@
 
 skinparam classAttributeIconSize 0
 skinparam shadowing false
+hide circle
 
 class Jugador {
--nombre
--puntos
-+aumentarPuntos (unPuntaje)
-+disminuirPuntos (unPuntaje)
+    -nombre
+    -puntos
+    +modificarPuntos (unPuntaje)
 }
 
 class Kahoot {
-+evaluarRespuestas(unaPregunta)
-+getPuntajeJugador1()
-+getPuntajeJugador2()
+    +evaluarRespuestas(unaPregunta)
+    +getPuntajeJugador1()
+    +getPuntajeJugador2()
 }
 
-class Pregunta {
--consigna
-{abstract}+evaluarRespuestaPara(unasRespuestas)
+abstract class Pregunta {
+    -consigna
+    {abstract}+evaluarRespuestaPara(unasRespuestas, unJugador)
 }
 
 class Respuesta {
--respuestaCorrecta
--puntaje
-+aplicarPuntajeA ()
-+esIgualA ()
+    -respuesta
+    -puntaje
+    +aplicarPuntajeA (unJugador)
+    +esIgualA (unaRespuesta):bool
 }
 
 class ListaRespuestas {
-
-+aplicarPuntajesA()
-+obtenerCoincidencias()
-+calculoDeCoincidencias()
-+contieneLoMismo()
+    +aplicarPuntajesA(unJugador)
+    +obtenerCoincidencias(unaLista):unNumero
+    +contieneLoMismo(unaLista):bool
 }
 
-class VerdaderoFalso {
--respuestaCorrecta
--respuestaIncorrecta
-+evaluarRespuestaPara()
+abstract class VerdaderoFalso {
+    -respuestaCorrecta
+    -respuestaIncorrecta
+    +evaluarRespuestaPara(unasRespuestas, unJugador)
 }
 
 class VerdaderoFalsoClasico {
-+{static}crearVerdaderoFalsoCorrectaVerdadero()
-+{static}crearVerdaderoFalsoCorrectaVerdadero()
-+calcularPuntajePara()
+    +{static}crearVerdaderoFalsoCorrectaVerdadero(unaConsigna):unVerdaderoFalsoConClasico
+    +{static}crearVerdaderoFalsoCorrectaVerdadero(unaConsigna):unVerdaderoFalsoConClasico
+    +calcularPuntajePara()
 }
 
 class VerdaderoFalsoConPenalidad {
-+{static}crearVerdaderoFalsoCorrectoFalso()
-+{static}crearVerdaderoFalsoCorrectoVerdadero()
+    +{static}crearVerdaderoFalsoCorrectoFalso(unaConsigna):unVerdaderoFalsoConPenalidad
+    +{static}crearVerdaderoFalsoCorrectoVerdadero(unaConsigna):unVerdaderoFalsoConPenalidad
 }
 
 class MultipleChoiceClasico {
-+calcularPuntajePara()
-+evaluarRespuestaPara()
+    +calcularPuntajePara(unasRespuestas):unNumero
+    +evaluarRespuestaPara(unasRespuestas, unJugador)
 }
 
 class MultipleChoiceParcial {
-+evaluarRespuestaPara()
-+aplicarPuntajePara()
+    +aplicarPuntajePara(unasRespuestas, unJugador)
+    +evaluarRespuestaPara(unasRespuestas, unJugador)
 }
 
-
 Pregunta <|-- VerdaderoFalso
-Pregunta <|-- MultipleChoiceClasico
-Pregunta <|-- MultipleChoiceParcial
+Pregunta <|--- MultipleChoiceClasico
+Pregunta <|--- MultipleChoiceParcial
 
 MultipleChoiceClasico --> "2    " ListaRespuestas
 MultipleChoiceParcial --> "2  " ListaRespuestas
@@ -79,11 +76,6 @@ Respuesta "2..*" <-- Pregunta
 Kahoot .> Pregunta
 Respuesta "2    " <-- Kahoot
 
-Respuesta -----> ListaRespuestas
-
-together {
-class MultipleChoiceClasico
-class MultipleChoiceParcial
-}
+Respuesta " 1..*" <----- ListaRespuestas
 
 @enduml
