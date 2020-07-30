@@ -45,10 +45,8 @@ public class MultipleChoiceClasicoTest {
         MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         ListaRespuestas respuestasElegidas = new ListaRespuestas();
-        Respuesta respuestaElegida1 = new Respuesta("Amarillo");
-        Respuesta respuestaElegida2 = new Respuesta("Azul");
-        respuestasElegidas.agregar(respuestaElegida1);
-        respuestasElegidas.agregar(respuestaElegida2);
+        respuestasElegidas.agregar(respuestaCorrecta1);
+        respuestasElegidas.agregar(respuestaCorrecta2);
 
         assertEquals(1, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas));
     }
@@ -69,9 +67,8 @@ public class MultipleChoiceClasicoTest {
         MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         ListaRespuestas respuestasElegidas = new ListaRespuestas();
-        Respuesta respuestaElegida = new Respuesta("Tractor");
 
-        respuestasElegidas.agregar(respuestaElegida);
+        respuestasElegidas.agregar(respuestaIncorrecta);
 
         assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas));
     }
@@ -94,11 +91,9 @@ public class MultipleChoiceClasicoTest {
         MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         ListaRespuestas respuestasElegidas = new ListaRespuestas();
-        Respuesta respuestaElegida1 = new Respuesta("Amarillo");
-        Respuesta respuestaElegida2 = new Respuesta("Tractor");
 
-        respuestasElegidas.agregar(respuestaElegida1);
-        respuestasElegidas.agregar(respuestaElegida2);
+        respuestasElegidas.agregar(respuestaCorrecta1);
+        respuestasElegidas.agregar(respuestaIncorrecta);
 
         assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas));
     }
@@ -123,11 +118,9 @@ public class MultipleChoiceClasicoTest {
         MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         ListaRespuestas respuestasElegidas = new ListaRespuestas();
-        Respuesta respuestaElegida1 = new Respuesta("Amarillo");
-        Respuesta respuestaElegida2 = new Respuesta("Azul");
 
-        respuestasElegidas.agregar(respuestaElegida1);
-        respuestasElegidas.agregar(respuestaElegida2);
+        respuestasElegidas.agregar(respuestaCorrecta1);
+        respuestasElegidas.agregar(respuestaCorrecta2);
 
         assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas));
     }
