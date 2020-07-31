@@ -151,11 +151,11 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot(juan, maria);
 
-        kahoot.setRespuestaJugador1(respuestasJugador);
+        kahoot.setRespuestaJugador2(respuestasJugador);
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
-        assertEquals(2, kahoot.getPuntajeJugador1());
+        assertEquals(2, kahoot.getPuntajeJugador2());
     }
 
     @Test
