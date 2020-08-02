@@ -1,12 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.List;
-
 public class MultipleChoiceClasico extends Pregunta {
-    private final ListaRespuestas respuestasCorrectas;
-    private final ListaRespuestas respuestasIncorrectas;
+    private final ListaOpciones respuestasCorrectas;
+    private final ListaOpciones respuestasIncorrectas;
 
-    public MultipleChoiceClasico(String unaConsigna, ListaRespuestas unasRespuestasCorrectas, ListaRespuestas unasRespuestasIncorrectas) {
+    public MultipleChoiceClasico(String unaConsigna, ListaOpciones unasRespuestasCorrectas, ListaOpciones unasRespuestasIncorrectas) {
         super();
         consigna = unaConsigna;
         respuestasCorrectas = unasRespuestasCorrectas;
@@ -17,15 +15,15 @@ public class MultipleChoiceClasico extends Pregunta {
         return super.getConsigna();
     }
 
-    public ListaRespuestas getRespuestasCorrectas() {
+    public ListaOpciones getRespuestasCorrectas() {
         return respuestasCorrectas;
     }
 
-    public ListaRespuestas getRespuestasIncorrectas() {
+    public ListaOpciones getRespuestasIncorrectas() {
         return respuestasIncorrectas;
     }
 
-    public int calcularPuntajePara(ListaRespuestas unasRespuestas) {
+    public int calcularPuntajePara(ListaOpciones unasRespuestas) {
         if (unasRespuestas.contieneLoMismo(respuestasCorrectas)) {
             return 1;
         }
@@ -33,7 +31,7 @@ public class MultipleChoiceClasico extends Pregunta {
     }
 
     @Override
-    public void evaluarRespuestaPara(ListaRespuestas unasRespuestas, Jugador jugador) {
+    public void evaluarRespuestaPara(ListaOpciones unasRespuestas, Jugador jugador) {
         jugador.modificarPuntos(this.calcularPuntajePara(unasRespuestas));
     }
 

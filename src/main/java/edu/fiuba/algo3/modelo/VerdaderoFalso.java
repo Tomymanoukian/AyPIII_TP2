@@ -1,25 +1,25 @@
 package edu.fiuba.algo3.modelo;
 
 public class VerdaderoFalso extends Pregunta {
-    protected static Respuesta respuestaCorrecta;
-    protected static Respuesta respuestaIncorrecta;
+    protected static Opcion opcionCorrecta;
+    protected static Opcion opcionIncorrecta;
 
-    public Respuesta getRespuestaCorrecta() {
-        return respuestaCorrecta;
+    public Opcion getRespuestaCorrecta() {
+        return opcionCorrecta;
     }
 
-    public Respuesta getRespuestaIncorrecta() {
-        return respuestaIncorrecta;
+    public Opcion getRespuestaIncorrecta() {
+        return opcionIncorrecta;
     }
 
     @Override
-    public void evaluarRespuestaPara(ListaRespuestas respuestas, Jugador jugador) {
+    public void evaluarRespuestaPara(ListaOpciones respuestas, Jugador jugador) {
         if (respuestas.cantidadDeRespuestas() != 1) {
             throw new CantidadDeRespuestasInvalidaException();
         }
 
-        Respuesta respuesta = respuestas.obtenerPrimero();
-        if (!respuesta.esIgualA(respuestaCorrecta) && !respuesta.esIgualA(respuestaIncorrecta)) {
+        Opcion opcion = respuestas.obtenerPrimero();
+        if (!opcion.esIgualA(opcionCorrecta) && !opcion.esIgualA(opcionIncorrecta)) {
             throw new RespuestaNoValidaException();
         }
 

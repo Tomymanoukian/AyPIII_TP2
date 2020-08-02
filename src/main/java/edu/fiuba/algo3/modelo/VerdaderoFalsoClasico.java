@@ -21,16 +21,16 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
     }
 
     private void setRespuestaCorrectaFalso() {
-        respuestaIncorrecta = new Respuesta("Verdadero", 0);
-        respuestaCorrecta = new Respuesta("Falso", 1);
+        opcionIncorrecta = new Opcion("Verdadero", 0);
+        opcionCorrecta = new Opcion("Falso", 1);
     }
 
     private void setRespuestaCorrectaVerdadero() {
-        respuestaCorrecta = new Respuesta("Verdadero", 1);
-        respuestaIncorrecta = new Respuesta("Falso", 0);
+        opcionCorrecta = new Opcion("Verdadero", 1);
+        opcionIncorrecta = new Opcion("Falso", 0);
     }
 
-    public int calcularPuntajePara(ListaRespuestas respuestas) {
+    public int calcularPuntajePara(ListaOpciones respuestas) {
         return respuestas.obtenerPrimero().getPuntaje();
     }
 

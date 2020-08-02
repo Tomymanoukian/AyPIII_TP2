@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.List;
-
 public abstract class Pregunta {
     protected String consigna;
 
@@ -9,5 +7,5 @@ public abstract class Pregunta {
         return  consigna;
     }
 
-    public abstract void evaluarRespuestaPara(ListaRespuestas respuestas , Jugador jugador);
+    public abstract void evaluarRespuestaPara(ListaOpciones respuestas , Jugador jugador);
 }

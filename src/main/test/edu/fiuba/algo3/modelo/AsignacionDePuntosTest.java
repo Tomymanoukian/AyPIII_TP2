@@ -2,11 +2,23 @@ package edu.fiuba.algo3.modelo;
 
 //import javafx.css.converter.LagregarerConverter;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class AsignacionDePuntosTest {
+
+    @Before
+    public void setUp() {
+
+
+    }
 
     @Test
     public void testVerdaderoFalsoClasicoJugador1AsertaYJugador2FallaSumandoCorrectamenteLosPuntajes() {
@@ -49,24 +61,24 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceParcialJugadorAciertaTodasLasRespuestasCorrectasSumandoleCorrectamenteLosPuntosDeLasRespuestasCorrectas() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
-        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        ListaOpciones respuestasCorrectas = new ListaOpciones();
+        ListaOpciones respuestasIncorrectas = new ListaOpciones();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
-        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter", 1);
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul", 0);
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
+        Opcion opcionCorrectaMarte = new Opcion("Marte", 1);
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", 1);
+        Opcion opcionInorrectaAzul = new Opcion("Azul", 0);
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
 
-        respuestasCorrectas.agregar(respuestaCorrectaTierra);
-        respuestasCorrectas.agregar(respuestaCorrectaMarte);
-        respuestasCorrectas.agregar(respuestaCorrectaJupiter);
+        respuestasCorrectas.agregar(opcionCorrectaTierra);
+        respuestasCorrectas.agregar(opcionCorrectaMarte);
+        respuestasCorrectas.agregar(opcionCorrectaJupiter);
 
-        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
-        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
+        respuestasIncorrectas.agregar(opcionInorrectaAzul);
+        respuestasIncorrectas.agregar(opcionIncorrectaAmarillo);
 
-        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        ListaOpciones respuestasJugador = new ListaOpciones();
         respuestasJugador.agregarTodo(respuestasCorrectas);
 
 
@@ -87,23 +99,23 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceParcialJugadorAciertaTodasLasRespuestasCorrectasYUnaIncorrectaSumandoleCeroPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
-        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        ListaOpciones respuestasCorrectas = new ListaOpciones();
+        ListaOpciones respuestasIncorrectas = new ListaOpciones();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
-        Respuesta respuestaIncorrectaAzul = new Respuesta("Azul", 0);
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
+        Opcion opcionCorrectaMarte = new Opcion("Marte", 1);
+        Opcion opcionIncorrectaAzul = new Opcion("Azul", 0);
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
 
-        respuestasCorrectas.agregar(respuestaCorrectaTierra);
-        respuestasCorrectas.agregar(respuestaCorrectaMarte);
-        respuestasIncorrectas.agregar(respuestaIncorrectaAzul);
-        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
+        respuestasCorrectas.agregar(opcionCorrectaTierra);
+        respuestasCorrectas.agregar(opcionCorrectaMarte);
+        respuestasIncorrectas.agregar(opcionIncorrectaAzul);
+        respuestasIncorrectas.agregar(opcionIncorrectaAmarillo);
 
-        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        ListaOpciones respuestasJugador = new ListaOpciones();
         respuestasJugador.agregarTodo(respuestasCorrectas);
-        respuestasJugador.agregar(respuestaIncorrectaAzul);
+        respuestasJugador.agregar(opcionIncorrectaAzul);
 
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
@@ -123,25 +135,25 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceParcialJugadorAciertaAlgunasCorrectasYNingunaIncorrectaSumandoleCeroPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
-        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
-        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        ListaOpciones respuestasCorrectas = new ListaOpciones();
+        ListaOpciones respuestasIncorrectas = new ListaOpciones();
+        ListaOpciones respuestasJugador = new ListaOpciones();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
-        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter", 1);
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul", 0);
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
+        Opcion opcionCorrectaMarte = new Opcion("Marte", 1);
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", 1);
+        Opcion opcionInorrectaAzul = new Opcion("Azul", 0);
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
 
-        respuestasCorrectas.agregar(respuestaCorrectaTierra);
-        respuestasCorrectas.agregar(respuestaCorrectaMarte);
-        respuestasCorrectas.agregar(respuestaCorrectaJupiter);
-        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
-        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
+        respuestasCorrectas.agregar(opcionCorrectaTierra);
+        respuestasCorrectas.agregar(opcionCorrectaMarte);
+        respuestasCorrectas.agregar(opcionCorrectaJupiter);
+        respuestasIncorrectas.agregar(opcionInorrectaAzul);
+        respuestasIncorrectas.agregar(opcionIncorrectaAmarillo);
 
-        respuestasJugador.agregar(respuestaCorrectaMarte);
-        respuestasJugador.agregar(respuestaCorrectaJupiter);
+        respuestasJugador.agregar(opcionCorrectaMarte);
+        respuestasJugador.agregar(opcionCorrectaJupiter);
 
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
@@ -161,23 +173,23 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceParcialJugadorNoAciertaNingunaCorrectasSumandoleCeroPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
-        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        ListaOpciones respuestasCorrectas = new ListaOpciones();
+        ListaOpciones respuestasIncorrectas = new ListaOpciones();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
-        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter", 1);
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul", 0);
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
+        Opcion opcionCorrectaMarte = new Opcion("Marte", 1);
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", 1);
+        Opcion opcionInorrectaAzul = new Opcion("Azul", 0);
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
 
-        respuestasCorrectas.agregar(respuestaCorrectaTierra);
-        respuestasCorrectas.agregar(respuestaCorrectaMarte);
-        respuestasCorrectas.agregar(respuestaCorrectaJupiter);
-        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
-        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
+        respuestasCorrectas.agregar(opcionCorrectaTierra);
+        respuestasCorrectas.agregar(opcionCorrectaMarte);
+        respuestasCorrectas.agregar(opcionCorrectaJupiter);
+        respuestasIncorrectas.agregar(opcionInorrectaAzul);
+        respuestasIncorrectas.agregar(opcionIncorrectaAmarillo);
 
-        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        ListaOpciones respuestasJugador = new ListaOpciones();
         respuestasJugador.agregarTodo(respuestasIncorrectas);
 
 
@@ -198,23 +210,23 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceClasicoJugadorAciertaTodasLasRespuestasCorrectasSumandoleUnPunto() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
-        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        ListaOpciones respuestasCorrectas = new ListaOpciones();
+        ListaOpciones respuestasIncorrectas = new ListaOpciones();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
-        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter", 1);
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul", 0);
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
+        Opcion opcionCorrectaMarte = new Opcion("Marte", 1);
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", 1);
+        Opcion opcionInorrectaAzul = new Opcion("Azul", 0);
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
 
-        respuestasCorrectas.agregar(respuestaCorrectaTierra);
-        respuestasCorrectas.agregar(respuestaCorrectaMarte);
-        respuestasCorrectas.agregar(respuestaCorrectaJupiter);
-        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
-        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
+        respuestasCorrectas.agregar(opcionCorrectaTierra);
+        respuestasCorrectas.agregar(opcionCorrectaMarte);
+        respuestasCorrectas.agregar(opcionCorrectaJupiter);
+        respuestasIncorrectas.agregar(opcionInorrectaAzul);
+        respuestasIncorrectas.agregar(opcionIncorrectaAmarillo);
 
-        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        ListaOpciones respuestasJugador = new ListaOpciones();
         respuestasJugador.agregarTodo(respuestasCorrectas);
 
 
@@ -235,25 +247,25 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceClasicoJugadorAciertaTodasLasRespuestasCorrectasYUnaIncorrectaSumandoleCeroPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
-        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        ListaOpciones respuestasCorrectas = new ListaOpciones();
+        ListaOpciones respuestasIncorrectas = new ListaOpciones();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
-        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter", 1);
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul", 0);
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
+        Opcion opcionCorrectaMarte = new Opcion("Marte", 1);
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", 1);
+        Opcion opcionInorrectaAzul = new Opcion("Azul", 0);
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
 
-        respuestasCorrectas.agregar(respuestaCorrectaTierra);
-        respuestasCorrectas.agregar(respuestaCorrectaMarte);
-        respuestasCorrectas.agregar(respuestaCorrectaJupiter);
-        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
-        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
+        respuestasCorrectas.agregar(opcionCorrectaTierra);
+        respuestasCorrectas.agregar(opcionCorrectaMarte);
+        respuestasCorrectas.agregar(opcionCorrectaJupiter);
+        respuestasIncorrectas.agregar(opcionInorrectaAzul);
+        respuestasIncorrectas.agregar(opcionIncorrectaAmarillo);
 
-        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        ListaOpciones respuestasJugador = new ListaOpciones();
         respuestasJugador.agregarTodo(respuestasCorrectas);
-        respuestasJugador.agregar(respuestaIncorrectaAmarillo);
+        respuestasJugador.agregar(opcionIncorrectaAmarillo);
 
 
         MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
@@ -273,26 +285,26 @@ public class AsignacionDePuntosTest {
     @Test
     public void testMultipleChoiceClasicoJugadorNoAciertaNingunaRespuestasCorrectasSumandoleCeroPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
-        ListaRespuestas respuestasCorrectas = new ListaRespuestas();
-        ListaRespuestas respuestasIncorrectas = new ListaRespuestas();
+        ListaOpciones respuestasCorrectas = new ListaOpciones();
+        ListaOpciones respuestasIncorrectas = new ListaOpciones();
 
-        Respuesta respuestaCorrectaTierra = new Respuesta("Tierra", 1);
-        Respuesta respuestaCorrectaMarte = new Respuesta("Marte", 1);
-        Respuesta respuestaCorrectaJupiter = new Respuesta("Jupiter", 1);
-        Respuesta respuestaInorrectaAzul = new Respuesta("Azul", 0);
-        Respuesta respuestaIncorrectaAmarillo = new Respuesta("Amarillo", 0);
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
+        Opcion opcionCorrectaMarte = new Opcion("Marte", 1);
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", 1);
+        Opcion opcionInorrectaAzul = new Opcion("Azul", 0);
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
 
-        respuestasCorrectas.agregar(respuestaCorrectaTierra);
-        respuestasCorrectas.agregar(respuestaCorrectaMarte);
-        respuestasCorrectas.agregar(respuestaCorrectaJupiter);
-        respuestasIncorrectas.agregar(respuestaInorrectaAzul);
-        respuestasIncorrectas.agregar(respuestaIncorrectaAmarillo);
+        respuestasCorrectas.agregar(opcionCorrectaTierra);
+        respuestasCorrectas.agregar(opcionCorrectaMarte);
+        respuestasCorrectas.agregar(opcionCorrectaJupiter);
+        respuestasIncorrectas.agregar(opcionInorrectaAzul);
+        respuestasIncorrectas.agregar(opcionIncorrectaAmarillo);
 
-        ListaRespuestas respuestasJugador = new ListaRespuestas();
+        ListaOpciones respuestasJugador = new ListaOpciones();
         respuestasJugador.agregarTodo(respuestasIncorrectas);
 
-        respuestasJugador.agregar(respuestaIncorrectaAmarillo);
+        respuestasJugador.agregar(opcionIncorrectaAmarillo);
 
 
         MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
@@ -308,6 +320,8 @@ public class AsignacionDePuntosTest {
 
         assertEquals(0, kahoot.getPuntajeJugador1());
     }
+
+
 
 }
 

@@ -4,30 +4,30 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class RespuestaTest {
+public class OpcionTest {
     @Test
     public void testCreoDosRespuestasIguales(){
-        Respuesta respuesta1 = new Respuesta("unaRespuesta");
-        Respuesta respuesta2 = new Respuesta("unaRespuesta");
+        Opcion opcion1 = new Opcion("unaRespuesta");
+        Opcion opcion2 = new Opcion("unaRespuesta");
 
-        assert(respuesta1.esIgualA(respuesta2));
+        assert(opcion1.esIgualA(opcion2));
     }
 
     @Test
     public void testCreoDosRespuestasDistintas(){
-        Respuesta respuesta1 = new Respuesta("unaRespuesta");
-        Respuesta respuesta2 = new Respuesta("diferenteRespuesta");
+        Opcion opcion1 = new Opcion("unaRespuesta");
+        Opcion opcion2 = new Opcion("diferenteRespuesta");
 
-        assert(!respuesta1.esIgualA(respuesta2));
+        assert(!opcion1.esIgualA(opcion2));
     }
 
     @Test
     public void testSeCreaUnaRespuestaConPuntajePositivoAlAplicarselaAlJugadorSumaPuntos(){
         int puntaje = 2;
-        Respuesta respuesta = new Respuesta("Cosigna :", puntaje);
+        Opcion opcion = new Opcion("Cosigna :", puntaje);
         Jugador unJugador = new Jugador("Pablo");
 
-        respuesta.aplicarPuntajeA(unJugador);
+        opcion.aplicarPuntajeA(unJugador);
 
         assertEquals(unJugador.getPuntos(),puntaje);
 

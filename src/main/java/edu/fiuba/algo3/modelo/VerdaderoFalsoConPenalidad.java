@@ -22,13 +22,13 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
 
 
     private void setRespuestaCorrectaFalso() {
-        respuestaIncorrecta = new Respuesta("Verdadero", -1);
-        respuestaCorrecta = new Respuesta("Falso", 1);
+        opcionIncorrecta = new Opcion("Verdadero", -1);
+        opcionCorrecta = new Opcion("Falso", 1);
     }
 
     private void setRespuestaCorrectaVerdadero() {
-        respuestaCorrecta = new Respuesta("Verdadero", 1);
-        respuestaIncorrecta = new Respuesta("Falso", -1);
+        opcionCorrecta = new Opcion("Verdadero", 1);
+        opcionIncorrecta = new Opcion("Falso", -1);
     }
 
 

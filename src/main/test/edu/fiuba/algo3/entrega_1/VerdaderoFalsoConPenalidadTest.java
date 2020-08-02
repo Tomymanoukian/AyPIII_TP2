@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.ListaRespuestas;
-import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.ListaOpciones;
+import edu.fiuba.algo3.modelo.Opcion;
 import edu.fiuba.algo3.modelo.VerdaderoFalsoConPenalidad;
 import org.junit.jupiter.api.Test;
 
@@ -15,35 +15,35 @@ public class VerdaderoFalsoConPenalidadTest {
         String consigna = "Consigna:";
         VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoFalso(consigna);
 
-        Respuesta respuestaCorrecta = verdaderoFalsoConPenalidad.getRespuestaCorrecta();
-        Respuesta respuestaIncorrecta = verdaderoFalsoConPenalidad.getRespuestaIncorrecta();
+        Opcion opcionCorrecta = verdaderoFalsoConPenalidad.getRespuestaCorrecta();
+        Opcion opcionIncorrecta = verdaderoFalsoConPenalidad.getRespuestaIncorrecta();
 
         assertEquals(consigna, verdaderoFalsoConPenalidad.getConsigna());
 
-        assertEquals("Falso", respuestaCorrecta.getRespuesta());
-        assertEquals(1, respuestaCorrecta.getPuntaje());
+        assertEquals("Falso", opcionCorrecta.getOpcion());
+        assertEquals(1, opcionCorrecta.getPuntaje());
 
-        assertEquals("Verdadero", respuestaIncorrecta.getRespuesta());
-        assertEquals(-1, respuestaIncorrecta.getPuntaje());
+        assertEquals("Verdadero", opcionIncorrecta.getOpcion());
+        assertEquals(-1, opcionIncorrecta.getPuntaje());
     }
     @Test
     public void testSeLePideLaRespuestaCorrectaAUnVoFConPenalidadYTienePuntajeUno(){
         VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoVerdadero("Consigna:");
 
-        Respuesta respuestaCorrecta = verdaderoFalsoConPenalidad.getRespuestaCorrecta();
+        Opcion opcionCorrecta = verdaderoFalsoConPenalidad.getRespuestaCorrecta();
 
-        assertEquals("Verdadero", respuestaCorrecta.getRespuesta());
-        assertEquals(1, respuestaCorrecta.getPuntaje());
+        assertEquals("Verdadero", opcionCorrecta.getOpcion());
+        assertEquals(1, opcionCorrecta.getPuntaje());
 
     }
     @Test
     public void testSeLePideLaRespuestaIncorrectaAUnVoFConPenalidadYTienePuntajeMenosUno(){
         VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoVerdadero("Consigna:");
 
-        Respuesta respuestaIncorrecta = verdaderoFalsoConPenalidad.getRespuestaIncorrecta();
+        Opcion opcionIncorrecta = verdaderoFalsoConPenalidad.getRespuestaIncorrecta();
 
-        assertEquals("Falso", respuestaIncorrecta.getRespuesta());
-        assertEquals(-1, respuestaIncorrecta.getPuntaje());
+        assertEquals("Falso", opcionIncorrecta.getOpcion());
+        assertEquals(-1, opcionIncorrecta.getPuntaje());
 
     }
 
@@ -52,7 +52,7 @@ public class VerdaderoFalsoConPenalidadTest {
         VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoVerdadero("Consigna:");
 
         Jugador jugador = new Jugador("Jorge");
-        ListaRespuestas respuestasDelJugador = new ListaRespuestas();
+        ListaOpciones respuestasDelJugador = new ListaOpciones();
         respuestasDelJugador.agregar(verdaderoFalsoConPenalidad.getRespuestaIncorrecta());
 
         verdaderoFalsoConPenalidad.evaluarRespuestaPara(respuestasDelJugador,jugador);
@@ -64,7 +64,7 @@ public class VerdaderoFalsoConPenalidadTest {
         VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoVerdadero("Consigna:");
 
         Jugador jugador = new Jugador("Jorge");
-        ListaRespuestas respuestasDelJugador = new ListaRespuestas();
+        ListaOpciones respuestasDelJugador = new ListaOpciones();
         respuestasDelJugador.agregar(verdaderoFalsoConPenalidad.getRespuestaCorrecta());
 
         verdaderoFalsoConPenalidad.evaluarRespuestaPara(respuestasDelJugador,jugador);
