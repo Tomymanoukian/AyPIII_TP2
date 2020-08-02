@@ -22,10 +22,10 @@ abstract class Pregunta {
 }
 
 class Respuesta {
-    -respuesta
+    -opcion
     -puntaje
     +aplicarPuntajeA (unJugador)
-    +esIgualA (unaRespuesta):bool
+    +esIgualA (unaOpcion):bool
 }
 
 class ListaRespuestas {
@@ -35,8 +35,8 @@ class ListaRespuestas {
 }
 
 abstract class VerdaderoFalso {
-    -respuestaCorrecta
-    -respuestaIncorrecta
+    -opcionCorrecta
+    -opcionIncorrecta
     +evaluarRespuestaPara(unasRespuestas, unJugador)
 }
 

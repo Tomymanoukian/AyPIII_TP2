@@ -10,18 +10,18 @@ public class VerdaderoFalsoClasicoTest {
     @Test
     public void testCrearUnaPreguntaVerdaderoYFalsoClasicoIndicandoleLaRespuestaCorrectaVerdadera() {
         VerdaderoFalsoClasico vofVerdaderaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("foo");
-        Respuesta respuestaCorrecta = new Respuesta("Verdadero");
+        Opcion opcionCorrecta = new Opcion("Verdadero");
 
-        assert(vofVerdaderaCorrecta.getRespuestaCorrecta().esIgualA(respuestaCorrecta));
+        assert(vofVerdaderaCorrecta.getRespuestaCorrecta().esIgualA(opcionCorrecta));
         Assert.assertEquals("foo", vofVerdaderaCorrecta.getConsigna());
     }
 
     @Test
     public void testCrearUnaPreguntaVerdaderoYFalsoClasicoLaRespuestaCorrectaFalso() {
         VerdaderoFalsoClasico vofFalsaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso("bar");
-        Respuesta respuestaCorrecta = new Respuesta("Falso");
+        Opcion opcionCorrecta = new Opcion("Falso");
 
-        assert(vofFalsaCorrecta.getRespuestaCorrecta().esIgualA(respuestaCorrecta));
+        assert(vofFalsaCorrecta.getRespuestaCorrecta().esIgualA(opcionCorrecta));
         Assert.assertEquals("bar", vofFalsaCorrecta.getConsigna());
     }
 
@@ -30,11 +30,11 @@ public class VerdaderoFalsoClasicoTest {
         VerdaderoFalsoClasico vofClasicoVerdaderaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("foo");
         VerdaderoFalsoClasico vofClasicoFalsaCorrecta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso("bar");
 
-        Respuesta falsa = new Respuesta("Falso");
-        Respuesta verdadera = new Respuesta("Verdadero");
+        Opcion falsa = new Opcion("Falso");
+        Opcion verdadera = new Opcion("Verdadero");
 
-        ListaRespuestas listaVerdadera =  new ListaRespuestas();
-        ListaRespuestas listaFalsa =  new ListaRespuestas();
+        ListaOpciones listaVerdadera =  new ListaOpciones();
+        ListaOpciones listaFalsa =  new ListaOpciones();
         listaVerdadera.agregar(verdadera);
         listaFalsa.agregar(falsa);
 
@@ -48,15 +48,15 @@ public class VerdaderoFalsoClasicoTest {
 
     @Test
     public void testVoFClasicoLanzaExcepcionSiSeLaDaUnaRespuestaNoValidaAlEvaluarRespuestas(){
-        Respuesta verdadera = new Respuesta("Verdadero");
-        Respuesta falsa = new Respuesta("Falso");
-        Respuesta otra = new Respuesta("foo");
+        Opcion verdadera = new Opcion("Verdadero");
+        Opcion falsa = new Opcion("Falso");
+        Opcion otra = new Opcion("foo");
         Jugador jugador = new Jugador("Pedro");
 
 
-        ListaRespuestas listaVerdadera =  new ListaRespuestas();
-        ListaRespuestas listaFalsa =  new ListaRespuestas();
-        ListaRespuestas listaOtra =  new ListaRespuestas();
+        ListaOpciones listaVerdadera =  new ListaOpciones();
+        ListaOpciones listaFalsa =  new ListaOpciones();
+        ListaOpciones listaOtra =  new ListaOpciones();
         listaVerdadera.agregar(verdadera);
         listaFalsa.agregar(falsa);
         listaOtra.agregar(otra);
@@ -74,10 +74,10 @@ public class VerdaderoFalsoClasicoTest {
         VerdaderoFalsoClasico vofClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("bar");
         Jugador jugador = new Jugador("Pedro");
 
-        Respuesta verdadera = new Respuesta("Verdadero");
-        Respuesta falsa = new Respuesta("Falso");
+        Opcion verdadera = new Opcion("Verdadero");
+        Opcion falsa = new Opcion("Falso");
 
-        ListaRespuestas lista =  new ListaRespuestas();
+        ListaOpciones lista =  new ListaOpciones();
 
         assertThrows(CantidadDeRespuestasInvalidaException.class, ()-> vofClasico.evaluarRespuestaPara(lista, jugador));
 

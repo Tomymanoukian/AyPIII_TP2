@@ -9,9 +9,9 @@ public class CreacionDePreguntasTest {
     public void testCrearUnaPreguntaVerdaderoYFalsoClasicoIndicandoleLaRespuestaCorrectaVerdadera() {
         String consigna = "Smalltalk es mejor que Java?";
         VerdaderoFalsoClasico preguntaVerdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero(consigna);
-        Respuesta respuestaCorrecta = new Respuesta("Verdadero");
+        Opcion opcionCorrecta = new Opcion("Verdadero");
 
-        assert(preguntaVerdaderoFalsoClasico.getRespuestaCorrecta().esIgualA(respuestaCorrecta));
+        assert(preguntaVerdaderoFalsoClasico.getRespuestaCorrecta().esIgualA(opcionCorrecta));
         assertEquals("Smalltalk es mejor que Java?", preguntaVerdaderoFalsoClasico.getConsigna());
     }
 
@@ -19,9 +19,9 @@ public class CreacionDePreguntasTest {
     public void testCrearUnaPreguntaVerdaderoYFalsoClasicoLaRespuestaCorrectaFalso() {
         String consigna = "Java es mejor que Smalltalk?";
         VerdaderoFalsoClasico preguntaVerdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso(consigna);
-        Respuesta respuestaCorrecta = new Respuesta("Falso");
+        Opcion opcionCorrecta = new Opcion("Falso");
 
-        assert(preguntaVerdaderoFalsoClasico.getRespuestaCorrecta().esIgualA(respuestaCorrecta));
+        assert(preguntaVerdaderoFalsoClasico.getRespuestaCorrecta().esIgualA(opcionCorrecta));
         assertEquals("Java es mejor que Smalltalk?", preguntaVerdaderoFalsoClasico.getConsigna());
     }
 
