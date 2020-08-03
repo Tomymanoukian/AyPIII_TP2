@@ -27,8 +27,8 @@ public class MultipleChoiceClasicoTest {
         MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
 
         assertEquals("Indicar cuáles de las siguientes opciones son colores", multipleChoiceClasico.getConsigna());
-        assert (multipleChoiceClasico.getRespuestasCorrectas().contieneLoMismo(respuestasCorrectas));
-        assert (multipleChoiceClasico.getRespuestasIncorrectas().contieneLoMismo(respuestasIncorrectas));
+        assert (multipleChoiceClasico.getOpcionesCorrectas().contieneLoMismo(respuestasCorrectas));
+        assert (multipleChoiceClasico.getOpcionesIncorrectas().contieneLoMismo(respuestasIncorrectas));
     }
 
     @Test

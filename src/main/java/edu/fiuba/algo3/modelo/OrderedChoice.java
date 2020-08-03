@@ -6,7 +6,7 @@ public class OrderedChoice extends Pregunta {
     }
 
     @Override
-    public void evaluarRespuestaPara(ListaOpciones unasRespuestas, Jugador unJugador) {
+    public void evaluarRespuestaPara(Respuesta unaRespuesta, Jugador unJugador) {
 
     }
 }
