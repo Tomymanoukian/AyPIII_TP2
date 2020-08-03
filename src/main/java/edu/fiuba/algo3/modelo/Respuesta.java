@@ -4,4 +4,8 @@ public interface Respuesta {
     ListaOpciones getOpcionesSeleccionadas();
 
     Opcion getOpcionSeleccionada();
+
+    ListaOpciones getOpcionesSeleccionadasGrupoA();
+
+    ListaOpciones getOpcionesSeleccionadasGrupoB();
 }

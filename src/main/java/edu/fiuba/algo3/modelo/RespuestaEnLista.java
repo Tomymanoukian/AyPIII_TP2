@@ -22,4 +22,12 @@ public class RespuestaEnLista implements Respuesta {
     public Opcion getOpcionSeleccionada() {
         throw new RespuestaNoValidaException();
     }
+
+    @Override
+    public ListaOpciones getOpcionesSeleccionadasGrupoA() { throw new RespuestaNoValidaException(); }
+
+    @Override
+    public ListaOpciones getOpcionesSeleccionadasGrupoB() { throw new RespuestaNoValidaException(); }
+
+
 }
