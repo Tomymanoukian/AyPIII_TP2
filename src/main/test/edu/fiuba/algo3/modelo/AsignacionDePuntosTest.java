@@ -5,7 +5,9 @@ package edu.fiuba.algo3.modelo;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -303,6 +305,113 @@ public class AsignacionDePuntosTest {
 
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceClasico);
+
+        assertEquals(0, kahoot.getPuntajeJugador1());
+        assertEquals(0, kahoot.getPuntajeJugador2());
+    }
+
+
+
+    ////
+
+
+    @Test
+    public void testGroupChoiceJugador1YJugador2AgrupanCorrectamenteLasRespuestasAsignandolesUnPuntoACadaUno() {
+        String consigna = "Agrupe en las categorias A y B:";
+
+        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA", 0);
+        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA", 0);
+        Opcion opcion3DeGrupoA = new Opcion("respuestaGrupoA", 0);
+        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB", 0);
+        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB", 0);
+        Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB", 0);
+
+        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
+        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
+
+        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
+
+        RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB);
+        RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB);
+
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        kahoot.setRespuestaJugador1(respuestasJugador1);
+        kahoot.setRespuestaJugador2(respuestasJugador2);
+
+        kahoot.evaluarRespuestas(preguntaGroupChoice);
+
+        assertEquals(1, kahoot.getPuntajeJugador1());
+        assertEquals(1, kahoot.getPuntajeJugador2());
+    }
+
+    @Test
+    public void testGroupChoiceJugador1AgrupaCorrectamenteLasOpcionesYJugador2AgrupaIncorrectamenteLasOpcionesAsignandolesCorrectamenteLosPuntajes() {
+        String consigna = "Agrupe en las categorias A y B:";
+
+
+        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA", 0);
+        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA", 0);
+        Opcion opcion3DeGrupoA = new Opcion("respuestaGrupoA", 0);
+        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB", 0);
+        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB", 0);
+        Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB", 0);
+
+        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
+        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
+
+        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
+
+        RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB );
+        RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        kahoot.setRespuestaJugador1(respuestasJugador1);
+        kahoot.setRespuestaJugador2(respuestasJugador2);
+
+        kahoot.evaluarRespuestas(preguntaGroupChoice);
+
+        assertEquals(1, kahoot.getPuntajeJugador1());
+        assertEquals(0, kahoot.getPuntajeJugador2());
+    }
+
+    public void testGroupChoiceJugador1YJugador2AgrupanIncorrectamenteLasOpcionesAsignandolesCeroPuntosACadaUno() {
+        String consigna = "Agrupe en las categorias A y B:";
+
+
+        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA", 0);
+        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA", 0);
+        Opcion opcion3DeGrupoA = new Opcion("respuestaGrupoA", 0);
+        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB", 0);
+        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB", 0);
+        Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB", 0);
+
+        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
+        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
+
+        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
+
+        RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
+        RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
+
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        kahoot.setRespuestaJugador1(respuestasJugador1);
+        kahoot.setRespuestaJugador2(respuestasJugador2);
+
+        kahoot.evaluarRespuestas(preguntaGroupChoice);
 
         assertEquals(0, kahoot.getPuntajeJugador1());
         assertEquals(0, kahoot.getPuntajeJugador2());

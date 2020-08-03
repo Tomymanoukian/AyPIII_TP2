@@ -17,4 +17,10 @@ public class RespuestaUnica implements Respuesta {
     public Opcion getOpcionSeleccionada() {
         return opcionSeleccionada;
     }
+
+    @Override
+    public ListaOpciones getOpcionesSeleccionadasGrupoA() { throw new RespuestaNoValidaException(); }
+
+    @Override
+    public ListaOpciones getOpcionesSeleccionadasGrupoB() { throw new RespuestaNoValidaException(); }
 }
