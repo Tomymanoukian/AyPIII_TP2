@@ -30,10 +30,4 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
         opcionIncorrecta = new Opcion("Falso", 0);
     }
 
-    public int calcularPuntajePara(ListaOpciones respuestas) {
-        return respuestas.obtenerPrimero().getPuntaje();
-    }
-
-
-
 }

@@ -4,25 +4,22 @@ public class VerdaderoFalso extends Pregunta {
     protected static Opcion opcionCorrecta;
     protected static Opcion opcionIncorrecta;
 
-    public Opcion getRespuestaCorrecta() {
+    public Opcion getOpcionCorrecta() {
         return opcionCorrecta;
     }
 
-    public Opcion getRespuestaIncorrecta() {
+    public Opcion getOpcionIncorrecta() {
         return opcionIncorrecta;
     }
 
     @Override
-    public void evaluarRespuestaPara(ListaOpciones respuestas, Jugador jugador) {
-        if (respuestas.cantidadDeRespuestas() != 1) {
-            throw new CantidadDeRespuestasInvalidaException();
+    public void evaluarRespuestaPara(Respuesta respuesta, Jugador jugador) {
+        Opcion opcionSeleccionada = respuesta.getOpcionSeleccionada();
+
+        if (!opcionSeleccionada.esIgualA(opcionCorrecta) && !opcionSeleccionada.esIgualA(opcionIncorrecta)) {
+            throw new OpcionNoValidaException();
         }
 
-        Opcion opcion = respuestas.obtenerPrimero();
-        if (!opcion.esIgualA(opcionCorrecta) && !opcion.esIgualA(opcionIncorrecta)) {
-            throw new RespuestaNoValidaException();
-        }
-
-        respuestas.obtenerPrimero().aplicarPuntajeA(jugador);
+        opcionSeleccionada.aplicarPuntajeA(jugador);
     }
 }

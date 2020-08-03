@@ -1,32 +1,29 @@
 package edu.fiuba.algo3.modelo;
 
 public class MultipleChoiceParcial extends Pregunta {
-    private final ListaOpciones respuestasCorrectas;
-    private final ListaOpciones respuestasIncorrectas;
+    private final ListaOpciones opcionesCorrectas;
+    private final ListaOpciones opcionesIncorrectas;
 
-    public MultipleChoiceParcial(String unaConsigna, ListaOpciones unasRespuestasCorrectas, ListaOpciones unasRespuestasIncorrectas) {
+    public MultipleChoiceParcial(String unaConsigna, ListaOpciones unasOpcionesCorrectas, ListaOpciones unasOpcionesIncorrectas) {
         super();
         consigna = unaConsigna;
-        respuestasCorrectas = unasRespuestasCorrectas;
-        respuestasIncorrectas = unasRespuestasIncorrectas;
+        opcionesCorrectas = unasOpcionesCorrectas;
+        opcionesIncorrectas = unasOpcionesIncorrectas;
     }
 
     @Override
-    public void evaluarRespuestaPara(ListaOpciones respuestas, Jugador jugador) {
-        if (respuestas.obtenerCoincidencias(respuestasIncorrectas) == 0) {
-            this.aplicarPuntajePara(respuestas, jugador);
+    public void evaluarRespuestaPara(Respuesta unaRespuesta, Jugador unJugador) {
+        ListaOpciones opcionesSeleccionadas = unaRespuesta.getOpcionesSeleccionadas();
+        if (opcionesSeleccionadas.obtenerCoincidencias(opcionesIncorrectas) == 0) {
+            opcionesSeleccionadas.aplicarPuntajesA(unJugador);
         }
     }
 
-    public void aplicarPuntajePara(ListaOpciones respuestas, Jugador jugador) {
-        respuestas.aplicarPuntajesA(jugador);
+    public ListaOpciones getOpcionesCorrectas() {
+        return opcionesCorrectas;
     }
 
-    public ListaOpciones getRespuestasCorrectas() {
-        return respuestasCorrectas;
-    }
-
-    public ListaOpciones getRespuestasIncorrectas() {
-        return respuestasIncorrectas;
+    public ListaOpciones getOpcionesIncorrectas() {
+        return opcionesIncorrectas;
     }
 }
