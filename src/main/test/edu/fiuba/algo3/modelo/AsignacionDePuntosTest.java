@@ -75,8 +75,8 @@ public class AsignacionDePuntosTest {
         Opcion opcionInorrectaAzul = new Opcion("Azul", 0);
         Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra,opcionCorrectaMarte,opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul,opcionIncorrectaAmarillo));
+        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
         ListaOpciones opcionesSeleccionadas = new ListaOpciones(opcionesCorrectas);
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
@@ -100,7 +100,7 @@ public class AsignacionDePuntosTest {
     }
 
     @Test
-    public void testMultipleChoiceParcialJugadoresAciertanTodasLasRespuestasCorrectasYUnaIncorrectaSumandolesCeroPuntos() {
+    public void testMultipleChoiceParcialJugadoresAciertanTodasLasOpcionesCorrectasYUnaIncorrectaSumandolesCeroPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
 
         Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
@@ -109,8 +109,8 @@ public class AsignacionDePuntosTest {
         Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
 
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra,opcionCorrectaMarte));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionIncorrectaAzul,opcionIncorrectaAmarillo));
+        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte));
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionIncorrectaAzul, opcionIncorrectaAmarillo));
         ListaOpciones opcionesSeleccionadas = new ListaOpciones();
         opcionesSeleccionadas.agregarTodo(opcionesCorrectas);
         opcionesSeleccionadas.agregar(opcionIncorrectaAzul);
@@ -145,9 +145,9 @@ public class AsignacionDePuntosTest {
         Opcion opcionInorrectaAzul = new Opcion("Azul", 0);
         Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra,opcionCorrectaMarte,opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul,opcionIncorrectaAmarillo));
-        ListaOpciones opcionesSeleccionadas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra,opcionCorrectaMarte));
+        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
+        ListaOpciones opcionesSeleccionadas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte));
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
@@ -179,8 +179,8 @@ public class AsignacionDePuntosTest {
         Opcion opcionInorrectaAzul = new Opcion("Azul", 0);
         Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra,opcionCorrectaMarte,opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul,opcionIncorrectaAmarillo));
+        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
         ListaOpciones opcionesSeleccionadas = new ListaOpciones(Arrays.asList(opcionIncorrectaAmarillo));
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
@@ -214,8 +214,8 @@ public class AsignacionDePuntosTest {
         Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
 
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra,opcionCorrectaMarte,opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul,opcionIncorrectaAmarillo));
+        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
         ListaOpciones opcionesSeleccionadas = new ListaOpciones(opcionesCorrectas);
 
         MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
@@ -249,8 +249,8 @@ public class AsignacionDePuntosTest {
         Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
 
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra,opcionCorrectaMarte,opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul,opcionIncorrectaAmarillo));
+        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
         ListaOpciones opcionesSeleccionadas = new ListaOpciones();
         opcionesSeleccionadas.agregarTodo(opcionesCorrectas);
         opcionesSeleccionadas.agregar(opcionInorrectaAzul);
@@ -286,8 +286,8 @@ public class AsignacionDePuntosTest {
         Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", 0);
 
 
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra,opcionCorrectaMarte,opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul,opcionIncorrectaAmarillo));
+        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
         ListaOpciones opcionesSeleccionadas = new ListaOpciones(opcionesIncorrectas);
 
         MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
@@ -309,11 +309,6 @@ public class AsignacionDePuntosTest {
         assertEquals(0, kahoot.getPuntajeJugador1());
         assertEquals(0, kahoot.getPuntajeJugador2());
     }
-
-
-
-    ////
-
 
     @Test
     public void testGroupChoiceJugador1YJugador2AgrupanCorrectamenteLasRespuestasAsignandolesUnPuntoACadaUno() {
@@ -529,4 +524,3 @@ public class AsignacionDePuntosTest {
     }
 
 }
-
