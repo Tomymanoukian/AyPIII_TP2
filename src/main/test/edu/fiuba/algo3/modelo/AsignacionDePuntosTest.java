@@ -5,7 +5,9 @@ package edu.fiuba.algo3.modelo;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -98,7 +100,7 @@ public class AsignacionDePuntosTest {
     }
 
     @Test
-    public void testMultipleChoiceParcialJugadoresAciertanTodasLasRespuestasCorrectasYUnaIncorrectaSumandolesCeroPuntos() {
+    public void testMultipleChoiceParcialJugadoresAciertanTodasLasOpcionesCorrectasYUnaIncorrectaSumandolesCeroPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
 
         Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
@@ -308,5 +310,120 @@ public class AsignacionDePuntosTest {
         assertEquals(0, kahoot.getPuntajeJugador2());
     }
 
+    @Test
+    public void testMultipleChoiceConPenalidadJugador1AciertaCuatroOpcionesYJugador2AciertaCuatroOpcionesSumandolesCorrectamenteCuatroPuntos() {
+
+        String consigna = "Indicar cuales de los siguientes con planetas:";
+
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
+        Opcion opcionCorrectaMarte = new Opcion("Marte", 1);
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", 1);
+        Opcion opcionCorrectaSaturno = new Opcion("Saturno", 1);
+        Opcion opcionInorrectaAzul = new Opcion("Azul", -1);
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", -1);
+
+        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
+
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones(opcionesCorrectas));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones(opcionesCorrectas));
+
+        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        kahoot.setRespuestaJugador1(respuestasJugador1);
+        kahoot.setRespuestaJugador2(respuestasJugador2);
+
+        kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
+
+        assertEquals(4, kahoot.getPuntajeJugador1());
+        assertEquals(4, kahoot.getPuntajeJugador2());
+    }
+
+    @Test
+    public void testMultipleChoiceConPenalidadJugador1EligeTresOpcionesCorrectasYUnaIncorrectaYJugador2EligeDosOpcionesCorrectasYDosIncorrectaAsignandolesCorrectamenteLosPuntos() {
+
+        String consigna = "Indicar cuales de los siguientes con planetas:";
+
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
+        Opcion opcionCorrectaMarte = new Opcion("Marte", 1);
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", 1);
+        Opcion opcionCorrectaSaturno = new Opcion("Saturno", 1);
+        Opcion opcionInorrectaAzul = new Opcion("Azul", -1);
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", -1);
+
+        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
+
+        List<Opcion> respuestasJugador1List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionInorrectaAzul));
+        List<Opcion> respuestasJugador2List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionIncorrectaAmarillo, opcionInorrectaAzul));
+
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones (respuestasJugador1List));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones (respuestasJugador2List));
+
+        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        kahoot.setRespuestaJugador1(respuestasJugador1);
+        kahoot.setRespuestaJugador2(respuestasJugador2);
+
+        kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
+
+        assertEquals(2, kahoot.getPuntajeJugador1());
+        assertEquals(0, kahoot.getPuntajeJugador2());
+    }
+
+    @Test
+    public void testMultipleChoiceConPenalidadJugador1EligeUnaOpcionYDosIncorrectasYJugador2EligeCeroOpcionesCorrectasYDosIncorrectaAsignandolesCorrectamenteLosPuntos() {
+
+        String consigna = "Indicar cuales de los siguientes con planetas:";
+
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
+        Opcion opcionCorrectaMarte = new Opcion("Marte", 1);
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", 1);
+        Opcion opcionCorrectaSaturno = new Opcion("Saturno", 1);
+        Opcion opcionInorrectaAzul = new Opcion("Azul", -1);
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", -1);
+
+
+        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaJupiter, opcionCorrectaSaturno));
+        ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
+
+        List<Opcion> opcionesJugador1List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionIncorrectaAmarillo, opcionInorrectaAzul));
+        List<Opcion> opcionesJugador2List = new ArrayList<>(Arrays.asList(opcionIncorrectaAmarillo, opcionInorrectaAzul));
+
+        RespuestaEnLista opcionesJugador1 = new RespuestaEnLista (new ListaOpciones (opcionesJugador1List));
+        RespuestaEnLista opcionesJugador2 = new RespuestaEnLista (new ListaOpciones (opcionesJugador2List));
+
+
+        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        kahoot.setRespuestaJugador1(opcionesJugador1);
+        kahoot.setRespuestaJugador2(opcionesJugador2);
+
+        kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
+
+        assertEquals(-1, kahoot.getPuntajeJugador1());
+        assertEquals(-2, kahoot.getPuntajeJugador2());
+    }
 }
 
