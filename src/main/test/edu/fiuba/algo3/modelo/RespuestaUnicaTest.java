@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 
+import edu.fiuba.algo3.modelo.excepciones.RespuestaNoValidaException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -21,6 +22,15 @@ public class RespuestaUnicaTest {
         RespuestaUnica respuestaUnica = new RespuestaUnica(opcion);
 
         assertThrows(RespuestaNoValidaException.class, respuestaUnica::getOpcionesSeleccionadas);
+    }
+
+    @Test
+    public void testSeLePideUnGrupoDeOpcionesResultandoEnExcepcion() {
+        Opcion opcion = new Opcion("una opcion");
+        RespuestaUnica respuestaUnica = new RespuestaUnica(opcion);
+
+        assertThrows(RespuestaNoValidaException.class, respuestaUnica::getOpcionesSeleccionadasGrupoA);
+        assertThrows(RespuestaNoValidaException.class, respuestaUnica::getOpcionesSeleccionadasGrupoB);
     }
 
 }

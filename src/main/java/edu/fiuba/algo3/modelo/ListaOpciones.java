@@ -6,84 +6,103 @@ import java.util.List;
 
 public class ListaOpciones {
 
-    private final List<Opcion> listaOpcions;
+    private final List<Opcion> listaOpciones;
 
     public ListaOpciones() {
-        listaOpcions = new ArrayList<>();
+        listaOpciones = new ArrayList<>();
     }
 
     public ListaOpciones(List<Opcion> unaLista) {
-        listaOpcions = new ArrayList<>();
-        listaOpcions.addAll(unaLista);
+        listaOpciones = new ArrayList<>();
+        listaOpciones.addAll(unaLista);
     }
     public ListaOpciones(ListaOpciones unaListaDeRespuestas) {
-        listaOpcions = new ArrayList<>();
-        listaOpcions.addAll(unaListaDeRespuestas.obtenerLista());
+        listaOpciones = new ArrayList<>();
+        listaOpciones.addAll(unaListaDeRespuestas.obtenerLista());
     }
 
     public void limpiar() {
-        listaOpcions.clear();
+        listaOpciones.clear();
     }
 
     public void agregar(Opcion opcion) {
-        listaOpcions.add(opcion);
+        listaOpciones.add(opcion);
     }
 
     public void agregarTodo(ListaOpciones otraListaOpciones) {
-        listaOpcions.addAll(otraListaOpciones.obtenerLista());
+        listaOpciones.addAll(otraListaOpciones.obtenerLista());
     }
 
     public boolean contieneTodo(ListaOpciones otraLista) {
-        return listaOpcions.containsAll(otraLista.obtenerLista());
+        return listaOpciones.containsAll(otraLista.obtenerLista());
     }
 
     public boolean contieneLoMismo(ListaOpciones otraLista) {
 
-        return listaOpcions.size() == otraLista.obtenerLista().size() &&
-                listaOpcions.containsAll(otraLista.obtenerLista());
+        return listaOpciones.size() == otraLista.obtenerLista().size() &&
+                listaOpciones.containsAll(otraLista.obtenerLista());
     }
 
     public Opcion obtener(int posicion) {
-        return listaOpcions.get(posicion);
+        return listaOpciones.get(posicion);
     }
 
     public List<Opcion> obtenerLista() {
-        return listaOpcions;
+        return listaOpciones;
     }
 
     public int obtenerCoincidencias(ListaOpciones otraLista) {
-        return otraLista.calculoDeCoincidencias(listaOpcions);
+        return otraLista.calculoDeCoincidencias(listaOpciones);
     }
 
     public int calculoDeCoincidencias(List<Opcion> otraLista) {
         int coincidencias = 0;
         Iterator<Opcion> iterador1 = otraLista.iterator();
-        Iterator<Opcion> iterador2 = listaOpcions.iterator();
+        Iterator<Opcion> iterador2 = listaOpciones.iterator();
 
         for (int i = 0; i < otraLista.size(); i++) {
             Opcion otraOpcion = iterador1.next();
 
-            for (int j = 0; j < listaOpcions.size(); j++) {
+            for (int j = 0; j < listaOpciones.size(); j++) {
                 Opcion opcion = iterador2.next();
                 if (opcion.getOpcion().equals(otraOpcion.getOpcion())) {
                     coincidencias++;
                 }
             }
-            iterador2 = listaOpcions.iterator();
+            iterador2 = listaOpciones.iterator();
         }
         return coincidencias;
     }
 
 
     public int cantidadDeRespuestas() {
-        return listaOpcions.size();
+        return listaOpciones.size();
     }
 
     public Opcion obtenerPrimero() {
-        return listaOpcions.get(0);
+        return listaOpciones.get(0);
     }
 
     public void aplicarPuntajesA(Jugador jugador) {
-        listaOpcions.forEach(respuesta -> respuesta.aplicarPuntajeA(jugador));
+        listaOpciones.forEach(respuesta -> respuesta.aplicarPuntajeA(jugador));
+    }
+
+    public boolean esIgual(ListaOpciones otraLista){
+        Iterator<Opcion> iterador1 = listaOpciones.iterator();
+        Iterator<Opcion> iterador2 = otraLista.obtenerLista().iterator();
+
+        if(this.cantidadDeRespuestas() != otraLista.cantidadDeRespuestas()){
+            return false;
+        }
+
+        for (int i = 0; i < otraLista.cantidadDeRespuestas(); i++) {
+            Opcion unaOpcion = iterador1.next();
+            Opcion otraOpcion = iterador2.next();
+
+            if(unaOpcion != otraOpcion){
+                return false;
+            }
+        }
+        return true;
     }
 }
