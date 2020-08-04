@@ -16,19 +16,20 @@ public class OrderedChoice extends Pregunta {
     }
 
     public ListaOpciones getOpciones() {return listaDeOpciones;}
+
     public String getConsigna() {
         return super.getConsigna();
     }
-
-    @Override
-    public void evaluarRespuestaPara(Respuesta unaRespuesta, Jugador unJugador) {
-    }
-
 
     public int calcularPuntajePara(ListaOpciones opcionesElegidas) {
         if(listaDeOpciones.esIgual(opcionesElegidas)){
             return 1;
         }
         return 0;
+    }
+
+    @Override
+    public void evaluarRespuestaPara(Respuesta unaRespuesta, Jugador unJugador) {
+        unJugador.modificarPuntos(this.calcularPuntajePara(unaRespuesta.getOpcionesSeleccionadas()));
     }
 }
