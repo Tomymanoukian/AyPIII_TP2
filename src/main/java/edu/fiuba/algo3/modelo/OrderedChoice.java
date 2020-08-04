@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
+
 public class OrderedChoice extends Pregunta {
 
     private final ListaOpciones listaDeOpciones;
