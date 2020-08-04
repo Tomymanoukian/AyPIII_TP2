@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.RespuestaNoValidaException;
+
 public class RespuestaDeGrupos implements Respuesta{
 
     private ListaOpciones opcionesSeleccionadasGrupoA;

@@ -383,6 +383,7 @@ public class AsignacionDePuntosTest {
         assertEquals(0, kahoot.getPuntajeJugador2());
     }
 
+    @Test
     public void testGroupChoiceJugador1YJugador2AgrupanIncorrectamenteLasOpcionesAsignandolesCeroPuntosACadaUno() {
         String consigna = "Agrupe en las categorias A y B:";
 
@@ -414,6 +415,116 @@ public class AsignacionDePuntosTest {
         kahoot.evaluarRespuestas(preguntaGroupChoice);
 
         assertEquals(0, kahoot.getPuntajeJugador1());
+        assertEquals(0, kahoot.getPuntajeJugador2());
+    }
+
+    @Test
+    public void testOrderedChoiceJugador1YJugador2OrdenanCorrectamenteLasOpcionesAsignandolesCeroPuntosACadaUno() {
+        String consigna = "Ordene correctamente las opciones:";
+
+
+        Opcion primerOpcion = new Opcion("1er Opcion");
+        Opcion segundaOpcion = new Opcion("2da Opcion");
+        Opcion terceraOpcion = new Opcion("3era Opcion");
+        Opcion cuartaOpcion = new Opcion("4ta Opcion");
+        Opcion quintaOpcion = new Opcion("5ta Opcion");
+
+
+        List<Opcion> respuestasOrdenadasCorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion,cuartaOpcion,quintaOpcion));
+        ListaOpciones opcionesOrdenadasCorrectamente = new ListaOpciones(respuestasOrdenadasCorrectamenteList);
+
+
+        OrderedChoice preguntaGroupChoice = new OrderedChoice(consigna, opcionesOrdenadasCorrectamente);
+
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones(opcionesOrdenadasCorrectamente));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones(opcionesOrdenadasCorrectamente));
+
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        kahoot.setRespuestaJugador1(respuestasJugador1);
+        kahoot.setRespuestaJugador2(respuestasJugador2);
+
+        kahoot.evaluarRespuestas(preguntaGroupChoice);
+
+        assertEquals(1, kahoot.getPuntajeJugador1());
+        assertEquals(1, kahoot.getPuntajeJugador2());
+    }
+
+    @Test
+    public void testOrderedChoiceJugador1YJugador2OrdenanIncorrectamenteLasOpcionesAsignandolesCeroPuntosACadaUno() {
+        String consigna = "Ordene correctamente las opciones:";
+
+
+        Opcion primerOpcion = new Opcion("1er Opcion");
+        Opcion segundaOpcion = new Opcion("2da Opcion");
+        Opcion terceraOpcion = new Opcion("3era Opcion");
+        Opcion cuartaOpcion = new Opcion("4ta Opcion");
+        Opcion quintaOpcion = new Opcion("5ta Opcion");
+
+
+        List<Opcion> respuestasOrdenadasCorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion,cuartaOpcion,quintaOpcion));
+        ListaOpciones opcionesOrdenadasCorrectamente = new ListaOpciones(respuestasOrdenadasCorrectamenteList);
+        List<Opcion> respuestasOrdenadasInorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion,terceraOpcion ,segundaOpcion ,cuartaOpcion,quintaOpcion));
+        ListaOpciones opcionesOrdenadasInorrectamente = new ListaOpciones(respuestasOrdenadasInorrectamenteList);
+
+
+        OrderedChoice preguntaGroupChoice = new OrderedChoice(consigna, opcionesOrdenadasCorrectamente);
+
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasInorrectamente));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasInorrectamente));
+
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        kahoot.setRespuestaJugador1(respuestasJugador1);
+        kahoot.setRespuestaJugador2(respuestasJugador2);
+
+        kahoot.evaluarRespuestas(preguntaGroupChoice);
+
+        assertEquals(0, kahoot.getPuntajeJugador1());
+        assertEquals(0, kahoot.getPuntajeJugador2());
+    }
+
+    @Test
+    public void testOrderedChoiceJugador1OrdenaCorrectamenteLasOpcionesYJugador2OrdenaInorrectamenteLasOpcionesAsignandolesCorrectamenteLosPuntajes() {
+        String consigna = "Ordene correctamente las opciones:";
+
+
+        Opcion primerOpcion = new Opcion("1er Opcion");
+        Opcion segundaOpcion = new Opcion("2da Opcion");
+        Opcion terceraOpcion = new Opcion("3era Opcion");
+        Opcion cuartaOpcion = new Opcion("4ta Opcion");
+        Opcion quintaOpcion = new Opcion("5ta Opcion");
+
+
+        ListaOpciones opcionesOrdenadasCorrectamente = new ListaOpciones(new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion,cuartaOpcion,quintaOpcion)));
+        ListaOpciones opcionesOrdenadasInorrectamente = new ListaOpciones(new ArrayList<>(Arrays.asList(primerOpcion,terceraOpcion ,segundaOpcion ,cuartaOpcion,quintaOpcion)));
+
+
+        OrderedChoice preguntaOrderedChoice = new OrderedChoice(consigna, opcionesOrdenadasCorrectamente);
+
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones(opcionesOrdenadasCorrectamente));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones(opcionesOrdenadasInorrectamente));
+
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        kahoot.setRespuestaJugador1(respuestasJugador1);
+        kahoot.setRespuestaJugador2(respuestasJugador2);
+
+        kahoot.evaluarRespuestas(preguntaOrderedChoice);
+
+        assertEquals(1, kahoot.getPuntajeJugador1());
         assertEquals(0, kahoot.getPuntajeJugador2());
     }
 

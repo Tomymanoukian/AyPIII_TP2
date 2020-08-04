@@ -157,4 +157,31 @@ public class ListaOpcionesTest {
         assertFalse(listaConTresRespuestas.contieneLoMismo(listaConCuatroRespuestas));
         assertFalse(listaConCuatroRespuestas.contieneLoMismo(listaConTresRespuestas));
     }
+
+    @Test
+    public void testEsIgualFuncionaCorrectamente(){
+        Opcion opcion1 = new Opcion("respuesta1");
+        Opcion opcion2 = new Opcion("respuesta2");
+        Opcion opcion3 = new Opcion("respuesta3");
+        Opcion opcion4 = new Opcion("respuesta4");
+
+        Opcion opcion1bis = new Opcion("respuesta1");
+        Opcion opcion2bis = new Opcion("respuesta2");
+        Opcion opcion3bis = new Opcion("respuesta3");
+        Opcion opcion4bis = new Opcion("respuesta4");
+
+        List<Opcion> arrayListTresOpciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3));
+        List<Opcion> arrayListCuatroOpciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4));
+        List<Opcion> arrayListCuatroOpcionesDesordenadas = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion4, opcion3));
+
+        ListaOpciones listaConTresOpciones = new ListaOpciones(arrayListTresOpciones);
+        ListaOpciones listaConCuatroOpciones = new ListaOpciones(arrayListCuatroOpciones);
+        ListaOpciones otralistaConCuatroOpciones = new ListaOpciones(arrayListCuatroOpciones);
+        ListaOpciones listaConCuatroOpcionesDesordenadas = new ListaOpciones(arrayListCuatroOpcionesDesordenadas);
+
+        assertTrue(listaConCuatroOpciones.esIgual(otralistaConCuatroOpciones));
+        assertFalse(listaConTresOpciones.esIgual(listaConCuatroOpciones));
+        assertFalse(listaConCuatroOpciones.esIgual(listaConTresOpciones));
+        assertFalse(listaConCuatroOpciones.esIgual(listaConCuatroOpcionesDesordenadas));
+    }
 }

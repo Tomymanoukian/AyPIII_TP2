@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.JugadorSinNombreException;
+
 public class Jugador {
     private int puntos;
     private String nombre;
