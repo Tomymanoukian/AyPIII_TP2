@@ -7,38 +7,38 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ExclusividadTest {
 
     @Test
-    public void testAplicoExclusividadADosJugadoresQueRespondieronCorrectamente(){
+    public void testAplicoExclusividadADosPuntajesPositivos(){
         Exclusividad exclusividad = new Exclusividad();
-        Jugador jugador1 = new Jugador("jugador1");
-        Jugador jugador2 = new Jugador("jugador2");
+        Puntaje puntaje1 = new Puntaje(1);
+        Puntaje puntaje2 = new Puntaje(1);
 
-        exclusividad.aplicarExclusividad(jugador1, 1, jugador2, 1);
+        exclusividad.aplicarExclusividad(puntaje1, puntaje2);
 
-        assertEquals(0, jugador1.getPuntos());
-        assertEquals(0, jugador2.getPuntos());
+        assertEquals(0, puntaje1.getPuntos());
+        assertEquals(0, puntaje2.getPuntos());
     }
 
     @Test
-    public void testAplicoExclusividadADosJugadoresQueRespondieronIncorrectamente(){
+    public void testAplicoExclusividadADosPuntajesNulos(){
         Exclusividad exclusividad = new Exclusividad();
-        Jugador jugador1 = new Jugador("jugador1");
-        Jugador jugador2 = new Jugador("jugador2");
+        Puntaje puntaje1 = new Puntaje(0);
+        Puntaje puntaje2 = new Puntaje(0);
 
-        exclusividad.aplicarExclusividad(jugador1, 0, jugador2, 0);
+        exclusividad.aplicarExclusividad(puntaje1, puntaje2);
 
-        assertEquals(0, jugador1.getPuntos());
-        assertEquals(0, jugador2.getPuntos());
+        assertEquals(0, puntaje1.getPuntos());
+        assertEquals(0, puntaje2.getPuntos());
     }
 
     @Test
-    public void testAplicoExclusividadAUnJugadorQueRespondioCorrectamenteYOtroJugadorQueRespondioIncorrectamente(){
+    public void testAplicoExclusividadAUnUnPuntajePositivoYOtroNulo(){
         Exclusividad exclusividad = new Exclusividad();
-        Jugador jugador1 = new Jugador("jugador1");
-        Jugador jugador2 = new Jugador("jugador2");
+        Puntaje puntaje1 = new Puntaje(1);
+        Puntaje puntaje2 = new Puntaje(0);
 
-        exclusividad.aplicarExclusividad(jugador1, 1, jugador2, 0);
+        exclusividad.aplicarExclusividad(puntaje1, puntaje2);
 
-        assertEquals(2, jugador1.getPuntos());
-        assertEquals(0, jugador2.getPuntos());
+        assertEquals(2, puntaje1.getPuntos());
+        assertEquals(0, puntaje2.getPuntos());
     }
 }

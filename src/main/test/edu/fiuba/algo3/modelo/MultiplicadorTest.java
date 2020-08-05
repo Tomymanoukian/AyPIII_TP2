@@ -35,10 +35,10 @@ public class MultiplicadorTest {
     @Test
     public void testSeAplicaUnMultiplicadorPorTresCorrectamenteALPuntajeDeUnJugador(){
         Multiplicador mx3 = new Multiplicador(3);
-        Jugador jugador = new Jugador("jugador");
+        Puntaje puntaje = new Puntaje(3);
 
-        mx3.aplicarMultiplicador(jugador, 3);
+        mx3.aplicarMultiplicador(puntaje);
 
-        assertEquals(9, jugador.getPuntos());
+        assertEquals(9, puntaje.getPuntos());
     }
 }

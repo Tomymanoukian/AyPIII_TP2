@@ -26,7 +26,7 @@ public class Multiplicador {
         return factorDeMultiplicacion;
     }
 
-    public void aplicarMultiplicador(Jugador jugador, int puntos) {
-        jugador.modificarPuntos(puntos * factorDeMultiplicacion);
+    public void aplicarMultiplicador(Puntaje unPuntaje) {
+        unPuntaje.multiplicarPuntos(factorDeMultiplicacion);
     }
 }
