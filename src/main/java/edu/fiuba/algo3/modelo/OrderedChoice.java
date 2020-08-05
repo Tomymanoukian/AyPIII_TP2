@@ -29,7 +29,7 @@ public class OrderedChoice extends Pregunta {
     }
 
     @Override
-    public void evaluarRespuestaPara(Respuesta unaRespuesta, Jugador unJugador) {
-        unJugador.modificarPuntos(this.calcularPuntajePara(unaRespuesta.getOpcionesSeleccionadas()));
+    public int evaluarRespuestaPara(Respuesta unaRespuesta, Jugador unJugador) {
+        return this.calcularPuntajePara(unaRespuesta.getOpcionesSeleccionadas()));
     }
 }
