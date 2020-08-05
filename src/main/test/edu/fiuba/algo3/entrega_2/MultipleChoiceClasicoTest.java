@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.ListaOpciones;
 import edu.fiuba.algo3.modelo.MultipleChoiceClasico;
