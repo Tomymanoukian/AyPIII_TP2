@@ -47,7 +47,7 @@ public class InterfazDeUsuario extends Application {
         contenedorHorizontal.setPadding(new Insets(15));
 
         VBox contendorPrincipal = new VBox(contenedorPrimerRenglon, contenedorConsigna, contenedorHorizontal);
-        contendorPrincipal.setAlignment(Pos.BASELINE_CENTER);
+        //contendorPrincipal.setAlignment(Pos.BASELINE_CENTER);
 
         Scene scene = new Scene(contendorPrincipal, 400, 400);
 
