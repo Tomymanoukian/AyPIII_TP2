@@ -31,4 +31,14 @@ public class MultiplicadorTest {
 
         assertEquals(-5,multiplicador.getFactorDeMultiplicacion());
     }
+
+    @Test
+    public void testSeAplicaUnMultiplicadorPorTresCorrectamenteALPuntajeDeUnJugador(){
+        Multiplicador mx3 = new Multiplicador(3);
+        Jugador jugador = new Jugador("jugador");
+
+        mx3.aplicarMultiplicador(jugador, 3);
+
+        assertEquals(9, jugador.getPuntos());
+    }
 }

@@ -8,21 +8,25 @@ public class Multiplicador {
 
     public Multiplicador () {
 
-        factorDeMultiplicacion = 0;
+        factorDeMultiplicacion = 1;
     }
 
-    public Multiplicador (int unNumero) {
+    public Multiplicador (int unFactorDeMultiplicacion) {
 
-        factorDeMultiplicacion = unNumero;
+        factorDeMultiplicacion = unFactorDeMultiplicacion;
     }
 
-    public void setFactorDeMultiplicacion (int unNumero) {
+    public void setFactorDeMultiplicacion (int unFactorDeMultiplicacion) {
 
-        factorDeMultiplicacion = unNumero;
+        factorDeMultiplicacion = unFactorDeMultiplicacion;
     }
 
     public int getFactorDeMultiplicacion () {
 
         return factorDeMultiplicacion;
+    }
+
+    public void aplicarMultiplicador(Jugador jugador, int puntos) {
+        jugador.modificarPuntos(puntos * factorDeMultiplicacion);
     }
 }
