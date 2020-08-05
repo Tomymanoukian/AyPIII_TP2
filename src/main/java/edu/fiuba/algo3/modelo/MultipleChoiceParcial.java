@@ -12,11 +12,9 @@ public class MultipleChoiceParcial extends Pregunta {
     }
 
     @Override
-    public void evaluarRespuestaPara(Respuesta unaRespuesta, Jugador unJugador) {
+    public int evaluarRespuestaPara(Respuesta unaRespuesta) {
         ListaOpciones opcionesSeleccionadas = unaRespuesta.getOpcionesSeleccionadas();
-        if (opcionesSeleccionadas.obtenerCoincidencias(opcionesIncorrectas) == 0) {
-            opcionesSeleccionadas.aplicarPuntajesA(unJugador);
-        }
+        return opcionesSeleccionadas.calcularPuntaje();
     }
 
     public ListaOpciones getOpcionesCorrectas() {

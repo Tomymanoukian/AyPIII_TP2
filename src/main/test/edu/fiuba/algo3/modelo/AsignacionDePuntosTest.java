@@ -100,7 +100,7 @@ public class AsignacionDePuntosTest {
     }
 
     @Test
-    public void testMultipleChoiceParcialJugadoresAciertanTodasLasOpcionesCorrectasYUnaIncorrectaSumandolesCeroPuntos() {
+    public void testMultipleChoiceParcialJugadoresAciertanTodasLasOpcionesCorrectasYUnaIncorrectaSumandoDosPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
 
         Opcion opcionCorrectaTierra = new Opcion("Tierra", 1);
@@ -131,8 +131,8 @@ public class AsignacionDePuntosTest {
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
-        assertEquals(0, kahoot.getPuntajeJugador1());
-        assertEquals(0, kahoot.getPuntajeJugador2());
+        assertEquals(2, kahoot.getPuntajeJugador1());
+        assertEquals(2, kahoot.getPuntajeJugador2());
     }
 
     @Test

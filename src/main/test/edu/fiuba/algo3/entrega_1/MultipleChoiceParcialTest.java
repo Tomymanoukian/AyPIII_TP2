@@ -52,9 +52,7 @@ public class MultipleChoiceParcialTest {
         ListaOpciones opcionesSeleccionadas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionCorrectaAlpha, opcionCorrectaBetta)));
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesSeleccionadas);
 
-        multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador, jugador);
-
-        assertEquals(2, jugador.getPuntos());
+        assertEquals(2, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador));
     }
 
     @Test
@@ -78,9 +76,7 @@ public class MultipleChoiceParcialTest {
         ListaOpciones opcionesSeleccionadas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionCorrectaAlpha)));
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesSeleccionadas);
 
-        multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador, jugador);
-
-        assertEquals(1, jugador.getPuntos());
+        assertEquals(1, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador));
     }
 
     @Test
@@ -104,9 +100,7 @@ public class MultipleChoiceParcialTest {
         ListaOpciones opcionesSeleccionadas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionCorrectaAlpha,opcionIncorrectaJota)));
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesSeleccionadas);
 
-        multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador, jugador);
-
-        assertEquals(0, jugador.getPuntos());
+        assertEquals(0, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador));
     }
 
     @Test
@@ -130,8 +124,6 @@ public class MultipleChoiceParcialTest {
         ListaOpciones opcionesSeleccionadas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionInorrectaDobleV,opcionIncorrectaJota)));
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesSeleccionadas);
 
-        multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador, jugador);
-
-        assertEquals(0, jugador.getPuntos());
+        assertEquals(0, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador));
     }
 }

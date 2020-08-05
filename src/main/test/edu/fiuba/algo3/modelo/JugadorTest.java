@@ -69,6 +69,4 @@ public class JugadorTest {
 
         assertEquals(2, jugador.getPuntos());
     }
-
-
 }

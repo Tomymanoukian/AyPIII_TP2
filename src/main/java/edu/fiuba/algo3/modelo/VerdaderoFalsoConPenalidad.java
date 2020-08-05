@@ -20,7 +20,6 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
         return verdaderoFalsoConPenalidad;
     }
 
-
     private void setRespuestaCorrectaFalso() {
         opcionIncorrecta = new Opcion("Verdadero", -1);
         opcionCorrecta = new Opcion("Falso", 1);

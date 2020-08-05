@@ -51,9 +51,7 @@ public class MultipleChoiceParcialTest {
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
-        multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador,jugador);
-
-        assertEquals(2, jugador.getPuntos());
+        assertEquals(2, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador));
     }
     @Test
     public void testAplicaPuntajeDeUnaListaDeopcionesAdivinandoUno(){
@@ -77,8 +75,7 @@ public class MultipleChoiceParcialTest {
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
-        multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador, jugador);
-        assertEquals(1, jugador.getPuntos());
+        assertEquals(1, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador));
     }
     @Test
     public void testAplicaPuntajeDeUnaRespuestaCorrectaYOtraIncorrectaSumandoCeroPuntos(){
@@ -103,8 +100,7 @@ public class MultipleChoiceParcialTest {
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
-        multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador, jugador);
-        assertEquals(0, jugador.getPuntos());
+        assertEquals(0, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador));
     }
     @Test
     public void testAplicaElPuntajeDeTodasLasopcionesIncorrectas(){
@@ -129,7 +125,6 @@ public class MultipleChoiceParcialTest {
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
-        multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador, jugador);
-        assertEquals(0, jugador.getPuntos());
+        assertEquals(0, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador));
     }
 }
