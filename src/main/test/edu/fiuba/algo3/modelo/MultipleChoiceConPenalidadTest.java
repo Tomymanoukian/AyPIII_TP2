@@ -63,9 +63,7 @@ public class MultipleChoiceConPenalidadTest {
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
-        multipleChoiceConPenalidad.evaluarRespuestaPara(respuestaDelJugador,jugador);
-
-        assertEquals(2, jugador.getPuntos());
+        assertEquals(2, multipleChoiceConPenalidad.evaluarRespuestaPara(respuestaDelJugador));
     }
 
     @Test
@@ -87,9 +85,7 @@ public class MultipleChoiceConPenalidadTest {
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
-        multipleChoiceConPenalidad.evaluarRespuestaPara(respuestaDelJugador,jugador);
-
-        assertEquals(1, jugador.getPuntos());
+        assertEquals(1, multipleChoiceConPenalidad.evaluarRespuestaPara(respuestaDelJugador));
     }
 
     @Test
@@ -112,9 +108,7 @@ public class MultipleChoiceConPenalidadTest {
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
-        multipleChoiceConPenalidad.evaluarRespuestaPara(respuestaDelJugador,jugador);
-
-        assertEquals(0, jugador.getPuntos());
+        assertEquals(0, multipleChoiceConPenalidad.evaluarRespuestaPara(respuestaDelJugador));
     }
 
     @Test
@@ -138,8 +132,6 @@ public class MultipleChoiceConPenalidadTest {
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
-        multipleChoiceConPenalidad.evaluarRespuestaPara(respuestaDelJugador,jugador);
-
-        assertEquals(-2, jugador.getPuntos());
+        assertEquals(-2, multipleChoiceConPenalidad.evaluarRespuestaPara(respuestaDelJugador));
     }
 }

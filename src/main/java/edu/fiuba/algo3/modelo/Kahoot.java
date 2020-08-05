@@ -20,8 +20,8 @@ public class Kahoot {
     }
 
     public void evaluarRespuestas(Pregunta unaPregunta) {
-        unaPregunta.evaluarRespuestaPara(respuestaJugador1, jugador1);
-        unaPregunta.evaluarRespuestaPara(respuestaJugador2, jugador2);
+        jugador1.modificarPuntos(unaPregunta.evaluarRespuestaPara(respuestaJugador1));
+        jugador2.modificarPuntos(unaPregunta.evaluarRespuestaPara(respuestaJugador2));
     }
 
     public int getPuntajeJugador1() {

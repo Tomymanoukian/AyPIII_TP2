@@ -12,9 +12,9 @@ public class MultipleChoiceConPenalidad extends Pregunta {
     }
 
     @Override
-    public void evaluarRespuestaPara(Respuesta unaRespuesta, Jugador unJugador) {
+    public int evaluarRespuestaPara(Respuesta unaRespuesta) {
         ListaOpciones opcionesSeleccionadas = unaRespuesta.getOpcionesSeleccionadas();
-        opcionesSeleccionadas.aplicarPuntajesA(unJugador);
+        return opcionesSeleccionadas.calcularPuntaje();
     }
 
     public ListaOpciones getOpcionesCorrectas() {

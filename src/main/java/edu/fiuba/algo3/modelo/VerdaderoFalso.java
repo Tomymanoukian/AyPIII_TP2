@@ -15,13 +15,13 @@ public class VerdaderoFalso extends Pregunta {
     }
 
     @Override
-    public void evaluarRespuestaPara(Respuesta respuesta, Jugador jugador) {
+    public int evaluarRespuestaPara(Respuesta respuesta) {
         Opcion opcionSeleccionada = respuesta.getOpcionSeleccionada();
 
         if (!opcionSeleccionada.esIgualA(opcionCorrecta) && !opcionSeleccionada.esIgualA(opcionIncorrecta)) {
             throw new OpcionNoValidaException();
         }
 
-        opcionSeleccionada.aplicarPuntajeA(jugador);
+        return opcionSeleccionada.getPuntaje();
     }
 }

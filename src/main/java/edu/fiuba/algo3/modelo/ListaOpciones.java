@@ -105,4 +105,12 @@ public class ListaOpciones {
         }
         return true;
     }
+
+    public int calcularPuntaje() {
+        int i=0;
+        for (Opcion opcion : listaOpciones) {
+            i += opcion.getPuntaje();
+        }
+        return i;
+    }
 }

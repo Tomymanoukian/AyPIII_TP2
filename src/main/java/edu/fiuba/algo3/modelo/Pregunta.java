@@ -7,5 +7,5 @@ public abstract class Pregunta {
         return  consigna;
     }
 
-    public abstract void evaluarRespuestaPara(Respuesta respuesta , Jugador jugador);
+    public abstract int evaluarRespuestaPara(Respuesta respuesta);
 }

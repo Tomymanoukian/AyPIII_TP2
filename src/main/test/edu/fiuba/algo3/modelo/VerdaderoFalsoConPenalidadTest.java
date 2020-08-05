@@ -51,9 +51,7 @@ public class VerdaderoFalsoConPenalidadTest {
         Jugador jugador = new Jugador("Jorge");
         RespuestaUnica respuestaDelJugador = new RespuestaUnica(verdaderoFalsoConPenalidad.getOpcionIncorrecta());
 
-        verdaderoFalsoConPenalidad.evaluarRespuestaPara(respuestaDelJugador, jugador);
-
-        assertEquals(jugador.getPuntos(), -1);
+        assertEquals(-1, verdaderoFalsoConPenalidad.evaluarRespuestaPara(respuestaDelJugador));
     }
 
     @Test
@@ -62,9 +60,7 @@ public class VerdaderoFalsoConPenalidadTest {
         Jugador jugador = new Jugador("Jorge");
         RespuestaUnica respuestaDelJugador = new RespuestaUnica(verdaderoFalsoConPenalidad.getOpcionCorrecta());
 
-        verdaderoFalsoConPenalidad.evaluarRespuestaPara(respuestaDelJugador, jugador);
-
-        assertEquals(jugador.getPuntos(), 1);
+        assertEquals(1, verdaderoFalsoConPenalidad.evaluarRespuestaPara(respuestaDelJugador));
     }
 
 

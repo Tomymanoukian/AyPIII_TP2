@@ -35,7 +35,6 @@ public class VerdaderoFalsoClasicoTest {
 
         VerdaderoFalsoClasico vofClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("bar");
 
-
-        assertThrows(OpcionNoValidaException.class, ()-> vofClasico.evaluarRespuestaPara(respuestaDelJugador, jugador ));
+        assertThrows(OpcionNoValidaException.class, ()-> vofClasico.evaluarRespuestaPara(respuestaDelJugador));
     }
 }

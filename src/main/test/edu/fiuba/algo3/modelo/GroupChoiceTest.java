@@ -47,8 +47,7 @@ public class GroupChoiceTest {
         Jugador jugador = new Jugador("Juan");
         RespuestaDeGrupos respuestasDelJugador = new RespuestaDeGrupos(opcionesGrupoA,opcionesGrupoB);
 
-        preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador, jugador);
-        assertEquals(1, jugador.getPuntos());
+        assertEquals(1, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador));
     }
 
     @Test
@@ -72,8 +71,7 @@ public class GroupChoiceTest {
         Jugador jugador = new Jugador("Juan");
         RespuestaDeGrupos respuestasDelJugador = new RespuestaDeGrupos(opcionesDelJugadorGrupoA,opcionesDelJugadorGrupoB);
 
-        preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador, jugador);
-        assertEquals(0, jugador.getPuntos());
+        assertEquals(0, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador));
     }
 
     @Test
@@ -94,8 +92,7 @@ public class GroupChoiceTest {
         Jugador jugador = new Jugador("Juan");
         RespuestaDeGrupos respuestasDelJugador = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
 
-        preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador, jugador);
-        assertEquals(0, jugador.getPuntos());
+        assertEquals(0, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador));
     }
 
 

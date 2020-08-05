@@ -31,9 +31,9 @@ public class MultipleChoiceClasico extends Pregunta {
     }
 
     @Override
-    public void evaluarRespuestaPara(Respuesta respuesta, Jugador jugador) {
+    public int evaluarRespuestaPara(Respuesta respuesta) {
         ListaOpciones opcionesSeleccionadas = respuesta.getOpcionesSeleccionadas();
-        jugador.modificarPuntos(this.calcularPuntajePara(opcionesSeleccionadas));
+        return(this.calcularPuntajePara(opcionesSeleccionadas));
     }
 
 
