@@ -1,9 +1,23 @@
 package edu.fiuba.algo3.modelo;
 
-public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
+import edu.fiuba.algo3.modelo.excepciones.OpcionNoValidaException;
+
+public class VerdaderoFalsoConPenalidad extends Pregunta {
+
+    protected static Opcion opcionCorrecta;
+    protected static Opcion opcionIncorrecta;
+
     public VerdaderoFalsoConPenalidad(String unaConsigna) {
         super();
         consigna = unaConsigna;
+    }
+
+    public Opcion getOpcionCorrecta() {
+        return opcionCorrecta;
+    }
+
+    public Opcion getOpcionIncorrecta() {
+        return opcionIncorrecta;
     }
 
     public static VerdaderoFalsoConPenalidad crearVerdaderoFalsoCorrectoFalso(String unaConsigna) {
@@ -30,7 +44,14 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
         opcionIncorrecta = new Opcion("Falso", new Puntaje(-1));
     }
 
+    @Override
+    public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
+        Opcion opcionSeleccionada = respuesta.getOpcionSeleccionada();
 
+        if (!opcionSeleccionada.esIgualA(opcionCorrecta) && !opcionSeleccionada.esIgualA(opcionIncorrecta)) {
+            throw new OpcionNoValidaException();
+        }
 
-
+        return opcionSeleccionada.getPuntaje();
+    }
 }
