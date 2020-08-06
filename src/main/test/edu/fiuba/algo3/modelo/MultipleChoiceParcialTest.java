@@ -34,9 +34,9 @@ public class MultipleChoiceParcialTest {
         ListaOpciones opcionesIncorrectas = new ListaOpciones();
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
 
-        Opcion opcionCorrectaAlpha = new Opcion("Alpha",1);
-        Opcion opcionCorrectaBetta = new Opcion("Betta",1);
-        Opcion opcionIncorrectaJota = new Opcion("Jota",0);
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha",new Puntaje(1));
+        Opcion opcionCorrectaBetta = new Opcion("Betta",new Puntaje(1));
+        Opcion opcionIncorrectaJota = new Opcion("Jota",new Puntaje(0));
 
         opcionesCorrectas.agregar(opcionCorrectaAlpha);
         opcionesCorrectas.agregar(opcionCorrectaBetta);
@@ -51,7 +51,7 @@ public class MultipleChoiceParcialTest {
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
-        assertEquals(2, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador));
+        assertEquals(2, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador).getPuntos());
     }
     @Test
     public void testAplicaPuntajeDeUnaListaDeopcionesAdivinandoUno(){
@@ -59,9 +59,9 @@ public class MultipleChoiceParcialTest {
         ListaOpciones opcionesIncorrectas = new ListaOpciones();
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
 
-        Opcion opcionCorrectaAlpha = new Opcion("Alpha",1);
-        Opcion opcionCorrectaBetta = new Opcion("Betta",1);
-        Opcion opcionIncorrectaJota = new Opcion("Jota",0);
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha",new Puntaje(1));
+        Opcion opcionCorrectaBetta = new Opcion("Betta",new Puntaje(1));
+        Opcion opcionIncorrectaJota = new Opcion("Jota",new Puntaje(0));
 
         opcionesCorrectas.agregar(opcionCorrectaAlpha);
         opcionesCorrectas.agregar(opcionCorrectaBetta);
@@ -75,7 +75,7 @@ public class MultipleChoiceParcialTest {
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
-        assertEquals(1, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador));
+        assertEquals(1, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador).getPuntos());
     }
     @Test
     public void testAplicaPuntajeDeUnaRespuestaCorrectaYOtraIncorrectaSumandoCeroPuntos(){
@@ -100,7 +100,7 @@ public class MultipleChoiceParcialTest {
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
-        assertEquals(0, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador));
+        assertEquals(0, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador).getPuntos());
     }
     @Test
     public void testAplicaElPuntajeDeTodasLasopcionesIncorrectas(){
@@ -125,6 +125,6 @@ public class MultipleChoiceParcialTest {
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
-        assertEquals(0, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador));
+        assertEquals(0, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador).getPuntos());
     }
 }

@@ -106,11 +106,12 @@ public class ListaOpciones {
         return true;
     }
 
-    public int calcularPuntaje() {
-        int i=0;
+    public Puntaje calcularPuntaje() {
+        Puntaje puntaje = new Puntaje();
+
         for (Opcion opcion : listaOpciones) {
-            i += opcion.getPuntaje();
+            puntaje.sumarPuntos(opcion.getPuntaje());
         }
-        return i;
+        return puntaje;
     }
 }

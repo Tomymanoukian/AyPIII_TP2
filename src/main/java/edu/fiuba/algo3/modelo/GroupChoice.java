@@ -13,14 +13,15 @@ public class GroupChoice extends Pregunta{
     }
 
     @Override
-    public int evaluarRespuestaPara(Respuesta unaRespuesta) {
+    public Puntaje evaluarRespuestaPara(Respuesta unaRespuesta) {
+        Puntaje puntaje = new Puntaje();
         ListaOpciones opcionesSeleccionadasGrupoA = unaRespuesta.getOpcionesSeleccionadasGrupoA();
         ListaOpciones opcionesSeleccionadasGrupoB = unaRespuesta.getOpcionesSeleccionadasGrupoB();
 
         if(opcionesSeleccionadasGrupoA.contieneLoMismo(opcionesGrupoA) && opcionesSeleccionadasGrupoB.contieneLoMismo(opcionesGrupoB)){
-            return 1;
+            puntaje.establecerPuntos(1);
         }
-        return 0;
+        return puntaje;
 
         //unJugador.modificarPuntos(unaRespuesta.calcularPuntaje(opcionesGrupoA, opcionesGrupoB));
     }

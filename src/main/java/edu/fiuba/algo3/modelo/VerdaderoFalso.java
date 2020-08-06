@@ -15,7 +15,7 @@ public class VerdaderoFalso extends Pregunta {
     }
 
     @Override
-    public int evaluarRespuestaPara(Respuesta respuesta) {
+    public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
         Opcion opcionSeleccionada = respuesta.getOpcionSeleccionada();
 
         if (!opcionSeleccionada.esIgualA(opcionCorrecta) && !opcionSeleccionada.esIgualA(opcionIncorrecta)) {

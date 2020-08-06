@@ -7,5 +7,5 @@ public abstract class Pregunta {
         return  consigna;
     }
 
-    public abstract int evaluarRespuestaPara(Respuesta respuesta);
+    public abstract Puntaje evaluarRespuestaPara(Respuesta respuesta);
 }

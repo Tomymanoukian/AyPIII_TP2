@@ -20,16 +20,16 @@ public class Kahoot {
     }
 
     public void evaluarRespuestas(Pregunta unaPregunta) {
-        jugador1.modificarPuntos(unaPregunta.evaluarRespuestaPara(respuestaJugador1));
-        jugador2.modificarPuntos(unaPregunta.evaluarRespuestaPara(respuestaJugador2));
+        jugador1.sumarPuntos(unaPregunta.evaluarRespuestaPara(respuestaJugador1));
+        jugador2.sumarPuntos(unaPregunta.evaluarRespuestaPara(respuestaJugador2));
     }
 
-    public int getPuntajeJugador1() {
-        return jugador1.getPuntos();
+    public Puntaje getPuntajeJugador1() {
+        return jugador1.getPuntaje();
     }
 
-    public int getPuntajeJugador2() {
-        return jugador2.getPuntos();
+    public Puntaje getPuntajeJugador2() {
+        return jugador2.getPuntaje();
     }
 
 

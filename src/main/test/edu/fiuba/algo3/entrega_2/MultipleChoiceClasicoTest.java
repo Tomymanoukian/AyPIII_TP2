@@ -52,7 +52,7 @@ public class MultipleChoiceClasicoTest {
         respuestasElegidas.agregar(opcionCorrecta1);
         respuestasElegidas.agregar(opcionCorrecta2);
 
-        assertEquals(1, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas));
+        assertEquals(1, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas).getPuntos());
     }
 
     @Test
@@ -74,7 +74,7 @@ public class MultipleChoiceClasicoTest {
 
         respuestasElegidas.agregar(opcionIncorrecta);
 
-        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas));
+        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas).getPuntos());
     }
 
     @Test
@@ -99,7 +99,7 @@ public class MultipleChoiceClasicoTest {
         respuestasElegidas.agregar(opcionCorrecta1);
         respuestasElegidas.agregar(opcionIncorrecta);
 
-        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas));
+        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas).getPuntos());
     }
 
     @Test
@@ -126,6 +126,6 @@ public class MultipleChoiceClasicoTest {
         respuestasElegidas.agregar(opcionCorrecta1);
         respuestasElegidas.agregar(opcionCorrecta2);
 
-        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas));
+        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas).getPuntos());
     }
 }

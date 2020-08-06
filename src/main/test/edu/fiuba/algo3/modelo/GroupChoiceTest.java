@@ -14,10 +14,10 @@ public class GroupChoiceTest {
 
         String consigna = "Agrupe en las categorias A y B:";
 
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA", 0);
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA", 0);
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB", 0);
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB", 0);
+        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
+        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
+        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
+        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
 
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB)));
@@ -34,10 +34,10 @@ public class GroupChoiceTest {
 
         String consigna = "Agrupe en las categorias A y B:";
 
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA", 0);
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA", 0);
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB", 0);
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB", 0);
+        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
+        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
+        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
+        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
 
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB)));
@@ -47,7 +47,7 @@ public class GroupChoiceTest {
         Jugador jugador = new Jugador("Juan");
         RespuestaDeGrupos respuestasDelJugador = new RespuestaDeGrupos(opcionesGrupoA,opcionesGrupoB);
 
-        assertEquals(1, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador));
+        assertEquals(1, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador).getPuntos());
     }
 
     @Test
@@ -55,10 +55,10 @@ public class GroupChoiceTest {
 
         String consigna = "Agrupe en las categorias A y B:";
 
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA", 0);
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA", 0);
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB", 0);
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB", 0);
+        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
+        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
+        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
+        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
 
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB)));
@@ -71,7 +71,7 @@ public class GroupChoiceTest {
         Jugador jugador = new Jugador("Juan");
         RespuestaDeGrupos respuestasDelJugador = new RespuestaDeGrupos(opcionesDelJugadorGrupoA,opcionesDelJugadorGrupoB);
 
-        assertEquals(0, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador));
+        assertEquals(0, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador).getPuntos());
     }
 
     @Test
@@ -79,10 +79,10 @@ public class GroupChoiceTest {
 
         String consigna = "Agrupe en las categorias A y B:";
 
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA", 0);
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA", 0);
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB", 0);
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB", 0);
+        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
+        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
+        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
+        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
 
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB)));
@@ -92,7 +92,7 @@ public class GroupChoiceTest {
         Jugador jugador = new Jugador("Juan");
         RespuestaDeGrupos respuestasDelJugador = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
 
-        assertEquals(0, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador));
+        assertEquals(0, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador).getPuntos());
     }
 
 
