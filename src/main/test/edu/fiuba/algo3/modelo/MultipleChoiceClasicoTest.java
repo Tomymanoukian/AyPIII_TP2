@@ -2,10 +2,12 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class MultipleChoiceClasicoTest {
@@ -19,20 +21,54 @@ public class MultipleChoiceClasicoTest {
     private Opcion opcionIncorrecta1;
 
     private ListaOpciones opcionesElegidas;
+    
 
     @BeforeEach
     public void setUp() {
-        consigna = "Indicar cuáles de las siguientes opciones son colores";
+      consigna = "Indicar cuáles de las siguientes opciones son colores";
 
-        opcionCorrecta1 = new Opcion("Amarillo");
-        opcionCorrecta2 = new Opcion("Azul");
-        opcionIncorrecta1 = new Opcion("Tractor");
+      opcionCorrecta1 = new Opcion("Amarillo");
+      opcionCorrecta2 = new Opcion("Azul");
+      opcionIncorrecta1 = new Opcion("Tractor");
+      
+      opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrecta1, opcionCorrecta2));
+      opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionIncorrecta1));
+        
+      opcionesElegidas = new ListaOpciones();
 
-        opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrecta1, opcionCorrecta2));
-        opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionIncorrecta1));
+    }
+    @Test
+    public void testMultipleChoiceClasicoLanzaExcepcionSiSeLeIngresan6Opciones(){
+        ListaOpciones respuestasCorrectas = new ListaOpciones();
+        ListaOpciones respuestasIncorrectas = new ListaOpciones();
+        String consigna = "Indicar cuáles de las siguientes opciones son colores";
 
-        opcionesElegidas = new ListaOpciones();
+        Opcion opcionCorrecta1 = new Opcion("Amarillo");
+        Opcion opcionCorrecta2 = new Opcion("Azul");
+        Opcion opcionCorrecta3 = new Opcion("Verde");
+        Opcion opcionCorrecta4 = new Opcion("Rojo");
+        Opcion opcionIncorrecta1 = new Opcion("Tractor");
+        Opcion opcionIncorrecta2 = new Opcion("Auto");
 
+        respuestasCorrectas.agregar(opcionCorrecta1);
+        respuestasCorrectas.agregar(opcionCorrecta2);
+        respuestasCorrectas.agregar(opcionCorrecta3);
+        respuestasCorrectas.agregar(opcionCorrecta4);
+        respuestasIncorrectas.agregar(opcionIncorrecta1);
+        respuestasIncorrectas.agregar(opcionIncorrecta2);
+
+        assertThrows(CantidadDeOpcionesInvalidaException.class, ()-> new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas));
+    }
+    @Test
+    public void testMultipleChoiceClasicoLanzaExcepcionSiSeLeIngresa1Opcion(){
+        ListaOpciones respuestasCorrectas = new ListaOpciones();
+        ListaOpciones respuestasIncorrectas = new ListaOpciones();
+        String consigna = "Indicar cuáles de las siguientes opciones son colores";
+
+        Opcion opcionCorrecta1 = new Opcion("Amarillo");
+
+        respuestasCorrectas.agregar(opcionCorrecta1);
+        assertThrows(CantidadDeOpcionesInvalidaException.class, ()-> new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas));
     }
 
 

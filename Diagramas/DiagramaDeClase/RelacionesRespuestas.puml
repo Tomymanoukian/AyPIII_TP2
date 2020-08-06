@@ -1,0 +1,59 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+hide circle
+
+Interface Respuesta {
+    +getOpcionesSeleccionadas()
+    +getOpcionSeleccionada()
+    +getOpcionesSeleccionadasGrupoA()
+    +getOpcionesSeleccionadasGrupoB()
+}
+
+class RespuestaEnLista{
+    -respuestasSeleccionadas
+    +getOpcionesSeleccionadas()
+    +getOpcionSeleccionada()
+    +getOpcionesSeleccionadasGrupoA()
+    +getOpcionesSeleccionadasGrupoB()
+}
+
+class RespuestaUnica{
+    -opcionSeleccionada
+    +getOpcionesSeleccionadas()
+    +getOpcionSeleccionada()
+    +getOpcionesSeleccionadasGrupoA()
+    +getOpcionesSeleccionadasGrupoB()
+}
+
+class RespuestaDeGrupos{
+    -opcionesSeleccionadasGrupoA
+    -opcionesSeleccionadasGrupoB
+    +getOpcionesSeleccionadas()
+    +getOpcionSeleccionada()
+    +getOpcionesSeleccionadasGrupoA()
+    +getOpcionesSeleccionadasGrupoB()
+}
+
+abstract class Pregunta {
+    -consigna
+    {abstract}+evaluarRespuestaPara(unasRespuestas, unJugador)
+}
+
+class Kahoot {
+    +evaluarRespuestas(unaPregunta)
+    +getPuntajeJugador1()
+    +getPuntajeJugador2()
+}
+
+Respuesta <|---. RespuestaDeGrupos
+Respuesta <|---. RespuestaEnLista
+Respuesta <|---. RespuestaUnica
+
+Pregunta .--> Respuesta
+Kahoot ---> Respuesta
+
+
+
+@enduml
