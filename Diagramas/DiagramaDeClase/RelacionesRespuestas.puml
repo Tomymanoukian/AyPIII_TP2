@@ -51,9 +51,8 @@ Respuesta <|---. RespuestaDeGrupos
 Respuesta <|---. RespuestaEnLista
 Respuesta <|---. RespuestaUnica
 
-Kahoot ---> Respuesta
-
 Pregunta .--> Respuesta
+Kahoot ---> Respuesta
 
 
 
