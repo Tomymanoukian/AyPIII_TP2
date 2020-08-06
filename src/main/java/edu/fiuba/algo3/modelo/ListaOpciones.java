@@ -21,10 +21,6 @@ public class ListaOpciones {
         listaOpciones.addAll(unaListaDeRespuestas.obtenerLista());
     }
 
-    public void limpiar() {
-        listaOpciones.clear();
-    }
-
     public void agregar(Opcion opcion) {
         listaOpciones.add(opcion);
     }
@@ -77,14 +73,6 @@ public class ListaOpciones {
 
     public int cantidadDeRespuestas() {
         return listaOpciones.size();
-    }
-
-    public Opcion obtenerPrimero() {
-        return listaOpciones.get(0);
-    }
-
-    public void aplicarPuntajesA(Jugador jugador) {
-        listaOpciones.forEach(respuesta -> respuesta.aplicarPuntajeA(jugador));
     }
 
     public boolean esIgual(ListaOpciones otraLista){

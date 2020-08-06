@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,17 +12,27 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class OrderedChoiceTest {
+    private String consigna;
+
+    private Opcion opcion1ra;
+    private Opcion opcion2da;
+    private Opcion opcion3ra;
+
+    private ListaOpciones listaDeOpciones;
+
+    @BeforeEach
+    public void setup() {
+        consigna = "Ordenar los numeros de menor a mayor";
+
+        opcion1ra = new Opcion("1");
+        opcion2da = new Opcion("2");
+        opcion3ra = new Opcion("3");
+
+        listaDeOpciones = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1ra, opcion2da, opcion3ra)));
+    }
+
     @Test
     public void testCrearOrderedChoice() {
-
-        String consigna = "Ordenar los numeros de menor a mayor";
-
-        Opcion opcion1 = new Opcion("1");
-        Opcion opcion2 = new Opcion("2");
-        Opcion opcion3 = new Opcion("3");
-
-        ListaOpciones listaDeOpciones = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3)));
-
         OrderedChoice orderedChoice = new OrderedChoice(consigna, listaDeOpciones);
 
         assertEquals("Ordenar los numeros de menor a mayor", orderedChoice.getConsigna());
@@ -30,18 +41,9 @@ public class OrderedChoiceTest {
 
     @Test
     public void testCalculaPuntajeParaRespuestasOrdenadas() {
-
-        String consigna = "Ordenar los numeros de menor a mayor";
-
-        Opcion opcion1 = new Opcion("1");
-        Opcion opcion2 = new Opcion("2");
-        Opcion opcion3 = new Opcion("3");
-
-        ListaOpciones listaDeOpciones = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3)));
-
         OrderedChoice orderedChoice = new OrderedChoice(consigna, listaDeOpciones);
 
-        ListaOpciones opcionesElegidas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3)));
+        ListaOpciones opcionesElegidas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1ra, opcion2da, opcion3ra)));
 
 
         assertEquals(1, orderedChoice.calcularPuntajePara(opcionesElegidas).getPuntos());
@@ -49,45 +51,34 @@ public class OrderedChoiceTest {
 
     @Test
     public void testCalculaPuntajeParaRespuestasDesordenadas() {
-
-        String consigna = "Ordenar los numeros de menor a mayor";
-
-        Opcion opcion1 = new Opcion("1");
-        Opcion opcion2 = new Opcion("2");
-        Opcion opcion3 = new Opcion("3");
-
-        ListaOpciones listaDeOpciones = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3)));
-
         OrderedChoice orderedChoice = new OrderedChoice(consigna, listaDeOpciones);
 
-        ListaOpciones opcionesElegidas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1, opcion3, opcion2)));
+        ListaOpciones opcionesElegidas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1ra, opcion3ra, opcion2da)));
 
 
         assertEquals(0, orderedChoice.calcularPuntajePara(opcionesElegidas).getPuntos());
     }
+
     @Test
-    public void testOrederedChoiceLanzaExcepcionSiSeLeIngresanMenosDeDosOpciones(){
-        String consigna = "Ordenar los numeros de menor a mayor";
+    public void testOrederedChoiceLanzaExcepcionSiSeLeIngresanMenosDeDosOpciones() {
+        Opcion opcionUnica = new Opcion("1");
 
-        Opcion opcion1 = new Opcion("1");
-        ListaOpciones listaDeOpciones = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1)));
+        ListaOpciones listaDeOpcionesInvalida = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionUnica)));
 
-        assertThrows(CantidadDeOpcionesInvalidaException.class, ()-> new OrderedChoice(consigna, listaDeOpciones));
+        assertThrows(CantidadDeOpcionesInvalidaException.class, () -> new OrderedChoice(consigna, listaDeOpcionesInvalida));
     }
 
     @Test
-    public void testOrederedChoiceLanzaExcepcionSiSeLeIngresanMasDeCincoOpciones(){
-        String consigna = "Ordenar los numeros de menor a mayor";
+    public void testOrederedChoiceLanzaExcepcionSiSeLeIngresanMasDeCincoOpciones() {
+        Opcion opcion1ra = new Opcion("1");
+        Opcion opcion2da = new Opcion("2");
+        Opcion opcion3ra = new Opcion("3");
+        Opcion opcion4ta = new Opcion("4");
+        Opcion opcion5ta = new Opcion("5");
+        Opcion opcion6ta = new Opcion("6");
 
-        Opcion opcion1 = new Opcion("1");
-        Opcion opcion2 = new Opcion("2");
-        Opcion opcion3 = new Opcion("3");
-        Opcion opcion4 = new Opcion("4");
-        Opcion opcion5 = new Opcion("5");
-        Opcion opcion6 = new Opcion("6");
+        ListaOpciones listaDeOpcionesInvalida = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1ra, opcion2da, opcion3ra, opcion4ta, opcion5ta, opcion6ta)));
 
-        ListaOpciones listaDeOpciones = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6)));
-
-        assertThrows(CantidadDeOpcionesInvalidaException.class, ()-> new OrderedChoice(consigna, listaDeOpciones));
+        assertThrows(CantidadDeOpcionesInvalidaException.class, () -> new OrderedChoice(consigna, listaDeOpcionesInvalida));
     }
 }

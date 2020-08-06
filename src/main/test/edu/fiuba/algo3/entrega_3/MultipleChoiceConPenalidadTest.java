@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.entrega_3;
 
 import edu.fiuba.algo3.modelo.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,32 +10,36 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MultipleChoiceConPenalidadTest {
+    private String consigna;
 
-    /*@Before    ///////Agregar después en una refactorización
+    private Opcion opcionCorrecta1;
+    private Opcion opcionCorrecta2;
+    private Opcion opcionIncorrecta1;
+    private Opcion opcionIncorrecta2;
+
+    private ListaOpciones opcionesCorrectas ;
+    private ListaOpciones opcionesIncorrectas ;
+
+    private ListaOpciones opcionesElegidas;
+
+    @BeforeEach
     public void setup (){
 
-        String consigna = "Indicar cuales de las siguientes opciones son quesos";
+        consigna = "Indicar cuales de las siguientes opciones son quesos";
 
-        Opcion opcionCorrectaCheddar = new Opcion("Cheddar");
-        Opcion opcionCorrectaRoquefort = new Opcion("Roquefort");
-        Opcion opcionIncorrectaKetchup = new Opcion("Ketchup");
+         opcionCorrecta1 = new Opcion("Cheddar",new Puntaje(1));
+         opcionCorrecta2 = new Opcion("Roquefort",new Puntaje(1));
+         opcionIncorrecta1 = new Opcion("Ketchup",new Puntaje(-1));
+         opcionIncorrecta2 = new Opcion("Mostaza",new Puntaje(-1));
 
-        ListaOpciones opcionesCorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionCorrectaCheddar, opcionCorrectaRoquefort)));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionIncorrectaKetchup)));
-    }*/
+         opcionesCorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionCorrecta1, opcionCorrecta2)));
+         opcionesIncorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionIncorrecta1,opcionIncorrecta2)));
+
+         opcionesElegidas = new ListaOpciones();
+    }
 
     @Test
     public void testCrearMultipleChoiceConPenalidad(){
-
-        String consigna = "Indicar cuales de las siguientes opciones son quesos";
-
-        Opcion opcionCorrectaCheddar = new Opcion("Cheddar");
-        Opcion opcionCorrectaRoquefort = new Opcion("Roquefort");
-        Opcion opcionIncorrectaKetchup = new Opcion("Ketchup");
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionCorrectaCheddar, opcionCorrectaRoquefort)));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionIncorrectaKetchup)));
-
         MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
         assertEquals("Indicar cuales de las siguientes opciones son quesos", multipleChoiceConPenalidad.getConsigna());
@@ -44,21 +49,10 @@ public class MultipleChoiceConPenalidadTest {
 
     @Test
     public void testAplicaPuntajeAUnJugadorDeDosopcionesCorrectas(){
-        String consigna = "Indicar cuales de las siguientes opciones son quesos";
-
-        Opcion opcionCorrectaCheddar = new Opcion("Cheddar",new Puntaje(1));
-        Opcion opcionCorrectaRoquefort = new Opcion("Roquefort",new Puntaje(1));
-        Opcion opcionIncorrectaKetchup = new Opcion("Ketchup",new Puntaje(-1));
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionCorrectaCheddar, opcionCorrectaRoquefort)));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionIncorrectaKetchup)));
-
         MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador jugador = new Jugador("Pepe");
-        ListaOpciones opcionesElegidas = new ListaOpciones();
-        opcionesElegidas.agregar(opcionCorrectaCheddar);
-        opcionesElegidas.agregar(opcionCorrectaRoquefort);
+        opcionesElegidas.agregar(opcionCorrecta1);
+        opcionesElegidas.agregar(opcionCorrecta1);
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
@@ -67,20 +61,9 @@ public class MultipleChoiceConPenalidadTest {
 
     @Test
     public void testAplicaPuntajeAUnJugadorDeUnaOpcionCorrecta(){
-        String consigna = "Indicar cuales de las siguientes opciones son quesos";
-
-        Opcion opcionCorrectaCheddar = new Opcion("Cheddar",new Puntaje(1));
-        Opcion opcionCorrectaRoquefort = new Opcion("Roquefort",new Puntaje(1));
-        Opcion opcionIncorrectaKetchup = new Opcion("Ketchup",new Puntaje(-1));
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionCorrectaCheddar, opcionCorrectaRoquefort)));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionIncorrectaKetchup)));
-
         MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador jugador = new Jugador("Pepe");
-        ListaOpciones opcionesElegidas = new ListaOpciones();
-        opcionesElegidas.agregar(opcionCorrectaCheddar);
+        opcionesElegidas.agregar(opcionCorrecta1);
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
@@ -89,21 +72,10 @@ public class MultipleChoiceConPenalidadTest {
 
     @Test
     public void testAplicaPuntajeDeUnaRespuestaCorrectaYOtraIncorrectaSumandoCeroPuntos(){
-        String consigna = "Indicar cuales de las siguientes opciones son quesos";
-
-        Opcion opcionCorrectaCheddar = new Opcion("Cheddar",new Puntaje(1));
-        Opcion opcionCorrectaRoquefort = new Opcion("Roquefort",new Puntaje(1));
-        Opcion opcionIncorrectaKetchup = new Opcion("Ketchup",new Puntaje(-1));
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionCorrectaCheddar, opcionCorrectaRoquefort)));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionIncorrectaKetchup)));
-
         MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador jugador = new Jugador("Pepe");
-        ListaOpciones opcionesElegidas = new ListaOpciones();
-        opcionesElegidas.agregar(opcionCorrectaCheddar);
-        opcionesElegidas.agregar(opcionIncorrectaKetchup);
+        opcionesElegidas.agregar(opcionCorrecta1);
+        opcionesElegidas.agregar(opcionIncorrecta1);
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
@@ -112,22 +84,10 @@ public class MultipleChoiceConPenalidadTest {
 
     @Test
     public void testAplicaElPuntajeDe2OpcionesIncorrectas(){
-        String consigna = "Indicar cuales de las siguientes opciones son quesos";
-
-        Opcion opcionCorrectaCheddar = new Opcion("Cheddar",new Puntaje(1));
-        Opcion opcionCorrectaRoquefort = new Opcion("Roquefort",new Puntaje(1));
-        Opcion opcionIncorrectaKetchup = new Opcion("Ketchup",new Puntaje(-1));
-        Opcion opcionIncorrectaMostaza = new Opcion("Mostaza",new Puntaje(-1));
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionCorrectaCheddar, opcionCorrectaRoquefort)));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionIncorrectaKetchup)));
-
         MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador jugador = new Jugador("Pepe");
-        ListaOpciones opcionesElegidas = new ListaOpciones();
-        opcionesElegidas.agregar(opcionIncorrectaKetchup);
-        opcionesElegidas.agregar(opcionIncorrectaMostaza);
+        opcionesElegidas.agregar(opcionIncorrecta1);
+        opcionesElegidas.agregar(opcionIncorrecta2);
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 

@@ -52,6 +52,8 @@ public class ListaOpcionesTest {
 
         assert(otraListaOpciones.contieneTodo(listaOpciones));
     }
+
+    @Test
     public void testCompruebaQueUnaListaNoContieneTodosLosElementosDeOtraLista(){
         ListaOpciones listaOpciones = new ListaOpciones();
         Opcion opcion1 = new Opcion("Respuesta1");

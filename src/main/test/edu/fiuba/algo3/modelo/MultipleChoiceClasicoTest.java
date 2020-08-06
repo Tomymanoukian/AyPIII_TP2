@@ -1,127 +1,86 @@
 package edu.fiuba.algo3.modelo;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class MultipleChoiceClasicoTest {
+
+    private ListaOpciones opcionesCorrectas;
+    private ListaOpciones opcionesIncorrectas;
+    private String consigna;
+
+    private Opcion opcionCorrecta1;
+    private Opcion opcionCorrecta2;
+    private Opcion opcionIncorrecta1;
+
+    private ListaOpciones opcionesElegidas;
+
+    @BeforeEach
+    public void setUp() {
+        consigna = "Indicar cuáles de las siguientes opciones son colores";
+
+        opcionCorrecta1 = new Opcion("Amarillo");
+        opcionCorrecta2 = new Opcion("Azul");
+        opcionIncorrecta1 = new Opcion("Tractor");
+
+        opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrecta1, opcionCorrecta2));
+        opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionIncorrecta1));
+
+        opcionesElegidas = new ListaOpciones();
+
+    }
+
+
     @Test
     public void testCrearMultipleChoiceClasico() {
-
-        ListaOpciones respuestasCorrectas = new ListaOpciones();
-        ListaOpciones respuestasIncorrectas = new ListaOpciones();
-        String consigna = "Indicar cuáles de las siguientes opciones son colores";
-
-        Opcion opcionCorrecta1 = new Opcion("Amarillo");
-        Opcion opcionCorrecta2 = new Opcion("Azul");
-        Opcion opcionIncorrecta1 = new Opcion("Tractor");
-
-        respuestasCorrectas.agregar(opcionCorrecta1);
-        respuestasCorrectas.agregar(opcionCorrecta2);
-        respuestasIncorrectas.agregar(opcionIncorrecta1);
-
-        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
 
         assertEquals("Indicar cuáles de las siguientes opciones son colores", multipleChoiceClasico.getConsigna());
-        assert (multipleChoiceClasico.getOpcionesCorrectas().contieneLoMismo(respuestasCorrectas));
-        assert (multipleChoiceClasico.getOpcionesIncorrectas().contieneLoMismo(respuestasIncorrectas));
+        assert (multipleChoiceClasico.getOpcionesCorrectas().contieneLoMismo(opcionesCorrectas));
+        assert (multipleChoiceClasico.getOpcionesIncorrectas().contieneLoMismo(opcionesIncorrectas));
     }
 
     @Test
     public void testCalculaPuntajeParaTodasRespuestasCorrectas() {
 
-        ListaOpciones respuestasCorrectas = new ListaOpciones();
-        ListaOpciones respuestasIncorrectas = new ListaOpciones();
-        String consigna = "Indicar cuáles de las siguientes opciones son colores";
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Opcion opcionCorrecta1 = new Opcion("Amarillo");
-        Opcion opcionCorrecta2 = new Opcion("Azul");
-        Opcion opcionIncorrecta1 = new Opcion("Tractor");
+        opcionesElegidas.agregar(opcionCorrecta1);
+        opcionesElegidas.agregar(opcionCorrecta2);
 
-        respuestasCorrectas.agregar(opcionCorrecta1);
-        respuestasCorrectas.agregar(opcionCorrecta2);
-        respuestasIncorrectas.agregar(opcionIncorrecta1);
-
-        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
-
-        ListaOpciones respuestasElegidas = new ListaOpciones();
-        respuestasElegidas.agregar(opcionCorrecta1);
-        respuestasElegidas.agregar(opcionCorrecta2);
-
-        assertEquals(1, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas).getPuntos());
+        assertEquals(1, multipleChoiceClasico.calcularPuntajePara(opcionesElegidas).getPuntos());
     }
 
     @Test
     public void testCalculaPuntajeDeUnaListaDeRespuestasConUnaIncorrecta() {
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        ListaOpciones respuestasCorrectas = new ListaOpciones();
-        ListaOpciones respuestasIncorrectas = new ListaOpciones();
-        String consigna = "Indicar cuáles de las siguientes opciones son colores";
+        opcionesElegidas.agregar(opcionIncorrecta1);
 
-        Opcion opcionCorrecta = new Opcion("Amarillo");
-        Opcion opcionIncorrecta = new Opcion("Tractor");
-
-        respuestasCorrectas.agregar(opcionCorrecta);
-        respuestasIncorrectas.agregar(opcionIncorrecta);
-
-        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
-
-        ListaOpciones respuestasElegidas = new ListaOpciones();
-
-        respuestasElegidas.agregar(opcionIncorrecta);
-
-        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas).getPuntos());
+        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(opcionesElegidas).getPuntos());
     }
 
     @Test
     public void testCalculaPuntajeDeUnaListaDeRespuestasConUnaCorrectaYUnaIncorrecta() {
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        ListaOpciones respuestasCorrectas = new ListaOpciones();
-        ListaOpciones respuestasIncorrectas = new ListaOpciones();
-        String consigna = "Indicar cuáles de las siguientes opciones son colores";
+        opcionesElegidas.agregar(opcionCorrecta1);
+        opcionesElegidas.agregar(opcionIncorrecta1);
 
-        Opcion opcionCorrecta1 = new Opcion("Amarillo");
-        Opcion opcionCorrecta2 = new Opcion("Azul");
-        Opcion opcionIncorrecta = new Opcion("Tractor");
-
-        respuestasCorrectas.agregar(opcionCorrecta1);
-        respuestasCorrectas.agregar(opcionCorrecta2);
-        respuestasIncorrectas.agregar(opcionIncorrecta);
-
-        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
-
-        ListaOpciones respuestasElegidas = new ListaOpciones();
-
-        respuestasElegidas.agregar(opcionCorrecta1);
-        respuestasElegidas.agregar(opcionIncorrecta);
-
-        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas).getPuntos());
+        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(opcionesElegidas).getPuntos());
     }
 
     @Test
     public void testCalculaPuntajeDeUnaListaDeRespuestasConAlgunasCorrectas() {
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        ListaOpciones respuestasCorrectas = new ListaOpciones();
-        ListaOpciones respuestasIncorrectas = new ListaOpciones();
-        String consigna = "Indicar cuáles de las siguientes opciones son colores";
+        opcionesElegidas.agregar(opcionCorrecta1);
 
-        Opcion opcionCorrecta1 = new Opcion("Amarillo");
-        Opcion opcionCorrecta2 = new Opcion("Azul");
-        Opcion opcionCorrecta3 = new Opcion("Verde");
-        Opcion opcionIncorrecta = new Opcion("Tractor");
-
-        respuestasCorrectas.agregar(opcionCorrecta1);
-        respuestasCorrectas.agregar(opcionCorrecta2);
-        respuestasCorrectas.agregar(opcionCorrecta3);
-        respuestasIncorrectas.agregar(opcionIncorrecta);
-
-        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, respuestasCorrectas, respuestasIncorrectas);
-
-        ListaOpciones respuestasElegidas = new ListaOpciones();
-
-        respuestasElegidas.agregar(opcionCorrecta1);
-        respuestasElegidas.agregar(opcionCorrecta2);
-
-        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuestasElegidas).getPuntos());
+        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(opcionesElegidas).getPuntos());
     }
 }
