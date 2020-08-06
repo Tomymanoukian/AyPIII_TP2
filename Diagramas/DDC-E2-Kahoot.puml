@@ -46,11 +46,18 @@ interface Respuesta {
     +getOpcionesSeleccionadasGrupoB();
 }
 
+class Puntaje {
+    -puntos
+    +sumarPuntos (unPuntaje)
+    +multiplicarPuntos (unPuntaje)
+}
+
 Jugador " 2" <- Kahoot
 Kahoot .> Pregunta
 Respuesta "2      " <-- Kahoot
 
 Kahoot ..> BonusDePuntaje
+Kahoot ..> Puntaje
 
 ListaDeExclusividades "2  "<-- Kahoot
 ListaDeMultiplicadores "2   "<-- Kahoot
