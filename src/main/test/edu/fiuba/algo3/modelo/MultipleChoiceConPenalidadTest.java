@@ -67,6 +67,18 @@ public class MultipleChoiceConPenalidadTest {
 
         assertThrows(CantidadDeOpcionesInvalidaException.class, () -> new MultipleChoiceConPenalidad(consigna, respuestasCorrectas, respuestasIncorrectas));
     }
+    @Test
+    public void testMultipleChoiceConPenalidadLanzaExcepcionSiSeLeIngresa1Opcion() {
+        ListaOpciones respuestasCorrectas = new ListaOpciones();
+        ListaOpciones respuestasIncorrectas = new ListaOpciones();
+        String consigna = "Indicar cuáles de las siguientes opciones son colores";
+
+        Opcion opcionCorrecta1 = new Opcion("Amarillo");
+
+        respuestasCorrectas.agregar(opcionCorrecta1);
+
+        assertThrows(CantidadDeOpcionesInvalidaException.class, () -> new MultipleChoiceConPenalidad(consigna, respuestasCorrectas, respuestasIncorrectas));
+    }
 
     @Test
     public void testAplicaPuntajeAUnJugadorDeDosopcionesCorrectas(){

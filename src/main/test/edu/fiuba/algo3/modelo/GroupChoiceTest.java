@@ -48,6 +48,17 @@ public class GroupChoiceTest {
 
         assertThrows(CantidadDeOpcionesInvalidaException.class, ()-> new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB));
     }
+    @Test
+    public void testGroupChoiceLanzaExcepcionSiSeLeIngresa1Opcion(){
+        String consigna = "Agrupe las opciones en dos grupos";
+
+        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
+
+        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA)));
+        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList()));
+
+        assertThrows(CantidadDeOpcionesInvalidaException.class, ()-> new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB));
+    }
 
     @Test
     public void testLeAsignaUnPuntoDeUnaRespuestaDeGruposCorrecta(){
