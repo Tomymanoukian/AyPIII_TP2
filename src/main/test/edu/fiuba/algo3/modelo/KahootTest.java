@@ -14,11 +14,12 @@ public class KahootTest {
 
         Kahoot kahoot = new Kahoot(pablo, matias);
 
-        assertEquals(0,kahoot.getPuntajeJugador1());
-        assertEquals(0,kahoot.getPuntajeJugador2());
+        assertEquals(0,kahoot.getPuntajeJugador1().getPuntos());
+        assertEquals(0,kahoot.getPuntajeJugador2().getPuntos());
 
     }
 
+    @Test
     public void testSeCreaUnKahootConDosJugadoresPidiendoleElPuntajeAlJugador1(){
 
         Jugador martin = new Jugador("Martin");
@@ -26,10 +27,11 @@ public class KahootTest {
 
         Kahoot kahoot = new Kahoot(martin, jose);
 
-        assertEquals(0,kahoot.getPuntajeJugador1());
+        assertEquals(0,kahoot.getPuntajeJugador1().getPuntos());
 
     }
 
+    @Test
     public void testSeCreaUnKahootConDosJugadoresPidiendoleElPuntajeAlJugador2(){
 
         Jugador martin = new Jugador("Martin");
@@ -37,10 +39,7 @@ public class KahootTest {
 
         Kahoot kahoot = new Kahoot(martin, jose);
 
-        assertEquals(0,kahoot.getPuntajeJugador2());
+        assertEquals(0,kahoot.getPuntajeJugador2().getPuntos());
 
     }
-
-
-
 }

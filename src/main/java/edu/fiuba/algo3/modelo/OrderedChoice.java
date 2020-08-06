@@ -21,15 +21,16 @@ public class OrderedChoice extends Pregunta {
         return super.getConsigna();
     }
 
-    public int calcularPuntajePara(ListaOpciones opcionesElegidas) {
+    public Puntaje calcularPuntajePara(ListaOpciones opcionesElegidas) {
+        Puntaje puntaje = new Puntaje();
         if(listaDeOpciones.esIgual(opcionesElegidas)){
-            return 1;
+            puntaje.establecerPuntos(1);
         }
-        return 0;
+        return puntaje;
     }
 
     @Override
-    public int evaluarRespuestaPara(Respuesta unaRespuesta) {
+    public Puntaje evaluarRespuestaPara(Respuesta unaRespuesta) {
         return this.calcularPuntajePara(unaRespuesta.getOpcionesSeleccionadas());
     }
 }

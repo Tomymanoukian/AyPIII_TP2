@@ -23,15 +23,16 @@ public class MultipleChoiceClasico extends Pregunta {
         return opcionesIncorrectas;
     }
 
-    public int calcularPuntajePara(ListaOpciones opcionesSeleccionadas) {
+    public Puntaje calcularPuntajePara(ListaOpciones opcionesSeleccionadas) {
+        Puntaje puntaje = new Puntaje();
         if (opcionesSeleccionadas.contieneLoMismo(opcionesCorrectas)) {
-            return 1;
+            puntaje.establecerPuntos(1);
         }
-        return 0;
+        return puntaje;
     }
 
     @Override
-    public int evaluarRespuestaPara(Respuesta respuesta) {
+    public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
         ListaOpciones opcionesSeleccionadas = respuesta.getOpcionesSeleccionadas();
         return(this.calcularPuntajePara(opcionesSeleccionadas));
     }

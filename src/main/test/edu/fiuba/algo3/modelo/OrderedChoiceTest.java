@@ -44,7 +44,7 @@ public class OrderedChoiceTest {
         ListaOpciones opcionesElegidas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3)));
 
 
-        assertEquals(1, orderedChoice.calcularPuntajePara(opcionesElegidas));
+        assertEquals(1, orderedChoice.calcularPuntajePara(opcionesElegidas).getPuntos());
     }
 
     @Test
@@ -63,7 +63,7 @@ public class OrderedChoiceTest {
         ListaOpciones opcionesElegidas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1, opcion3, opcion2)));
 
 
-        assertEquals(0, orderedChoice.calcularPuntajePara(opcionesElegidas));
+        assertEquals(0, orderedChoice.calcularPuntajePara(opcionesElegidas).getPuntos());
     }
     @Test
     public void testOrederedChoiceLanzaExcepcionSiSeLeIngresanMenosDeDosOpciones(){

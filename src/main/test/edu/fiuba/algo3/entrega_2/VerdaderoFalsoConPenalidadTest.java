@@ -18,10 +18,10 @@ public class VerdaderoFalsoConPenalidadTest {
         assertEquals(consigna, verdaderoFalsoConPenalidad.getConsigna());
 
         assertEquals("Falso", opcionCorrecta.getOpcion());
-        assertEquals(1, opcionCorrecta.getPuntaje());
+        assertEquals(1, opcionCorrecta.getPuntaje().getPuntos());
 
         assertEquals("Verdadero", opcionIncorrecta.getOpcion());
-        assertEquals(-1, opcionIncorrecta.getPuntaje());
+        assertEquals(-1, opcionIncorrecta.getPuntaje().getPuntos());
     }
 
     @Test
@@ -31,7 +31,7 @@ public class VerdaderoFalsoConPenalidadTest {
         Opcion opcionCorrecta = verdaderoFalsoConPenalidad.getOpcionCorrecta();
 
         assertEquals("Verdadero", opcionCorrecta.getOpcion());
-        assertEquals(1, opcionCorrecta.getPuntaje());
+        assertEquals(1, opcionCorrecta.getPuntaje().getPuntos());
 
     }
 
@@ -42,7 +42,7 @@ public class VerdaderoFalsoConPenalidadTest {
         Opcion opcionIncorrecta = verdaderoFalsoConPenalidad.getOpcionIncorrecta();
 
         assertEquals("Falso", opcionIncorrecta.getOpcion());
-        assertEquals(-1, opcionIncorrecta.getPuntaje());
+        assertEquals(-1, opcionIncorrecta.getPuntaje().getPuntos());
 
     }
 
@@ -53,7 +53,7 @@ public class VerdaderoFalsoConPenalidadTest {
         Jugador jugador = new Jugador("Jorge");
         RespuestaUnica respuestaDelJugador = new RespuestaUnica(verdaderoFalsoConPenalidad.getOpcionIncorrecta());
 
-        assertEquals(-1,verdaderoFalsoConPenalidad.evaluarRespuestaPara(respuestaDelJugador));
+        assertEquals(-1,verdaderoFalsoConPenalidad.evaluarRespuestaPara(respuestaDelJugador).getPuntos());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class VerdaderoFalsoConPenalidadTest {
         Jugador jugador = new Jugador("Jorge");
         RespuestaUnica respuestaDelJugador = new RespuestaUnica(verdaderoFalsoConPenalidad.getOpcionCorrecta());
 
-        assertEquals(1,verdaderoFalsoConPenalidad.evaluarRespuestaPara(respuestaDelJugador));
+        assertEquals(1,verdaderoFalsoConPenalidad.evaluarRespuestaPara(respuestaDelJugador).getPuntos());
     }
 
 

@@ -15,7 +15,7 @@ public class JugadorTest {
 
         Jugador jugador = new Jugador("Pepito");
 
-        assertEquals(0,jugador.getPuntos());
+        assertEquals(0,jugador.getPuntaje().getPuntos());
     }
 
     @Test
@@ -36,37 +36,37 @@ public class JugadorTest {
     public void testJugadorAumentaSusPuntosEn5(){
 
         Jugador jugador = new Jugador("Juan");
-        jugador.modificarPuntos(5);
+        jugador.sumarPuntos(new Puntaje(5));
 
-        assertEquals(5, jugador.getPuntos());
+        assertEquals(5, jugador.getPuntaje().getPuntos());
     }
 
     @Test
     public void testJugadorSinPuntosDisminuyeSusPuntosEnUnoYTieneUnPuntajeDeMenosUno(){
 
         Jugador jugador = new Jugador("Juan");
-        jugador.modificarPuntos(-1);
+        jugador.sumarPuntos(new Puntaje(-1));
 
-        assertEquals(-1, jugador.getPuntos());
+        assertEquals(-1, jugador.getPuntaje().getPuntos());
     }
 
     @Test
     public void testJugadorConPuntosDisminuyeSusPuntosPorDebajoDeCeroComoResultadoTienePuntajeNegativo(){
 
         Jugador jugador = new Jugador("Juan");
-        jugador.modificarPuntos(3);
-        jugador.modificarPuntos(-5);
+        jugador.sumarPuntos(new Puntaje(3));
+        jugador.sumarPuntos(new Puntaje(-5));
 
-        assertEquals(-2, jugador.getPuntos());
+        assertEquals(-2, jugador.getPuntaje().getPuntos());
     }
 
     @Test
     public void testJugadorConCuatroPuntosDisminuyeSusPuntosEnDos(){
 
         Jugador jugador = new Jugador("Juan");
-        jugador.modificarPuntos(4);
-        jugador.modificarPuntos(-2);
+        jugador.sumarPuntos(new Puntaje(4));
+        jugador.sumarPuntos(new Puntaje(-2));
 
-        assertEquals(2, jugador.getPuntos());
+        assertEquals(2, jugador.getPuntaje().getPuntos());
     }
 }

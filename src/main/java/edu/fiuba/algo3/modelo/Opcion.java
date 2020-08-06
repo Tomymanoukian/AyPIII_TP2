@@ -2,14 +2,14 @@ package edu.fiuba.algo3.modelo;
 
 public class Opcion {
     private final String opcion;
-    private final int puntaje;
+    private final Puntaje puntaje;
 
     public Opcion(String unaRespuesta) {
         opcion = unaRespuesta;
-        puntaje = 0;
+        puntaje = new Puntaje();
     }
 
-    public Opcion(String unaRespuesta, int unPuntaje) {
+    public Opcion(String unaRespuesta, Puntaje unPuntaje) {
         opcion = unaRespuesta;
         puntaje = unPuntaje;
     }
@@ -23,10 +23,10 @@ public class Opcion {
     }
 
     public void aplicarPuntajeA(Jugador unJugador) {
-        unJugador.modificarPuntos(puntaje);
+        unJugador.sumarPuntos(puntaje);
     }
 
-    public int getPuntaje() {
+    public Puntaje getPuntaje() {
         return puntaje;
     }
 }

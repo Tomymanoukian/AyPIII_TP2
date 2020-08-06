@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.JugadorSinNombreException;
 
 public class Jugador {
-    private int puntos;
+    private Puntaje puntaje;
     private String nombre;
 
     public Jugador(String unNombre) {
@@ -11,11 +11,11 @@ public class Jugador {
             throw new JugadorSinNombreException();
         }
         nombre = unNombre;
-        puntos = 0;
+        puntaje = new Puntaje();
     }
 
-    public int getPuntos() {
-        return puntos;
+    public Puntaje getPuntaje() {
+        return puntaje;
     }
 
     public String getNombre() {
@@ -23,7 +23,7 @@ public class Jugador {
     }
 
 
-    public void modificarPuntos(int unPuntaje) {
-        puntos += unPuntaje;
+    public void sumarPuntos(Puntaje unPuntaje) {
+        puntaje.sumarPuntos(unPuntaje);
     }
 }
