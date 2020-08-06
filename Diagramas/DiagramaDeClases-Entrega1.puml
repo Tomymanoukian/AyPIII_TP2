@@ -11,6 +11,10 @@ class Jugador {
 }
 
 class Kahoot {
+    +agregarExclusividadJugador1(unaExclusividad)
+    +agregarExclusividadJugador2(unaExclusividad)
+    +agregarMultiplicadorJugador1(unaExclusividad)
+    +agregarMultiplicadorJugador2(unaExclusividad)
     +evaluarRespuestas(unaPregunta)
     +getPuntajeJugador1()
     +getPuntajeJugador2()
@@ -21,14 +25,14 @@ abstract class Pregunta {
     {abstract}+evaluarRespuestaPara(unasRespuestas, unJugador)
 }
 
-class Respuesta {
+class Opcion {
     -opcion
     -puntaje
     +aplicarPuntajeA (unJugador)
     +esIgualA (unaOpcion):bool
 }
 
-class ListaRespuestas {
+class ListaOpciones {
     +aplicarPuntajesA(unJugador)
     +obtenerCoincidencias(unaLista):unNumero
     +contieneLoMismo(unaLista):bool
@@ -43,7 +47,6 @@ abstract class VerdaderoFalso {
 class VerdaderoFalsoClasico {
     +{static}crearVerdaderoFalsoCorrectaVerdadero(unaConsigna):unVerdaderoFalsoConClasico
     +{static}crearVerdaderoFalsoCorrectaVerdadero(unaConsigna):unVerdaderoFalsoConClasico
-    +calcularPuntajePara()
 }
 
 class VerdaderoFalsoConPenalidad {
@@ -52,21 +55,84 @@ class VerdaderoFalsoConPenalidad {
 }
 
 class MultipleChoiceClasico {
-    +calcularPuntajePara(unasRespuestas):unNumero
-    +evaluarRespuestaPara(unasRespuestas, unJugador)
+    +evaluarRespuestaPara(unaRespuesta): unPuntaje
 }
 
 class MultipleChoiceParcial {
-    +aplicarPuntajePara(unasRespuestas, unJugador)
-    +evaluarRespuestaPara(unasRespuestas, unJugador)
+    +evaluarRespuestaPara(unaRespuesta): unPuntaje
 }
 
-Pregunta <|-- VerdaderoFalso
+class MultipleChoiceConPenalidad {
+    +evaluarRespuestaPara(unaRespuesta): unPuntaje
+}
+
+class GroupChoice {
+    -consigna
+    -opcionesGrupoA
+    -opcionesGrupoB
+    +evaluarRespuestaPara(unaRespuesta): unPuntaje
+}
+
+class OrderedChoice {
+    -ListaOpciones
+    +calcularPuntajePara(unasOpciones): unPuntaje
+    +evaluarRespuesta(unaRespuesta): unPuntaje
+}
+
+class BonusDePuntaje {
+    +{static}aplicarBonus (puntajeJ1, multiplicadoresJ1, exclusividadJ1, puntajeJ2, multiplicadoresJ2, exclusividadJ2)
+}
+
+class Multiplicador {
+    -factorDeMultiplicacion
+    +aplicarMultiplicador (unPuntaje)
+}
+
+class Exclusividad {
+    +aplicarExclusividad (puntajeJ1, puntajeJ2)
+}
+
+class ListaDeExclusividades {
+    -exclusividades
+    +aplicarExclusividades(puntaje1, puntaje2)
+}
+
+class ListaDeMultiplicadores {
+    -multiplicadores
+    +aplicarMultiplicadores (unPuntaje)
+}
+
+interface Respuesta {}
+
+class RespuestaDeGrupos {
+    -opcionesSeleccionadasGrupoA
+    -opcionesSeleccionadasGrupoB
+}
+
+class RespuestaEnLista {
+    -respuestasSeleccionadas
+}
+
+class RespuestaUnica {
+    -opcionSeleccionada
+}
+
+class Puntaje {
+    -puntos
+    +sumarPuntos (unPuntaje)
+    +multiplicarPuntos (unPuntaje)
+}
+
+Pregunta <|--- VerdaderoFalso
 Pregunta <|--- MultipleChoiceClasico
 Pregunta <|--- MultipleChoiceParcial
+Pregunta <|--- MultipleChoiceConPenalidad
+Pregunta <|--- OrderedChoice
+Pregunta <|--- GroupChoice
 
 MultipleChoiceClasico --> "2    " ListaRespuestas
 MultipleChoiceParcial --> "2  " ListaRespuestas
+MultipleChoiceConPenalidad --> "2  " ListaRespuestas
 
 VerdaderoFalso <|-- VerdaderoFalsoClasico
 VerdaderoFalso <|-- VerdaderoFalsoConPenalidad
@@ -75,6 +141,9 @@ Jugador " 2" <- Kahoot
 Respuesta "2..*" <-- Pregunta
 Kahoot .> Pregunta
 Respuesta "2    " <-- Kahoot
+
+ListaDeExclusividades "2  "<-- Kahoot
+ListaDeMultiplicadores "2   "<-- Kahoot
 
 Respuesta " 1..*" <----- ListaRespuestas
 
