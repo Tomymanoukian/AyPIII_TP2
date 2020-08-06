@@ -136,7 +136,7 @@ public class AsignacionDePuntosTest {
     }
 
     @Test
-    public void testMultipleChoiceParcialJugadoresAciertanAlgunasCorrectasYNingunaIncorrectaSumandolesCeroPuntos() {
+    public void testMultipleChoiceParcialJugadoresAciertanAlgunasCorrectasYNingunaIncorrectaSumandolesCorrectamenteLosPuntos() {
         String consigna = "Indicar cuales de los siguientes con planetas:";
 
         Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
@@ -638,5 +638,254 @@ public class AsignacionDePuntosTest {
 
         assertEquals(-1, kahoot.getPuntajeJugador1().getPuntos());
         assertEquals(-2, kahoot.getPuntajeJugador2().getPuntos());
+    }
+
+    //comienza test con bonus
+
+    @Test
+    public void testVerdaderoFalsoClasicoJugador1AsertaYJugador2FallaSumandoCorrectamenteLosPuntajesConUnaExclusividad() {
+        String consigna = "El Sol es azul";
+        VerdaderoFalsoClasico preguntaVerderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso(consigna);
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(preguntaVerderoFalsoClasico.getOpcionCorrecta());
+        RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoClasico.getOpcionIncorrecta());
+
+        kahoot.setRespuestaJugador1(respuestaDelJugador1);
+        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+
+        Exclusividad exclusividad = new Exclusividad();
+        kahoot.agregarExclusividadJugador1(exclusividad);
+
+        kahoot.evaluarRespuestas(preguntaVerderoFalsoClasico);
+
+        assertEquals(2, kahoot.getPuntajeJugador1().getPuntos());
+        assertEquals(0, kahoot.getPuntajeJugador2().getPuntos());
+    }
+
+    @Test
+    public void testVerdaderoFalsoConPenalidadJugador1AsertaYJugador2FallaSumandoleCorrectamenteLosPuntajesConUnMultiplicadorDelJugador2() {
+        String consigna = "El Sol es azul";
+        VerdaderoFalsoConPenalidad preguntaVerderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoFalso(consigna);
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(preguntaVerderoFalsoConPenalidad.getOpcionCorrecta());
+        RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoConPenalidad.getOpcionIncorrecta());
+
+        kahoot.setRespuestaJugador1(respuestaDelJugador1);
+        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+
+        Multiplicador multiplicador = new Multiplicador(2);
+        kahoot.agregarMultiplicadorJugador2(multiplicador);
+
+        kahoot.evaluarRespuestas(preguntaVerderoFalsoConPenalidad);
+
+        assertEquals(1, kahoot.getPuntajeJugador1().getPuntos());
+        assertEquals(-2, kahoot.getPuntajeJugador2().getPuntos());
+    }
+
+    @Test
+    public void testMultipleChoiceParcialJugadorAciertanTodasLasRespuestasCorrectasSumandolesCorrectamenteLosPuntosDeLasRespuestasCorrectasConUnaExclusividad() {
+        String consigna = "Indicar cuales de los siguientes con planetas:";
+
+
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
+        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
+        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
+
+        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
+        ListaOpciones opcionesSeleccionadas = new ListaOpciones(opcionesCorrectas);
+
+        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
+        RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
+
+        kahoot.setRespuestaJugador1(respuestaDelJugador1);
+        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+
+        Exclusividad exclusividad = new Exclusividad();
+        kahoot.agregarExclusividadJugador1(exclusividad);
+
+        kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
+
+        assertEquals(0, kahoot.getPuntajeJugador1().getPuntos());
+        assertEquals(0, kahoot.getPuntajeJugador2().getPuntos());
+    }
+
+    @Test
+    public void testMultipleChoiceParcialJugadoresNoAciertaNingunaCorrectasSumandolesCeroPuntosConExclusividad() {
+        String consigna = "Indicar cuales de los siguientes con planetas:";
+
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
+        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
+        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
+
+        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
+        ListaOpciones opcionesSeleccionadas = new ListaOpciones(Arrays.asList(opcionIncorrectaAmarillo));
+
+        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
+        RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
+
+        kahoot.setRespuestaJugador1(respuestaDelJugador1);
+        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+
+        Exclusividad exclusividad = new Exclusividad();
+        kahoot.agregarExclusividadJugador1(exclusividad);
+
+        kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
+
+        assertEquals(0, kahoot.getPuntajeJugador1().getPuntos());
+        assertEquals(0, kahoot.getPuntajeJugador2().getPuntos());
+    }
+
+    @Test
+    public void testGroupChoiceJugador1AgrupaCorrectamenteLasOpcionesYJugador2AgrupaIncorrectamenteLasOpcionesAsignandolesCorrectamenteLosPuntajesConDosExclusividades() {
+        String consigna = "Agrupe en las categorias A y B:";
+
+
+        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
+        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
+        Opcion opcion3DeGrupoA = new Opcion("respuestaGrupoA");
+        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
+        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
+        Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB");
+
+        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
+        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
+
+        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
+
+        RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB );
+        RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        kahoot.setRespuestaJugador1(respuestasJugador1);
+        kahoot.setRespuestaJugador2(respuestasJugador2);
+
+        Exclusividad exclusividad1 = new Exclusividad();
+        Exclusividad exclusividad2 = new Exclusividad();
+        kahoot.agregarExclusividadJugador1(exclusividad1);
+        kahoot.agregarExclusividadJugador2(exclusividad2);
+
+        kahoot.evaluarRespuestas(preguntaGroupChoice);
+
+        assertEquals(4, kahoot.getPuntajeJugador1().getPuntos());
+        assertEquals(0, kahoot.getPuntajeJugador2().getPuntos());
+    }
+
+    @Test
+    public void testMultipleChoiceConPenalidadJugador1AciertaCuatroOpcionesYJugador2AciertaCuatroOpcionesSumandolesCorrectamenteOchoPuntosConDosMultiplicadoresX2() {
+
+        String consigna = "Indicar cuales de los siguientes con planetas:";
+
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
+        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
+        Opcion opcionCorrectaSaturno = new Opcion("Saturno", new Puntaje(1));
+        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(-1));
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(-1));
+
+        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
+
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones(opcionesCorrectas));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones(opcionesCorrectas));
+
+        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        kahoot.setRespuestaJugador1(respuestasJugador1);
+        kahoot.setRespuestaJugador2(respuestasJugador2);
+
+        Multiplicador multiplicador1 = new Multiplicador(2);
+        Multiplicador multiplicador2 = new Multiplicador(2);
+        kahoot.agregarMultiplicadorJugador1(multiplicador1);
+        kahoot.agregarMultiplicadorJugador2(multiplicador2);
+
+        kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
+
+        assertEquals(8, kahoot.getPuntajeJugador1().getPuntos());
+        assertEquals(8, kahoot.getPuntajeJugador2().getPuntos());
+    }
+
+    @Test
+    public void testMultipleChoiceConPenalidadJugador1EligeTresOpcionesCorrectasYUnaIncorrectaYJugador2EligeDosOpcionesCorrectasYDosIncorrectaAsignandolesCorrectamenteLosPuntosConDosMultiplicadoresDeUnJugador() {
+
+        String consigna = "Indicar cuales de los siguientes con planetas:";
+
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
+        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
+        Opcion opcionCorrectaSaturno = new Opcion("Saturno", new Puntaje(1));
+        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(-1));
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(-1));
+
+        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
+
+        List<Opcion> respuestasJugador1List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionInorrectaAzul));
+        List<Opcion> respuestasJugador2List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionIncorrectaAmarillo, opcionInorrectaAzul));
+
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones (respuestasJugador1List));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones (respuestasJugador2List));
+
+        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+
+        Jugador juan = new Jugador("Juan");
+        Jugador maria = new Jugador("Maria");
+
+        Kahoot kahoot = new Kahoot(juan, maria);
+
+        kahoot.setRespuestaJugador1(respuestasJugador1);
+        kahoot.setRespuestaJugador2(respuestasJugador2);
+
+        Multiplicador multiplicador1 = new Multiplicador(2);
+        Multiplicador multiplicador2 = new Multiplicador(3);
+        kahoot.agregarMultiplicadorJugador1(multiplicador1);
+        kahoot.agregarMultiplicadorJugador1(multiplicador2);
+
+        kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
+
+        assertEquals(12, kahoot.getPuntajeJugador1().getPuntos());
+        assertEquals(0, kahoot.getPuntajeJugador2().getPuntos());
     }
 }
