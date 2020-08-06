@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+
+import org.junit.jupiter.api.BeforeEach;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 import org.junit.jupiter.api.Test;
 
@@ -11,19 +13,32 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GroupChoiceTest {
 
-    @Test
-    public void testCrearGroupChoiceCorrectamente(){
+    private String consigna = "Agrupe en las categorias A y B:";
 
+    private Opcion opcion1DeGrupoA;
+    private Opcion opcion2DeGrupoA;
+    private Opcion opcion1DeGrupoB;
+    private Opcion opcion2DeGrupoB;
+
+    private ListaOpciones opcionesGrupoA;
+    private ListaOpciones opcionesGrupoB ;
+
+    @BeforeEach
+    public void setup (){
         String consigna = "Agrupe en las categorias A y B:";
 
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
+        opcion1DeGrupoA = new Opcion("respuestaGrupoA");
+        opcion2DeGrupoA = new Opcion("respuestaGrupoA");
+        opcion1DeGrupoB = new Opcion("respuestaGrupoB");
+        opcion2DeGrupoB = new Opcion("respuestaGrupoB");
 
-        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA)));
-        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB)));
+        opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA)));
+        opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB)));
+    }
 
+
+    @Test
+    public void testCrearGroupChoiceCorrectamente(){
         GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
 
         assertEquals("Agrupe en las categorias A y B:", preguntaGroupChoice.getConsigna());
@@ -62,20 +77,8 @@ public class GroupChoiceTest {
 
     @Test
     public void testLeAsignaUnPuntoDeUnaRespuestaDeGruposCorrecta(){
-
-        String consigna = "Agrupe en las categorias A y B:";
-
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
-
-        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA)));
-        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB)));
-
         GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
 
-        Jugador jugador = new Jugador("Juan");
         RespuestaDeGrupos respuestasDelJugador = new RespuestaDeGrupos(opcionesGrupoA,opcionesGrupoB);
 
         assertEquals(1, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador).getPuntos());
@@ -83,23 +86,11 @@ public class GroupChoiceTest {
 
     @Test
     public void testLeAsignaCeroPuntosConUnaRespuestaDeGruposCorrectaYTresIncorrectas(){
-
-        String consigna = "Agrupe en las categorias A y B:";
-
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
-
-        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA)));
-        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB)));
+        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
 
         ListaOpciones opcionesDelJugadorGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion1DeGrupoB, opcion2DeGrupoB)));
         ListaOpciones opcionesDelJugadorGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion2DeGrupoA)));
 
-        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
-
-        Jugador jugador = new Jugador("Juan");
         RespuestaDeGrupos respuestasDelJugador = new RespuestaDeGrupos(opcionesDelJugadorGrupoA,opcionesDelJugadorGrupoB);
 
         assertEquals(0, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador).getPuntos());
@@ -107,20 +98,8 @@ public class GroupChoiceTest {
 
     @Test
     public void testLeAsignaCeroPuntosConUnaRespuestaDeGruposIncorrecta(){
-
-        String consigna = "Agrupe en las categorias A y B:";
-
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
-
-        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA)));
-        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB)));
-
         GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
 
-        Jugador jugador = new Jugador("Juan");
         RespuestaDeGrupos respuestasDelJugador = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
 
         assertEquals(0, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador).getPuntos());
