@@ -534,10 +534,9 @@ public class AsignacionDePuntosTest {
         Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
         Opcion opcionCorrectaSaturno = new Opcion("Saturno", new Puntaje(1));
         Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(-1));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(-1));
 
         List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
-        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionInorrectaAzul));
         ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
         ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
 
@@ -568,12 +567,11 @@ public class AsignacionDePuntosTest {
         Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
         Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
         Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionCorrectaSaturno = new Opcion("Saturno", new Puntaje(1));
         Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(-1));
         Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(-1));
 
-        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
-        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
+        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
         ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
         ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
 
@@ -814,10 +812,9 @@ public class AsignacionDePuntosTest {
         Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
         Opcion opcionCorrectaSaturno = new Opcion("Saturno", new Puntaje(1));
         Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(-1));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(-1));
 
         List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
-        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionInorrectaAzul));
         ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
         ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
 
@@ -853,17 +850,17 @@ public class AsignacionDePuntosTest {
         Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
         Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
         Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionCorrectaSaturno = new Opcion("Saturno", new Puntaje(1));
         Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(-1));
         Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(-1));
 
-        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
-        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
+        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
+        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
+
         ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
         ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
 
-        List<Opcion> respuestasJugador1List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionInorrectaAzul));
-        List<Opcion> respuestasJugador2List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionIncorrectaAmarillo, opcionInorrectaAzul));
+        List<Opcion> respuestasJugador1List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaJupiter, opcionCorrectaMarte,opcionInorrectaAzul));
+        List<Opcion> respuestasJugador2List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte,opcionIncorrectaAmarillo,opcionInorrectaAzul));
 
         RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones (respuestasJugador1List));
         RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones (respuestasJugador2List));

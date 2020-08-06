@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
+
 public class GroupChoice extends Pregunta{
 
     private ListaOpciones opcionesGrupoA;
@@ -7,6 +9,10 @@ public class GroupChoice extends Pregunta{
 
     public GroupChoice(String unaConsigna, ListaOpciones unasOpcionesGrupoA, ListaOpciones unasOpcionesGrupoB) {
         super();
+        if ((unasOpcionesGrupoA.cantidadDeRespuestas() + unasOpcionesGrupoB.cantidadDeRespuestas()) < 2 ||
+                (unasOpcionesGrupoA.cantidadDeRespuestas() + unasOpcionesGrupoB.cantidadDeRespuestas()) > 6) {
+            throw new CantidadDeOpcionesInvalidaException();
+        }
         consigna = unaConsigna;
         opcionesGrupoA = unasOpcionesGrupoA;
         opcionesGrupoB = unasOpcionesGrupoB;
