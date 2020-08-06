@@ -47,13 +47,13 @@ class Kahoot {
     +getPuntajeJugador2()
 }
 
-RespuestaDeGrupos .---|> Respuesta
-RespuestaEnLista .---|> Respuesta
-RespuestaUnica .---|> Respuesta
+Respuesta <|---. RespuestaDeGrupos
+Respuesta <|---. RespuestaEnLista
+Respuesta <|---. RespuestaUnica
 
-Respuesta <---- Kahoot
+Kahoot ---> Respuesta
 
-Respuesta <----. Pregunta
+Pregunta .--> Respuesta
 
 
 
