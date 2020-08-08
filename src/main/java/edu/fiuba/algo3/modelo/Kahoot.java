@@ -56,6 +56,4 @@ public class Kahoot {
     public Puntaje getPuntajeJugador2() {
         return jugador2.getPuntaje();
     }
-
-
 }
