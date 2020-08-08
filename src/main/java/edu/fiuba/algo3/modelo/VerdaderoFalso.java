@@ -3,8 +3,8 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.OpcionNoValidaException;
 
 public class VerdaderoFalso extends Pregunta {
-    protected static Opcion opcionCorrecta;
-    protected static Opcion opcionIncorrecta;
+    protected Opcion opcionCorrecta;
+    protected Opcion opcionIncorrecta;
 
     public Opcion getOpcionCorrecta() {
         return opcionCorrecta;
