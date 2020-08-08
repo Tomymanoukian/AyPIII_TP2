@@ -11,19 +11,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JugadorTest {
 
     @Test
-    public void testCreaUnJugadorConPuntuacionCero() {
+    public void testCreaUnJugadorCorrectamente() {
 
         Jugador jugador = new Jugador("Pepito");
 
         assertEquals(0,jugador.getPuntaje().getPuntos());
-    }
-
-    @Test
-    public void testCreaUnJugadorConNombre(){
-
-        Jugador jugador = new Jugador("Juan");
-
-        assertEquals("Juan", jugador.getNombre());
+        assertEquals("Pepito", jugador.getNombre());
+        assertEquals(1, jugador.getMultiplicadoresX2().size());
+        assertEquals(1, jugador.getMultiplicadoresX3().size());
+        assertEquals(2, jugador.getExclusividades().size());
     }
 
     @Test
