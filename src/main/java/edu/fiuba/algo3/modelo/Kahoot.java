@@ -1,14 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
 public class Kahoot {
-    Jugador jugador1;
-    Jugador jugador2;
-    Respuesta respuestaJugador1;
-    Respuesta respuestaJugador2;
-    ListaDeExclusividades exclusividadesJ1;
-    ListaDeExclusividades exclusividadesJ2;
-    ListaDeMultiplicadores multiplicadoresJ1;
-    ListaDeMultiplicadores multiplicadoresJ2;
+
+    private Jugador jugador1;
+    private Jugador jugador2;
+    private Respuesta respuestaJugador1;
+    private Respuesta respuestaJugador2;
+    private ListaDeExclusividades exclusividadesJ1;
+    private ListaDeExclusividades exclusividadesJ2;
+    private ListaDeMultiplicadores multiplicadoresJ1;
+    private ListaDeMultiplicadores multiplicadoresJ2;
 
     public Kahoot(Jugador unJugador, Jugador otroJugador) {
         jugador1 = unJugador;
@@ -55,6 +56,4 @@ public class Kahoot {
     public Puntaje getPuntajeJugador2() {
         return jugador2.getPuntaje();
     }
-
-
 }
