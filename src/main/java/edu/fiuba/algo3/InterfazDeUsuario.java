@@ -1,5 +1,7 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.Kahoot;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,14 +13,48 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+
 import java.util.Stack;
 
 
-public class InterfazDeUsuario extends Application {
+public class InterfazDeUsuario {
+    private Stage stage;
 
-    @Override
-    public void start(Stage stage) {
+    public  InterfazDeUsuario(Stage unaStage) {
+        stage = unaStage;
+    }
+
+    public void vistaDeInicioDelKahoot() {
         stage.setTitle("Kahoot!");
+
+        Label bienvenida = new Label("Bienvenidos a Kahoot");
+
+
+        Label pedirNombreJugador1 = new Label("Ingrese nombre del Jugador 1");
+        TextField nombreJugador1 = new TextField();
+        Label pedirNombreJugador2 = new Label("Ingrese nombre del Jugador 2");
+        TextField nombreJugador2 = new TextField();
+
+        Button iniciarJuego = new Button("Iniciar Kahoot");
+
+        BotonEmpezarJuegoEventHandler botonComienzoDeJuego = new BotonEmpezarJuegoEventHandler(nombreJugador1, nombreJugador2, this);
+        iniciarJuego.setOnAction(botonComienzoDeJuego);
+
+
+        VBox contenedorBienvenida = new VBox(bienvenida);
+        VBox contenedorInsertarNombreJugador1 = new VBox(pedirNombreJugador1, nombreJugador1);
+        VBox contenedorInsertarNombreJugador2 = new VBox(pedirNombreJugador2, nombreJugador2);
+
+        VBox contenedorInicioDeKahoot = new VBox(contenedorBienvenida, contenedorInsertarNombreJugador1, contenedorInsertarNombreJugador2, iniciarJuego);
+
+        Scene scene = new Scene(contenedorInicioDeKahoot, 400, 275);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void vistaVerdaderoFalso() {
 
 
         Label nombreJugador = new Label("Jugador1");
@@ -84,10 +120,5 @@ public class InterfazDeUsuario extends Application {
         stage.setScene(scene);
         stage.show();
 
-
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

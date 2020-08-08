@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.InterfazDeUsuario;
+
 public class VerdaderoFalsoClasico extends VerdaderoFalso {
 
     public VerdaderoFalsoClasico(String unaConsigna) {
@@ -30,4 +32,7 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
         opcionIncorrecta = new Opcion("Falso", new Puntaje(0));
     }
 
+    public void mostrarseEn(InterfazDeUsuario unaInterfazDeUsuario) {
+        unaInterfazDeUsuario.vistaVerdaderoFalso();
+    }
 }

@@ -4,8 +4,8 @@ import edu.fiuba.algo3.modelo.excepciones.OpcionNoValidaException;
 
 public class VerdaderoFalsoConPenalidad extends Pregunta {
 
-    protected static Opcion opcionCorrecta;
-    protected static Opcion opcionIncorrecta;
+    protected Opcion opcionCorrecta;
+    protected Opcion opcionIncorrecta;
 
     public VerdaderoFalsoConPenalidad(String unaConsigna) {
         super();

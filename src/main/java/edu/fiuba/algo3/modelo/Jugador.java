@@ -26,4 +26,8 @@ public class Jugador {
     public void sumarPuntos(Puntaje unPuntaje) {
         puntaje.sumarPuntos(unPuntaje);
     }
+
+    public void setNombre(String unNombre) {
+        nombre = unNombre;
+    }
 }
