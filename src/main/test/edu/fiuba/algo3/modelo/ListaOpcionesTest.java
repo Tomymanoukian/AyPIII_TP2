@@ -40,17 +40,19 @@ public class ListaOpcionesTest {
 
     @Test
     public void testCompruebaQueUnaListaContieneTodosLosElementosDeOtraLista(){
-        ListaOpciones listaOpciones = new ListaOpciones();
         Opcion opcion1 = new Opcion("Respuesta1");
         Opcion opcion2 = new Opcion("Respuesta2");
-        listaOpciones.agregar(opcion1);
-        listaOpciones.agregar(opcion2);
+        Opcion opcion3 = new Opcion("Respuesta3");
+        Opcion otraOpcion1 = new Opcion("Respuesta1");
+        Opcion otraOpcion2 = new Opcion("Respuesta2");
 
-        ListaOpciones otraListaOpciones = new ListaOpciones();
-        otraListaOpciones.agregar(opcion1);
-        otraListaOpciones.agregar(opcion2);
+        List<Opcion> arrayList = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3));
+        List<Opcion> otroArrayList = new ArrayList<>(Arrays.asList(otraOpcion1, otraOpcion2));
 
-        assert(otraListaOpciones.contieneTodo(listaOpciones));
+        ListaOpciones listaOpciones = new ListaOpciones(arrayList);
+        ListaOpciones otraListaOpciones = new ListaOpciones(otroArrayList);
+
+        assert(listaOpciones.contieneTodo(otraListaOpciones));
     }
 
     @Test

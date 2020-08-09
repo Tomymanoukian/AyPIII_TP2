@@ -30,7 +30,9 @@ public class ListaOpciones {
     }
 
     public boolean contieneTodo(ListaOpciones otraLista) {
-        return listaOpciones.containsAll(otraLista.obtenerLista());
+
+        return (this.obtenerCoincidencias(otraLista) == otraLista.cantidadDeRespuestas());
+        //return listaOpciones.containsAll(otraLista.obtenerLista());
     }
 
     public boolean contieneLoMismo(ListaOpciones otraLista) {
