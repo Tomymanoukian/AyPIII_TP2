@@ -165,4 +165,42 @@ public class MultipleChoiceParcialTest {
 
         assertEquals(0, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador).getPuntos());
     }
+
+    @Test
+    public void testSeVerificaQueSePuedaUtilizarMultiplicador(){
+
+        ListaOpciones opcionesCorrectas = new ListaOpciones();
+        ListaOpciones opcionesIncorrectas = new ListaOpciones();
+        String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
+
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha");
+        Opcion opcionInorrectaDobleV = new Opcion("DobleV");
+        Opcion opcionIncorrectaJota = new Opcion("Jota");
+
+        opcionesCorrectas.agregar(opcionCorrectaAlpha);
+        opcionesIncorrectas.agregar(opcionInorrectaDobleV);
+        opcionesIncorrectas.agregar(opcionIncorrectaJota);
+
+        MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+        assertEquals(false, multipleChoiceParcial.aceptaMultiplicador());
+    }
+
+    @Test
+    public void testSeVerificaQueSePuedaUtilizarExclusividad(){
+
+        ListaOpciones opcionesCorrectas = new ListaOpciones();
+        ListaOpciones opcionesIncorrectas = new ListaOpciones();
+        String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
+
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha");
+        Opcion opcionInorrectaDobleV = new Opcion("DobleV");
+        Opcion opcionIncorrectaJota = new Opcion("Jota");
+
+        opcionesCorrectas.agregar(opcionCorrectaAlpha);
+        opcionesIncorrectas.agregar(opcionInorrectaDobleV);
+        opcionesIncorrectas.agregar(opcionIncorrectaJota);
+
+        MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+        assertEquals(true, multipleChoiceParcial.aceptaExclusividad());
+    }
 }

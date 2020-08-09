@@ -43,6 +43,9 @@ public class MultipleChoiceClasico extends Pregunta {
         return(this.calcularPuntajePara(opcionesSeleccionadas));
     }
 
+    @Override
+    public Boolean aceptaMultiplicador() {return false;}
 
-
+    @Override
+    public Boolean aceptaExclusividad() {return true;}
 }
