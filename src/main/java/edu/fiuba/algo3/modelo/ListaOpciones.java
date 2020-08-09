@@ -77,7 +77,6 @@ public class ListaOpciones {
         return coincidencias;
     }
 
-
     public int cantidadDeRespuestas() {
         return listaOpciones.size();
     }

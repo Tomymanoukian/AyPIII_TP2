@@ -30,5 +30,11 @@ public class MultipleChoiceConPenalidad extends Pregunta {
     public ListaOpciones getOpcionesIncorrectas() {
         return opcionesIncorrectas;
     }
+
+    @Override
+    public Boolean aceptaMultiplicador() {return true;}
+
+    @Override
+    public Boolean aceptaExclusividad() {return false;}
 }
 

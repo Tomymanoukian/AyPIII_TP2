@@ -105,8 +105,17 @@ public class GroupChoiceTest {
         assertEquals(0, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador).getPuntos());
     }
 
+    @Test
+    public void testSeVerificaQueSePuedaUtilizarMultiplicador(){
 
+        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
+        assertEquals(false, preguntaGroupChoice.aceptaMultiplicador());
+    }
 
+    @Test
+    public void testSeVerificaQueSePuedaUtilizarExclusividad(){
 
-
+        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
+        assertEquals(true, preguntaGroupChoice.aceptaExclusividad());
+    }
 }

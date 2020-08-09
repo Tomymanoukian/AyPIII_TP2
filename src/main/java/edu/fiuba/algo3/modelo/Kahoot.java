@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaExclusividadesException;
+import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaMultiplicadoresException;
+
 public class Kahoot {
 
     private Jugador jugador1;
@@ -28,29 +31,51 @@ public class Kahoot {
         respuestaJugador2 = unaRespuesta;
     }
 
-    public void agregarExclusividadJugador1(){
+    public void agregarExclusividadJugador1(Pregunta unaPregunta){
+
+        if (!unaPregunta.aceptaExclusividad())
+            throw new EstaPreguntaNoAceptaExclusividadesException();
 
         exclusividadesJ1.agregarExclusividad(jugador1.utilizarExclusividad());
     }
 
-    public void agregarExclusividadJugador2(){
+    public void agregarExclusividadJugador2(Pregunta unaPregunta){
+
+        if (!unaPregunta.aceptaExclusividad())
+            throw new EstaPreguntaNoAceptaExclusividadesException();
 
         exclusividadesJ2.agregarExclusividad(jugador2.utilizarExclusividad());
     }
 
-    public void agregarMultiplicadorX2Jugador1(){
+    public void agregarMultiplicadorX2Jugador1(Pregunta unaPregunta){
+
+        if (!unaPregunta.aceptaMultiplicador())
+            throw new EstaPreguntaNoAceptaMultiplicadoresException();
+
         multiplicadoresJ1.agregarMultiplicador(jugador1.utilizarMultiplicadorX2());
     }
 
-    public void agregarMultiplicadorX2Jugador2(){
+    public void agregarMultiplicadorX2Jugador2(Pregunta unaPregunta){
+
+        if (!unaPregunta.aceptaMultiplicador())
+            throw new EstaPreguntaNoAceptaMultiplicadoresException();
+
         multiplicadoresJ2.agregarMultiplicador(jugador2.utilizarMultiplicadorX2());
     }
 
-    public void agregarMultiplicadorX3Jugador1(){
+    public void agregarMultiplicadorX3Jugador1(Pregunta unaPregunta){
+
+        if (!unaPregunta.aceptaMultiplicador())
+            throw new EstaPreguntaNoAceptaMultiplicadoresException();
+
         multiplicadoresJ1.agregarMultiplicador(jugador1.utilizarMultiplicadorX3());
     }
 
-    public void agregarMultiplicadorX3Jugador2(){
+    public void agregarMultiplicadorX3Jugador2(Pregunta unaPregunta){
+
+        if (!unaPregunta.aceptaMultiplicador())
+            throw new EstaPreguntaNoAceptaMultiplicadoresException();
+
         multiplicadoresJ2.agregarMultiplicador(jugador2.utilizarMultiplicadorX3());
     }
 

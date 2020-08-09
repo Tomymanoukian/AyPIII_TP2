@@ -33,4 +33,10 @@ public class OrderedChoice extends Pregunta {
     public Puntaje evaluarRespuestaPara(Respuesta unaRespuesta) {
         return this.calcularPuntajePara(unaRespuesta.getOpcionesSeleccionadas());
     }
+
+    @Override
+    public Boolean aceptaMultiplicador() {return false;}
+
+    @Override
+    public Boolean aceptaExclusividad() {return true;}
 }

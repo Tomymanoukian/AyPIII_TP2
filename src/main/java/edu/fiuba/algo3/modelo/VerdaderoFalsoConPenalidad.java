@@ -22,4 +22,10 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
         Opcion opcionFalsa = new Opcion("Falso", new Puntaje(1));
         return new VerdaderoFalsoConPenalidad(unaConsigna, opcionFalsa, opcionVerdadera);
     }
+
+    @Override
+    public Boolean aceptaMultiplicador() {return true;}
+
+    @Override
+    public Boolean aceptaExclusividad() {return false;}
 }
