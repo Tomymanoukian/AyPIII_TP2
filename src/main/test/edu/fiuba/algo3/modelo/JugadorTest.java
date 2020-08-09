@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.ErrorSinBonusesException;
 import edu.fiuba.algo3.modelo.excepciones.JugadorSinNombreException;
+import edu.fiuba.algo3.modelo.excepciones.OpcionNoValidaException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -64,5 +66,30 @@ public class JugadorTest {
         jugador.sumarPuntos(new Puntaje(-2));
 
         assertEquals(2, jugador.getPuntaje().getPuntos());
+    }
+
+    @Test
+    public void testSinBonusesExceptionSeLanzaCorrectamenteAlUtilizarExclusividad(){
+
+        Jugador jugador = new Jugador("Juan");
+        jugador.utilizarExclusividad();
+        jugador.utilizarExclusividad();
+        assertThrows(ErrorSinBonusesException.class, ()-> jugador.utilizarExclusividad());
+    }
+
+    @Test
+    public void testSinBonusesExceptionSeLanzaCorrectamenteAlUtilizarMultiplicadorX2(){
+
+        Jugador jugador = new Jugador("Juan");
+        jugador.utilizarMultiplicadorX2();
+        assertThrows(ErrorSinBonusesException.class, ()-> jugador.utilizarMultiplicadorX2());
+    }
+
+    @Test
+    public void testSinBonusesExceptionSeLanzaCorrectamenteAlUtilizarMultiplicadorX3(){
+
+        Jugador jugador = new Jugador("Juan");
+        jugador.utilizarMultiplicadorX3();
+        assertThrows(ErrorSinBonusesException.class, ()-> jugador.utilizarMultiplicadorX3());
     }
 }

@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.ErrorSinBonusesException;
 import edu.fiuba.algo3.modelo.excepciones.JugadorSinNombreException;
 
-import java.util.Collection;
 import java.util.Stack;
 
 public class Jugador {
@@ -47,4 +47,31 @@ public class Jugador {
     public Stack<Multiplicador> getMultiplicadoresX3() { return multiplicadoresX3;}
 
     public Stack<Exclusividad> getExclusividades() { return exclusividades;}
+
+    public Exclusividad utilizarExclusividad() {
+
+        if (exclusividades.empty()) {
+            throw new ErrorSinBonusesException();
+        }
+
+        return exclusividades.pop();
+    }
+
+    public Multiplicador utilizarMultiplicadorX2 () {
+
+        if (multiplicadoresX2.empty()) {
+            throw new ErrorSinBonusesException();
+        }
+
+        return multiplicadoresX2.pop();
+    }
+
+    public Multiplicador utilizarMultiplicadorX3() {
+
+        if (multiplicadoresX3.empty()) {
+            throw new ErrorSinBonusesException();
+        }
+
+        return multiplicadoresX3.pop();
+    }
 }
