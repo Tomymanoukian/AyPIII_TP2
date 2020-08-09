@@ -28,13 +28,31 @@ public class Kahoot {
         respuestaJugador2 = unaRespuesta;
     }
 
-    public void agregarExclusividadJugador1(Exclusividad unaExclusividad){exclusividadesJ1.agregarExclusividad(unaExclusividad);}
+    public void agregarExclusividadJugador1(){
 
-    public void agregarExclusividadJugador2(Exclusividad unaExclusividad){exclusividadesJ2.agregarExclusividad(unaExclusividad);}
+        exclusividadesJ1.agregarExclusividad(jugador1.utilizarExclusividad());
+    }
 
-    public void agregarMultiplicadorJugador1(Multiplicador unMultiplicador){ multiplicadoresJ1.agregarMultiplicador(unMultiplicador);}
+    public void agregarExclusividadJugador2(){
 
-    public void agregarMultiplicadorJugador2(Multiplicador unMultiplicador){ multiplicadoresJ2.agregarMultiplicador(unMultiplicador);}
+        exclusividadesJ2.agregarExclusividad(jugador2.utilizarExclusividad());
+    }
+
+    public void agregarMultiplicadorX2Jugador1(){
+        multiplicadoresJ1.agregarMultiplicador(jugador1.utilizarMultiplicadorX2());
+    }
+
+    public void agregarMultiplicadorX2Jugador2(){
+        multiplicadoresJ2.agregarMultiplicador(jugador2.utilizarMultiplicadorX2());
+    }
+
+    public void agregarMultiplicadorX3Jugador1(){
+        multiplicadoresJ1.agregarMultiplicador(jugador1.utilizarMultiplicadorX3());
+    }
+
+    public void agregarMultiplicadorX3Jugador2(){
+        multiplicadoresJ2.agregarMultiplicador(jugador2.utilizarMultiplicadorX3());
+    }
 
     public void evaluarRespuestas(Pregunta unaPregunta) {
         Puntaje puntajeJ1 = new Puntaje();
