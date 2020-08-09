@@ -148,12 +148,18 @@ public class ListaOpcionesTest {
         Opcion opcion3 = new Opcion("respuesta3");
         Opcion opcion4 = new Opcion("respuesta4");
 
-        List<Opcion> arrayListTresOpcions = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3));
-        List<Opcion> arrayListCuatroOpcions = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4));
+        Opcion otraOpcion1 = new Opcion("respuesta1");
+        Opcion otraOpcion2 = new Opcion("respuesta2");
+        Opcion otraOpcion3 = new Opcion("respuesta3");
+        Opcion otraOpcion4 = new Opcion("respuesta4");
 
-        ListaOpciones listaConTresRespuestas = new ListaOpciones(arrayListTresOpcions);
-        ListaOpciones listaConCuatroRespuestas = new ListaOpciones(arrayListCuatroOpcions);
-        ListaOpciones otralistaConCuatroRespuestas = new ListaOpciones(arrayListCuatroOpcions);
+        List<Opcion> arrayListTresOpciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3));
+        List<Opcion> arrayListCuatroOpciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4));
+        List<Opcion> otroArrayListCuatroOpciones = new ArrayList<>(Arrays.asList(otraOpcion1, otraOpcion2, otraOpcion3, otraOpcion4));
+
+        ListaOpciones listaConTresRespuestas = new ListaOpciones(arrayListTresOpciones);
+        ListaOpciones listaConCuatroRespuestas = new ListaOpciones(arrayListCuatroOpciones);
+        ListaOpciones otralistaConCuatroRespuestas = new ListaOpciones(otroArrayListCuatroOpciones);
 
         assertTrue(listaConCuatroRespuestas.contieneLoMismo(otralistaConCuatroRespuestas));
         assertFalse(listaConTresRespuestas.contieneLoMismo(listaConCuatroRespuestas));

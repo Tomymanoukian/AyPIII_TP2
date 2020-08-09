@@ -35,8 +35,13 @@ public class ListaOpciones {
 
     public boolean contieneLoMismo(ListaOpciones otraLista) {
 
-        return listaOpciones.size() == otraLista.obtenerLista().size() &&
-                listaOpciones.containsAll(otraLista.obtenerLista());
+        //System.out.println(this.obtenerCoincidencias(otraLista));
+        //System.out.println(otraLista.cantidadDeRespuestas());
+
+        return (this.cantidadDeRespuestas() == otraLista.cantidadDeRespuestas() &&
+                this.obtenerCoincidencias(otraLista) == otraLista.cantidadDeRespuestas());
+        /*return listaOpciones.size() == otraLista.obtenerLista().size() &&
+                listaOpciones.containsAll(otraLista.obtenerLista());*/
     }
 
     public Opcion obtener(int posicion) {

@@ -27,10 +27,10 @@ public class GroupChoiceTest {
     public void setup (){
         String consigna = "Agrupe en las categorias A y B:";
 
-        opcion1DeGrupoA = new Opcion("respuestaGrupoA");
-        opcion2DeGrupoA = new Opcion("respuestaGrupoA");
-        opcion1DeGrupoB = new Opcion("respuestaGrupoB");
-        opcion2DeGrupoB = new Opcion("respuestaGrupoB");
+        opcion1DeGrupoA = new Opcion("respuesta1GrupoA");
+        opcion2DeGrupoA = new Opcion("respuesta2GrupoA");
+        opcion1DeGrupoB = new Opcion("respuesta1GrupoB");
+        opcion2DeGrupoB = new Opcion("respuesta2GrupoB");
 
         opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA)));
         opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB)));
