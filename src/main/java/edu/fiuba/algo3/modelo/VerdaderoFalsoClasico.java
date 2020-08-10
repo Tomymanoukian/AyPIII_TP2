@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.InterfazDeUsuario;
+import edu.fiuba.algo3.vista.InterfazDeUsuario;
 
 public class VerdaderoFalsoClasico extends VerdaderoFalso {
 
