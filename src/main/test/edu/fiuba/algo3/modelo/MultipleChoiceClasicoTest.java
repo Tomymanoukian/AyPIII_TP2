@@ -119,4 +119,18 @@ public class MultipleChoiceClasicoTest {
 
         assertEquals(0, multipleChoiceClasico.calcularPuntajePara(opcionesElegidas).getPuntos());
     }
+
+    @Test
+    public void testSeVerificaQueSePuedaUtilizarMultiplicador(){
+
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
+        assertEquals(false, multipleChoiceClasico.aceptaMultiplicador());
+    }
+
+    @Test
+    public void testSeVerificaQueSePuedaUtilizarExclusividad(){
+
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
+        assertEquals(true, multipleChoiceClasico.aceptaExclusividad());
+    }
 }

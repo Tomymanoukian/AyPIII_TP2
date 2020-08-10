@@ -81,4 +81,20 @@ public class OrderedChoiceTest {
 
         assertThrows(CantidadDeOpcionesInvalidaException.class, () -> new OrderedChoice(consigna, listaDeOpcionesInvalida));
     }
+
+    @Test
+    public void testSeVerificaQueSePuedaUtilizarMultiplicador(){
+
+        OrderedChoice orderedChoice = new OrderedChoice(consigna, listaDeOpciones);
+
+        assertEquals(false, orderedChoice.aceptaMultiplicador());
+    }
+
+    @Test
+    public void testSeVerificaQueSePuedaUtilizarExclusividad(){
+
+        OrderedChoice orderedChoice = new OrderedChoice(consigna, listaDeOpciones);
+
+        assertEquals(true, orderedChoice.aceptaExclusividad());
+    }
 }

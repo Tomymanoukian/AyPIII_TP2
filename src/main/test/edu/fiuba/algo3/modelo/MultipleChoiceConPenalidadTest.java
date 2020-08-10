@@ -130,4 +130,18 @@ public class MultipleChoiceConPenalidadTest {
 
         assertEquals(-2, multipleChoiceConPenalidad.evaluarRespuestaPara(respuestaDelJugador).getPuntos());
     }
+
+    @Test
+    public void testSeVerificaQueSePuedaUtilizarMultiplicador(){
+
+        MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+        assertEquals(true, multipleChoiceConPenalidad.aceptaMultiplicador());
+    }
+
+    @Test
+    public void testSeVerificaQueSePuedaUtilizarExclusividad(){
+
+        MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+        assertEquals(false, multipleChoiceConPenalidad.aceptaExclusividad());
+    }
 }

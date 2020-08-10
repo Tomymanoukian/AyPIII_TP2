@@ -30,4 +30,10 @@ public class MultipleChoiceParcial extends Pregunta {
     public ListaOpciones getOpcionesIncorrectas() {
         return opcionesIncorrectas;
     }
+
+    @Override
+    public Boolean aceptaMultiplicador() {return false;}
+
+    @Override
+    public Boolean aceptaExclusividad() {return true;}
 }

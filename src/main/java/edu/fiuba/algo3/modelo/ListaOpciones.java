@@ -30,13 +30,20 @@ public class ListaOpciones {
     }
 
     public boolean contieneTodo(ListaOpciones otraLista) {
-        return listaOpciones.containsAll(otraLista.obtenerLista());
+
+        return (this.obtenerCoincidencias(otraLista) == otraLista.cantidadDeRespuestas());
+        //return listaOpciones.containsAll(otraLista.obtenerLista());
     }
 
     public boolean contieneLoMismo(ListaOpciones otraLista) {
 
-        return listaOpciones.size() == otraLista.obtenerLista().size() &&
-                listaOpciones.containsAll(otraLista.obtenerLista());
+        //System.out.println(this.obtenerCoincidencias(otraLista));
+        //System.out.println(otraLista.cantidadDeRespuestas());
+
+        return (this.cantidadDeRespuestas() == otraLista.cantidadDeRespuestas() &&
+                this.obtenerCoincidencias(otraLista) == otraLista.cantidadDeRespuestas());
+        /*return listaOpciones.size() == otraLista.obtenerLista().size() &&
+                listaOpciones.containsAll(otraLista.obtenerLista());*/
     }
 
     public Opcion obtener(int posicion) {
@@ -69,7 +76,6 @@ public class ListaOpciones {
         }
         return coincidencias;
     }
-
 
     public int cantidadDeRespuestas() {
         return listaOpciones.size();

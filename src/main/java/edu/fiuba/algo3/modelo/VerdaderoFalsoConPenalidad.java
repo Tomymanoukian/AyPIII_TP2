@@ -1,57 +1,31 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.OpcionNoValidaException;
+public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
 
-public class VerdaderoFalsoConPenalidad extends Pregunta {
+    private VerdaderoFalsoConPenalidad(String unaConsigna, Opcion unaOpcionCorrecta, Opcion unaOpcionIncorrecta) {
 
-    protected Opcion opcionCorrecta;
-    protected Opcion opcionIncorrecta;
-
-    public VerdaderoFalsoConPenalidad(String unaConsigna) {
-        super();
         consigna = unaConsigna;
-    }
-
-    public Opcion getOpcionCorrecta() {
-        return opcionCorrecta;
-    }
-
-    public Opcion getOpcionIncorrecta() {
-        return opcionIncorrecta;
-    }
-
-    public static VerdaderoFalsoConPenalidad crearVerdaderoFalsoCorrectoFalso(String unaConsigna) {
-        VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad = new VerdaderoFalsoConPenalidad(unaConsigna);
-        verdaderoFalsoConPenalidad.setRespuestaCorrectaFalso();
-
-        return verdaderoFalsoConPenalidad;
+        opcionCorrecta = unaOpcionCorrecta;
+        opcionIncorrecta = unaOpcionIncorrecta;
     }
 
     public static VerdaderoFalsoConPenalidad crearVerdaderoFalsoCorrectoVerdadero(String unaConsigna) {
-        VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad = new VerdaderoFalsoConPenalidad(unaConsigna);
-        verdaderoFalsoConPenalidad.setRespuestaCorrectaVerdadero();
 
-        return verdaderoFalsoConPenalidad;
+        Opcion opcionVerdadera = new Opcion("Verdadero", new Puntaje(1));
+        Opcion opcionFalsa = new Opcion("Falso", new Puntaje(-1));
+        return new VerdaderoFalsoConPenalidad(unaConsigna, opcionVerdadera, opcionFalsa);
     }
 
-    private void setRespuestaCorrectaFalso() {
-        opcionIncorrecta = new Opcion("Verdadero", new Puntaje(-1));
-        opcionCorrecta = new Opcion("Falso", new Puntaje(1));
-    }
+    public static VerdaderoFalsoConPenalidad crearVerdaderoFalsoCorrectoFalso(String unaConsigna) {
 
-    private void setRespuestaCorrectaVerdadero() {
-        opcionCorrecta = new Opcion("Verdadero", new Puntaje(1));
-        opcionIncorrecta = new Opcion("Falso", new Puntaje(-1));
+        Opcion opcionVerdadera = new Opcion("Verdadero", new Puntaje(-1));
+        Opcion opcionFalsa = new Opcion("Falso", new Puntaje(1));
+        return new VerdaderoFalsoConPenalidad(unaConsigna, opcionFalsa, opcionVerdadera);
     }
 
     @Override
-    public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
-        Opcion opcionSeleccionada = respuesta.getOpcionSeleccionada();
+    public Boolean aceptaMultiplicador() {return true;}
 
-        if (!opcionSeleccionada.esIgualA(opcionCorrecta) && !opcionSeleccionada.esIgualA(opcionIncorrecta)) {
-            throw new OpcionNoValidaException();
-        }
-
-        return opcionSeleccionada.getPuntaje();
-    }
+    @Override
+    public Boolean aceptaExclusividad() {return false;}
 }

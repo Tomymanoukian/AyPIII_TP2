@@ -314,12 +314,12 @@ public class AsignacionDePuntosTest {
     public void testGroupChoiceJugador1YJugador2AgrupanCorrectamenteLasRespuestasAsignandolesUnPuntoACadaUno() {
         String consigna = "Agrupe en las categorias A y B:";
 
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion3DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB");
+        Opcion opcion1DeGrupoA = new Opcion("respuesta1GrupoA");
+        Opcion opcion2DeGrupoA = new Opcion("respuesta2GrupoA");
+        Opcion opcion3DeGrupoA = new Opcion("respuesta3GrupoA");
+        Opcion opcion1DeGrupoB = new Opcion("respuesta1GrupoB");
+        Opcion opcion2DeGrupoB = new Opcion("respuesta2GrupoB");
+        Opcion opcion3DeGrupoB = new Opcion("respuesta3GrupoB");
 
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
@@ -349,12 +349,12 @@ public class AsignacionDePuntosTest {
         String consigna = "Agrupe en las categorias A y B:";
 
 
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion3DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB");
+        Opcion opcion1DeGrupoA = new Opcion("respuesta1GrupoA");
+        Opcion opcion2DeGrupoA = new Opcion("respuesta2GrupoA");
+        Opcion opcion3DeGrupoA = new Opcion("respuesta3GrupoA");
+        Opcion opcion1DeGrupoB = new Opcion("respuesta1GrupoB");
+        Opcion opcion2DeGrupoB = new Opcion("respuesta2GrupoB");
+        Opcion opcion3DeGrupoB = new Opcion("respuesta3GrupoB");
 
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
@@ -656,8 +656,7 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
 
-        Exclusividad exclusividad = new Exclusividad();
-        kahoot.agregarExclusividadJugador1(exclusividad);
+        kahoot.agregarExclusividadJugador1(preguntaVerderoFalsoClasico);
 
         kahoot.evaluarRespuestas(preguntaVerderoFalsoClasico);
 
@@ -681,8 +680,7 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
 
-        Multiplicador multiplicador = new Multiplicador(2);
-        kahoot.agregarMultiplicadorJugador2(multiplicador);
+        kahoot.agregarMultiplicadorX2Jugador2(preguntaVerderoFalsoConPenalidad);
 
         kahoot.evaluarRespuestas(preguntaVerderoFalsoConPenalidad);
 
@@ -718,8 +716,7 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
 
-        Exclusividad exclusividad = new Exclusividad();
-        kahoot.agregarExclusividadJugador1(exclusividad);
+        kahoot.agregarExclusividadJugador1(preguntaMultipleChoiceParcial);
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
@@ -754,8 +751,7 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
 
-        Exclusividad exclusividad = new Exclusividad();
-        kahoot.agregarExclusividadJugador1(exclusividad);
+        kahoot.agregarExclusividadJugador1(preguntaMultipleChoiceParcial);
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
@@ -768,12 +764,12 @@ public class AsignacionDePuntosTest {
         String consigna = "Agrupe en las categorias A y B:";
 
 
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion3DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB");
+        Opcion opcion1DeGrupoA = new Opcion("respuesta1GrupoA");
+        Opcion opcion2DeGrupoA = new Opcion("respuesta2GrupoA");
+        Opcion opcion3DeGrupoA = new Opcion("respuesta3GrupoA");
+        Opcion opcion1DeGrupoB = new Opcion("respuesta1GrupoB");
+        Opcion opcion2DeGrupoB = new Opcion("respuesta2GrupoB");
+        Opcion opcion3DeGrupoB = new Opcion("respuesta3GrupoB");
 
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
@@ -791,10 +787,8 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
 
-        Exclusividad exclusividad1 = new Exclusividad();
-        Exclusividad exclusividad2 = new Exclusividad();
-        kahoot.agregarExclusividadJugador1(exclusividad1);
-        kahoot.agregarExclusividadJugador2(exclusividad2);
+        kahoot.agregarExclusividadJugador1(preguntaGroupChoice);
+        kahoot.agregarExclusividadJugador2(preguntaGroupChoice);
 
         kahoot.evaluarRespuestas(preguntaGroupChoice);
 
@@ -831,10 +825,8 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
 
-        Multiplicador multiplicador1 = new Multiplicador(2);
-        Multiplicador multiplicador2 = new Multiplicador(2);
-        kahoot.agregarMultiplicadorJugador1(multiplicador1);
-        kahoot.agregarMultiplicadorJugador2(multiplicador2);
+        kahoot.agregarMultiplicadorX2Jugador1(preguntaMultipleChoiceConPenalidad);
+        kahoot.agregarMultiplicadorX2Jugador2(preguntaMultipleChoiceConPenalidad);
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
 
@@ -875,10 +867,8 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
 
-        Multiplicador multiplicador1 = new Multiplicador(2);
-        Multiplicador multiplicador2 = new Multiplicador(3);
-        kahoot.agregarMultiplicadorJugador1(multiplicador1);
-        kahoot.agregarMultiplicadorJugador1(multiplicador2);
+        kahoot.agregarMultiplicadorX2Jugador1(preguntaMultipleChoiceConPenalidad);
+        kahoot.agregarMultiplicadorX3Jugador1(preguntaMultipleChoiceConPenalidad);
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
 
