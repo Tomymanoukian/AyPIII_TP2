@@ -38,8 +38,14 @@ public class Jugador {
         return nombre;
     }
 
+
     public void sumarPuntos(Puntaje unPuntaje) {
         puntaje.sumarPuntos(unPuntaje);
+    }
+
+
+    public void setNombre(String unNombre) {
+        nombre = unNombre;
     }
 
     public Stack<Multiplicador> getMultiplicadoresX2() { return multiplicadoresX2;}

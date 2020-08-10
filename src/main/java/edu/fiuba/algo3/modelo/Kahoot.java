@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.InterfazDeUsuario;
 import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaExclusividadesException;
 import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaMultiplicadoresException;
 
@@ -13,6 +14,7 @@ public class Kahoot {
     private ListaDeExclusividades exclusividadesJ2;
     private ListaDeMultiplicadores multiplicadoresJ1;
     private ListaDeMultiplicadores multiplicadoresJ2;
+    private InterfazDeUsuario interfazDeUsuario;
 
     public Kahoot(Jugador unJugador, Jugador otroJugador) {
         jugador1 = unJugador;
@@ -99,4 +101,19 @@ public class Kahoot {
     public Puntaje getPuntajeJugador2() {
         return jugador2.getPuntaje();
     }
+
+    public void iniciarJuego() {
+
+        VerdaderoFalsoClasico pregunta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("Elegi:");
+
+        pregunta.mostrarseEn(interfazDeUsuario);
+
+
+    }
+
+    public void setInterfazVisual(InterfazDeUsuario unaInterfazDeUsuario) {
+        interfazDeUsuario = unaInterfazDeUsuario;
+    }
+
+
 }
