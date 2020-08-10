@@ -7,7 +7,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         InterfazDeUsuario interfazDelJuego = new InterfazDeUsuario(stage);
-        interfazDelJuego.vistaDeInicioDelKahoot();
+        interfazDelJuego.vistaVerdaderoFalso();
 
     }
 
