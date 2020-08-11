@@ -1,34 +1,30 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.RespuestaNoValidaException;
+public class RespuestaDeGrupos extends Respuesta {
 
-public class RespuestaDeGrupos implements Respuesta{
-
-    private ListaOpciones opcionesSeleccionadasGrupoA;
-    private ListaOpciones opcionesSeleccionadasGrupoB;
+    private final ListaOpciones opcionesSeleccionadasGrupoA;
+    private final ListaOpciones opcionesSeleccionadasGrupoB;
 
     public RespuestaDeGrupos(ListaOpciones unasOpcionesSeleccionadasDelGrupoA, ListaOpciones unasOpcionesSeleccionadasDelGrupoB) {
         opcionesSeleccionadasGrupoA = unasOpcionesSeleccionadasDelGrupoA;
         opcionesSeleccionadasGrupoB = unasOpcionesSeleccionadasDelGrupoB;
     }
 
-    /*public int calcularPuntaje(ListaOpciones unasOpcionesGrupoA, ListaOpciones unasOpcionesGrupoB){
-        if(opcionesSeleccionadasGrupoA.contieneLoMismo(unasOpcionesGrupoA) && opcionesSeleccionadasGrupoB.contieneLoMismo(unasOpcionesGrupoB)){
-            return 1;
-        }return 0;
-    }*/
+    public ListaOpciones getOpcionesSeleccionadasGrupoA() {
+        return opcionesSeleccionadasGrupoA;
+    }
+
+    public ListaOpciones getOpcionesSeleccionadasGrupoB() {
+        return opcionesSeleccionadasGrupoB;
+    }
 
     @Override
-    public ListaOpciones getOpcionesSeleccionadasGrupoA(){ return opcionesSeleccionadasGrupoA; }
+    public boolean grupoAContieneLoMismo(ListaOpciones opcionesGrupoA) {
+        return opcionesSeleccionadasGrupoA.contieneLoMismo(opcionesGrupoA);
+    }
 
     @Override
-    public ListaOpciones getOpcionesSeleccionadasGrupoB(){ return opcionesSeleccionadasGrupoB; }
-
-    @Override
-    public ListaOpciones getOpcionesSeleccionadas() { throw new RespuestaNoValidaException(); }
-
-    @Override
-    public Opcion getOpcionSeleccionada() { throw new RespuestaNoValidaException(); }
-
-
+    public boolean grupoBContieneLoMismo(ListaOpciones opcionesGrupoB) {
+        return opcionesSeleccionadasGrupoB.contieneLoMismo(opcionesGrupoB);
+    }
 }

@@ -22,29 +22,4 @@ public class RespuestaDeGruposTest {
         assert (respuestaDeGrupos.getOpcionesSeleccionadasGrupoA().contieneLoMismo(opcionesSeleccionadasGrupoA));
         assert (respuestaDeGrupos.getOpcionesSeleccionadasGrupoB().contieneLoMismo(opcionesSeleccionadasGrupoB));
     }
-
-    @Test
-    public void testSeLePideUnaOpcionResultandoEnExcepcion() {
-        Opcion opcion1A = new Opcion("una opcion");
-        Opcion opcion2A = new Opcion("otra opcion");
-        Opcion opcion1B = new Opcion("otra otra opcion");
-        Opcion opcion2B = new Opcion("otra otra otra opcion");
-        ListaOpciones opcionesSeleccionadasGrupoA = new ListaOpciones(Arrays.asList(opcion1A, opcion2A));
-        ListaOpciones opcionesSeleccionadasGrupoB = new ListaOpciones(Arrays.asList(opcion1B, opcion2B));
-        RespuestaDeGrupos respuestaDeGrupos = new RespuestaDeGrupos(opcionesSeleccionadasGrupoA, opcionesSeleccionadasGrupoB);
-
-        assertThrows(RespuestaNoValidaException.class, respuestaDeGrupos::getOpcionSeleccionada);
-    }
-    @Test
-    public void testSeLePideMasDeUnaOpcionResultandoEnExcepcion() {
-        Opcion opcion1A = new Opcion("una opcion");
-        Opcion opcion2A = new Opcion("otra opcion");
-        Opcion opcion1B = new Opcion("otra otra opcion");
-        Opcion opcion2B = new Opcion("otra otra otra opcion");
-        ListaOpciones opcionesSeleccionadasGrupoA = new ListaOpciones(Arrays.asList(opcion1A, opcion2A));
-        ListaOpciones opcionesSeleccionadasGrupoB = new ListaOpciones(Arrays.asList(opcion1B, opcion2B));
-        RespuestaDeGrupos respuestaDeGrupos = new RespuestaDeGrupos(opcionesSeleccionadasGrupoA, opcionesSeleccionadasGrupoB);
-
-        assertThrows(RespuestaNoValidaException.class, respuestaDeGrupos::getOpcionesSeleccionadas);
-    }
 }

@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.RespuestaNoValidaException;
 
-public class RespuestaUnica implements Respuesta {
+public class RespuestaUnica extends Respuesta {
 
     private Opcion opcionSeleccionada;
 
@@ -10,19 +10,17 @@ public class RespuestaUnica implements Respuesta {
         opcionSeleccionada = unaOpcionSeleccionada;
     }
 
-    @Override
-    public ListaOpciones getOpcionesSeleccionadas() {
-        throw new RespuestaNoValidaException();
-    }
-
-    @Override
-    public Opcion getOpcionSeleccionada() {
+    public Opcion getOpcionSeleccionada(){
         return opcionSeleccionada;
     }
 
     @Override
-    public ListaOpciones getOpcionesSeleccionadasGrupoA() { throw new RespuestaNoValidaException(); }
+    public boolean esIgualA(Opcion opcion) {
+        return opcionSeleccionada.esIgualA(opcion);
+    }
 
     @Override
-    public ListaOpciones getOpcionesSeleccionadasGrupoB() { throw new RespuestaNoValidaException(); }
+    public Puntaje getPuntaje() {
+        return opcionSeleccionada.getPuntaje();
+    }
 }

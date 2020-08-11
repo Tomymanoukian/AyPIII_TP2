@@ -18,9 +18,11 @@ public class MultipleChoiceParcial extends Pregunta {
     }
 
     @Override
-    public Puntaje evaluarRespuestaPara(Respuesta unaRespuesta) {
-        ListaOpciones opcionesSeleccionadas = unaRespuesta.getOpcionesSeleccionadas();
-        return opcionesSeleccionadas.calcularPuntaje();
+    public Puntaje evaluarRespuestaPara(Respuesta unaRespuestaEnLista) {
+        if(unaRespuestaEnLista.contieneAlguna(opcionesIncorrectas)){
+            return new Puntaje(0);
+        }
+        return unaRespuestaEnLista.calcularPuntaje();
     }
 
     public ListaOpciones getOpcionesCorrectas() {

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.entrega_2;
 import edu.fiuba.algo3.modelo.ListaOpciones;
 import edu.fiuba.algo3.modelo.MultipleChoiceClasico;
 import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.RespuestaEnLista;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -56,7 +57,9 @@ public class MultipleChoiceClasicoTest {
         opcionesElegidas.agregar(opcionCorrecta1);
         opcionesElegidas.agregar(opcionCorrecta2);
 
-        assertEquals(1, multipleChoiceClasico.calcularPuntajePara(opcionesElegidas).getPuntos());
+        RespuestaEnLista respuesta = new RespuestaEnLista(opcionesElegidas);
+
+        assertEquals(1, multipleChoiceClasico.calcularPuntajePara(respuesta).getPuntos());
     }
 
     @Test
@@ -65,7 +68,9 @@ public class MultipleChoiceClasicoTest {
 
         opcionesElegidas.agregar(opcionIncorrecta1);
 
-        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(opcionesElegidas).getPuntos());
+        RespuestaEnLista respuesta = new RespuestaEnLista(opcionesElegidas);
+
+        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuesta).getPuntos());
     }
 
     @Test
@@ -75,7 +80,9 @@ public class MultipleChoiceClasicoTest {
         opcionesElegidas.agregar(opcionCorrecta1);
         opcionesElegidas.agregar(opcionIncorrecta1);
 
-        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(opcionesElegidas).getPuntos());
+        RespuestaEnLista respuesta = new RespuestaEnLista(opcionesElegidas);
+
+        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuesta).getPuntos());
     }
 
     @Test
@@ -84,6 +91,8 @@ public class MultipleChoiceClasicoTest {
 
         opcionesElegidas.agregar(opcionCorrecta1);
 
-        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(opcionesElegidas).getPuntos());
+        RespuestaEnLista respuesta = new RespuestaEnLista(opcionesElegidas);
+
+        assertEquals(0, multipleChoiceClasico.calcularPuntajePara(respuesta).getPuntos());
     }
 }
