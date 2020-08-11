@@ -33,7 +33,7 @@ public class InterfazDeUsuario {
 
         Button iniciarJuego = new Button("Iniciar Kahoot");
 
-        BotonEmpezarJuegoEventHandler botonComienzoDeJuego = new BotonEmpezarJuegoEventHandler(nombreJugador1, nombreJugador2, this);
+        BotonEmpezarJuegoEventHandler botonComienzoDeJuego = new BotonEmpezarJuegoEventHandler(nombreJugador1, nombreJugador2);
         iniciarJuego.setOnAction(botonComienzoDeJuego);
 
 
@@ -43,7 +43,7 @@ public class InterfazDeUsuario {
 
         VBox contenedorInicioDeKahoot = new VBox(contenedorBienvenida, contenedorInsertarNombreJugador1, contenedorInsertarNombreJugador2, iniciarJuego);
 
-        Scene scene = new Scene(contenedorInicioDeKahoot, 400, 275);
+        Scene scene = new Scene(contenedorInicioDeKahoot, 390, 275);
 
         stage.setScene(scene);
         stage.show();
@@ -109,7 +109,7 @@ public class InterfazDeUsuario {
         VBox contendorPrincipal = new VBox(contenedorPrimerRenglon, contenedorConsigna, contenedorHorizontal);
         contendorPrincipal.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        Scene scene = new Scene(contendorPrincipal, 400, 275);
+        Scene scene = new Scene(contendorPrincipal, 400, 375);
 
         stage.setScene(scene);
         stage.show();
