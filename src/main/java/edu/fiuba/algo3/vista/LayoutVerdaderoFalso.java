@@ -13,7 +13,7 @@ import javafx.scene.layout.StackPane;
 
 public class LayoutVerdaderoFalso extends VBox{
 
-    private VBox contendorPrincipal;
+    private Pane layout;
 
     public LayoutVerdaderoFalso() {
 
@@ -71,9 +71,15 @@ public class LayoutVerdaderoFalso extends VBox{
         contenedorHorizontal.setSpacing(10);
         contenedorHorizontal.setPadding(new Insets(15));
 
-        contendorPrincipal = new VBox(contenedorPrimerRenglon, contenedorConsigna, contenedorHorizontal);
-        contendorPrincipal.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        layout = new VBox(contenedorPrimerRenglon, contenedorConsigna, contenedorHorizontal);
+        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
-    public VBox getLayout() {return contendorPrincipal;}
+    public Pane getLayout() {return layout;}
+
+    public void mostrarVista(Pane unosLayouts) {
+
+        unosLayouts.getChildren().forEach(element -> element.setVisible(false));
+        layout.setVisible(true);
+    }
 }

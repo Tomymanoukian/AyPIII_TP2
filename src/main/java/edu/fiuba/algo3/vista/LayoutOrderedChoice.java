@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 public class LayoutOrderedChoice extends VBox {
 
-    private VBox layout;
+    private Pane layout;
 
     public LayoutOrderedChoice() {
         //Comienza primer renglón
@@ -80,5 +80,11 @@ public class LayoutOrderedChoice extends VBox {
         layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
-    public VBox getLayout() {return layout;}
+    public Pane getLayout() {return layout;}
+
+    public void mostrarVista(Pane unosLayouts) {
+
+        unosLayouts.getChildren().forEach(element -> element.setVisible(false));
+        layout.setVisible(true);
+    }
 }
