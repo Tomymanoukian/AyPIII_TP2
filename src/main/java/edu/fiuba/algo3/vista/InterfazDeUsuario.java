@@ -20,6 +20,7 @@ public class InterfazDeUsuario {
     }
 
     public void vistaDeInicioDelKahoot() {
+
         stage.setTitle("Kahoot!");
 
         Label bienvenida = new Label("Bienvenidos a Kahoot");
@@ -49,7 +50,6 @@ public class InterfazDeUsuario {
     }
 
     public void vistaVerdaderoFalso() {
-
 
         Label nombreJugador = new Label("Jugador1");
         Label tiempo = new Label("00:00");
@@ -113,6 +113,5 @@ public class InterfazDeUsuario {
 
         stage.setScene(scene);
         stage.show();
-
     }
 }
