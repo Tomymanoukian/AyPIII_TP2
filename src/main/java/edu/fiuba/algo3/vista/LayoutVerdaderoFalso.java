@@ -36,17 +36,18 @@ public class LayoutVerdaderoFalso extends VBox{
         contenedorPrimerRenglon.setStyle("-fx-font-size: 1.25em;");
         contenedorPrimerRenglon.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
         contenedorPrimerRenglon.setSpacing(40);
-        contenedorPrimerRenglon.setPadding(new Insets(10));
+        contenedorPrimerRenglon.setPadding(new Insets(20));
 
         Label consigna = new Label("Kahoot es lo mejor que hay?");
         consigna.setStyle("-fx-font-weight: bold");
 
-        Rectangle rectanguloConsigna = new Rectangle(20, 20, 300, 100);
+        Rectangle rectanguloConsigna = new Rectangle(20, 20, 350, 125);
         rectanguloConsigna.setFill(Color.LAVENDER);
 
         StackPane contenedorConsigna = new StackPane(rectanguloConsigna, consigna);
-        contenedorConsigna.setPadding(new Insets(15));
+        contenedorConsigna.setPadding(new Insets(20));
         contenedorConsigna.setStyle("-fx-font-size: 1.3em;");
+
 
         ToggleGroup grupoDeOpciones = new ToggleGroup();
 

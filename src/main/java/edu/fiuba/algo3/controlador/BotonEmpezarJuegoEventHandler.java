@@ -9,14 +9,12 @@ import javafx.scene.control.TextField;
 
 public class BotonEmpezarJuegoEventHandler implements EventHandler<ActionEvent> {
 
-    private InterfazDeUsuario interfazDeUsuario;
     private TextField nombreJugador1;
     private TextField nombreJugador2;
 
-    public BotonEmpezarJuegoEventHandler(TextField unNombreJugador1, TextField unNombreJugador2,InterfazDeUsuario unaInterfazDeUsuario) {
+    public BotonEmpezarJuegoEventHandler(TextField unNombreJugador1, TextField unNombreJugador2) {
         nombreJugador1 = unNombreJugador1;
         nombreJugador2 = unNombreJugador2;
-        interfazDeUsuario = unaInterfazDeUsuario;
     }
 
     @Override
@@ -24,7 +22,6 @@ public class BotonEmpezarJuegoEventHandler implements EventHandler<ActionEvent> 
         Jugador jugador1 = new Jugador(nombreJugador1.getText());
         Jugador jugador2 = new Jugador(nombreJugador2.getText());
         Kahoot kahoot = new Kahoot(jugador1,jugador2);
-        kahoot.setInterfazVisual(interfazDeUsuario);
         kahoot.iniciarJuego();
     }
 }
