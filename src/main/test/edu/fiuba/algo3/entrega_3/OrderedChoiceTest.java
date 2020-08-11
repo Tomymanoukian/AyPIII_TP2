@@ -3,10 +3,12 @@ package edu.fiuba.algo3.entrega_3;
 import edu.fiuba.algo3.modelo.ListaOpciones;
 import edu.fiuba.algo3.modelo.Opcion;
 import edu.fiuba.algo3.modelo.OrderedChoice;
+import edu.fiuba.algo3.modelo.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -48,8 +50,9 @@ public class OrderedChoiceTest {
 
         ListaOpciones opcionesElegidas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1ra, opcion2da, opcion3ra)));
 
+        RespuestaEnLista respuestaEnLista = new RespuestaEnLista(opcionesElegidas);
 
-        assertEquals(1, orderedChoice.calcularPuntajePara(opcionesElegidas).getPuntos());
+        assertEquals(1, orderedChoice.calcularPuntajePara(respuestaEnLista).getPuntos());
     }
 
     @Test
@@ -58,8 +61,9 @@ public class OrderedChoiceTest {
 
         ListaOpciones opcionesElegidas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1ra, opcion3ra, opcion2da)));
 
+        RespuestaEnLista respuestaEnLista = new RespuestaEnLista(opcionesElegidas);
 
-        assertEquals(0, orderedChoice.calcularPuntajePara(opcionesElegidas).getPuntos());
+        assertEquals(0, orderedChoice.calcularPuntajePara(respuestaEnLista).getPuntos());
     }
 
     @Test

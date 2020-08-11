@@ -29,9 +29,9 @@ public class MultipleChoiceClasico extends Pregunta {
         return opcionesIncorrectas;
     }
 
-    public Puntaje calcularPuntajePara(ListaOpciones opcionesSeleccionadas) {
-        Puntaje puntaje = new Puntaje();
-        if (opcionesSeleccionadas.contieneLoMismo(opcionesCorrectas)) {
+    public Puntaje calcularPuntajePara(Respuesta respuesta) {
+        Puntaje puntaje = new Puntaje(0);
+        if (respuesta.contieneLoMismo(opcionesCorrectas)) {
             puntaje.establecerPuntos(1);
         }
         return puntaje;
@@ -39,8 +39,8 @@ public class MultipleChoiceClasico extends Pregunta {
 
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
-        ListaOpciones opcionesSeleccionadas = respuesta.getOpcionesSeleccionadas();
-        return(this.calcularPuntajePara(opcionesSeleccionadas));
+
+        return(this.calcularPuntajePara(respuesta));
     }
 
     @Override

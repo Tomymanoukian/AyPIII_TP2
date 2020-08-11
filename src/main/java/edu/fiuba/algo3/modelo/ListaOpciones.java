@@ -16,6 +16,7 @@ public class ListaOpciones {
         listaOpciones = new ArrayList<>();
         listaOpciones.addAll(unaLista);
     }
+
     public ListaOpciones(ListaOpciones unaListaDeRespuestas) {
         listaOpciones = new ArrayList<>();
         listaOpciones.addAll(unaListaDeRespuestas.obtenerLista());
@@ -81,11 +82,11 @@ public class ListaOpciones {
         return listaOpciones.size();
     }
 
-    public boolean esIgual(ListaOpciones otraLista){
+    public boolean esIgual(ListaOpciones otraLista) {
         Iterator<Opcion> iterador1 = listaOpciones.iterator();
         Iterator<Opcion> iterador2 = otraLista.obtenerLista().iterator();
 
-        if(this.cantidadDeRespuestas() != otraLista.cantidadDeRespuestas()){
+        if (this.cantidadDeRespuestas() != otraLista.cantidadDeRespuestas()) {
             return false;
         }
 
@@ -93,7 +94,7 @@ public class ListaOpciones {
             Opcion unaOpcion = iterador1.next();
             Opcion otraOpcion = iterador2.next();
 
-            if(unaOpcion != otraOpcion){
+            if (unaOpcion != otraOpcion) {
                 return false;
             }
         }
@@ -107,5 +108,9 @@ public class ListaOpciones {
             puntaje.sumarPuntos(opcion.getPuntaje());
         }
         return puntaje;
+    }
+
+    public boolean contieneAlguna(ListaOpciones opciones) {
+        return (this.obtenerCoincidencias(opciones) != 0);
     }
 }

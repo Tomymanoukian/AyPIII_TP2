@@ -45,8 +45,9 @@ public class OrderedChoiceTest {
 
         ListaOpciones opcionesElegidas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1ra, opcion2da, opcion3ra)));
 
+        RespuestaEnLista respuestaEnLista = new RespuestaEnLista(opcionesElegidas);
 
-        assertEquals(1, orderedChoice.calcularPuntajePara(opcionesElegidas).getPuntos());
+        assertEquals(1, orderedChoice.calcularPuntajePara(respuestaEnLista).getPuntos());
     }
 
     @Test
@@ -55,8 +56,9 @@ public class OrderedChoiceTest {
 
         ListaOpciones opcionesElegidas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1ra, opcion3ra, opcion2da)));
 
+        RespuestaEnLista respuestaEnLista = new RespuestaEnLista(opcionesElegidas);
 
-        assertEquals(0, orderedChoice.calcularPuntajePara(opcionesElegidas).getPuntos());
+        assertEquals(0, orderedChoice.calcularPuntajePara(respuestaEnLista).getPuntos());
     }
 
     @Test

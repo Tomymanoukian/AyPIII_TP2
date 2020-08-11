@@ -25,4 +25,24 @@ public class RespuestaUnica implements Respuesta {
 
     @Override
     public ListaOpciones getOpcionesSeleccionadasGrupoB() { throw new RespuestaNoValidaException(); }
+
+    @Override
+    public Puntaje calcularPuntaje() {
+        return opcionSeleccionada.getPuntaje();
+    }
+
+    @Override
+    public boolean contieneLoMismo(ListaOpciones opciones) {
+        return false;
+    }
+
+    @Override
+    public boolean contieneAlguna(ListaOpciones opcionesIncorrectas) {
+        return false;
+    }
+
+    @Override
+    public boolean esIgual(ListaOpciones listaDeOpciones) {
+        return false;
+    }
 }

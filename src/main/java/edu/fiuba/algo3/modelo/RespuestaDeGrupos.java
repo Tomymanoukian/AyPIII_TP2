@@ -25,6 +25,26 @@ public class RespuestaDeGrupos implements Respuesta{
     public ListaOpciones getOpcionesSeleccionadasGrupoB(){ return opcionesSeleccionadasGrupoB; }
 
     @Override
+    public Puntaje calcularPuntaje() {
+        return null;
+    }
+
+    @Override
+    public boolean contieneLoMismo(ListaOpciones opciones) {
+        return false;
+    }
+
+    @Override
+    public boolean contieneAlguna(ListaOpciones opcionesIncorrectas) {
+        return false;
+    }
+
+    @Override
+    public boolean esIgual(ListaOpciones listaDeOpciones) {
+        return false;
+    }
+
+    @Override
     public ListaOpciones getOpcionesSeleccionadas() { throw new RespuestaNoValidaException(); }
 
     @Override
