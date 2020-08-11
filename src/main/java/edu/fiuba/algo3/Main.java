@@ -9,8 +9,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
-        InterfazDeUsuario interfazDelJuego = new InterfazDeUsuario(stage);
-        interfazDelJuego.vistaVerdaderoFalso();
+        stage.setTitle("Kahoot!");
+
+
     }
 
     public static void main(String[] args) {
