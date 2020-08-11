@@ -4,7 +4,10 @@ import edu.fiuba.algo3.vista.InterfazDeUsuario;
 import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaExclusividadesException;
 import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaMultiplicadoresException;
 
-public class Kahoot {
+import java.util.Observable;
+import java.util.Observer;
+
+public class Kahoot{
 
     private Jugador jugador1;
     private Jugador jugador2;
@@ -107,13 +110,9 @@ public class Kahoot {
         VerdaderoFalsoClasico pregunta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("Elegi:");
 
         pregunta.mostrarseEn(interfazDeUsuario);
-
-
     }
 
     public void setInterfazVisual(InterfazDeUsuario unaInterfazDeUsuario) {
         interfazDeUsuario = unaInterfazDeUsuario;
     }
-
-
 }

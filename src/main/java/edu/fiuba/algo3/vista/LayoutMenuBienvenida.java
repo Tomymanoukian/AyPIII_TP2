@@ -2,11 +2,12 @@ package edu.fiuba.algo3.vista;
 
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class LayoutMenuBienvenida extends VBox {
 
-    private VBox contenedorInicioDeKahoot;
+    private Pane layout;
 
     public LayoutMenuBienvenida() {
 
@@ -23,8 +24,14 @@ public class LayoutMenuBienvenida extends VBox {
         VBox contenedorInsertarNombreJugador1 = new VBox(pedirNombreJugador1, nombreJugador1);
         VBox contenedorInsertarNombreJugador2 = new VBox(pedirNombreJugador2, nombreJugador2);
 
-        contenedorInicioDeKahoot = new VBox(contenedorBienvenida, contenedorInsertarNombreJugador1, contenedorInsertarNombreJugador2, iniciarJuego);
+        layout = new VBox(contenedorBienvenida, contenedorInsertarNombreJugador1, contenedorInsertarNombreJugador2, iniciarJuego);
     }
 
-    public VBox getLayout() {return contenedorInicioDeKahoot;}
+    public Pane getLayout(){return layout;}
+
+    public void mostrarVista(Pane unosLayouts) {
+
+        unosLayouts.getChildren().forEach(element -> element.setVisible(false));
+        layout.setVisible(true);
+    }
 }
