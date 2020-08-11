@@ -29,6 +29,12 @@ public class OrderedChoice extends Pregunta {
         return puntaje;
     }
 
+    public ListaOpciones getOpcionesDesordenadas(){
+        listaDeOpciones.desordenar();
+        return listaDeOpciones;
+    }
+
+
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta unaRespuesta) {
         return this.calcularPuntajePara(unaRespuesta.getOpcionesSeleccionadas());

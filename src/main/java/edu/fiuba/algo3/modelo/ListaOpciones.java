@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -107,5 +108,8 @@ public class ListaOpciones {
             puntaje.sumarPuntos(opcion.getPuntaje());
         }
         return puntaje;
+    }
+    public void desordenar(){
+        Collections.shuffle(listaOpciones);
     }
 }
