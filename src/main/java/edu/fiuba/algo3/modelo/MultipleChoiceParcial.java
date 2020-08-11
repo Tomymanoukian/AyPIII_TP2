@@ -17,6 +17,7 @@ public class MultipleChoiceParcial extends Pregunta {
         opcionesIncorrectas = unasOpcionesIncorrectas;
     }
 
+
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta unaRespuestaEnLista) {
         if(unaRespuestaEnLista.contieneAlguna(opcionesIncorrectas)){
