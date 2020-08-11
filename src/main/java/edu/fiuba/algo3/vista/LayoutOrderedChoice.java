@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class LayoutOrderedChoice extends VBox {
 
@@ -48,41 +49,34 @@ public class LayoutOrderedChoice extends VBox {
         contenedorConsigna.setPadding(new Insets(15));
         contenedorConsigna.setStyle("-fx-font-size: 1.3em;");
 
-        VBox contenedorOpciones = new VBox();
+        //Comienzan Opciones
 
-        ArrayList<HBox> listaOpciones = new ArrayList<>();
+        ArrayList<HBox> listaHBoxOpciones = new ArrayList<>();
 
-        /* Así debería ser.
+/* Así debería ser.
         for (int i=0; i < 5; i++) {
-            listaOpciones.add(new HBox(unOrderedChoice.get(i)));
+            listaHBoxOpciones.add(new HBox(unOrderedChoice.getPosition(i)));
         }
 */
+        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label ("Numero 1"), new Button("▲")));
+        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label ("Numero 2"), new Button("▲")));
+        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label ("Numero 3"), new Button("▲")));
+        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label ("Numero 4"), new Button("▲")));
+        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label ("Numero 5"), new Button("▲")));
 
-/*
-        ToggleGroup grupoDeOpciones = new ToggleGroup();
+        VBox contenedorOpciones = new VBox(10);
+        contenedorOpciones.getChildren().addAll(listaHBoxOpciones);
 
-        RadioButton verdadero = new RadioButton("Verdadero");
-        HBox contenedroVerdadero = new HBox(verdadero);
-        contenedroVerdadero.setPadding(new Insets(10));
-        contenedroVerdadero.setBackground(new Background(new BackgroundFill(Color.CORNFLOWERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        for (int i=0; i<5; i++) {
+            listaHBoxOpciones.get(i).setAlignment(Pos.CENTER);
+        }
 
-        RadioButton falso = new RadioButton("Falso");
-        HBox contenedorFalso = new HBox(falso);
-        contenedorFalso.setPadding(new Insets(10));
-        contenedorFalso.setBackground(new Background(new BackgroundFill(Color.CRIMSON, CornerRadii.EMPTY, Insets.EMPTY)));
+        HBox enviar = new HBox (new Button ("Enviar"));
+        enviar.setAlignment(Pos.CENTER);
 
-        verdadero.setToggleGroup(grupoDeOpciones);
-        falso.setToggleGroup(grupoDeOpciones);
+        contenedorOpciones.setAlignment(Pos.CENTER);
 
-        HBox contenedorHorizontal = new HBox(contenedroVerdadero, contenedorFalso);
-        contenedorHorizontal.setAlignment(Pos.CENTER);
-        contenedorHorizontal.setStyle("-fx-font-weight: bold");
-        contenedorHorizontal.setStyle("-fx-font-size: 1.5em;");
-
-        contenedorHorizontal.setSpacing(10);
-        contenedorHorizontal.setPadding(new Insets(15));
-*/
-        layout = new VBox(contenedorPrimerRenglon, contenedorConsigna/*, contenedorHorizontal*/);
+        layout = new VBox(contenedorPrimerRenglon, contenedorConsigna, contenedorOpciones, enviar);
         layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
