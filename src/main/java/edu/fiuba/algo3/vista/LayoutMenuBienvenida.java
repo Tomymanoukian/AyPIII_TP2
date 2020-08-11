@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.BotonEmpezarJuegoEventHandler;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
