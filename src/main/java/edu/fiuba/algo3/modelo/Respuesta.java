@@ -1,19 +1,36 @@
 package edu.fiuba.algo3.modelo;
 
-public interface Respuesta {
-    ListaOpciones getOpcionesSeleccionadas();
+public class Respuesta {
 
-    Opcion getOpcionSeleccionada();
+    public Puntaje calcularPuntaje() {
+        return new Puntaje(0);
+    }
 
-    ListaOpciones getOpcionesSeleccionadasGrupoA();
+    public boolean contieneLoMismo(ListaOpciones opciones) {
+        return false;
+    }
 
-    ListaOpciones getOpcionesSeleccionadasGrupoB();
+    public boolean contieneAlguna(ListaOpciones opciones) {
+        return false;
+    }
 
-    Puntaje calcularPuntaje();
+    public boolean esIgual(ListaOpciones listaDeOpciones) {
+        return false;
+    }
 
-    boolean contieneLoMismo(ListaOpciones opciones);
+    public boolean esIgualA(Opcion opcion) {
+        return false;
+    }
 
-    boolean contieneAlguna(ListaOpciones opcionesIncorrectas);
-    
-    boolean esIgual(ListaOpciones listaDeOpciones);
+    public Puntaje getPuntaje() {
+        return new Puntaje(0);
+    }
+
+    public boolean grupoAContieneLoMismo(ListaOpciones opcionesGrupoA) {
+        return false;
+    }
+
+    public boolean grupoBContieneLoMismo(ListaOpciones opcionesGrupoB) {
+        return false;
+    }
 }

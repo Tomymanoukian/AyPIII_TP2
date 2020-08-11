@@ -16,21 +16,4 @@ public class RespuestaUnicaTest {
         assertEquals(opcion, respuestaUnica.getOpcionSeleccionada());
     }
 
-    @Test
-    public void testSeLePideMasDeUnaOpcionResultandoEnExcepcion() {
-        Opcion opcion = new Opcion("una opcion");
-        RespuestaUnica respuestaUnica = new RespuestaUnica(opcion);
-
-        assertThrows(RespuestaNoValidaException.class, respuestaUnica::getOpcionesSeleccionadas);
-    }
-
-    @Test
-    public void testSeLePideUnGrupoDeOpcionesResultandoEnExcepcion() {
-        Opcion opcion = new Opcion("una opcion");
-        RespuestaUnica respuestaUnica = new RespuestaUnica(opcion);
-
-        assertThrows(RespuestaNoValidaException.class, respuestaUnica::getOpcionesSeleccionadasGrupoA);
-        assertThrows(RespuestaNoValidaException.class, respuestaUnica::getOpcionesSeleccionadasGrupoB);
-    }
-
 }

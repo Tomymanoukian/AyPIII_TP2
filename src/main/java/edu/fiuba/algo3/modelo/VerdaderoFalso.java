@@ -16,12 +16,11 @@ public abstract class VerdaderoFalso extends Pregunta {
 
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
-        Opcion opcionSeleccionada = respuesta.getOpcionSeleccionada();
 
-        if (!opcionSeleccionada.esIgualA(opcionCorrecta) && !opcionSeleccionada.esIgualA(opcionIncorrecta)) {
+        if (!respuesta.esIgualA(opcionCorrecta) && !respuesta.esIgualA(opcionIncorrecta)) {
             throw new OpcionNoValidaException();
         }
 
-        return opcionSeleccionada.getPuntaje();
+        return respuesta.getPuntaje();
     }
 }
