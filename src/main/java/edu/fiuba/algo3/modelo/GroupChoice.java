@@ -19,12 +19,10 @@ public class GroupChoice extends Pregunta{
     }
 
     @Override
-    public Puntaje evaluarRespuestaPara(Respuesta unaRespuesta) {
-        Puntaje puntaje = new Puntaje();
-        ListaOpciones opcionesSeleccionadasGrupoA = unaRespuesta.getOpcionesSeleccionadasGrupoA();
-        ListaOpciones opcionesSeleccionadasGrupoB = unaRespuesta.getOpcionesSeleccionadasGrupoB();
+    public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
+        Puntaje puntaje = new Puntaje(0);
 
-        if(opcionesSeleccionadasGrupoA.contieneLoMismo(opcionesGrupoA) && opcionesSeleccionadasGrupoB.contieneLoMismo(opcionesGrupoB)){
+        if(respuesta.grupoAContieneLoMismo(opcionesGrupoA) && respuesta.grupoBContieneLoMismo(opcionesGrupoB)){
             puntaje.establecerPuntos(1);
         }
         return puntaje;

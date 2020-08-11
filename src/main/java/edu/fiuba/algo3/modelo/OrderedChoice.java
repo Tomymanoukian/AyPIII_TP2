@@ -21,9 +21,9 @@ public class OrderedChoice extends Pregunta {
         return super.getConsigna();
     }
 
-    public Puntaje calcularPuntajePara(ListaOpciones opcionesElegidas) {
-        Puntaje puntaje = new Puntaje();
-        if(listaDeOpciones.esIgual(opcionesElegidas)){
+    public Puntaje calcularPuntajePara(Respuesta respuestaEnLista) {
+        Puntaje puntaje = new Puntaje(0);
+        if(respuestaEnLista.esIgual(listaDeOpciones)){
             puntaje.establecerPuntos(1);
         }
         return puntaje;
@@ -36,8 +36,8 @@ public class OrderedChoice extends Pregunta {
 
 
     @Override
-    public Puntaje evaluarRespuestaPara(Respuesta unaRespuesta) {
-        return this.calcularPuntajePara(unaRespuesta.getOpcionesSeleccionadas());
+    public Puntaje evaluarRespuestaPara(Respuesta respuestaEnLista) {
+        return this.calcularPuntajePara(respuestaEnLista);
     }
 
     @Override

@@ -17,6 +17,7 @@ public class ListaOpciones {
         listaOpciones = new ArrayList<>();
         listaOpciones.addAll(unaLista);
     }
+
     public ListaOpciones(ListaOpciones unaListaDeRespuestas) {
         listaOpciones = new ArrayList<>();
         listaOpciones.addAll(unaListaDeRespuestas.obtenerLista());
@@ -31,20 +32,12 @@ public class ListaOpciones {
     }
 
     public boolean contieneTodo(ListaOpciones otraLista) {
-
         return (this.obtenerCoincidencias(otraLista) == otraLista.cantidadDeRespuestas());
-        //return listaOpciones.containsAll(otraLista.obtenerLista());
     }
 
     public boolean contieneLoMismo(ListaOpciones otraLista) {
-
-        //System.out.println(this.obtenerCoincidencias(otraLista));
-        //System.out.println(otraLista.cantidadDeRespuestas());
-
         return (this.cantidadDeRespuestas() == otraLista.cantidadDeRespuestas() &&
                 this.obtenerCoincidencias(otraLista) == otraLista.cantidadDeRespuestas());
-        /*return listaOpciones.size() == otraLista.obtenerLista().size() &&
-                listaOpciones.containsAll(otraLista.obtenerLista());*/
     }
 
     public Opcion obtener(int posicion) {
@@ -82,11 +75,11 @@ public class ListaOpciones {
         return listaOpciones.size();
     }
 
-    public boolean esIgual(ListaOpciones otraLista){
+    public boolean esIgual(ListaOpciones otraLista) {
         Iterator<Opcion> iterador1 = listaOpciones.iterator();
         Iterator<Opcion> iterador2 = otraLista.obtenerLista().iterator();
 
-        if(this.cantidadDeRespuestas() != otraLista.cantidadDeRespuestas()){
+        if (this.cantidadDeRespuestas() != otraLista.cantidadDeRespuestas()) {
             return false;
         }
 
@@ -94,7 +87,7 @@ public class ListaOpciones {
             Opcion unaOpcion = iterador1.next();
             Opcion otraOpcion = iterador2.next();
 
-            if(unaOpcion != otraOpcion){
+            if (unaOpcion != otraOpcion) {
                 return false;
             }
         }
@@ -109,7 +102,14 @@ public class ListaOpciones {
         }
         return puntaje;
     }
+
     public void desordenar(){
         Collections.shuffle(listaOpciones);
+    }
+
+
+    public boolean contieneAlguna(ListaOpciones opciones) {
+        return (this.obtenerCoincidencias(opciones) != 0);
+
     }
 }

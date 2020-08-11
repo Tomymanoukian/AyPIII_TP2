@@ -121,9 +121,9 @@ public class MultipleChoiceParcialTest {
         ListaOpciones opcionesIncorrectas = new ListaOpciones();
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
 
-        Opcion opcionCorrectaAlpha = new Opcion("Alpha");
-        Opcion opcionCorrectaBetta = new Opcion("Betta");
-        Opcion opcionIncorrectaJota = new Opcion("Jota");
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha",new Puntaje(1));
+        Opcion opcionCorrectaBetta = new Opcion("Betta",new Puntaje(1));
+        Opcion opcionIncorrectaJota = new Opcion("Jota",new Puntaje(0));
 
         opcionesCorrectas.agregar(opcionCorrectaAlpha);
         opcionesCorrectas.agregar(opcionCorrectaBetta);
@@ -146,9 +146,9 @@ public class MultipleChoiceParcialTest {
         ListaOpciones opcionesIncorrectas = new ListaOpciones();
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
 
-        Opcion opcionCorrectaAlpha = new Opcion("Alpha");
-        Opcion opcionInorrectaDobleV = new Opcion("DobleV");
-        Opcion opcionIncorrectaJota = new Opcion("Jota");
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha",new Puntaje(1));
+        Opcion opcionInorrectaDobleV = new Opcion("DobleV",new Puntaje(0));
+        Opcion opcionIncorrectaJota = new Opcion("Jota",new Puntaje(0));
 
         opcionesCorrectas.agregar(opcionCorrectaAlpha);
         opcionesIncorrectas.agregar(opcionInorrectaDobleV);
@@ -173,9 +173,9 @@ public class MultipleChoiceParcialTest {
         ListaOpciones opcionesIncorrectas = new ListaOpciones();
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
 
-        Opcion opcionCorrectaAlpha = new Opcion("Alpha");
-        Opcion opcionInorrectaDobleV = new Opcion("DobleV");
-        Opcion opcionIncorrectaJota = new Opcion("Jota");
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha",new Puntaje(1));
+        Opcion opcionInorrectaDobleV = new Opcion("DobleV",new Puntaje(0));
+        Opcion opcionIncorrectaJota = new Opcion("Jota",new Puntaje(0));
 
         opcionesCorrectas.agregar(opcionCorrectaAlpha);
         opcionesIncorrectas.agregar(opcionInorrectaDobleV);
@@ -192,9 +192,9 @@ public class MultipleChoiceParcialTest {
         ListaOpciones opcionesIncorrectas = new ListaOpciones();
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
 
-        Opcion opcionCorrectaAlpha = new Opcion("Alpha");
-        Opcion opcionInorrectaDobleV = new Opcion("DobleV");
-        Opcion opcionIncorrectaJota = new Opcion("Jota");
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha",new Puntaje(1));
+        Opcion opcionInorrectaDobleV = new Opcion("DobleV",new Puntaje(0));
+        Opcion opcionIncorrectaJota = new Opcion("Jota",new Puntaje(0));
 
         opcionesCorrectas.agregar(opcionCorrectaAlpha);
         opcionesIncorrectas.agregar(opcionInorrectaDobleV);
