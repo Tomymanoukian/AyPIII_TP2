@@ -1,8 +1,6 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Kahoot;
-import javafx.application.Application;
+import edu.fiuba.algo3.controlador.BotonEmpezarJuegoEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,13 +8,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-
-import java.util.Stack;
-
 
 public class InterfazDeUsuario {
     private Stage stage;
@@ -26,6 +20,7 @@ public class InterfazDeUsuario {
     }
 
     public void vistaDeInicioDelKahoot() {
+
         stage.setTitle("Kahoot!");
 
         Label bienvenida = new Label("Bienvenidos a Kahoot");
@@ -55,7 +50,6 @@ public class InterfazDeUsuario {
     }
 
     public void vistaVerdaderoFalso() {
-
 
         Label nombreJugador = new Label("Jugador1");
         Label tiempo = new Label("00:00");
@@ -119,6 +113,5 @@ public class InterfazDeUsuario {
 
         stage.setScene(scene);
         stage.show();
-
     }
 }
