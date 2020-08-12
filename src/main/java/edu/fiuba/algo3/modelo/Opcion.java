@@ -14,6 +14,11 @@ public class Opcion {
         puntaje = unPuntaje;
     }
 
+    public Opcion (Opcion unaOpcion) {
+        opcion = unaOpcion.getOpcion();
+        puntaje = unaOpcion.getPuntaje();
+    }
+
     public boolean esIgualA(Opcion unaOpcion) {
         return this.getOpcion().equals(unaOpcion.getOpcion());
     }
