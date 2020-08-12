@@ -1,9 +1,6 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.modelo.ListaOpciones;
-import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.vista.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -15,10 +12,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
-        Jugador jugador1 = new Jugador("Jugador 1");
-        Jugador jugador2 = new Jugador("Jugador 2");
-
-        Kahoot kahoot = new Kahoot(jugador1, jugador2);
+        ////////////Empieza creacion de objetos para hacer pruebas
+        String consigna = "Ordene los siguientes números:";
 
         ListaOpciones listaOpciones = new ListaOpciones();
 
@@ -34,14 +29,21 @@ public class Main extends Application {
         listaOpciones.agregar(opcion4);
         listaOpciones.agregar(opcion5);
 
+        OrderedChoice orderedChoice = new OrderedChoice(consigna, listaOpciones);
+
+        Jugador jugador1 = new Jugador("Jugador 1");
+        Jugador jugador2 = new Jugador("Jugador 2");
+        ///////////Termina creacion de objetos para hacer pruebas
+
+        Kahoot kahoot = new Kahoot(jugador1, jugador2);
+
         LayoutVerdaderoFalso vistaVerdaderoFalso = new LayoutVerdaderoFalso();
         LayoutMenuBienvenida vistaBienvenida = new LayoutMenuBienvenida();
-        LayoutOrderedChoice vistaOrderedChoice = new LayoutOrderedChoice(listaOpciones, stage);
+        LayoutOrderedChoice vistaOrderedChoice = new LayoutOrderedChoice(orderedChoice, kahoot.getJugador1(), kahoot, stage);
         LayoutPuntuaciones vistaPuntuaciones = new LayoutPuntuaciones();
         LayoutMultipleChoice vistaMultipleChoice = new LayoutMultipleChoice();
 
         Pane layout = new Pane();
-
         layout.getChildren().addAll(vistaBienvenida.getLayout(), vistaVerdaderoFalso.getLayout(), vistaOrderedChoice.getLayout(), vistaPuntuaciones.getLayout(), vistaMultipleChoice.getLayout());
 
         vistaOrderedChoice.mostrarVista(layout);
