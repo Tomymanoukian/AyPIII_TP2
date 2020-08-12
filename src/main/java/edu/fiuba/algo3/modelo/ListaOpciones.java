@@ -107,9 +107,10 @@ public class ListaOpciones {
         Collections.shuffle(listaOpciones);
     }
 
-
     public boolean contieneAlguna(ListaOpciones opciones) {
         return (this.obtenerCoincidencias(opciones) != 0);
 
     }
+
+    public void establecer(int posicion, Opcion unaOpcion) {listaOpciones.set(posicion, unaOpcion);}
 }

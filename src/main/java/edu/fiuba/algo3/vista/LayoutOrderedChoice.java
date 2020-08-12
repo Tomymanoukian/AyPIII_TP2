@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonSubirRespuestaHandler;
+import edu.fiuba.algo3.modelo.ListaOpciones;
+import edu.fiuba.algo3.modelo.Opcion;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -53,16 +56,41 @@ public class LayoutOrderedChoice extends VBox {
 
         ArrayList<HBox> listaHBoxOpciones = new ArrayList<>();
 
+        ListaOpciones listaOpciones = new ListaOpciones();
+
+        Opcion opcion1 = new Opcion("Numero 1");
+        Opcion opcion2 = new Opcion("Numero 2");
+        Opcion opcion3 = new Opcion("Numero 3");
+        Opcion opcion4 = new Opcion("Numero 4");
+        Opcion opcion5 = new Opcion("Numero 5");
+
+        listaOpciones.agregar(opcion1);
+        listaOpciones.agregar(opcion2);
+        listaOpciones.agregar(opcion3);
+        listaOpciones.agregar(opcion4);
+        listaOpciones.agregar(opcion5);
+
 /* Así debería ser.
         for (int i=0; i < 5; i++) {
             listaHBoxOpciones.add(new HBox(unOrderedChoice.getPosition(i)));
         }
 */
-        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label ("Numero 1"), new Button("▲")));
-        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label ("Numero 2"), new Button("▲")));
-        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label ("Numero 3"), new Button("▲")));
-        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label ("Numero 4"), new Button("▲")));
-        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label ("Numero 5"), new Button("▲")));
+
+        Button miBoton = new Button ("▲");
+
+        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label (listaOpciones.obtener(0).getOpcion()), new Button("▲")));
+        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label (listaOpciones.obtener(1).getOpcion()), miBoton));
+        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label (listaOpciones.obtener(2).getOpcion()), new Button("▲")));
+        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label (listaOpciones.obtener(3).getOpcion()), new Button("▲")));
+        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label (listaOpciones.obtener(4).getOpcion()), new Button("▲")));
+
+        BotonSubirRespuestaHandler miBotonHandler = new BotonSubirRespuestaHandler(1,listaOpciones);
+        miBoton.setOnAction(miBotonHandler);
+
+
+
+
+
 
         VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.getChildren().addAll(listaHBoxOpciones);
