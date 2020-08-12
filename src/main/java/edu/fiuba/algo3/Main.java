@@ -1,7 +1,6 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Kahoot;
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.vista.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -18,7 +17,8 @@ public class Main extends Application {
 
         Kahoot kahoot = new Kahoot(jugador1, jugador2);
 
-        LayoutVerdaderoFalso vistaVerdaderoFalso = new LayoutVerdaderoFalso();
+        VerdaderoFalsoClasico vof = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("Elegi:");
+        SceneVerdaderoFalso vistaVerdaderoFalso = new SceneVerdaderoFalso(jugador1, vof.getOpcionCorrecta(), vof.getOpcionIncorrecta(),kahoot);
         LayoutMenuBienvenida vistaBienvenida = new LayoutMenuBienvenida();
         LayoutOrderedChoice vistaOrderedChoice = new LayoutOrderedChoice();
         LayoutPuntuaciones vistaPuntuaciones = new LayoutPuntuaciones();
@@ -28,7 +28,7 @@ public class Main extends Application {
 
         layout.getChildren().addAll(vistaBienvenida.getLayout(), vistaVerdaderoFalso.getLayout(), vistaOrderedChoice.getLayout(), vistaPuntuaciones.getLayout(), vistaMultipleChoice.getLayout());
 
-        vistaBienvenida.mostrarVista(layout);
+        vistaVerdaderoFalso.mostrarVista(layout);
 
         stage.setTitle("Kahoot!");
 

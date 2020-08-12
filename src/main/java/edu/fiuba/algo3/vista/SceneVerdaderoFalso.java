@@ -1,5 +1,12 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonFalsoEventHandler;
+import edu.fiuba.algo3.controlador.BotonVerdaderoEventHandler;
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.Kahoot;
+import edu.fiuba.algo3.modelo.Opcion;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,13 +18,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.StackPane;
 
-public class LayoutVerdaderoFalso extends VBox{
+public class SceneVerdaderoFalso extends VBox{
 
     private Pane layout;
 
-    public LayoutVerdaderoFalso() {
+    public SceneVerdaderoFalso(Jugador unJugador, Opcion opcionVerdadero, Opcion opcionFalso, Kahoot kahoot) {
 
-        Label nombreJugador = new Label("Jugador1");
+        Label nombreJugador = new Label(unJugador.getNombre());
         Label tiempo = new Label("00:00");
         Label bonusX2 = new Label("X2");
         Label bonusX3 = new Label("X3");
@@ -48,21 +55,18 @@ public class LayoutVerdaderoFalso extends VBox{
         contenedorConsigna.setPadding(new Insets(20));
         contenedorConsigna.setStyle("-fx-font-size: 1.3em;");
 
-
-        ToggleGroup grupoDeOpciones = new ToggleGroup();
-
-        RadioButton verdadero = new RadioButton("Verdadero");
-        HBox contenedroVerdadero = new HBox(verdadero);
+        Button botonVerdadero = new Button(opcionVerdadero.getOpcion());
+        botonVerdadero.setOnAction(new BotonVerdaderoEventHandler(opcionVerdadero,kahoot));
+        HBox contenedroVerdadero = new HBox(botonVerdadero);
         contenedroVerdadero.setPadding(new Insets(10));
         contenedroVerdadero.setBackground(new Background(new BackgroundFill(Color.CORNFLOWERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        RadioButton falso = new RadioButton("Falso");
-        HBox contenedorFalso = new HBox(falso);
+        Button botonFalso = new Button(opcionFalso.getOpcion());
+        botonFalso.setOnAction(new BotonFalsoEventHandler(opcionFalso,kahoot));
+        HBox contenedorFalso = new HBox(botonFalso);
         contenedorFalso.setPadding(new Insets(10));
         contenedorFalso.setBackground(new Background(new BackgroundFill(Color.CRIMSON, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        verdadero.setToggleGroup(grupoDeOpciones);
-        falso.setToggleGroup(grupoDeOpciones);
 
         HBox contenedorHorizontal = new HBox(contenedroVerdadero, contenedorFalso);
         contenedorHorizontal.setAlignment(Pos.CENTER);
