@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonBajarRespuestaHandler;
+import edu.fiuba.algo3.controlador.BotonEnviarHandler;
 import edu.fiuba.algo3.controlador.BotonExclusividadHandler;
 import edu.fiuba.algo3.controlador.BotonSubirRespuestaHandler;
 import edu.fiuba.algo3.modelo.Jugador;
@@ -24,11 +25,18 @@ public class LayoutOrderedChoice extends VBox {
         //Comienza primer renglón
         Label nombreJugador = new Label(jugador.getNombre());
         Label tiempo = new Label("00:00");
+
         Button bonusX2 = new Button("X2");
         bonusX2.setDisable(true);
+
         Button bonusX3 = new Button("X3");
         bonusX3.setDisable(true);
+
         Button exclusividad = new Button("Ex");
+        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (orderedChoice, jugador, kahoot, unStage);
+        exclusividad.setOnAction(exclusividadHandler);
+        if (jugador.getExclusividades().size()==0)
+            exclusividad.setDisable(true);
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
 
@@ -44,12 +52,6 @@ public class LayoutOrderedChoice extends VBox {
         contenedorPrimerRenglon.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
         contenedorPrimerRenglon.setSpacing(40);
         contenedorPrimerRenglon.setPadding(new Insets(10));
-
-        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (orderedChoice, jugador, kahoot, unStage);
-        exclusividad.setOnAction(exclusividadHandler);
-
-        if (jugador.getExclusividades().size()==0)
-            exclusividad.setDisable(true);
 
         //Comienza cuadro de consigna
 
@@ -88,7 +90,11 @@ public class LayoutOrderedChoice extends VBox {
         VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.getChildren().addAll(listaHBoxOpciones);
 
-        HBox enviar = new HBox (new Button ("Enviar"));
+        Button botonEnviar = new Button ("Enviar");
+        BotonEnviarHandler enviarHandler = new BotonEnviarHandler (orderedChoice, jugador, kahoot, unStage);
+        botonEnviar.setOnAction(enviarHandler);
+
+        HBox enviar = new HBox (botonEnviar);
         enviar.setAlignment(Pos.CENTER);
 
         contenedorOpciones.getChildren().add(enviar);

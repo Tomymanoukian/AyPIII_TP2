@@ -5,9 +5,10 @@ import edu.fiuba.algo3.vista.LayoutOrderedChoice;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class BotonExclusividadHandler implements EventHandler<ActionEvent> {
+public class BotonEnviarHandler implements EventHandler<ActionEvent> {
 
     private OrderedChoice orderedChoice;
     private Jugador jugador;
@@ -15,7 +16,7 @@ public class BotonExclusividadHandler implements EventHandler<ActionEvent> {
     private Stage stage;
 
 
-    public BotonExclusividadHandler (OrderedChoice unaOrderedChoice, Jugador unJugador, Kahoot unKahoot, Stage unStage) {
+    public BotonEnviarHandler (OrderedChoice unaOrderedChoice, Jugador unJugador, Kahoot unKahoot, Stage unStage) {
 
         orderedChoice = unaOrderedChoice;
         jugador = unJugador;
@@ -26,9 +27,11 @@ public class BotonExclusividadHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        kahoot.agregarExclusividadJugador1(orderedChoice);
+        kahoot.setRespuestaJugador1(new RespuestaEnLista(orderedChoice.getOpciones()));
 
-        Scene scene = new Scene(new LayoutOrderedChoice(orderedChoice, jugador, kahoot, stage).getLayout(), 390, 400);
+        Pane fondoBlanco = new Pane();
+
+        Scene scene = new Scene(fondoBlanco, 390,400);
 
         stage.setTitle("Kahoot!");
         stage.setScene(scene);
