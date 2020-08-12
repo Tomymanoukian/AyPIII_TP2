@@ -10,8 +10,11 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) {   ////////////Empieza creacion de objetos para hacer pruebas de la vista VerdaderoFalso
+        String consignaVoF = "Elegir Verdadero o Falso";
 
+        VerdaderoFalsoClasico verdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero(consignaVoF);
+        ///////////Termina creacion de objetos para hacer pruebas de la vista OrderedChoice
         ////////////Empieza creacion de objetos para hacer pruebas de la vista OrderedChoice
         String consigna = "Ordene los siguientes números:";
 
@@ -37,7 +40,7 @@ public class Main extends Application {
 
         Kahoot kahoot = new Kahoot(jugador1, jugador2);
 
-        LayoutVerdaderoFalso vistaVerdaderoFalso = new LayoutVerdaderoFalso();
+        LayoutVerdaderoFalso vistaVerdaderoFalso = new LayoutVerdaderoFalso(kahoot.getJugador1(), verdaderoFalsoClasico.getOpcionCorrecta(), verdaderoFalsoClasico.getOpcionIncorrecta(), kahoot);
         LayoutMenuBienvenida vistaBienvenida = new LayoutMenuBienvenida();
         LayoutOrderedChoice vistaOrderedChoice = new LayoutOrderedChoice(orderedChoice.desordenarOpciones(), kahoot.getJugador1(), kahoot, stage);
         LayoutPuntuaciones vistaPuntuaciones = new LayoutPuntuaciones();
