@@ -115,4 +115,8 @@ public class Kahoot{
     public void setInterfazVisual(InterfazDeUsuario unaInterfazDeUsuario) {
         interfazDeUsuario = unaInterfazDeUsuario;
     }
+
+    public Jugador getJugador1() {return jugador1;}
+
+    public Jugador getJugador2() {return jugador2;}
 }
