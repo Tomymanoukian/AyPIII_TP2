@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonSubirRespuestaHandler;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -54,31 +57,31 @@ public class LayoutMultipleChoice extends VBox {
         checkBoxDeOpciones.setAlignment(Pos.CENTER);
         String opciones[] = {"Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5"};
 
+
+        String opcionMostrarLabel="";
         for (int i = 0; i < opciones.length; i++) {
             // create a checkbox
             CheckBox checkBox = new CheckBox(opciones[i]);
             checkBox.setPadding(new Insets(5));
-
             // add label
             checkBoxDeOpciones.getChildren().add(checkBox);
             // set IndeterMinate
             checkBox.setIndeterminate(false);
-
             String opcion = opciones[i];
 
-            /*
             // create a event handler
             EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
 
                 public void handle(ActionEvent e)
-                {
-                    if (checkBox.isSelected())
+                {   String opcionMostrarLabel="";
+                    if (checkBox.isSelected()) {
                         listaRespuestas.add(opcion);
-                    else
+                    }else {
                         listaRespuestas.remove(opcion);
+                    }
                 }
             };
-            */
+            checkBox.setOnAction(event);
         }
 
         Rectangle rectanguloOpciones = new Rectangle(20, 20, 250, 150);
