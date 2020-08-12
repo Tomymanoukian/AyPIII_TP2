@@ -5,10 +5,12 @@ import edu.fiuba.algo3.modelo.ListaOpciones;
 import edu.fiuba.algo3.modelo.Opcion;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -17,7 +19,8 @@ public class LayoutOrderedChoice extends VBox {
 
     private Pane layout;
 
-    public LayoutOrderedChoice() {
+    public LayoutOrderedChoice(ListaOpciones listaOpciones, Stage unStage) {
+
         //Comienza primer renglón
         Label nombreJugador = new Label("Jugador1");
         Label tiempo = new Label("00:00");
@@ -56,19 +59,7 @@ public class LayoutOrderedChoice extends VBox {
 
         ArrayList<HBox> listaHBoxOpciones = new ArrayList<>();
 
-        ListaOpciones listaOpciones = new ListaOpciones();
 
-        Opcion opcion1 = new Opcion("Numero 1");
-        Opcion opcion2 = new Opcion("Numero 2");
-        Opcion opcion3 = new Opcion("Numero 3");
-        Opcion opcion4 = new Opcion("Numero 4");
-        Opcion opcion5 = new Opcion("Numero 5");
-
-        listaOpciones.agregar(opcion1);
-        listaOpciones.agregar(opcion2);
-        listaOpciones.agregar(opcion3);
-        listaOpciones.agregar(opcion4);
-        listaOpciones.agregar(opcion5);
 
 /* Así debería ser.
         for (int i=0; i < 5; i++) {
@@ -84,13 +75,8 @@ public class LayoutOrderedChoice extends VBox {
         listaHBoxOpciones.add(new HBox (new Button("▼"), new Label (listaOpciones.obtener(3).getOpcion()), new Button("▲")));
         listaHBoxOpciones.add(new HBox (new Button("▼"), new Label (listaOpciones.obtener(4).getOpcion()), new Button("▲")));
 
-        BotonSubirRespuestaHandler miBotonHandler = new BotonSubirRespuestaHandler(1,listaOpciones);
+        BotonSubirRespuestaHandler miBotonHandler = new BotonSubirRespuestaHandler(1, listaOpciones, unStage);
         miBoton.setOnAction(miBotonHandler);
-
-
-
-
-
 
         VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.getChildren().addAll(listaHBoxOpciones);
