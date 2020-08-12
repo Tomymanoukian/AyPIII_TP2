@@ -28,7 +28,7 @@ public class BotonExclusividadHandler implements EventHandler<ActionEvent> {
 
         kahoot.agregarExclusividadJugador1(orderedChoice);
 
-        Scene scene = new Scene(new LayoutOrderedChoice(orderedChoice, jugador, kahoot, stage).getLayout(), 390, 375);
+        Scene scene = new Scene(new LayoutOrderedChoice(orderedChoice, jugador, kahoot, stage).getLayout(), 390, 400);
 
         stage.setTitle("Kahoot!");
         stage.setScene(scene);

@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
-        ////////////Empieza creacion de objetos para hacer pruebas
+        ////////////Empieza creacion de objetos para hacer pruebas de la vista OrderedChoice
         String consigna = "Ordene los siguientes números:";
 
         ListaOpciones listaOpciones = new ListaOpciones();
@@ -33,13 +33,13 @@ public class Main extends Application {
 
         Jugador jugador1 = new Jugador("Jugador 1");
         Jugador jugador2 = new Jugador("Jugador 2");
-        ///////////Termina creacion de objetos para hacer pruebas
+        ///////////Termina creacion de objetos para hacer pruebas de la vista OrderedChoice
 
         Kahoot kahoot = new Kahoot(jugador1, jugador2);
 
         LayoutVerdaderoFalso vistaVerdaderoFalso = new LayoutVerdaderoFalso();
         LayoutMenuBienvenida vistaBienvenida = new LayoutMenuBienvenida();
-        LayoutOrderedChoice vistaOrderedChoice = new LayoutOrderedChoice(orderedChoice, kahoot.getJugador1(), kahoot, stage);
+        LayoutOrderedChoice vistaOrderedChoice = new LayoutOrderedChoice(orderedChoice.desordenarOpciones(), kahoot.getJugador1(), kahoot, stage);
         LayoutPuntuaciones vistaPuntuaciones = new LayoutPuntuaciones();
         LayoutMultipleChoice vistaMultipleChoice = new LayoutMultipleChoice();
 
@@ -48,7 +48,7 @@ public class Main extends Application {
 
         vistaOrderedChoice.mostrarVista(layout);
 
-        Scene scene = new Scene(layout, 390, 375);
+        Scene scene = new Scene(layout, 390, 400);
 
         stage.setTitle("Kahoot!");
         stage.setScene(scene);
