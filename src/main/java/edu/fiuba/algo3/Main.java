@@ -28,7 +28,7 @@ public class Main extends Application {
 
         layout.getChildren().addAll(vistaBienvenida.getLayout(), vistaVerdaderoFalso.getLayout(), vistaOrderedChoice.getLayout(), vistaPuntuaciones.getLayout(), vistaMultipleChoice.getLayout());
 
-        vistaBienvenida.mostrarVista(layout);
+        vistaOrderedChoice.mostrarVista(layout);
 
         stage.setTitle("Kahoot!");
 
