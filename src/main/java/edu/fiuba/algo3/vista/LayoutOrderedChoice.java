@@ -1,32 +1,34 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonBajarRespuestaHandler;
+import edu.fiuba.algo3.controlador.BotonExclusividadHandler;
 import edu.fiuba.algo3.controlador.BotonSubirRespuestaHandler;
-import edu.fiuba.algo3.modelo.ListaOpciones;
-import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.Kahoot;
+import edu.fiuba.algo3.modelo.OrderedChoice;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class LayoutOrderedChoice extends VBox {
 
     private Pane layout;
 
-    public LayoutOrderedChoice(ListaOpciones listaOpciones, Stage unStage) {
+    public LayoutOrderedChoice(OrderedChoice orderedChoice, Jugador jugador, Kahoot kahoot, Stage unStage) {
 
         //Comienza primer renglón
-        Label nombreJugador = new Label("Jugador1");
+        Label nombreJugador = new Label(jugador.getNombre());
         Label tiempo = new Label("00:00");
-        Label bonusX2 = new Label("X2");
-        Label bonusX3 = new Label("X3");
-        Label exclusividad = new Label("Exclusividad");
+        Button bonusX2 = new Button("X2");
+        bonusX2.setDisable(true);
+        Button bonusX3 = new Button("X3");
+        bonusX3.setDisable(true);
+        Button exclusividad = new Button("Ex");
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
 
@@ -43,9 +45,15 @@ public class LayoutOrderedChoice extends VBox {
         contenedorPrimerRenglon.setSpacing(40);
         contenedorPrimerRenglon.setPadding(new Insets(10));
 
+        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (orderedChoice, jugador, kahoot, unStage);
+        exclusividad.setOnAction(exclusividadHandler);
+
+        if (jugador.getExclusividades().size()==0)
+            exclusividad.setDisable(true);
+
         //Comienza cuadro de consigna
 
-        Label consigna = new Label("Ordene los siguientes números:");
+        Label consigna = new Label(orderedChoice.getConsigna());
         consigna.setStyle("-fx-font-weight: bold");
 
         Rectangle rectanguloConsigna = new Rectangle(20, 20, 300, 100);
@@ -59,38 +67,34 @@ public class LayoutOrderedChoice extends VBox {
 
         ArrayList<HBox> listaHBoxOpciones = new ArrayList<>();
 
+        for (int i=0; i < orderedChoice.getOpciones().cantidadDeRespuestas(); i++) {
 
+            Button botonBajar = new Button ("▼");
+            Button botonSubir = new Button ("▲");
 
-/* Así debería ser.
-        for (int i=0; i < 5; i++) {
-            listaHBoxOpciones.add(new HBox(unOrderedChoice.getPosition(i)));
+            listaHBoxOpciones.add(new HBox (botonBajar, new Label (orderedChoice.getOpciones().obtener(i).getOpcion()), botonSubir));
+            listaHBoxOpciones.get(i).setAlignment(Pos.CENTER);
+
+            BotonBajarRespuestaHandler botonHandlerBajar = new BotonBajarRespuestaHandler(i, orderedChoice, jugador, kahoot, unStage);
+            botonBajar.setOnAction(botonHandlerBajar);
+
+            BotonSubirRespuestaHandler botonHandlerSubir = new BotonSubirRespuestaHandler(i, orderedChoice, jugador, kahoot, unStage);
+            botonSubir.setOnAction(botonHandlerSubir);
         }
-*/
 
-        Button miBoton = new Button ("▲");
-
-        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label (listaOpciones.obtener(0).getOpcion()), new Button("▲")));
-        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label (listaOpciones.obtener(1).getOpcion()), miBoton));
-        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label (listaOpciones.obtener(2).getOpcion()), new Button("▲")));
-        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label (listaOpciones.obtener(3).getOpcion()), new Button("▲")));
-        listaHBoxOpciones.add(new HBox (new Button("▼"), new Label (listaOpciones.obtener(4).getOpcion()), new Button("▲")));
-
-        BotonSubirRespuestaHandler miBotonHandler = new BotonSubirRespuestaHandler(1, listaOpciones, unStage);
-        miBoton.setOnAction(miBotonHandler);
+        listaHBoxOpciones.get(0).getChildren().get(2).setDisable(true);
+        listaHBoxOpciones.get(orderedChoice.getOpciones().cantidadDeRespuestas()-1).getChildren().get(0).setDisable(true);
 
         VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.getChildren().addAll(listaHBoxOpciones);
 
-        for (int i=0; i<5; i++) {
-            listaHBoxOpciones.get(i).setAlignment(Pos.CENTER);
-        }
-
         HBox enviar = new HBox (new Button ("Enviar"));
         enviar.setAlignment(Pos.CENTER);
 
+        contenedorOpciones.getChildren().add(enviar);
         contenedorOpciones.setAlignment(Pos.CENTER);
 
-        layout = new VBox(contenedorPrimerRenglon, contenedorConsigna, contenedorOpciones, enviar);
+        layout = new VBox(contenedorPrimerRenglon, contenedorConsigna, contenedorOpciones);
         layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
