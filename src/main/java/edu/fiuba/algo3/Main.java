@@ -49,7 +49,7 @@ public class Main extends Application {
         Pane layout = new Pane();
         layout.getChildren().addAll(vistaBienvenida.getLayout(), vistaVerdaderoFalso.getLayout(), vistaOrderedChoice.getLayout(), vistaPuntuaciones.getLayout(), vistaMultipleChoice.getLayout());
 
-        vistaOrderedChoice.mostrarVista(layout);
+        vistaBienvenida.mostrarVista(layout);
 
         Scene scene = new Scene(layout, 390, 400);
 
