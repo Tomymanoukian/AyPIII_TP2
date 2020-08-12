@@ -18,11 +18,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.StackPane;
 
-public class SceneVerdaderoFalso extends VBox{
+public class LayoutVerdaderoFalso extends VBox{
 
     private Pane layout;
 
-    public SceneVerdaderoFalso(Jugador unJugador, Opcion opcionVerdadero, Opcion opcionFalso, Kahoot kahoot) {
+    public LayoutVerdaderoFalso(Jugador unJugador, Opcion opcionVerdadero, Opcion opcionFalso, Kahoot kahoot) {
 
         Label nombreJugador = new Label(unJugador.getNombre());
         Label tiempo = new Label("00:00");
@@ -54,6 +54,7 @@ public class SceneVerdaderoFalso extends VBox{
         StackPane contenedorConsigna = new StackPane(rectanguloConsigna, consigna);
         contenedorConsigna.setPadding(new Insets(20));
         contenedorConsigna.setStyle("-fx-font-size: 1.3em;");
+
 
         Button botonVerdadero = new Button(opcionVerdadero.getOpcion());
         botonVerdadero.setOnAction(new BotonVerdaderoEventHandler(opcionVerdadero,kahoot));
