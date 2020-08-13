@@ -12,7 +12,9 @@ import java.util.Stack;
 public class Main extends Application {
 
     @Override
-    public void start(Stage stage) {   ////////////Empieza creacion de objetos para hacer pruebas de la vista VerdaderoFalso
+    public void start(Stage stage) {
+
+        ////////////Empieza creacion de objetos para hacer pruebas de la vista VerdaderoFalso
         String consignaVoF = "Elegir Verdadero o Falso";
 
         VerdaderoFalsoClasico verdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero(consignaVoF);
@@ -68,7 +70,7 @@ public class Main extends Application {
 
         Stack<Pregunta> unStack = new Stack<>();
         unStack.add(groupChoice);
-        //unStack.add(orderedChoice);
+        unStack.add(orderedChoice);
         //unStack.add(orderedChoice1);
 
         ManejadorDeTurnos unManejadorDeTurnos = new ManejadorDeTurnos(unStack, jugador1, jugador2, kahoot, stage);
