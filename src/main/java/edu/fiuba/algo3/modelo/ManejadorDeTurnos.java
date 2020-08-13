@@ -4,6 +4,7 @@ import edu.fiuba.algo3.vista.LayoutPuntuaciones;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Stack;
 
 public class    ManejadorDeTurnos {
@@ -38,11 +39,22 @@ public class    ManejadorDeTurnos {
 
             jugador2Respodio = false;
             pregunta = pilaDePreguntas.pop();
-            stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
+
+            try {
+                stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
+            } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
+                e.printStackTrace();
+                this.mostrarSiguientePregunta();
+            }
         }
         else if (!juegoTerminado){
             jugador2Respodio = true;
-            stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador2, this));
+            try {
+                stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador2, this));
+            } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
+                e.printStackTrace();
+                this.mostrarSiguientePregunta();
+            }
         }
     }
 
