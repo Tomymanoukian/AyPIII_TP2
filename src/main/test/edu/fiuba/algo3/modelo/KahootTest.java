@@ -28,6 +28,8 @@ public class KahootTest {
 
     }
 
+
+
     @Test
     public void testSeCreaUnKahootConDosJugadoresPidiendoleElPuntajeAlJugador1(){
 
@@ -63,7 +65,7 @@ public class KahootTest {
         VerdaderoFalsoClasico unVerdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso("bar");
 
         assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX2(unVerdaderoFalsoClasico, martin));
-        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX3(unVerdaderoFalsoClasico, jose));
+        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX3(unVerdaderoFalsoClasico, martin));
     }
 
     @Test

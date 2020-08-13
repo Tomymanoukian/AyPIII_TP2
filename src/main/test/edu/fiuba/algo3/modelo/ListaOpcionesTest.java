@@ -24,18 +24,47 @@ public class ListaOpcionesTest {
 
     @Test
     public void testAgregoTodosLosElementosDeUnaListaAOtra(){
-        ListaOpciones listaOpciones = new ListaOpciones();
         Opcion opcion1 = new Opcion("Respuesta1");
         Opcion opcion2 = new Opcion("Respuesta2");
         Opcion opcion3 = new Opcion("Respuesta3");
-        listaOpciones.agregar(opcion1);
-        listaOpciones.agregar(opcion2);
-        listaOpciones.agregar(opcion3);
+
+        ListaOpciones listaOpciones = new ListaOpciones(Arrays.asList(opcion1, opcion2, opcion3));
 
         ListaOpciones otraListaOpciones = new ListaOpciones();
         otraListaOpciones.agregarTodo(listaOpciones);
 
         assert(otraListaOpciones.contieneTodo(listaOpciones));
+    }
+    @Test
+    public void testEliminaCorrectamenteUnaOpcionDeUnaLista(){
+        Opcion opcion1 = new Opcion("Respuesta1");
+        Opcion opcion2 = new Opcion("Respuesta2");
+        Opcion opcion3 = new Opcion("Respuesta3");
+
+        ListaOpciones listaOpciones = new ListaOpciones(Arrays.asList(opcion1, opcion2, opcion3));
+
+        assertEquals(3, listaOpciones.cantidadDeOpciones());
+
+        listaOpciones.eliminar("Respuesta2");
+
+        assertEquals(2, listaOpciones.cantidadDeOpciones());
+        assertEquals(null, listaOpciones.obtenerOpcionDe("Respuesta2"));
+    }
+
+    @Test
+    public void testNoEliminaUnaOpcionInexisteDeUnaLista(){
+        Opcion opcion1 = new Opcion("Respuesta1");
+        Opcion opcion2 = new Opcion("Respuesta2");
+        Opcion opcion3 = new Opcion("Respuesta3");
+
+        ListaOpciones listaOpciones = new ListaOpciones(Arrays.asList(opcion1, opcion2, opcion3));
+
+        assertEquals(3, listaOpciones.cantidadDeOpciones());
+        assertEquals(null, listaOpciones.obtenerOpcionDe("Respuesta4"));
+
+        listaOpciones.eliminar("Respuesta4");
+
+        assertEquals(3, listaOpciones.cantidadDeOpciones());
     }
 
     @Test
@@ -54,6 +83,31 @@ public class ListaOpcionesTest {
 
         assert(listaOpciones.contieneTodo(otraListaOpciones));
     }
+
+    @Test
+    public void testDevuelveCorrectamenteLaOpcionConElMismoRotulo(){
+        String rotulo = "Opcion1";
+
+        ListaOpciones listaOpciones = new ListaOpciones();
+        Opcion opcion1 = new Opcion(rotulo);
+        listaOpciones.agregar(opcion1);
+
+        assertEquals(opcion1, listaOpciones.obtenerOpcionDe(rotulo));
+    }
+
+    @Test
+    public void testDevuelveNullSiNoExisteOpcionConElMismoRotulo(){
+        String rotulo = "Opcion1";
+        String otroRotulo = "Opcion2";
+
+        ListaOpciones listaOpciones = new ListaOpciones();
+        Opcion opcion1 = new Opcion(otroRotulo);
+        listaOpciones.agregar(opcion1);
+
+        assertEquals(null, listaOpciones.obtenerOpcionDe(rotulo));
+    }
+
+
 
     @Test
     public void testCompruebaQueUnaListaNoContieneTodosLosElementosDeOtraLista(){

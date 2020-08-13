@@ -71,7 +71,7 @@ public class LayoutGroupChoice extends VBox {
         HBox nombresGrupos = new HBox (10, new Label ("Opciones:"), new Label (groupChoice.getNombreGrupoA(), new Label (groupChoice.getNombreGrupoB())));
         nombresGrupos.setAlignment(Pos.CENTER);
 
-        for (int i=0; i < listaOpciones.cantidadDeRespuestas(); i++) {
+        for (int i = 0; i < listaOpciones.cantidadDeOpciones(); i++) {
 
             ToggleGroup grupoDeBotones = new ToggleGroup();
             RadioButton botonGrupoA = new RadioButton ();
@@ -92,7 +92,7 @@ public class LayoutGroupChoice extends VBox {
         ListaOpciones respuestaGrupoA = new ListaOpciones();
         ListaOpciones respuestaGrupoB = new ListaOpciones();
 
-        for (int i = 0; i < listaOpciones.cantidadDeRespuestas(); i++) {
+        for (int i = 0; i < listaOpciones.cantidadDeOpciones(); i++) {
 
             if(((RadioButton)listaHBox.get(i).getChildren().get(1)).isArmed())
                 respuestaGrupoA.agregar(listaOpciones.obtener(i));

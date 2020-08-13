@@ -22,6 +22,23 @@ public class OpcionTest {
     }
 
     @Test
+    public void testComparacionExitosaSiLaOpcionTieneElMismoRotulo(){
+        String rotulo = "unaOpcion";
+        Opcion opcion1 = new Opcion(rotulo);
+
+        assert(opcion1.tieneLaMisma(rotulo) );
+    }
+
+    @Test
+    public void testComparacionNoTieneElMismoRotulo(){
+        String rotulo = "unaOpcion";
+        String otroRotulo = "otraOpcion";
+        Opcion opcion1 = new Opcion(rotulo);
+
+        assert(!opcion1.tieneLaMisma(otroRotulo) );
+    }
+
+    @Test
     public void testSeCreaUnaRespuestaConPuntajePositivoAlAplicarselaAlJugadorSumaPuntos(){
         Puntaje puntaje = new Puntaje(2);
         Opcion opcion = new Opcion("Cosigna :", puntaje);
