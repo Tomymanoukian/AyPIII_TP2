@@ -11,20 +11,14 @@ import javafx.stage.Stage;
 public class BotonBajarRespuestaHandler implements EventHandler<ActionEvent> {
 
     private int posicion;
-    private OrderedChoice orderedChoice;
     private EscenaOrderedChoice escena;
     private Jugador jugador;
-    private Kahoot kahoot;
-    private Stage stage;
     private ManejadorDeTurnos manejadorDeTurnos;
 
-    public BotonBajarRespuestaHandler (int unaPosicion, OrderedChoice unaOrderedChoice, EscenaOrderedChoice unaEscenaOrderedChoice, Jugador unJugador, Kahoot unKahoot, Stage unStage, ManejadorDeTurnos unManejadorDeTurnos) {
+    public BotonBajarRespuestaHandler (int unaPosicion, EscenaOrderedChoice unaEscenaOrderedChoice, Jugador unJugador, ManejadorDeTurnos unManejadorDeTurnos) {
         posicion = unaPosicion;
-        orderedChoice = unaOrderedChoice;
         escena = unaEscenaOrderedChoice;
         jugador = unJugador;
-        kahoot = unKahoot;
-        stage = unStage;
         manejadorDeTurnos = unManejadorDeTurnos;
     }
 
@@ -35,6 +29,6 @@ public class BotonBajarRespuestaHandler implements EventHandler<ActionEvent> {
         escena.getOpcionesMostradas().establecer(posicion, escena.getOpcionesMostradas().obtener(posicion+1));
         escena.getOpcionesMostradas().establecer(posicion+1, opcionVaso);
 
-        escena.actualizar(orderedChoice, escena, jugador, kahoot, stage, manejadorDeTurnos);
+        escena.actualizar(jugador, manejadorDeTurnos);
     }
 }

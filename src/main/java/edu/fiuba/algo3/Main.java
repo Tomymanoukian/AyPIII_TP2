@@ -52,26 +52,8 @@ public class Main extends Application {
 
         unManejadorDeTurnos.mostrarSiguientePregunta();
 
-        //stage.setScene(new Scene((new LayoutMenuBienvenida()).getLayout()));
-/*
-        LayoutVerdaderoFalso vistaVerdaderoFalso = new LayoutVerdaderoFalso(kahoot.getJugador1(), verdaderoFalsoClasico.getOpcionCorrecta(), verdaderoFalsoClasico.getOpcionIncorrecta(), kahoot);
-        LayoutMenuBienvenida vistaBienvenida = new LayoutMenuBienvenida();
-        LayoutOrderedChoice vistaOrderedChoice = new LayoutOrderedChoice(orderedChoice.desordenarOpciones(), kahoot.getJugador1(), kahoot, stage);
-        LayoutPuntuaciones vistaPuntuaciones = new LayoutPuntuaciones();
-        LayoutMultipleChoice vistaMultipleChoice = new LayoutMultipleChoice();
-
-        Pane layout = new Pane();
-        layout.getChildren().addAll(vistaBienvenida.getLayout(), vistaVerdaderoFalso.getLayout(), vistaOrderedChoice.getLayout(), vistaPuntuaciones.getLayout(), vistaMultipleChoice.getLayout());
-
-        vistaOrderedChoice.mostrarVista(layout);
-
-        Scene scene = new Scene(layout, 390, 400);
-*/
         stage.setTitle("Kahoot!");
-        //stage.setScene(scene);
         stage.show();
-
-
     }
 
     public static void main(String[] args) {

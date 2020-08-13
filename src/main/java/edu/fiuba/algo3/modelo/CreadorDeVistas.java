@@ -11,7 +11,7 @@ import java.util.Stack;
 
 public class CreadorDeVistas {
 
-    public static Scene crearSiguienteEscena(Pregunta pregunta, Jugador jugador, Kahoot kahoot, Stage stage, ManejadorDeTurnos manejadorDeTurnos) {
+    public static Scene crearSiguienteEscena(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
         String tipoDePregunta = (pregunta.getClass()).getSimpleName();
 
@@ -26,7 +26,7 @@ public class CreadorDeVistas {
 
         Constructor<Escena> constructor = null;
         try {
-            constructor = (Constructor<Escena>)claseDeLaEscena.getConstructor(Pregunta.class, Jugador.class, Kahoot.class, Stage.class, ManejadorDeTurnos.class);
+            constructor = (Constructor<Escena>)claseDeLaEscena.getConstructor(Pregunta.class, Jugador.class, ManejadorDeTurnos.class);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
             System.exit(1);
@@ -34,7 +34,7 @@ public class CreadorDeVistas {
 
         Escena escena = null;
         try {
-            escena = (Escena)constructor.newInstance(pregunta, jugador, kahoot, stage, manejadorDeTurnos);
+            escena = (Escena)constructor.newInstance(pregunta, jugador, manejadorDeTurnos);
         } catch (InstantiationException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
             System.exit(1);

@@ -10,13 +10,13 @@ public class EscenaOrderedChoice implements Escena {
     private Pregunta pregunta;
     private ListaOpciones opcionesMostradas;
 
-    public EscenaOrderedChoice(Pregunta unaPregunta, Jugador jugador, Kahoot kahoot, Stage stage, ManejadorDeTurnos manejadorDeTurnos) {
+    public EscenaOrderedChoice(Pregunta unaPregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
         OrderedChoice orderedChoice = (OrderedChoice)unaPregunta;
         pregunta = unaPregunta;
         opcionesMostradas = new ListaOpciones(orderedChoice.getOpcionesDesordenadas());
 
-        LayoutOrderedChoice layoutOrderedChoice = new LayoutOrderedChoice(pregunta, this, jugador, kahoot, stage, manejadorDeTurnos);
+        LayoutOrderedChoice layoutOrderedChoice = new LayoutOrderedChoice(pregunta, this, jugador, manejadorDeTurnos);
         layout = layoutOrderedChoice.getLayout();
     }
 
@@ -27,9 +27,9 @@ public class EscenaOrderedChoice implements Escena {
 
     public ListaOpciones getOpcionesMostradas() {return opcionesMostradas;}
 
-    public void actualizar(OrderedChoice orderedChoice, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, Kahoot kahoot, Stage stage, ManejadorDeTurnos manejadorDeTurnos) {
+    public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        Pane layout = (new LayoutOrderedChoice(pregunta, this, jugador, kahoot, stage, manejadorDeTurnos)).getLayout();
-        stage.setScene(new Scene(layout));
+        Pane layout = (new LayoutOrderedChoice(pregunta, this, jugador, manejadorDeTurnos)).getLayout();
+        manejadorDeTurnos.getStage().setScene(new Scene(layout));
     }
 }
