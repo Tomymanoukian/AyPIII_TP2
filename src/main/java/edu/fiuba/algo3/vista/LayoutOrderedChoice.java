@@ -69,12 +69,12 @@ public class LayoutOrderedChoice extends VBox {
 
         ArrayList<HBox> listaHBoxOpciones = new ArrayList<>();
 
-        for (int i=0; i < orderedChoice.getOpciones().cantidadDeRespuestas(); i++) {
+        for (int i = 0; i < orderedChoice.getOpcionesOrdenadas().cantidadDeRespuestas(); i++) {
 
             Button botonBajar = new Button ("▼");
             Button botonSubir = new Button ("▲");
 
-            listaHBoxOpciones.add(new HBox (botonBajar, new Label (orderedChoice.getOpciones().obtener(i).getOpcion()), botonSubir));
+            listaHBoxOpciones.add(new HBox (botonBajar, new Label (orderedChoice.getOpcionesOrdenadas().obtener(i).getOpcion()), botonSubir));
             listaHBoxOpciones.get(i).setAlignment(Pos.CENTER);
 
             BotonBajarRespuestaHandler botonHandlerBajar = new BotonBajarRespuestaHandler(i, orderedChoice, jugador, kahoot, unStage);
@@ -85,7 +85,7 @@ public class LayoutOrderedChoice extends VBox {
         }
 
         listaHBoxOpciones.get(0).getChildren().get(2).setDisable(true);
-        listaHBoxOpciones.get(orderedChoice.getOpciones().cantidadDeRespuestas()-1).getChildren().get(0).setDisable(true);
+        listaHBoxOpciones.get(orderedChoice.getOpcionesOrdenadas().cantidadDeRespuestas()-1).getChildren().get(0).setDisable(true);
 
         VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.getChildren().addAll(listaHBoxOpciones);

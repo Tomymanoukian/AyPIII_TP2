@@ -1,6 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
+import com.google.gson.JsonObject;
+
 public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
+    public static VerdaderoFalsoConPenalidad recuperar(JsonObject jsonPregunta) {
+        String consigna = jsonPregunta.get("consigna").getAsString();
+        Opcion opcionCorrecta = Opcion.recuperar(jsonPregunta.getAsJsonObject("opcionCorrecta"));
+        Opcion opcionIncorrecta = Opcion.recuperar(jsonPregunta.getAsJsonObject("opcionIncorrecta"));
+        return new VerdaderoFalsoConPenalidad(consigna, opcionCorrecta, opcionIncorrecta);
+    }
 
     private VerdaderoFalsoConPenalidad(String unaConsigna, Opcion unaOpcionCorrecta, Opcion unaOpcionIncorrecta) {
 
@@ -24,8 +32,22 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
     }
 
     @Override
-    public Boolean aceptaMultiplicador() {return true;}
+    public Boolean aceptaMultiplicador() {
+        return true;
+    }
 
     @Override
-    public Boolean aceptaExclusividad() {return false;}
+    public Boolean aceptaExclusividad() {
+        return false;
+    }
+
+    @Override
+    public JsonObject guardar() {
+        JsonObject jsonVoFConPenalidad = new JsonObject();
+        jsonVoFConPenalidad.addProperty("tipoDePregunta", VerdaderoFalsoConPenalidad.class.getName());
+        jsonVoFConPenalidad.addProperty("consigna", consigna);
+        jsonVoFConPenalidad.add("opcionCorrecta", opcionCorrecta.guardar());
+        jsonVoFConPenalidad.add("opcionIncorrecta", opcionIncorrecta.guardar());
+        return jsonVoFConPenalidad;
+    }
 }
