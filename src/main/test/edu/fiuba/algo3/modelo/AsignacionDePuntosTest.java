@@ -656,7 +656,7 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
 
-        kahoot.agregarExclusividadJugador1(preguntaVerderoFalsoClasico);
+        kahoot.agregarExclusividad(preguntaVerderoFalsoClasico, juan);
 
         kahoot.evaluarRespuestas(preguntaVerderoFalsoClasico);
 
@@ -680,7 +680,7 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
 
-        kahoot.agregarMultiplicadorX2Jugador2(preguntaVerderoFalsoConPenalidad);
+        kahoot.agregarMultiplicadorX2(preguntaVerderoFalsoConPenalidad, maria);
 
         kahoot.evaluarRespuestas(preguntaVerderoFalsoConPenalidad);
 
@@ -716,7 +716,7 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
 
-        kahoot.agregarExclusividadJugador1(preguntaMultipleChoiceParcial);
+        kahoot.agregarExclusividad(preguntaMultipleChoiceParcial, juan);
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
@@ -751,7 +751,7 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
 
-        kahoot.agregarExclusividadJugador1(preguntaMultipleChoiceParcial);
+        kahoot.agregarExclusividad(preguntaMultipleChoiceParcial, juan);
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
@@ -787,8 +787,8 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
 
-        kahoot.agregarExclusividadJugador1(preguntaGroupChoice);
-        kahoot.agregarExclusividadJugador2(preguntaGroupChoice);
+        kahoot.agregarExclusividad(preguntaGroupChoice, juan);
+        kahoot.agregarExclusividad(preguntaGroupChoice, maria);
 
         kahoot.evaluarRespuestas(preguntaGroupChoice);
 
@@ -825,8 +825,8 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
 
-        kahoot.agregarMultiplicadorX2Jugador1(preguntaMultipleChoiceConPenalidad);
-        kahoot.agregarMultiplicadorX2Jugador2(preguntaMultipleChoiceConPenalidad);
+        kahoot.agregarMultiplicadorX2(preguntaMultipleChoiceConPenalidad, juan);
+        kahoot.agregarMultiplicadorX2(preguntaMultipleChoiceConPenalidad, maria);
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
 
@@ -867,8 +867,8 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
 
-        kahoot.agregarMultiplicadorX2Jugador1(preguntaMultipleChoiceConPenalidad);
-        kahoot.agregarMultiplicadorX3Jugador1(preguntaMultipleChoiceConPenalidad);
+        kahoot.agregarMultiplicadorX2(preguntaMultipleChoiceConPenalidad, juan);
+        kahoot.agregarMultiplicadorX3(preguntaMultipleChoiceConPenalidad, juan);
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
 
