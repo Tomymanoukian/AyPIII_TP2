@@ -8,12 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class EscenaMultipleChoiceParcial implements Escena {
+public class EscenaMultipleChoice implements Escena {
     private Pane layout;
 
-    public EscenaMultipleChoiceParcial(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
+    public EscenaMultipleChoice(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        LayoutMultipleChoice layoutMultipleChoice = new LayoutMultipleChoice(pregunta, jugador, manejadorDeTurnos);
+        LayoutMultipleChoice layoutMultipleChoice = new LayoutMultipleChoice(pregunta, this, jugador, manejadorDeTurnos);
         layout = layoutMultipleChoice.getLayout();
     }
 
