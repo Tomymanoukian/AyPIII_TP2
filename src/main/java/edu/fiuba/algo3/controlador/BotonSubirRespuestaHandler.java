@@ -26,9 +26,9 @@ public class BotonSubirRespuestaHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        Opcion opcionVaso = new Opcion(orderedChoice.getOpciones().obtener(posicion).getOpcion());
-        orderedChoice.getOpciones().establecer(posicion, orderedChoice.getOpciones().obtener(posicion-1));
-        orderedChoice.getOpciones().establecer(posicion-1, opcionVaso);
+        Opcion opcionVaso = new Opcion(orderedChoice.getOpcionesOrdenadas().obtener(posicion).getOpcion());
+        orderedChoice.getOpcionesOrdenadas().establecer(posicion, orderedChoice.getOpcionesOrdenadas().obtener(posicion-1));
+        orderedChoice.getOpcionesOrdenadas().establecer(posicion-1, opcionVaso);
 
         Scene scene = new Scene(new LayoutOrderedChoice(orderedChoice, jugador, kahoot, stage).getLayout(), 390, 400);
 
