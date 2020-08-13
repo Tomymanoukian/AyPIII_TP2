@@ -77,13 +77,12 @@ public class MockLecturaDeArchivoDePreguntas {
         Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
         Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
 
-
         ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
         ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
 
-        multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
-        multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
-        multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+        multipleChoiceClasico = new MultipleChoiceClasico("Multiple Choice Clasico", opcionesCorrectas, opcionesIncorrectas);
+        multipleChoiceConPenalidad = new MultipleChoiceConPenalidad("Multiple Choice con penalidad", opcionesCorrectas, opcionesIncorrectas);
+        multipleChoiceParcial = new MultipleChoiceParcial("Multiple Choice Parcial", opcionesCorrectas, opcionesIncorrectas);
 
     }
 
@@ -100,11 +99,11 @@ public class MockLecturaDeArchivoDePreguntas {
 
     public Stack<Pregunta> getPilaDePreguntas() {
         Stack<Pregunta> pila = new Stack<>();
-        pila.add(orderedChoice);
+        //pila.add(orderedChoice);
         pila.add(orderedChoice1);
-        pila.add(groupChoice);
-        //pila.add(multipleChoiceClasico);
-        //pila.add(multipleChoiceConPenalidad);
+        //pila.add(groupChoice);
+        pila.add(multipleChoiceClasico);
+        pila.add(multipleChoiceConPenalidad);
         pila.add(multipleChoiceParcial);
         //pila.add(verdaderoFalsoConPenalidad);
         //pila.add(verdaderoFalsoClasico);

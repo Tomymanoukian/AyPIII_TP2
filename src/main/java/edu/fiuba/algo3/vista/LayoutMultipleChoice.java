@@ -17,7 +17,7 @@ public class LayoutMultipleChoice extends VBox {
 
     private Pane layout;
 
-    public LayoutMultipleChoice(Pregunta pregunta, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
+    public LayoutMultipleChoice(Pregunta pregunta, Escena EscenaMultipleChoice, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
 
         MultipleChoice unMultipleChoice = (MultipleChoice) pregunta;
         Kahoot kahoot = manejadorDeTurnos.getKahoot();
@@ -41,7 +41,8 @@ public class LayoutMultipleChoice extends VBox {
         BotonExclusividadMultipleChoiceEventHandler exclusividadHandler = new BotonExclusividadMultipleChoiceEventHandler (unMultipleChoice, unJugador, kahoot, unStage, manejadorDeTurnos);
         exclusividad.setOnAction(exclusividadHandler);
 
-        if(unMultipleChoice.getClass() == MultipleChoiceClasico.class){
+        if(pregunta.aceptaMultiplicador()){
+
             exclusividad.setDisable(true);
 
             if (unJugador.getMultiplicadoresX2().size()==0)
@@ -49,7 +50,8 @@ public class LayoutMultipleChoice extends VBox {
             if (unJugador.getMultiplicadoresX3().size()==0)
                 bonusX3.setDisable(true);
 
-        }else if(unMultipleChoice.getClass() != MultipleChoiceClasico.class ){
+        }else if(pregunta.aceptaExclusividad()){
+
             bonusX2.setDisable(true);
             bonusX3.setDisable(true);
 
@@ -72,7 +74,7 @@ public class LayoutMultipleChoice extends VBox {
         Rectangle rectanguloConsigna = new Rectangle(20, 20, 350, 60);
         rectanguloConsigna.setFill(Color.LAVENDER);
 
-        Label consigna = new Label("Seleccione las opciones multiples"); //UTILIZAR LA CONSIGNA DE LA PREGUNTA
+        Label consigna = new Label(pregunta.getConsigna()); //UTILIZAR LA CONSIGNA DE LA PREGUNTA
         consigna.setStyle("-fx-font-weight: bold");
 
         StackPane contenedorConsigna = new StackPane(rectanguloConsigna, consigna);
@@ -121,7 +123,9 @@ public class LayoutMultipleChoice extends VBox {
         siguiente.setStyle("-fx-border-color: #000000; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
         HBox contenedorBoton = new HBox(siguiente);
 
-        BotonEnviarMultipleChoiceHandler botonEnviar = new BotonEnviarMultipleChoiceHandler(unMultipleChoice, unJugador, listaRespuestas, kahoot, unStage);
+        RespuestaEnLista respuesta = new RespuestaEnLista(listaRespuestas);
+
+        BotonEnviarHandler botonEnviar = new BotonEnviarHandler(unJugador, respuesta, manejadorDeTurnos);
         siguiente.setOnAction(botonEnviar);
 
         VBox contendorPrincipal = new VBox(contenedorPrimerRenglon, contenedorConsigna, contenedorOpciones, contenedorBoton);

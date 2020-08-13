@@ -26,12 +26,12 @@ public class BotonExclusividadMultipleChoiceEventHandler implements EventHandler
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        kahoot.agregarExclusividad(multipleChoice, jugador);
+        /*kahoot.agregarExclusividad(multipleChoice, jugador);
 
         Scene scene = new Scene(new LayoutMultipleChoice(multipleChoice, jugador, manejadorDeTurnos).getLayout(), 390, 400);
 
         stage.setScene(scene);
-        stage.show();
+        stage.show();*/
 
     }
 }

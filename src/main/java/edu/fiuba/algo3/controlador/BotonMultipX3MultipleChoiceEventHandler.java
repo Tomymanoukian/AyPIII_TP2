@@ -26,13 +26,13 @@ public class BotonMultipX3MultipleChoiceEventHandler implements EventHandler<Act
 
     @Override
     public void handle(ActionEvent actionEvent) {
-
+/*
         kahoot.agregarMultiplicadorX3(multipleChoice, jugador);
 
         Scene scene = new Scene(new LayoutMultipleChoice((Pregunta)multipleChoice, jugador, manejadorDeTurnos).getLayout(), 390, 400);
 
         stage.setScene(scene);
         stage.show();
-
+*/
     }
 }
