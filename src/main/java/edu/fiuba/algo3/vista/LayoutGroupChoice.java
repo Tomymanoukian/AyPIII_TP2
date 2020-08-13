@@ -66,34 +66,22 @@ public class LayoutGroupChoice extends VBox {
 
         //Comienzan Opciones
 
-        ListaOpciones listaOpcionesCentro = new ListaOpciones();
-        listaOpcionesCentro.agregarTodo(groupChoice.getOpcionesGrupoA());
-        listaOpcionesCentro.agregarTodo(groupChoice.getOpcionesGrupoB());
-        listaOpcionesCentro.desordenar();
+        ListaOpciones listaOpciones = new ListaOpciones();
+        listaOpciones.agregarTodo(groupChoice.getOpcionesGrupoA());
+        listaOpciones.agregarTodo(groupChoice.getOpcionesGrupoB());
+        listaOpciones.desordenar();
 
-        VBox contenedorListaHBoxA = new VBox(10);
-        ArrayList<HBox> listaHBoxA = new ArrayList<>();
+        ArrayList<HBox> listaHBox = new ArrayList<>();
 
-        VBox contenedorListaHBoxCentro = new VBox(10);
-        ArrayList<HBox> listaHBoxCentro = new ArrayList<>();
+        for (int i=0; i < listaOpciones.cantidadDeRespuestas(); i++) {
 
-        VBox contenedorListaHBoxB = new VBox(10);
-        ArrayList<HBox> listaHBoxB = new ArrayList<>();
+            ToggleGroup grupoDeBotones = new ToggleGroup();
+            RadioButton botonGrupoA = new RadioButton ();
+            botonGrupoA.setToggleGroup(grupoDeBotones);
+            RadioButton botonGrupoB = new RadioButton ();
+            botonGrupoB.setToggleGroup(grupoDeBotones);
 
-        listaHBoxA.add(new HBox (new Label ("Grupo A")));
-        listaHBoxCentro.add(new HBox (new Label ("Sin grupo")));
-        listaHBoxB.add(new HBox (new Label ("Grupo B")));
-
-        for (int i=0; i < listaOpcionesCentro.cantidadDeRespuestas(); i++) {
-
-            Button botonDerechaA = new Button ("▶");
-            Button botonIzquierdaCentro = new Button ("◀");
-            Button botonDerechaCentro = new Button ("▶");
-            Button botonIzquierdaB = new Button ("◀");
-
-            listaHBoxA.add(new HBox (10, new Label (listaOpcionesCentro.obtener(i).getOpcion()), botonDerechaA));
-            listaHBoxCentro.add(new HBox (10, botonIzquierdaCentro, new Label (listaOpcionesCentro.obtener(i).getOpcion()), botonDerechaCentro));
-            listaHBoxB.add(new HBox (10, botonIzquierdaB, new Label (listaOpcionesCentro.obtener(i).getOpcion())));
+            listaHBox.add(new HBox (10, new Label (listaOpciones.obtener(i).getOpcion()), botonGrupoA, botonGrupoB));
 /*
             BotonMoverAlCostadoHandler botonHandlerCentroaA = new BotonMoverAlCostadoHandler(listaOpcionesInicial, listaOpcionesObjetivo, jugador, kahoot, unStage);
             botonBajar.setOnAction(botonHandlerBajar);
@@ -102,14 +90,8 @@ public class LayoutGroupChoice extends VBox {
             botonSubir.setOnAction(botonHandlerSubir);*/
         }
 
-        contenedorListaHBoxA.getChildren().addAll(listaHBoxA);
-        contenedorListaHBoxCentro.getChildren().addAll(listaHBoxCentro);
-        contenedorListaHBoxB.getChildren().addAll(listaHBoxB);
-
         HBox contenedorOpciones = new HBox(50);
-        contenedorOpciones.getChildren().addAll(contenedorListaHBoxA);
-        contenedorOpciones.getChildren().addAll(contenedorListaHBoxCentro);
-        contenedorOpciones.getChildren().addAll(contenedorListaHBoxB);
+        contenedorOpciones.getChildren().addAll(listaHBox);
         contenedorOpciones.setAlignment(Pos.CENTER);
 
         Button botonEnviar = new Button ("Enviar");
