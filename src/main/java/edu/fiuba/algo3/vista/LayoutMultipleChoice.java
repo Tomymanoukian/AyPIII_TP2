@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.BotonSubirRespuestaHandler;
+import edu.fiuba.algo3.controlador.*;
+import edu.fiuba.algo3.modelo.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -10,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,21 +20,43 @@ public class LayoutMultipleChoice extends VBox {
 
     private Pane layout;
 
-    public LayoutMultipleChoice() {
-        List<String> listaRespuestas = new ArrayList<>();
+    public LayoutMultipleChoice(MultipleChoiceClasico unMultipleChoice, Jugador unJugador, Kahoot kahoot, Stage unStage) {
+        ListaOpciones listaRespuestas = new ListaOpciones();
 
-        Label nombreJugador = new Label("Jugador1");
+        Label nombreJugador = new Label(unJugador.getNombre());
         Label tiempo = new Label("00:00");
         //tiempo.setStyle("-fx-font-weight: bold");
-        Label bonusX2 = new Label("X2");
-        Label bonusX3 = new Label("X3");
-        Label exclusividad = new Label("Exclusividad");
+
+        Button bonusX2 = new Button("X2");
+        BotonMultipX2MultipleChoiceEventHandler multiplicX2Handler = new BotonMultipX2MultipleChoiceEventHandler(unMultipleChoice, unJugador, kahoot, unStage);
+        bonusX2.setOnAction(multiplicX2Handler);
+
+        Button bonusX3 = new Button("X3");
+        BotonMultipX3MultipleChoiceEventHandler multiplicX3Handler = new BotonMultipX3MultipleChoiceEventHandler(unMultipleChoice, unJugador, kahoot, unStage);
+        bonusX3.setOnAction(multiplicX3Handler);
+
+        Button exclusividad = new Button("Ex");
+        BotonExclusividadMultipleChoiceEventHandler exclusividadHandler = new BotonExclusividadMultipleChoiceEventHandler (unMultipleChoice, unJugador, kahoot, unStage);
+        exclusividad.setOnAction(exclusividadHandler);
+
+        if(unMultipleChoice.getClass() == MultipleChoiceClasico.class){
+            exclusividad.setDisable(true);
+
+            if (unJugador.getMultiplicadoresX2().size()==0)
+                bonusX2.setDisable(true);
+            if (unJugador.getMultiplicadoresX3().size()==0)
+                bonusX3.setDisable(true);
+
+        }else if(unMultipleChoice.getClass() != MultipleChoiceClasico.class ){
+            bonusX2.setDisable(true);
+            bonusX3.setDisable(true);
+
+            if(unJugador.getExclusividades().size()==0)
+                exclusividad.setDisable(true);
+        }
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
-
         VBox contenedorTiempo = new VBox(tiempo);
-
-
         HBox contenedorBonus = new HBox(bonusX2, bonusX3, exclusividad);
         contenedorBonus.setSpacing(3);
 
@@ -55,29 +79,30 @@ public class LayoutMultipleChoice extends VBox {
 
         VBox checkBoxDeOpciones = new VBox();
         checkBoxDeOpciones.setAlignment(Pos.CENTER);
-        String opciones[] = {"Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5"};
 
+        int cantidadDeOpcionesAMostrar = unMultipleChoice.getOpcionesCorrectas().cantidadDeRespuestas() + unMultipleChoice.getOpcionesIncorrectas().cantidadDeRespuestas();
 
-        String opcionMostrarLabel="";
-        for (int i = 0; i < opciones.length; i++) {
+        ListaOpciones opciones = unMultipleChoice.getTodasLasOpcionesMezcladas();
+
+        for (int i = 0; i < cantidadDeOpcionesAMostrar; i++) {
             // create a checkbox
-            CheckBox checkBox = new CheckBox(opciones[i]);
+            CheckBox checkBox = new CheckBox(opciones.obtener(i).getOpcion());
             checkBox.setPadding(new Insets(5));
             // add label
             checkBoxDeOpciones.getChildren().add(checkBox);
             // set IndeterMinate
             checkBox.setIndeterminate(false);
-            String opcion = opciones[i];
+            String opcion = opciones.obtener(i).getOpcion();
 
             // create a event handler
             EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
 
                 public void handle(ActionEvent e)
-                {   String opcionMostrarLabel="";
+                {
                     if (checkBox.isSelected()) {
-                        listaRespuestas.add(opcion);
+                        listaRespuestas.agregar(new Opcion(opcion));
                     }else {
-                        listaRespuestas.remove(opcion);
+                        listaRespuestas.eliminar(opcion);
                     }
                 }
             };
@@ -93,8 +118,9 @@ public class LayoutMultipleChoice extends VBox {
         Button siguiente = new Button("Siguiente");
         siguiente.setStyle("-fx-border-color: #000000; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
         HBox contenedorBoton = new HBox(siguiente);
-        //BotonSiguienteHandler botonSiguiente = new BotonSiguienteHandler(listaRespuestas, this);
-        //siguiente.setOnAction(botonSiguiente);
+
+        BotonEnviarMultipleChoiceHandler botonEnviar = new BotonEnviarMultipleChoiceHandler(unMultipleChoice, unJugador, listaRespuestas, kahoot, unStage);
+        siguiente.setOnAction(botonEnviar);
 
         VBox contendorPrincipal = new VBox(contenedorPrimerRenglon, contenedorConsigna, contenedorOpciones, contenedorBoton);
 

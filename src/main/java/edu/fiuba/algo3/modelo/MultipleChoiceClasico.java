@@ -44,6 +44,14 @@ public class MultipleChoiceClasico extends Pregunta {
         }
         return puntaje;
     }
+    public ListaOpciones getTodasLasOpcionesMezcladas(){
+        ListaOpciones todasLasOpciones = new ListaOpciones();
+        todasLasOpciones.agregarTodo(opcionesCorrectas);
+        todasLasOpciones.agregarTodo(opcionesIncorrectas);
+        todasLasOpciones.desordenar();
+
+        return todasLasOpciones;
+    }
 
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
