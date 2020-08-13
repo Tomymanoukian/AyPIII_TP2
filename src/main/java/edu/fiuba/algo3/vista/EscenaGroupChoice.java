@@ -8,20 +8,17 @@ import javafx.stage.Stage;
 public class EscenaGroupChoice implements Escena {
     private Pane layout;
     private Pregunta pregunta;
-    private ListaOpciones opcionesGrupoAMostradas;
-    private ListaOpciones opcionesCentroMostradas;
-    private ListaOpciones opcionesGrupoBMostradas;
-
+    private ListaOpciones opcionesMostradas;
 
     public EscenaGroupChoice(Pregunta unaPregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
         GroupChoice groupChoice = (GroupChoice) unaPregunta;
         pregunta = unaPregunta;
-        opcionesCentroMostradas = new ListaOpciones(groupChoice.getOpcionesGrupoA());
-        opcionesCentroMostradas.agregarTodo(groupChoice.getOpcionesGrupoB());
-        opcionesCentroMostradas.desordenar();
+        opcionesMostradas = new ListaOpciones(groupChoice.getOpcionesGrupoA());
+        opcionesMostradas.agregarTodo(groupChoice.getOpcionesGrupoB());
+        opcionesMostradas.desordenar();
 
-        LayoutGroupChoice layoutGroupChoice = new LayoutGroupChoice(unaPregunta, this, jugador, manejadorDeTurnos);
+        LayoutGroupChoice layoutGroupChoice = new LayoutGroupChoice(pregunta, this, jugador, manejadorDeTurnos);
         layout = layoutGroupChoice.getLayout();
     }
 
@@ -30,8 +27,9 @@ public class EscenaGroupChoice implements Escena {
         return (new Scene(layout));
     }
 
-//    public ListaOpciones getOpcionesMostradas() {return opcionesMostradas;}
+    public ListaOpciones getOpcionesMostradas() {return opcionesMostradas;}
 
+    @Override
     public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
         Pane layout = (new LayoutGroupChoice(pregunta, this, jugador, manejadorDeTurnos)).getLayout();
