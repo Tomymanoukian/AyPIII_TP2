@@ -1,11 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.JugadorNoValidoException;
 import edu.fiuba.algo3.vista.InterfazDeUsuario;
 import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaExclusividadesException;
 import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaMultiplicadoresException;
-
-import java.util.Observable;
-import java.util.Observer;
 
 public class Kahoot{
 
@@ -13,8 +11,9 @@ public class Kahoot{
     private Jugador jugador2;
     private Respuesta respuestaJugador1;
     private Respuesta respuestaJugador2;
-    private ListaDeExclusividades exclusividadesJ1;
-    private ListaDeExclusividades exclusividadesJ2;
+    private ListaDeExclusividades exclusividadesJ1; //borrar
+    private ListaDeExclusividades exclusividadesJ2; //borrar
+    private ListaDeExclusividades exclusividades;
     private ListaDeMultiplicadores multiplicadoresJ1;
     private ListaDeMultiplicadores multiplicadoresJ2;
     private InterfazDeUsuario interfazDeUsuario;
@@ -24,6 +23,7 @@ public class Kahoot{
         jugador2 = otroJugador;
         exclusividadesJ1 = new ListaDeExclusividades();
         exclusividadesJ2 = new ListaDeExclusividades();
+        exclusividades = new ListaDeExclusividades();
         multiplicadoresJ1 = new ListaDeMultiplicadores();
         multiplicadoresJ2 = new ListaDeMultiplicadores();
     }
@@ -36,53 +36,52 @@ public class Kahoot{
         respuestaJugador2 = unaRespuesta;
     }
 
-    public void agregarExclusividadJugador1(Pregunta unaPregunta){
+
+    public void agregarExclusividad(Pregunta unaPregunta, Jugador jugador){
 
         if (!unaPregunta.aceptaExclusividad())
             throw new EstaPreguntaNoAceptaExclusividadesException();
 
-        exclusividadesJ1.agregarExclusividad(jugador1.utilizarExclusividad());
+        if(jugador == jugador1 || jugador == jugador2) {
+            exclusividades.agregarExclusividad(jugador.utilizarExclusividad());
+        }
+        else{
+            throw new JugadorNoValidoException();
+        }
     }
 
-    public void agregarExclusividadJugador2(Pregunta unaPregunta){
-
-        if (!unaPregunta.aceptaExclusividad())
-            throw new EstaPreguntaNoAceptaExclusividadesException();
-
-        exclusividadesJ2.agregarExclusividad(jugador2.utilizarExclusividad());
-    }
-
-    public void agregarMultiplicadorX2Jugador1(Pregunta unaPregunta){
+    public void agregarMultiplicadorX2(Pregunta unaPregunta, Jugador jugador){
 
         if (!unaPregunta.aceptaMultiplicador())
             throw new EstaPreguntaNoAceptaMultiplicadoresException();
 
-        multiplicadoresJ1.agregarMultiplicador(jugador1.utilizarMultiplicadorX2());
+        if(jugador == jugador1) {
+            multiplicadoresJ1.agregarMultiplicador(jugador.utilizarMultiplicadorX2());
+        }
+        else if(jugador == jugador2) {
+            multiplicadoresJ2.agregarMultiplicador(jugador.utilizarMultiplicadorX2());
+        }
+        else{
+            throw new JugadorNoValidoException();
+        }
     }
 
-    public void agregarMultiplicadorX2Jugador2(Pregunta unaPregunta){
+    public void agregarMultiplicadorX3(Pregunta unaPregunta, Jugador jugador){
 
         if (!unaPregunta.aceptaMultiplicador())
             throw new EstaPreguntaNoAceptaMultiplicadoresException();
 
-        multiplicadoresJ2.agregarMultiplicador(jugador2.utilizarMultiplicadorX2());
+        if(jugador == jugador1) {
+            multiplicadoresJ1.agregarMultiplicador(jugador.utilizarMultiplicadorX3());
+        }
+        else if(jugador == jugador2) {
+            multiplicadoresJ2.agregarMultiplicador(jugador.utilizarMultiplicadorX3());
+        }
+        else{
+            throw new JugadorNoValidoException();
+        }
     }
 
-    public void agregarMultiplicadorX3Jugador1(Pregunta unaPregunta){
-
-        if (!unaPregunta.aceptaMultiplicador())
-            throw new EstaPreguntaNoAceptaMultiplicadoresException();
-
-        multiplicadoresJ1.agregarMultiplicador(jugador1.utilizarMultiplicadorX3());
-    }
-
-    public void agregarMultiplicadorX3Jugador2(Pregunta unaPregunta){
-
-        if (!unaPregunta.aceptaMultiplicador())
-            throw new EstaPreguntaNoAceptaMultiplicadoresException();
-
-        multiplicadoresJ2.agregarMultiplicador(jugador2.utilizarMultiplicadorX3());
-    }
 
     public void evaluarRespuestas(Pregunta unaPregunta) {
         Puntaje puntajeJ1 = new Puntaje();
@@ -91,7 +90,7 @@ public class Kahoot{
         puntajeJ1.sumarPuntos(unaPregunta.evaluarRespuestaPara(respuestaJugador1));
         puntajeJ2.sumarPuntos(unaPregunta.evaluarRespuestaPara(respuestaJugador2));
 
-        BonusDePuntaje.aplicarbonus(puntajeJ1, multiplicadoresJ1, exclusividadesJ1, puntajeJ2, multiplicadoresJ2, exclusividadesJ2);
+        BonusDePuntaje.aplicarbonus(puntajeJ1, multiplicadoresJ1, puntajeJ2, multiplicadoresJ2, exclusividades);
 
         jugador1.sumarPuntos(puntajeJ1);
         jugador2.sumarPuntos(puntajeJ2);
@@ -110,10 +109,6 @@ public class Kahoot{
         VerdaderoFalsoClasico pregunta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("Elegi:");
 
         pregunta.mostrarseEn(interfazDeUsuario);
-    }
-
-    public void setInterfazVisual(InterfazDeUsuario unaInterfazDeUsuario) {
-        interfazDeUsuario = unaInterfazDeUsuario;
     }
 
     public Jugador getJugador1() {return jugador1;}

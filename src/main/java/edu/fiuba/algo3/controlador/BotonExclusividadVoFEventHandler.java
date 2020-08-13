@@ -27,7 +27,7 @@ public class BotonExclusividadVoFEventHandler implements EventHandler<ActionEven
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        kahoot.agregarExclusividadJugador1(verdaderoFalso);
+        kahoot.agregarExclusividad(verdaderoFalso, jugador);
 
         Scene scene = new Scene(new LayoutVerdaderoFalso(verdaderoFalso, jugador, kahoot, stage).getLayout(), 390, 400);
 

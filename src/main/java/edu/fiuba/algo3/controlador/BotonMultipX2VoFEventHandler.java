@@ -29,7 +29,7 @@ public class BotonMultipX2VoFEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
 
         //No hay manejo de turnos, no deberia solo setearlo al jugador1
-        kahoot.agregarMultiplicadorX2Jugador1(verdaderoFalso);
+        kahoot.agregarMultiplicadorX2(verdaderoFalso, jugador);
 
         Scene scene = new Scene(new LayoutVerdaderoFalso(verdaderoFalso, jugador, kahoot, stage).getLayout(), 390, 400);
 

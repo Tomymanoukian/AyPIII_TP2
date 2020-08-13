@@ -17,10 +17,9 @@ public class BonusDePuntajeTest {
         Multiplicador multiplicador = new Multiplicador(2);
         ListaDeMultiplicadores listaDeMultiplicadores1 = new ListaDeMultiplicadores(multiplicador);
         ListaDeMultiplicadores listaDeMultiplicadores2 = new ListaDeMultiplicadores();
-        ListaDeExclusividades listaDeExclusividades1 = new ListaDeExclusividades();
-        ListaDeExclusividades listaDeExclusividades2 = new ListaDeExclusividades();
+        ListaDeExclusividades listaDeExclusividades = new ListaDeExclusividades();
 
-        BonusDePuntaje.aplicarbonus(puntaje1, listaDeMultiplicadores1, listaDeExclusividades1, puntaje2, listaDeMultiplicadores2, listaDeExclusividades2);
+        BonusDePuntaje.aplicarbonus(puntaje1, listaDeMultiplicadores1, puntaje2, listaDeMultiplicadores2, listaDeExclusividades);
 
         assertEquals(4, puntaje1.getPuntos());
         assertEquals(2, puntaje2.getPuntos());
@@ -36,10 +35,9 @@ public class BonusDePuntajeTest {
 
         ListaDeMultiplicadores listaDeMultiplicadores1 = new ListaDeMultiplicadores(new ArrayList<>(Arrays.asList(multiplicador1, multiplicador2)));
         ListaDeMultiplicadores listaDeMultiplicadores2 = new ListaDeMultiplicadores();
-        ListaDeExclusividades listaDeExclusividades1 = new ListaDeExclusividades();
-        ListaDeExclusividades listaDeExclusividades2 = new ListaDeExclusividades();
+        ListaDeExclusividades listaDeExclusividades = new ListaDeExclusividades();
 
-        BonusDePuntaje.aplicarbonus(puntaje1, listaDeMultiplicadores1, listaDeExclusividades1, puntaje2, listaDeMultiplicadores2, listaDeExclusividades2);
+        BonusDePuntaje.aplicarbonus(puntaje1, listaDeMultiplicadores1, puntaje2, listaDeMultiplicadores2, listaDeExclusividades);
 
         assertEquals(12, puntaje1.getPuntos());
         assertEquals(2, puntaje2.getPuntos());
@@ -57,10 +55,9 @@ public class BonusDePuntajeTest {
 
         ListaDeMultiplicadores listaDeMultiplicadores1 = new ListaDeMultiplicadores(new ArrayList<>(Arrays.asList(multiplicador1, multiplicador2)));
         ListaDeMultiplicadores listaDeMultiplicadores2 = new ListaDeMultiplicadores(new ArrayList<>(Arrays.asList(multiplicador3, multiplicador4)));
-        ListaDeExclusividades listaDeExclusividades1 = new ListaDeExclusividades();
-        ListaDeExclusividades listaDeExclusividades2 = new ListaDeExclusividades();
+        ListaDeExclusividades listaDeExclusividades = new ListaDeExclusividades();
 
-        BonusDePuntaje.aplicarbonus(puntaje1, listaDeMultiplicadores1, listaDeExclusividades1, puntaje2, listaDeMultiplicadores2, listaDeExclusividades2);
+        BonusDePuntaje.aplicarbonus(puntaje1, listaDeMultiplicadores1, puntaje2, listaDeMultiplicadores2, listaDeExclusividades);
 
         assertEquals(12, puntaje1.getPuntos());
         assertEquals(40, puntaje2.getPuntos());
@@ -75,10 +72,9 @@ public class BonusDePuntajeTest {
 
         ListaDeMultiplicadores listaDeMultiplicadores1 = new ListaDeMultiplicadores();
         ListaDeMultiplicadores listaDeMultiplicadores2 = new ListaDeMultiplicadores();
-        ListaDeExclusividades listaDeExclusividades1 = new ListaDeExclusividades(exclusividad);
-        ListaDeExclusividades listaDeExclusividades2 = new ListaDeExclusividades();
+        ListaDeExclusividades listaDeExclusividades = new ListaDeExclusividades(exclusividad);
 
-        BonusDePuntaje.aplicarbonus(puntaje1, listaDeMultiplicadores1, listaDeExclusividades1, puntaje2, listaDeMultiplicadores2, listaDeExclusividades2);
+        BonusDePuntaje.aplicarbonus(puntaje1, listaDeMultiplicadores1, puntaje2, listaDeMultiplicadores2, listaDeExclusividades);
 
         assertEquals(0, puntaje1.getPuntos());
         assertEquals(0, puntaje2.getPuntos());
@@ -93,10 +89,9 @@ public class BonusDePuntajeTest {
 
         ListaDeMultiplicadores listaDeMultiplicadores1 = new ListaDeMultiplicadores();
         ListaDeMultiplicadores listaDeMultiplicadores2 = new ListaDeMultiplicadores();
-        ListaDeExclusividades listaDeExclusividades1 = new ListaDeExclusividades(exclusividad);
-        ListaDeExclusividades listaDeExclusividades2 = new ListaDeExclusividades();
+        ListaDeExclusividades listaDeExclusividades = new ListaDeExclusividades(exclusividad);
 
-        BonusDePuntaje.aplicarbonus(puntaje1, listaDeMultiplicadores1, listaDeExclusividades1, puntaje2, listaDeMultiplicadores2, listaDeExclusividades2);
+        BonusDePuntaje.aplicarbonus(puntaje1, listaDeMultiplicadores1, puntaje2, listaDeMultiplicadores2, listaDeExclusividades);
 
         assertEquals(0, puntaje1.getPuntos());
         assertEquals(4, puntaje2.getPuntos());
@@ -111,10 +106,9 @@ public class BonusDePuntajeTest {
 
         ListaDeMultiplicadores listaDeMultiplicadores1 = new ListaDeMultiplicadores();
         ListaDeMultiplicadores listaDeMultiplicadores2 = new ListaDeMultiplicadores();
-        ListaDeExclusividades listaDeExclusividades1 = new ListaDeExclusividades(exclusividad);
-        ListaDeExclusividades listaDeExclusividades2 = new ListaDeExclusividades();
+        ListaDeExclusividades listaDeExclusividades = new ListaDeExclusividades(exclusividad);
 
-        BonusDePuntaje.aplicarbonus(puntaje1, listaDeMultiplicadores1, listaDeExclusividades1, puntaje2, listaDeMultiplicadores2, listaDeExclusividades2);
+        BonusDePuntaje.aplicarbonus(puntaje1, listaDeMultiplicadores1, puntaje2, listaDeMultiplicadores2, listaDeExclusividades);
 
         assertEquals(0, puntaje1.getPuntos());
         assertEquals(0, puntaje2.getPuntos());

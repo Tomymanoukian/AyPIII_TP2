@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaExclusividadesException;
 import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaMultiplicadoresException;
+import edu.fiuba.algo3.modelo.excepciones.JugadorNoValidoException;
 import edu.fiuba.algo3.modelo.excepciones.OpcionNoValidaException;
 import org.junit.jupiter.api.Test;
 
@@ -61,8 +62,8 @@ public class KahootTest {
 
         VerdaderoFalsoClasico unVerdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso("bar");
 
-        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX2Jugador1(unVerdaderoFalsoClasico));
-        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX3Jugador2(unVerdaderoFalsoClasico));
+        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX2(unVerdaderoFalsoClasico, martin));
+        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX3(unVerdaderoFalsoClasico, jose));
     }
 
     @Test
@@ -75,8 +76,8 @@ public class KahootTest {
 
         VerdaderoFalsoConPenalidad unVerdaderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoFalso("bar");
 
-        assertThrows(EstaPreguntaNoAceptaExclusividadesException.class, ()-> kahoot.agregarExclusividadJugador1(unVerdaderoFalsoConPenalidad));
-        assertThrows(EstaPreguntaNoAceptaExclusividadesException.class, ()-> kahoot.agregarExclusividadJugador2(unVerdaderoFalsoConPenalidad));
+        assertThrows(EstaPreguntaNoAceptaExclusividadesException.class, ()-> kahoot.agregarExclusividad(unVerdaderoFalsoConPenalidad, martin));
+        assertThrows(EstaPreguntaNoAceptaExclusividadesException.class, ()-> kahoot.agregarExclusividad(unVerdaderoFalsoConPenalidad, jose));
     }
 
     @Test
@@ -103,8 +104,8 @@ public class KahootTest {
 
         MultipleChoiceClasico unMultipleChoiceClasico = new MultipleChoiceClasico (unaConsigna, respuestasCorrectas, respuestasIncorrectas);
 
-        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX2Jugador1(unMultipleChoiceClasico));
-        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX3Jugador2(unMultipleChoiceClasico));
+        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX2(unMultipleChoiceClasico, martin));
+        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX3(unMultipleChoiceClasico, jose));
     }
 
     @Test
@@ -131,8 +132,8 @@ public class KahootTest {
 
         MultipleChoiceParcial unMultipleChoiceParcial = new MultipleChoiceParcial (unaConsigna, respuestasCorrectas, respuestasIncorrectas);
 
-        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX2Jugador1(unMultipleChoiceParcial));
-        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX3Jugador2(unMultipleChoiceParcial));
+        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX2(unMultipleChoiceParcial, martin));
+        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX3(unMultipleChoiceParcial, jose));
     }
 
     @Test
@@ -159,8 +160,8 @@ public class KahootTest {
 
         MultipleChoiceConPenalidad unMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad (consigna, respuestasCorrectas, respuestasIncorrectas);
 
-        assertThrows(EstaPreguntaNoAceptaExclusividadesException.class, ()-> kahoot.agregarExclusividadJugador1(unMultipleChoiceConPenalidad));
-        assertThrows(EstaPreguntaNoAceptaExclusividadesException.class, ()-> kahoot.agregarExclusividadJugador2(unMultipleChoiceConPenalidad));
+        assertThrows(EstaPreguntaNoAceptaExclusividadesException.class, ()-> kahoot.agregarExclusividad(unMultipleChoiceConPenalidad, martin));
+        assertThrows(EstaPreguntaNoAceptaExclusividadesException.class, ()-> kahoot.agregarExclusividad(unMultipleChoiceConPenalidad, jose));
     }
 
     @Test
@@ -181,8 +182,8 @@ public class KahootTest {
 
         OrderedChoice unOrderedChoice = new OrderedChoice(consigna, listaDeOpciones);
 
-        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX2Jugador1(unOrderedChoice));
-        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX3Jugador2(unOrderedChoice));
+        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX2(unOrderedChoice, martin));
+        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX3(unOrderedChoice, jose));
     }
 
     @Test
@@ -205,7 +206,36 @@ public class KahootTest {
 
         GroupChoice unGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
 
-        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX2Jugador1(unGroupChoice));
-        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX3Jugador2(unGroupChoice));
+        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX2(unGroupChoice, martin));
+        assertThrows(EstaPreguntaNoAceptaMultiplicadoresException.class, ()-> kahoot.agregarMultiplicadorX3(unGroupChoice, jose));
+    }
+
+    @Test
+    public void testUtilizarBonusConOtroJugadorLanzaExcepcion() {
+
+        Jugador martin = new Jugador("Martin");
+        Jugador jose = new Jugador("Jose");
+        Jugador otroJugador = new Jugador("otroJugador");
+
+        Kahoot kahoot = new Kahoot(martin, jose);
+
+        VerdaderoFalsoClasico vofClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("consigna");
+        VerdaderoFalsoConPenalidad vofConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoFalso("consigna");
+
+        /*String consigna = "bar";
+
+        Opcion opcion1DeGrupoA = new Opcion("respuesta1GrupoA");
+        Opcion opcion2DeGrupoA = new Opcion("respuesta2GrupoA");
+        Opcion opcion1DeGrupoB = new Opcion("respuesta1GrupoB");
+        Opcion opcion2DeGrupoB = new Opcion("respuesta2GrupoB");
+
+        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA)));
+        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB)));
+
+        GroupChoice unGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);*/
+
+        assertThrows(JugadorNoValidoException.class, ()-> kahoot.agregarMultiplicadorX2(vofConPenalidad, otroJugador));
+        assertThrows(JugadorNoValidoException.class, ()-> kahoot.agregarMultiplicadorX3(vofConPenalidad, otroJugador));
+        assertThrows(JugadorNoValidoException.class, ()-> kahoot.agregarExclusividad(vofClasico, otroJugador));
     }
 }

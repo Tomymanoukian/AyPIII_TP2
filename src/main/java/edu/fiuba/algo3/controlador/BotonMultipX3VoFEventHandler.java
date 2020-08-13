@@ -26,7 +26,7 @@ public class BotonMultipX3VoFEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        kahoot.agregarMultiplicadorX3Jugador1(verdaderoFalso);
+        kahoot.agregarMultiplicadorX3(verdaderoFalso, jugador);
 
         Scene scene = new Scene(new LayoutVerdaderoFalso(verdaderoFalso, jugador, kahoot, stage).getLayout(), 390, 400);
 
