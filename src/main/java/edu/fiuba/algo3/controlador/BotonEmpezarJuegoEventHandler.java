@@ -23,9 +23,8 @@ public class BotonEmpezarJuegoEventHandler implements EventHandler<ActionEvent> 
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Jugador jugador1 = new Jugador(nombreJugador1.getText());
-        Jugador jugador2 = new Jugador(nombreJugador2.getText());
-        kahoot = new Kahoot(jugador1,jugador2);
+        kahoot.getJugador1().setNombre(nombreJugador1.getText());
+        kahoot.getJugador2().setNombre(nombreJugador2.getText());
         manejadorDeTurnos.mostrarPrimeraPregunta();
     }
 }
