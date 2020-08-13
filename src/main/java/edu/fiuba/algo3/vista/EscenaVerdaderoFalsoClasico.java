@@ -22,7 +22,7 @@ public class EscenaVerdaderoFalsoClasico implements Escena{
 
     public EscenaVerdaderoFalsoClasico(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        LayoutVerdaderoFalso layoutVerdaderoFalso = new LayoutVerdaderoFalso(pregunta, jugador, manejadorDeTurnos);
+        LayoutVerdaderoFalso layoutVerdaderoFalso = new LayoutVerdaderoFalso(pregunta, this, jugador, manejadorDeTurnos);
         layout = layoutVerdaderoFalso.getLayout();
     }
 

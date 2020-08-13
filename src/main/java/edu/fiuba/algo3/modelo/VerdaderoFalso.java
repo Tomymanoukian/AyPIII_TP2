@@ -14,6 +14,23 @@ public abstract class VerdaderoFalso extends Pregunta {
         return opcionIncorrecta;
     }
 
+    public Opcion getOpcionVerdadera(){
+        if(opcionCorrecta.tieneLaMisma("Verdadero")){
+            return opcionCorrecta;
+        }else
+        {
+            return opcionIncorrecta;
+        }
+    }
+    public Opcion getOpcionFalsa(){
+        if(opcionCorrecta.tieneLaMisma("Falso")){
+            return opcionCorrecta;
+        }else
+        {
+            return opcionIncorrecta;
+        }
+    }
+
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
 
