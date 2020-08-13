@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.vista.Escena;
 import edu.fiuba.algo3.vista.EscenaOrderedChoice;
 import edu.fiuba.algo3.vista.LayoutOrderedChoice;
 import javafx.event.ActionEvent;
@@ -10,15 +11,15 @@ import javafx.stage.Stage;
 
 public class BotonExclusividadHandler implements EventHandler<ActionEvent> {
 
-    private OrderedChoice orderedChoice;
-    private EscenaOrderedChoice escenaOrderedChoice;
+    private Pregunta pregunta;
+    private Escena escena;
     private Jugador jugador;
     private ManejadorDeTurnos manejadorDeTurnos;
 
-    public BotonExclusividadHandler (OrderedChoice unaOrderedChoice, EscenaOrderedChoice unaEscenaOrderedChoice, Jugador unJugador, ManejadorDeTurnos unManejadorDeTurnos) {
+    public BotonExclusividadHandler (Pregunta unaPregunta, Escena unaEscena, Jugador unJugador, ManejadorDeTurnos unManejadorDeTurnos) {
 
-        orderedChoice = unaOrderedChoice;
-        escenaOrderedChoice = unaEscenaOrderedChoice;
+        pregunta = unaPregunta;
+        escena = unaEscena;
         jugador = unJugador;
         manejadorDeTurnos = unManejadorDeTurnos;
     }
@@ -26,8 +27,8 @@ public class BotonExclusividadHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        manejadorDeTurnos.getKahoot().agregarExclusividadJugador1(orderedChoice);
+        manejadorDeTurnos.getKahoot().agregarExclusividad(pregunta, jugador);
 
-        escenaOrderedChoice.actualizar(jugador, manejadorDeTurnos);
+        escena.actualizar(jugador, manejadorDeTurnos);
     }
 }
