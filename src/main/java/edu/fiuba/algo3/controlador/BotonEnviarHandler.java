@@ -11,30 +11,20 @@ import javafx.stage.Stage;
 public class BotonEnviarHandler implements EventHandler<ActionEvent> {
 
     private OrderedChoice orderedChoice;
-    private Jugador jugador;
     private Kahoot kahoot;
-    private Stage stage;
+    private ManejadorDeTurnos manejadorDeTurnos;
 
-
-    public BotonEnviarHandler (OrderedChoice unaOrderedChoice, Jugador unJugador, Kahoot unKahoot, Stage unStage) {
+    public BotonEnviarHandler (OrderedChoice unaOrderedChoice, Kahoot unKahoot, ManejadorDeTurnos unManejadorDeTurnos) {
 
         orderedChoice = unaOrderedChoice;
-        jugador = unJugador;
         kahoot = unKahoot;
-        stage = unStage;
+        manejadorDeTurnos = unManejadorDeTurnos;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
 
         kahoot.setRespuestaJugador1(new RespuestaEnLista(orderedChoice.getOpciones()));
-
-        Pane fondoBlanco = new Pane();
-
-        Scene scene = new Scene(fondoBlanco, 390,400);
-
-        stage.setTitle("Kahoot!");
-        stage.setScene(scene);
-        stage.show();
+        manejadorDeTurnos.mostrarSiguientePregunta();
     }
 }

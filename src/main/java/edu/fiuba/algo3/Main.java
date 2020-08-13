@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.Stack;
+
 public class Main extends Application {
 
     @Override
@@ -34,12 +36,24 @@ public class Main extends Application {
 
         OrderedChoice orderedChoice = new OrderedChoice(consigna, listaOpciones);
 
+        OrderedChoice orderedChoice1 = new OrderedChoice("Coso 2", listaOpciones);
+
         Jugador jugador1 = new Jugador("Jugador 1");
         Jugador jugador2 = new Jugador("Jugador 2");
         ///////////Termina creacion de objetos para hacer pruebas de la vista OrderedChoice
 
         Kahoot kahoot = new Kahoot(jugador1, jugador2);
 
+        Stack<Pregunta> unStack = new Stack<>();
+        unStack.add(orderedChoice);
+        unStack.add(orderedChoice1);
+
+        ManejadorDeTurnos unManejadorDeTurnos = new ManejadorDeTurnos(unStack, jugador1, jugador2, kahoot, stage);
+
+        unManejadorDeTurnos.mostrarSiguientePregunta();
+
+        //stage.setScene(new Scene((new LayoutMenuBienvenida()).getLayout()));
+/*
         LayoutVerdaderoFalso vistaVerdaderoFalso = new LayoutVerdaderoFalso(kahoot.getJugador1(), verdaderoFalsoClasico.getOpcionCorrecta(), verdaderoFalsoClasico.getOpcionIncorrecta(), kahoot);
         LayoutMenuBienvenida vistaBienvenida = new LayoutMenuBienvenida();
         LayoutOrderedChoice vistaOrderedChoice = new LayoutOrderedChoice(orderedChoice.desordenarOpciones(), kahoot.getJugador1(), kahoot, stage);
@@ -49,13 +63,15 @@ public class Main extends Application {
         Pane layout = new Pane();
         layout.getChildren().addAll(vistaBienvenida.getLayout(), vistaVerdaderoFalso.getLayout(), vistaOrderedChoice.getLayout(), vistaPuntuaciones.getLayout(), vistaMultipleChoice.getLayout());
 
-        vistaBienvenida.mostrarVista(layout);
+        vistaOrderedChoice.mostrarVista(layout);
 
         Scene scene = new Scene(layout, 390, 400);
-
+*/
         stage.setTitle("Kahoot!");
-        stage.setScene(scene);
+        //stage.setScene(scene);
         stage.show();
+
+
     }
 
     public static void main(String[] args) {
