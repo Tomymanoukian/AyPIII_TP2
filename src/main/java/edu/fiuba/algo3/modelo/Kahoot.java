@@ -11,8 +11,6 @@ public class Kahoot{
     private Jugador jugador2;
     private Respuesta respuestaJugador1;
     private Respuesta respuestaJugador2;
-    private ListaDeExclusividades exclusividadesJ1; //borrar
-    private ListaDeExclusividades exclusividadesJ2; //borrar
     private ListaDeExclusividades exclusividades;
     private ListaDeMultiplicadores multiplicadoresJ1;
     private ListaDeMultiplicadores multiplicadoresJ2;
@@ -21,8 +19,6 @@ public class Kahoot{
     public Kahoot(Jugador unJugador, Jugador otroJugador) {
         jugador1 = unJugador;
         jugador2 = otroJugador;
-        exclusividadesJ1 = new ListaDeExclusividades();
-        exclusividadesJ2 = new ListaDeExclusividades();
         exclusividades = new ListaDeExclusividades();
         multiplicadoresJ1 = new ListaDeMultiplicadores();
         multiplicadoresJ2 = new ListaDeMultiplicadores();

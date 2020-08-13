@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Kahoot;
+import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
 import edu.fiuba.algo3.modelo.Pregunta;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -28,5 +29,10 @@ public class EscenaVerdaderoFalsoClasico implements Escena{
     @Override
     public Scene getEscena() {
         return (new Scene(layout));
+    }
+
+    @Override
+    public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
+
     }
 }
