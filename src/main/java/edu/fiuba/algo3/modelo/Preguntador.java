@@ -19,24 +19,6 @@ public class Preguntador {
         preguntasDelJuego = new ArrayList<>();
     }
 
-
-    public void leerPreguntas()  {
-        try {
-            String texto = Files.readString(Path.of(FILENAME_RELATIVE_PATH));
-
-            JsonArray arrayPreguntas = JsonParser.parseString(texto).getAsJsonArray();
-
-            for (JsonElement jsonPregunta : arrayPreguntas) {
-                Pregunta pregunta = Pregunta.recuperar(jsonPregunta.getAsJsonObject());
-                preguntasDelJuego.add(pregunta);
-
-            }
-        } catch (IOException ex) {
-            throw new ErrorDeLecturaException();
-        }
-
-    }
-
     public void escribirPreguntas(List<Pregunta> preguntasAEscribir) {
         try {
             Gson gson = new Gson();
@@ -59,6 +41,51 @@ public class Preguntador {
             jsonArrayPreguntas.add(pregunta.guardar());
         }
         return jsonArrayPreguntas;
+    }
+
+    public Pregunta recuperar(JsonObject jsonPregunta) {
+        //Dependiendo del tipo de pregunta lee el json de formas diferentes
+        String tipoDePregunta =  jsonPregunta.get("tipoDePregunta").getAsString();
+
+        if(VerdaderoFalsoClasico.class.getName().equals(tipoDePregunta)){
+            return  VerdaderoFalsoClasico.recuperar(jsonPregunta);
+        }
+        if(VerdaderoFalsoConPenalidad.class.getName().equals(tipoDePregunta)){
+            return  VerdaderoFalsoConPenalidad.recuperar(jsonPregunta);
+        }
+        if(MultipleChoiceClasico.class.getName().equals(tipoDePregunta)){
+            return  MultipleChoiceClasico.recuperar(jsonPregunta);
+        }
+        if(MultipleChoiceParcial.class.getName().equals(tipoDePregunta)){
+            return  MultipleChoiceParcial.recuperar(jsonPregunta);
+        }
+        if(MultipleChoiceConPenalidad.class.getName().equals(tipoDePregunta)){
+            return  MultipleChoiceConPenalidad.recuperar(jsonPregunta);
+        }
+        if(OrderedChoice.class.getName().equals(tipoDePregunta)){
+            return  OrderedChoice.recuperar(jsonPregunta);
+        }
+        if(GroupChoice.class.getName().equals(tipoDePregunta)){
+            return  GroupChoice.recuperar(jsonPregunta);
+        }
+        return null;
+    }
+
+    public void leerPreguntas()  {
+        try {
+            String texto = Files.readString(Path.of(FILENAME_RELATIVE_PATH));
+
+            JsonArray arrayPreguntas = JsonParser.parseString(texto).getAsJsonArray();
+
+            for (JsonElement jsonPregunta : arrayPreguntas) {
+                Pregunta pregunta = this.recuperar(jsonPregunta.getAsJsonObject());
+                preguntasDelJuego.add(pregunta);
+
+            }
+        } catch (IOException ex) {
+            throw new ErrorDeLecturaException();
+        }
+
     }
 
     public List<Pregunta> getPreguntas() {
