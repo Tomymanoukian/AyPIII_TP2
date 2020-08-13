@@ -20,7 +20,10 @@ public class LayoutMultipleChoice extends VBox {
 
     private Pane layout;
 
-    public LayoutMultipleChoice(MultipleChoiceClasico unMultipleChoice, Jugador unJugador, Kahoot kahoot, Stage unStage) {
+    public LayoutMultipleChoice(Pregunta pregunta, Jugador unJugador, Kahoot kahoot, Stage unStage) {
+
+        MultipleChoiceClasico unMultipleChoice = (MultipleChoiceClasico) pregunta;
+
         ListaOpciones listaRespuestas = new ListaOpciones();
 
         Label nombreJugador = new Label(unJugador.getNombre());

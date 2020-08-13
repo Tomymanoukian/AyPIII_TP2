@@ -11,10 +11,10 @@ import javafx.stage.Stage;
 public class EscenaMultipleChoiceClasico implements Escena {
     private Pane layout;
 
-    public EscenaMultipleChoiceClasico(Pregunta pregunta, Jugador jugador, Kahoot kahoot, Stage stage) {
+    public EscenaMultipleChoiceClasico(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        //LayoutMultipleChoice layoutMultipleChoice = new LayoutMultipleChoice(pregunta, jugador, kahoot, stage);
-        //layout = layoutMultipleChoice.getLayout();
+        LayoutMultipleChoice layoutMultipleChoice = new LayoutMultipleChoice(pregunta, jugador, );
+        layout = layoutMultipleChoice.getLayout();
     }
 
     @Override

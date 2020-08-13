@@ -17,7 +17,7 @@ public class CreadorDeVistas {
 
         Class<?> claseDeLaEscena = Class.forName("edu.fiuba.algo3.vista.Escena" + tipoDePregunta);
         Constructor<Escena> constructor = (Constructor<Escena>)claseDeLaEscena.getConstructor(Pregunta.class, Jugador.class, ManejadorDeTurnos.class);
-        Escena escena = /*(Escena)*/constructor.newInstance(pregunta, jugador, manejadorDeTurnos);
+        Escena escena = constructor.newInstance(pregunta, jugador, manejadorDeTurnos);
 
         return escena.getEscena();
     }
