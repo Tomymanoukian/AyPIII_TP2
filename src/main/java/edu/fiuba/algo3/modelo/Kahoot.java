@@ -24,6 +24,19 @@ public class Kahoot{
         multiplicadoresJ2 = new ListaDeMultiplicadores();
     }
 
+    public void setRespuestaJugador(Respuesta unaRespuesta, Jugador jugador) {
+
+        if(jugador == jugador1) {
+            respuestaJugador1 = unaRespuesta;
+        }
+        else if(jugador == jugador2) {
+            respuestaJugador2 = unaRespuesta;
+        }
+        else{
+            throw new JugadorNoValidoException();
+        }
+    }
+
     public void setRespuestaJugador1(Respuesta unaRespuesta) {
         respuestaJugador1 = unaRespuesta;
     }
@@ -31,7 +44,6 @@ public class Kahoot{
     public void setRespuestaJugador2(Respuesta unaRespuesta) {
         respuestaJugador2 = unaRespuesta;
     }
-
 
     public void agregarExclusividad(Pregunta unaPregunta, Jugador jugador){
 
@@ -77,7 +89,6 @@ public class Kahoot{
             throw new JugadorNoValidoException();
         }
     }
-
 
     public void evaluarRespuestas(Pregunta unaPregunta) {
         Puntaje puntajeJ1 = new Puntaje();

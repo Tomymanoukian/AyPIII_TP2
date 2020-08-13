@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonBajarRespuestaHandler;
-import edu.fiuba.algo3.controlador.BotonEnviarOrderedChoiceHandler;
+import edu.fiuba.algo3.controlador.BotonEnviarHandler;
 import edu.fiuba.algo3.controlador.BotonExclusividadHandler;
 import edu.fiuba.algo3.controlador.BotonSubirRespuestaHandler;
 import edu.fiuba.algo3.modelo.*;
@@ -92,8 +92,10 @@ public class LayoutOrderedChoice extends VBox {
         VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.getChildren().addAll(listaHBoxOpciones);
 
+        RespuestaEnLista respuesta = new RespuestaEnLista(opcionesMostradas);
+
         Button botonEnviar = new Button ("Enviar");
-        BotonEnviarOrderedChoiceHandler enviarHandler = new BotonEnviarOrderedChoiceHandler(orderedChoice, manejadorDeTurnos.getKahoot(), manejadorDeTurnos);
+        BotonEnviarHandler enviarHandler = new BotonEnviarHandler(jugador, respuesta, manejadorDeTurnos);
         botonEnviar.setOnAction(enviarHandler);
 
         HBox enviar = new HBox (botonEnviar);

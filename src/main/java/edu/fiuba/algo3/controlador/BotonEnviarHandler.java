@@ -8,23 +8,23 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class BotonEnviarOrderedChoiceHandler implements EventHandler<ActionEvent> {
+public class BotonEnviarHandler implements EventHandler<ActionEvent> {
 
-    private OrderedChoice orderedChoice;
-    private Kahoot kahoot;
+    private Jugador jugador;
+    private Respuesta respuesta;
     private ManejadorDeTurnos manejadorDeTurnos;
 
-    public BotonEnviarOrderedChoiceHandler(OrderedChoice unaOrderedChoice, Kahoot unKahoot, ManejadorDeTurnos unManejadorDeTurnos) {
+    public BotonEnviarHandler(Jugador unJugador, Respuesta unaRespuesta, ManejadorDeTurnos unManejadorDeTurnos) {
 
-        orderedChoice = unaOrderedChoice;
-        kahoot = unKahoot;
+        jugador = unJugador;
+        respuesta = unaRespuesta;
         manejadorDeTurnos = unManejadorDeTurnos;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        kahoot.setRespuestaJugador1(new RespuestaEnLista(orderedChoice.getOpciones()));
+        manejadorDeTurnos.getKahoot().setRespuestaJugador(respuesta, jugador);
         manejadorDeTurnos.mostrarSiguientePregunta();
     }
 }
