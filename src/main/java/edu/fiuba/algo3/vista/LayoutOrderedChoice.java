@@ -92,8 +92,10 @@ public class LayoutOrderedChoice extends VBox {
         VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.getChildren().addAll(listaHBoxOpciones);
 
+        RespuestaEnLista respuesta = new RespuestaEnLista(opcionesMostradas);
+
         Button botonEnviar = new Button ("Enviar");
-        BotonEnviarOrderedChoiceHandler enviarHandler = new BotonEnviarOrderedChoiceHandler(orderedChoice, manejadorDeTurnos.getKahoot(), manejadorDeTurnos);
+        BotonEnviarOrderedChoiceHandler enviarHandler = new BotonEnviarOrderedChoiceHandler(jugador, respuesta, manejadorDeTurnos);
         botonEnviar.setOnAction(enviarHandler);
 
         HBox enviar = new HBox (botonEnviar);

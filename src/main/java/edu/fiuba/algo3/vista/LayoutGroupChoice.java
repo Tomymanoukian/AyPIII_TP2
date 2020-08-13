@@ -106,7 +106,7 @@ public class LayoutGroupChoice extends VBox {
         /////////////////
 
         Button botonEnviar = new Button ("Enviar");
-        BotonEnviarGroupChoiceHandler enviarHandler = new BotonEnviarGroupChoiceHandler (groupChoice, respuestaDeGrupos, manejadorDeTurnos.getKahoot(), manejadorDeTurnos);
+        BotonEnviarGroupChoiceHandler enviarHandler = new BotonEnviarGroupChoiceHandler (jugador, respuestaDeGrupos, manejadorDeTurnos);
         botonEnviar.setOnAction(enviarHandler);
 
         HBox enviar = new HBox (botonEnviar);
