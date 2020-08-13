@@ -44,12 +44,12 @@ public class ListaOpciones {
     }
 
     public boolean contieneTodo(ListaOpciones otraLista) {
-        return (this.obtenerCoincidencias(otraLista) == otraLista.cantidadDeRespuestas());
+        return (this.obtenerCoincidencias(otraLista) == otraLista.cantidadDeOpciones());
     }
 
     public boolean contieneLoMismo(ListaOpciones otraLista) {
-        return (this.cantidadDeRespuestas() == otraLista.cantidadDeRespuestas() &&
-                this.obtenerCoincidencias(otraLista) == otraLista.cantidadDeRespuestas());
+        return (this.cantidadDeOpciones() == otraLista.cantidadDeOpciones() &&
+                this.obtenerCoincidencias(otraLista) == otraLista.cantidadDeOpciones());
     }
 
     public Opcion obtener(int posicion) {
@@ -83,7 +83,7 @@ public class ListaOpciones {
         return coincidencias;
     }
 
-    public int cantidadDeRespuestas() {
+    public int cantidadDeOpciones() {
         return listaOpciones.size();
     }
 
@@ -91,11 +91,11 @@ public class ListaOpciones {
         Iterator<Opcion> iterador1 = listaOpciones.iterator();
         Iterator<Opcion> iterador2 = otraLista.obtenerLista().iterator();
 
-        if (this.cantidadDeRespuestas() != otraLista.cantidadDeRespuestas()) {
+        if (this.cantidadDeOpciones() != otraLista.cantidadDeOpciones()) {
             return false;
         }
 
-        for (int i = 0; i < otraLista.cantidadDeRespuestas(); i++) {
+        for (int i = 0; i < otraLista.cantidadDeOpciones(); i++) {
             Opcion unaOpcion = iterador1.next();
             Opcion otraOpcion = iterador2.next();
 
@@ -119,10 +119,27 @@ public class ListaOpciones {
         Collections.shuffle(listaOpciones);
     }
 
-    public void eliminar(String opcion) {
-        if (listaOpciones.contains(opcion)) {
+    public void eliminar(String opcionAEliminar) {
+        Opcion opcion = this.obtenerOpcionDe(opcionAEliminar);
+        if (opcion != null) {
             listaOpciones.remove(opcion);
         }
+    }
+
+    public Opcion obtenerOpcionDe(String opcionBuscada){
+        Iterator<Opcion> iterador = listaOpciones.iterator();
+        boolean contiene = false;
+        Opcion opcion = null;
+
+        while( iterador.hasNext() && !contiene ) {
+            Opcion opcionIterador = iterador.next();
+
+            if (opcionIterador.tieneLaMisma(opcionBuscada)) {
+                contiene = true;
+                opcion = opcionIterador;
+            }
+        }
+        return opcion;
     }
 
     public boolean contieneAlguna(ListaOpciones opciones) {

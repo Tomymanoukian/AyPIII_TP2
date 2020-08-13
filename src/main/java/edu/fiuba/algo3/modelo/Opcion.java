@@ -50,4 +50,8 @@ public class Opcion {
         jsonOpcion.add("puntaje", puntaje.guardar());
         return jsonOpcion;
     }
+
+    public boolean tieneLaMisma(String opcionBuscada) {
+        return (this.opcion.equals(opcionBuscada));
+    }
 }

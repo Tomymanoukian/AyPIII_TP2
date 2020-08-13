@@ -71,7 +71,7 @@ public class LayoutOrderedChoice extends VBox {
 
         ListaOpciones opcionesMostradas = escenaOrderedChoice.getOpcionesMostradas();
 
-        for (int i=0; i < opcionesMostradas.cantidadDeRespuestas(); i++) {
+        for (int i = 0; i < opcionesMostradas.cantidadDeOpciones(); i++) {
 
             Button botonBajar = new Button ("▼");
             Button botonSubir = new Button ("▲");
@@ -87,7 +87,7 @@ public class LayoutOrderedChoice extends VBox {
         }
 
         listaHBoxOpciones.get(0).getChildren().get(2).setDisable(true);
-        listaHBoxOpciones.get(opcionesMostradas.cantidadDeRespuestas()-1).getChildren().get(0).setDisable(true);
+        listaHBoxOpciones.get(opcionesMostradas.cantidadDeOpciones()-1).getChildren().get(0).setDisable(true);
 
         VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.getChildren().addAll(listaHBoxOpciones);

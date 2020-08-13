@@ -9,7 +9,7 @@ public class OrderedChoice extends Pregunta {
 
     public OrderedChoice(String unaConsigna, ListaOpciones unaListaDeOpciones) {
         super();
-        if (unaListaDeOpciones.cantidadDeRespuestas() < 2 || unaListaDeOpciones.cantidadDeRespuestas() > 5) {
+        if (unaListaDeOpciones.cantidadDeOpciones() < 2 || unaListaDeOpciones.cantidadDeOpciones() > 5) {
             throw new CantidadDeOpcionesInvalidaException();
         }
         consigna = unaConsigna;

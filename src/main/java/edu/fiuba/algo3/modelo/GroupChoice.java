@@ -12,8 +12,8 @@ public class GroupChoice extends Pregunta{
 
     public GroupChoice(String unaConsigna, ListaOpciones unasOpcionesGrupoA, ListaOpciones unasOpcionesGrupoB) {
         super();
-        if ((unasOpcionesGrupoA.cantidadDeRespuestas() + unasOpcionesGrupoB.cantidadDeRespuestas()) < 2 ||
-                (unasOpcionesGrupoA.cantidadDeRespuestas() + unasOpcionesGrupoB.cantidadDeRespuestas()) > 6) {
+        if ((unasOpcionesGrupoA.cantidadDeOpciones() + unasOpcionesGrupoB.cantidadDeOpciones()) < 2 ||
+                (unasOpcionesGrupoA.cantidadDeOpciones() + unasOpcionesGrupoB.cantidadDeOpciones()) > 6) {
             throw new CantidadDeOpcionesInvalidaException();
         }
         consigna = unaConsigna;
@@ -24,8 +24,8 @@ public class GroupChoice extends Pregunta{
     public GroupChoice(String unaConsigna, String unNombreGrupoA, ListaOpciones unasOpcionesGrupoA, String unNombreGrupoB, ListaOpciones unasOpcionesGrupoB) {
 
         super();
-        if ((unasOpcionesGrupoA.cantidadDeRespuestas() + unasOpcionesGrupoB.cantidadDeRespuestas()) < 2 ||
-                (unasOpcionesGrupoA.cantidadDeRespuestas() + unasOpcionesGrupoB.cantidadDeRespuestas()) > 6) {
+        if ((unasOpcionesGrupoA.cantidadDeOpciones() + unasOpcionesGrupoB.cantidadDeOpciones()) < 2 ||
+                (unasOpcionesGrupoA.cantidadDeOpciones() + unasOpcionesGrupoB.cantidadDeOpciones()) > 6) {
             throw new CantidadDeOpcionesInvalidaException();
         }
         consigna = unaConsigna;
