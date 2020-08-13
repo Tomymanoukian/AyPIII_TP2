@@ -11,10 +11,10 @@ import javafx.stage.Stage;
 public class EscenaMultipleChoiceParcial implements Escena {
     private Pane layout;
 
-    public EscenaMultipleChoiceParcial(Pregunta pregunta, Jugador jugador, Kahoot kahoot, Stage stage) {
+    public EscenaMultipleChoiceParcial(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        //LayoutMultipleChoice layoutMultipleChoice = new LayoutMultipleChoice(pregunta, jugador, kahoot, stage);
-        //layout = layoutMultipleChoice.getLayout();
+        LayoutMultipleChoice layoutMultipleChoice = new LayoutMultipleChoice(pregunta, jugador, manejadorDeTurnos);
+        layout = layoutMultipleChoice.getLayout();
     }
 
     @Override

@@ -8,10 +8,12 @@ import java.util.Stack;
 public class MockLecturaDeArchivoDePreguntas {
 
     private VerdaderoFalsoClasico verdaderoFalsoClasico;
+    private VerdaderoFalsoConPenalidad  verdaderoFalsoConPenalidad;
     private OrderedChoice orderedChoice;
     private OrderedChoice orderedChoice1;
     private GroupChoice groupChoice;
     private MultipleChoiceClasico multipleChoiceClasico;
+    private MultipleChoiceParcial multipleChoiceParcial;
     private MultipleChoiceConPenalidad multipleChoiceConPenalidad;
 
     public MockLecturaDeArchivoDePreguntas() {
@@ -21,6 +23,7 @@ public class MockLecturaDeArchivoDePreguntas {
         String consignaVoF = "Elegir Verdadero o Falso";
 
         verdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero(consignaVoF);
+        verdaderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoFalso(consignaVoF);
         ///////////Termina creacion de objetos para hacer pruebas de la vista OrderedChoice
 
         ////////////Empieza creacion de objetos para hacer pruebas de la vista OrderedChoice
@@ -80,6 +83,7 @@ public class MockLecturaDeArchivoDePreguntas {
 
         multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
         multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+        multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
     }
 
@@ -96,12 +100,14 @@ public class MockLecturaDeArchivoDePreguntas {
 
     public Stack<Pregunta> getPilaDePreguntas() {
         Stack<Pregunta> pila = new Stack<>();
-        pila.add(verdaderoFalsoClasico);
         pila.add(orderedChoice);
         pila.add(orderedChoice1);
         pila.add(groupChoice);
-        //pila.add(multipleChoiceClasico); //falta implementar boton siguiente pregunta
-        //pila.add(multipleChoiceConPenalidad); //falta implementar boton siguiente pregunta
+        //pila.add(multipleChoiceClasico);
+        //pila.add(multipleChoiceConPenalidad);
+        pila.add(multipleChoiceParcial);
+        //pila.add(verdaderoFalsoConPenalidad);
+        //pila.add(verdaderoFalsoClasico);
         return pila;
     }
 }
