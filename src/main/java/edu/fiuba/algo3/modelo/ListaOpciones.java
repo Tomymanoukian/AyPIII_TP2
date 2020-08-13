@@ -107,6 +107,12 @@ public class ListaOpciones {
         Collections.shuffle(listaOpciones);
     }
 
+    public void eliminar(String opcion){
+        if( listaOpciones.contains(opcion)){
+            listaOpciones.remove(opcion);
+        }
+    }
+
     public boolean contieneAlguna(ListaOpciones opciones) {
         return (this.obtenerCoincidencias(opciones) != 0);
 

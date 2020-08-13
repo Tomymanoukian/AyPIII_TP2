@@ -1,15 +1,9 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.BotonFalsoEventHandler;
-import edu.fiuba.algo3.controlador.BotonVerdaderoEventHandler;
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.modelo.Opcion;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import edu.fiuba.algo3.controlador.*;
+import edu.fiuba.algo3.modelo.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -17,18 +11,44 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 public class LayoutVerdaderoFalso extends VBox{
 
     private Pane layout;
 
-    public LayoutVerdaderoFalso(Jugador unJugador, Opcion opcionVerdadero, Opcion opcionFalso, Kahoot kahoot) {
+    public LayoutVerdaderoFalso(VerdaderoFalso verdaderoFalso, Jugador unJugador, Kahoot kahoot, Stage stage) {
 
         Label nombreJugador = new Label(unJugador.getNombre());
         Label tiempo = new Label("00:00");
-        Label bonusX2 = new Label("X2");
-        Label bonusX3 = new Label("X3");
-        Label exclusividad = new Label("Exclusividad");
+
+        Button bonusX2 = new Button("X2");
+        BotonMultipX2VoFEventHandler multiplicX2Handler = new BotonMultipX2VoFEventHandler(verdaderoFalso, unJugador, kahoot, stage);
+        bonusX2.setOnAction(multiplicX2Handler);
+
+        Button bonusX3 = new Button("X3");
+        BotonMultipX3VoFEventHandler multiplicX3Handler = new BotonMultipX3VoFEventHandler(verdaderoFalso, unJugador, kahoot, stage);
+        bonusX3.setOnAction(multiplicX3Handler);
+
+        Button exclusividad = new Button("Ex");
+        BotonExclusividadVoFEventHandler exclusividadHandler = new BotonExclusividadVoFEventHandler (verdaderoFalso, unJugador, kahoot, stage);
+        exclusividad.setOnAction(exclusividadHandler);
+
+        if(verdaderoFalso.getClass() == VerdaderoFalsoConPenalidad.class){
+            exclusividad.setDisable(true);
+
+            if (unJugador.getMultiplicadoresX2().size()==0)
+                bonusX2.setDisable(true);
+            if (unJugador.getMultiplicadoresX3().size()==0)
+                bonusX3.setDisable(true);
+
+        }else if(verdaderoFalso.getClass() != VerdaderoFalsoConPenalidad.class ){
+            bonusX2.setDisable(true);
+            bonusX3.setDisable(true);
+
+            if(unJugador.getExclusividades().size()==0)
+                exclusividad.setDisable(true);
+        }
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
 
@@ -56,14 +76,14 @@ public class LayoutVerdaderoFalso extends VBox{
         contenedorConsigna.setStyle("-fx-font-size: 1.3em;");
 
 
-        Button botonVerdadero = new Button(opcionVerdadero.getOpcion());
-        botonVerdadero.setOnAction(new BotonVerdaderoEventHandler(opcionVerdadero,kahoot));
+        Button botonVerdadero = new Button(verdaderoFalso.getOpcionCorrecta().getOpcion());
+        botonVerdadero.setOnAction(new BotonVerdaderoEventHandler(verdaderoFalso.getOpcionCorrecta(), unJugador,kahoot, stage));
         HBox contenedroVerdadero = new HBox(botonVerdadero);
         contenedroVerdadero.setPadding(new Insets(10));
         contenedroVerdadero.setBackground(new Background(new BackgroundFill(Color.CORNFLOWERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        Button botonFalso = new Button(opcionFalso.getOpcion());
-        botonFalso.setOnAction(new BotonFalsoEventHandler(opcionFalso,kahoot));
+        Button botonFalso = new Button(verdaderoFalso.getOpcionIncorrecta().getOpcion());
+        botonFalso.setOnAction(new BotonFalsoEventHandler(verdaderoFalso.getOpcionIncorrecta(), unJugador, kahoot, stage));
         HBox contenedorFalso = new HBox(botonFalso);
         contenedorFalso.setPadding(new Insets(10));
         contenedorFalso.setBackground(new Background(new BackgroundFill(Color.CRIMSON, CornerRadii.EMPTY, Insets.EMPTY)));
