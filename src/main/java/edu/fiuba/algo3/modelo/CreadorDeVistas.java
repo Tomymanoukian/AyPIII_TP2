@@ -11,34 +11,13 @@ import java.util.Stack;
 
 public class CreadorDeVistas {
 
-    public static Scene crearSiguienteEscena(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
+    public static Scene crearSiguienteEscena(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
 
         String tipoDePregunta = (pregunta.getClass()).getSimpleName();
 
-        Class<?> claseDeLaEscena = null;
-        try {
-            claseDeLaEscena = Class.forName("edu.fiuba.algo3.vista.Escena" + tipoDePregunta);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-
-        Constructor<Escena> constructor = null;
-        try {
-            constructor = (Constructor<Escena>)claseDeLaEscena.getConstructor(Pregunta.class, Jugador.class, ManejadorDeTurnos.class);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-        Escena escena = null;
-        try {
-            escena = (Escena)constructor.newInstance(pregunta, jugador, manejadorDeTurnos);
-        } catch (InstantiationException | InvocationTargetException | IllegalAccessException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
+        Class<?> claseDeLaEscena = Class.forName("edu.fiuba.algo3.vista.Escena" + tipoDePregunta);
+        Constructor<Escena> constructor = (Constructor<Escena>)claseDeLaEscena.getConstructor(Pregunta.class, Jugador.class, ManejadorDeTurnos.class);
+        Escena escena = /*(Escena)*/constructor.newInstance(pregunta, jugador, manejadorDeTurnos);
 
         return escena.getEscena();
     }
