@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 import com.google.gson.JsonObject;
-import edu.fiuba.algo3.vista.InterfazDeUsuario;
 
 public class VerdaderoFalsoClasico extends VerdaderoFalso {
 
@@ -46,9 +45,5 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
         jsonVoFClasico.add("opcionCorrecta",opcionCorrecta.guardar());
         jsonVoFClasico.add("opcionIncorrecta",opcionIncorrecta.guardar());
         return jsonVoFClasico;
-    }
-
-    public void mostrarseEn(InterfazDeUsuario unaInterfazDeUsuario) {
-        unaInterfazDeUsuario.vistaVerdaderoFalso();
     }
 }

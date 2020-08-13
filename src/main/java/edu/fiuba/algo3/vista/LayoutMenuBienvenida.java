@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonEmpezarJuegoEventHandler;
+import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -12,7 +13,7 @@ public class LayoutMenuBienvenida extends VBox {
 
     private Pane layout;
 
-    public LayoutMenuBienvenida() {
+    public LayoutMenuBienvenida(ManejadorDeTurnos manejadorDeTurnos) {
         Label bienvenida = new Label("Bienvenidos a Kahoot");
         bienvenida.setStyle("-fx-font-weight: bold");
         VBox contenedorBienvenida = new VBox(bienvenida);
@@ -37,7 +38,7 @@ public class LayoutMenuBienvenida extends VBox {
         iniciarJuego.setStyle("-fx-border-color: #000000; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
         HBox contenedorBoton = new HBox(iniciarJuego);
 
-        BotonEmpezarJuegoEventHandler botonComienzoDeJuego = new BotonEmpezarJuegoEventHandler(nombreJugador1, nombreJugador2);
+        BotonEmpezarJuegoEventHandler botonComienzoDeJuego = new BotonEmpezarJuegoEventHandler(nombreJugador1, nombreJugador2, manejadorDeTurnos);
         iniciarJuego.setOnAction(botonComienzoDeJuego);
 
         VBox contenedorInicioDeKahoot = new VBox(contenedorBienvenida, contenedorNombresJugadores, contenedorBoton);

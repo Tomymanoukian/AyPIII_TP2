@@ -25,7 +25,8 @@ public class Main extends Application {
 
         ManejadorDeTurnos unManejadorDeTurnos = new ManejadorDeTurnos(pilaDePreguntas, jugador1, jugador2, kahoot, stage);
 
-        unManejadorDeTurnos.mostrarPrimeraPregunta();
+        stage.setScene(new Scene(new LayoutMenuBienvenida(unManejadorDeTurnos).getLayout()));
+        //unManejadorDeTurnos.mostrarPrimeraPregunta();
 
         stage.setTitle("Kahoot!");
         stage.show();
