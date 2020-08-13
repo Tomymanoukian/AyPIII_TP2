@@ -73,6 +73,9 @@ public class LayoutGroupChoice extends VBox {
 
         ArrayList<HBox> listaHBox = new ArrayList<>();
 
+        listaHBox.add(new HBox (10, new Label ("Opciones:"), new Label (groupChoice.getNombreGrupoA(), new Label (groupChoice.getNombreGrupoB()))));
+        listaHBox.get(0).setAlignment(Pos.CENTER);
+
         for (int i=0; i < listaOpciones.cantidadDeRespuestas(); i++) {
 
             ToggleGroup grupoDeBotones = new ToggleGroup();
@@ -82,15 +85,10 @@ public class LayoutGroupChoice extends VBox {
             botonGrupoB.setToggleGroup(grupoDeBotones);
 
             listaHBox.add(new HBox (10, new Label (listaOpciones.obtener(i).getOpcion()), botonGrupoA, botonGrupoB));
-/*
-            BotonMoverAlCostadoHandler botonHandlerCentroaA = new BotonMoverAlCostadoHandler(listaOpcionesInicial, listaOpcionesObjetivo, jugador, kahoot, unStage);
-            botonBajar.setOnAction(botonHandlerBajar);
-
-            BotonSubirRespuestaHandler botonHandlerSubir = new BotonSubirRespuestaHandler(i, orderedChoice, jugador, kahoot, unStage);
-            botonSubir.setOnAction(botonHandlerSubir);*/
+            listaHBox.get(i+1).setAlignment(Pos.CENTER);
         }
 
-        HBox contenedorOpciones = new HBox(50);
+        VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.getChildren().addAll(listaHBox);
         contenedorOpciones.setAlignment(Pos.CENTER);
 
