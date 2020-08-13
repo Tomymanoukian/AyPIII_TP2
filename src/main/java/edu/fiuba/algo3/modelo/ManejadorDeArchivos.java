@@ -11,11 +11,11 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Preguntador {
+public class ManejadorDeArchivos {
     static String FILENAME_RELATIVE_PATH = "preguntas.json";
     private List<Pregunta> preguntasDelJuego;
 
-    public Preguntador() {
+    public ManejadorDeArchivos() {
         preguntasDelJuego = new ArrayList<>();
     }
 

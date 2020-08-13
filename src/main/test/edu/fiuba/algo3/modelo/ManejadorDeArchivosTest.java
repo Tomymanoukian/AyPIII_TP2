@@ -8,12 +8,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PreguntadorTest {
+public class ManejadorDeArchivosTest {
     @Test
     public void testSeCreaConUnListaDePreguntasVacia() {
-        Preguntador preguntador = new Preguntador();
+        ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
 
-        List<Pregunta> preguntas = preguntador.getPreguntas();
+        List<Pregunta> preguntas = manejadorDeArchivos.getPreguntas();
 
         assertEquals(0, preguntas.size());
         assert (preguntas.isEmpty());
@@ -21,18 +21,18 @@ public class PreguntadorTest {
 
     @Test
     public void testEscribeYLeeVerdaderoFalsoClasico() {
-        Preguntador preguntador = new Preguntador();
+        ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
         List<Pregunta> preguntasAEscribir = new ArrayList<>();
 
         VerdaderoFalsoClasico vofClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("consigna vof clasico");
         preguntasAEscribir.add(vofClasico);
 
-        assert (preguntador.getPreguntas().isEmpty());
+        assert (manejadorDeArchivos.getPreguntas().isEmpty());
 
-        preguntador.escribirPreguntas(preguntasAEscribir);
-        preguntador.leerPreguntas();
+        manejadorDeArchivos.escribirPreguntas(preguntasAEscribir);
+        manejadorDeArchivos.leerPreguntas();
 
-        List<Pregunta> preguntas = preguntador.getPreguntas();
+        List<Pregunta> preguntas = manejadorDeArchivos.getPreguntas();
         VerdaderoFalsoClasico vofLeido = (VerdaderoFalsoClasico) preguntas.get(0);
 
         assertEquals(1, preguntas.size());
@@ -44,18 +44,18 @@ public class PreguntadorTest {
 
     @Test
     public void testEscribeYLeeVerdaderoFalsoConPenalidad() {
-        Preguntador preguntador = new Preguntador();
+        ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
         List<Pregunta> preguntasAEscribir = new ArrayList<>();
 
         VerdaderoFalsoConPenalidad vofConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoVerdadero("consigna vof con penalidad");
         preguntasAEscribir.add(vofConPenalidad);
 
-        assert (preguntador.getPreguntas().isEmpty());
+        assert (manejadorDeArchivos.getPreguntas().isEmpty());
 
-        preguntador.escribirPreguntas(preguntasAEscribir);
-        preguntador.leerPreguntas();
+        manejadorDeArchivos.escribirPreguntas(preguntasAEscribir);
+        manejadorDeArchivos.leerPreguntas();
 
-        List<Pregunta> preguntas = preguntador.getPreguntas();
+        List<Pregunta> preguntas = manejadorDeArchivos.getPreguntas();
         VerdaderoFalsoConPenalidad vofLeido = (VerdaderoFalsoConPenalidad) preguntas.get(0);
 
         assertEquals(1, preguntas.size());
@@ -67,7 +67,7 @@ public class PreguntadorTest {
 
     @Test
     public void testEscribeYLeeMultipleChoiceClasico() {
-        Preguntador preguntador = new Preguntador();
+        ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
         List<Pregunta> preguntasAEscribir = new ArrayList<>();
 
 
@@ -83,12 +83,12 @@ public class PreguntadorTest {
         MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico("consigna multiple choice calsico", opcionesCorrectas, opcionesIncorrectas);
         preguntasAEscribir.add(multipleChoiceClasico);
 
-        assert (preguntador.getPreguntas().isEmpty());
+        assert (manejadorDeArchivos.getPreguntas().isEmpty());
 
-        preguntador.escribirPreguntas(preguntasAEscribir);
-        preguntador.leerPreguntas();
+        manejadorDeArchivos.escribirPreguntas(preguntasAEscribir);
+        manejadorDeArchivos.leerPreguntas();
 
-        List<Pregunta> preguntas = preguntador.getPreguntas();
+        List<Pregunta> preguntas = manejadorDeArchivos.getPreguntas();
         MultipleChoiceClasico multipleChoiceLeido = (MultipleChoiceClasico) preguntas.get(0);
 
         assertEquals(1, preguntas.size());
@@ -100,7 +100,7 @@ public class PreguntadorTest {
 
     @Test
     public void testEscribeYLeeMultipleChoiceConPenalidad() {
-        Preguntador preguntador = new Preguntador();
+        ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
         List<Pregunta> preguntasAEscribir = new ArrayList<>();
 
 
@@ -116,12 +116,12 @@ public class PreguntadorTest {
         MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad("consigna multiple choice con penalidad", opcionesCorrectas, opcionesIncorrectas);
         preguntasAEscribir.add(multipleChoiceConPenalidad);
 
-        assert (preguntador.getPreguntas().isEmpty());
+        assert (manejadorDeArchivos.getPreguntas().isEmpty());
 
-        preguntador.escribirPreguntas(preguntasAEscribir);
-        preguntador.leerPreguntas();
+        manejadorDeArchivos.escribirPreguntas(preguntasAEscribir);
+        manejadorDeArchivos.leerPreguntas();
 
-        List<Pregunta> preguntas = preguntador.getPreguntas();
+        List<Pregunta> preguntas = manejadorDeArchivos.getPreguntas();
         MultipleChoiceConPenalidad multipleChoiceLeido = (MultipleChoiceConPenalidad) preguntas.get(0);
 
         assertEquals(1, preguntas.size());
@@ -133,7 +133,7 @@ public class PreguntadorTest {
 
     @Test
     public void testEscribeYLeeMultipleChoiceParcial() {
-        Preguntador preguntador = new Preguntador();
+        ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
         List<Pregunta> preguntasAEscribir = new ArrayList<>();
 
 
@@ -149,12 +149,12 @@ public class PreguntadorTest {
         MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial("consigna multiple choice parcial", opcionesCorrectas, opcionesIncorrectas);
         preguntasAEscribir.add(multipleChoiceParcial);
 
-        assert (preguntador.getPreguntas().isEmpty());
+        assert (manejadorDeArchivos.getPreguntas().isEmpty());
 
-        preguntador.escribirPreguntas(preguntasAEscribir);
-        preguntador.leerPreguntas();
+        manejadorDeArchivos.escribirPreguntas(preguntasAEscribir);
+        manejadorDeArchivos.leerPreguntas();
 
-        List<Pregunta> preguntas = preguntador.getPreguntas();
+        List<Pregunta> preguntas = manejadorDeArchivos.getPreguntas();
         MultipleChoiceParcial multipleChoiceLeido = (MultipleChoiceParcial) preguntas.get(0);
 
         assertEquals(1, preguntas.size());
@@ -166,7 +166,7 @@ public class PreguntadorTest {
 
     @Test
     public void testEscribeYLeeOrderdChoice() {
-        Preguntador preguntador = new Preguntador();
+        ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
         List<Pregunta> preguntasAEscribir = new ArrayList<>();
 
 
@@ -180,12 +180,12 @@ public class PreguntadorTest {
         OrderedChoice orderedChoiceParcial = new OrderedChoice("consigna ordered choice", opcionesOrdenadas);
         preguntasAEscribir.add(orderedChoiceParcial);
 
-        assert (preguntador.getPreguntas().isEmpty());
+        assert (manejadorDeArchivos.getPreguntas().isEmpty());
 
-        preguntador.escribirPreguntas(preguntasAEscribir);
-        preguntador.leerPreguntas();
+        manejadorDeArchivos.escribirPreguntas(preguntasAEscribir);
+        manejadorDeArchivos.leerPreguntas();
 
-        List<Pregunta> preguntas = preguntador.getPreguntas();
+        List<Pregunta> preguntas = manejadorDeArchivos.getPreguntas();
         OrderedChoice orderedChoiceLeido = (OrderedChoice) preguntas.get(0);
 
         assertEquals(1, preguntas.size());
@@ -196,7 +196,7 @@ public class PreguntadorTest {
 
     @Test
     public void testEscribeYLeeGroupChoice() {
-        Preguntador preguntador = new Preguntador();
+        ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
         List<Pregunta> preguntasAEscribir = new ArrayList<>();
 
         Opcion opcionGrupoA1 = new Opcion("opcion grupo A 1", new Puntaje(0));
@@ -210,12 +210,12 @@ public class PreguntadorTest {
         GroupChoice groupChoiceParcial = new GroupChoice("consigna ordered choice", opcionesGrupoA,opcionesGrupoB);
         preguntasAEscribir.add(groupChoiceParcial);
 
-        assert (preguntador.getPreguntas().isEmpty());
+        assert (manejadorDeArchivos.getPreguntas().isEmpty());
 
-        preguntador.escribirPreguntas(preguntasAEscribir);
-        preguntador.leerPreguntas();
+        manejadorDeArchivos.escribirPreguntas(preguntasAEscribir);
+        manejadorDeArchivos.leerPreguntas();
 
-        List<Pregunta> preguntas = preguntador.getPreguntas();
+        List<Pregunta> preguntas = manejadorDeArchivos.getPreguntas();
         GroupChoice groupChoiceLeido = (GroupChoice) preguntas.get(0);
 
         assertEquals(1, preguntas.size());
