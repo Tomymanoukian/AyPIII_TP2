@@ -27,8 +27,24 @@ public class    ManejadorDeTurnos {
         this.stage = stage;
     }
 
-    public void mostrarSiguientePregunta(){
+    public void mostrarPrimeraPregunta () {
 
+        if(pilaDePreguntas.isEmpty()){
+            stage.setScene(new Scene(new LayoutPuntuaciones().getLayout()));
+        }
+
+        pregunta = pilaDePreguntas.pop();
+        try {
+            stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
+        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
+            e.printStackTrace();
+            this.mostrarPrimeraPregunta();
+        }
+
+        jugador2Respodio = false;
+    }
+
+    public void mostrarSiguientePregunta(){
 
         if(pilaDePreguntas.isEmpty() && jugador2Respodio){
             juegoTerminado = true;
@@ -37,6 +53,7 @@ public class    ManejadorDeTurnos {
 
         if(jugador2Respodio && !juegoTerminado) {
 
+            kahoot.evaluarRespuestas(pregunta);
             jugador2Respodio = false;
             pregunta = pilaDePreguntas.pop();
 
