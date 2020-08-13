@@ -1,9 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
+import com.google.gson.JsonObject;
 import edu.fiuba.algo3.vista.InterfazDeUsuario;
 
 public class VerdaderoFalsoClasico extends VerdaderoFalso {
 
+    public static VerdaderoFalsoClasico recuperar(JsonObject jsonPregunta) {
+        String consigna = jsonPregunta.get("consigna").getAsString();
+        Opcion opcionCorrecta = Opcion.recuperar(jsonPregunta.getAsJsonObject("opcionCorrecta"));
+        Opcion opcionIncorrecta = Opcion.recuperar(jsonPregunta.getAsJsonObject("opcionIncorrecta"));
+        return new VerdaderoFalsoClasico(consigna, opcionCorrecta, opcionIncorrecta);
+    }
     private VerdaderoFalsoClasico(String unaConsigna, Opcion unaOpcionCorrecta, Opcion unaOpcionIncorrecta) {
 
         consigna = unaConsigna;
@@ -31,6 +38,15 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
     @Override
     public Boolean aceptaExclusividad() {return true;}
 
+    @Override
+    public JsonObject guardar() {
+        JsonObject jsonVoFClasico = new JsonObject();
+        jsonVoFClasico.addProperty("tipoDePregunta",VerdaderoFalsoClasico.class.getName());
+        jsonVoFClasico.addProperty("consigna",consigna);
+        jsonVoFClasico.add("opcionCorrecta",opcionCorrecta.guardar());
+        jsonVoFClasico.add("opcionIncorrecta",opcionIncorrecta.guardar());
+        return jsonVoFClasico;
+    }
 
     public void mostrarseEn(InterfazDeUsuario unaInterfazDeUsuario) {
         unaInterfazDeUsuario.vistaVerdaderoFalso();

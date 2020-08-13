@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import com.google.gson.JsonObject;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 
 public class MultipleChoiceParcial extends Pregunta {
@@ -17,6 +18,12 @@ public class MultipleChoiceParcial extends Pregunta {
         opcionesIncorrectas = unasOpcionesIncorrectas;
     }
 
+    public static MultipleChoiceParcial recuperar(JsonObject jsonPregunta) {
+        String consigna = jsonPregunta.get("consigna").getAsString();
+        ListaOpciones opcionesCorrectas = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesCorrectas"));
+        ListaOpciones opcionesIncorrectas = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesIncorrectas"));
+        return new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+    }
 
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta unaRespuestaEnLista) {
@@ -39,4 +46,14 @@ public class MultipleChoiceParcial extends Pregunta {
 
     @Override
     public Boolean aceptaExclusividad() {return true;}
+
+    @Override
+    public JsonObject guardar() {
+        JsonObject jsonMultipleChoiceParcial = new JsonObject();
+        jsonMultipleChoiceParcial.addProperty("tipoDePregunta", MultipleChoiceParcial.class.getName());
+        jsonMultipleChoiceParcial.addProperty("consigna", consigna);
+        jsonMultipleChoiceParcial.add("opcionesCorrectas", opcionesCorrectas.guardar());
+        jsonMultipleChoiceParcial.add("opcionesIncorrectas", opcionesIncorrectas.guardar());
+        return jsonMultipleChoiceParcial;
+    }
 }

@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -21,6 +24,15 @@ public class ListaOpciones {
     public ListaOpciones(ListaOpciones unaListaDeRespuestas) {
         listaOpciones = new ArrayList<>();
         listaOpciones.addAll(unaListaDeRespuestas.obtenerLista());
+    }
+
+    public static ListaOpciones recuperar(JsonArray jsonOpciones) {
+        ListaOpciones opciones = new ListaOpciones();
+        for (JsonElement jsonOpcion : jsonOpciones) {
+            Opcion opcion = Opcion.recuperar(jsonOpcion.getAsJsonObject());
+            opciones.agregar(opcion);
+        }
+        return opciones;
     }
 
     public void agregar(Opcion opcion) {
@@ -87,7 +99,7 @@ public class ListaOpciones {
             Opcion unaOpcion = iterador1.next();
             Opcion otraOpcion = iterador2.next();
 
-            if (unaOpcion != otraOpcion) {
+            if (!unaOpcion.esIgualA(otraOpcion)) {
                 return false;
             }
         }
@@ -103,12 +115,12 @@ public class ListaOpciones {
         return puntaje;
     }
 
-    public void desordenar(){
+    public void desordenar() {
         Collections.shuffle(listaOpciones);
     }
 
-    public void eliminar(String opcion){
-        if( listaOpciones.contains(opcion)){
+    public void eliminar(String opcion) {
+        if (listaOpciones.contains(opcion)) {
             listaOpciones.remove(opcion);
         }
     }
@@ -118,5 +130,17 @@ public class ListaOpciones {
 
     }
 
-    public void establecer(int posicion, Opcion unaOpcion) {listaOpciones.set(posicion, unaOpcion);}
+    public void establecer(int posicion, Opcion unaOpcion) {
+        listaOpciones.set(posicion, unaOpcion);
+    }
+
+    public JsonArray guardar() {
+        JsonArray jsonArrayDeOpciones = new JsonArray();
+
+        for (Opcion opcion : listaOpciones) {
+            jsonArrayDeOpciones.add(opcion.guardar());
+        }
+
+        return jsonArrayDeOpciones;
+    }
 }
