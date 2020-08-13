@@ -20,7 +20,12 @@ public class LayoutMultipleChoice extends VBox {
 
     private Pane layout;
 
-    public LayoutMultipleChoice(MultipleChoiceClasico unMultipleChoice, Jugador unJugador, Kahoot kahoot, Stage unStage) {
+    public LayoutMultipleChoice(Pregunta pregunta, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
+
+        MultipleChoice unMultipleChoice = (MultipleChoice) pregunta;
+        Kahoot kahoot = manejadorDeTurnos.getKahoot();
+        Stage unStage = manejadorDeTurnos.getStage();
+
         ListaOpciones listaRespuestas = new ListaOpciones();
 
         Label nombreJugador = new Label(unJugador.getNombre());
@@ -28,15 +33,15 @@ public class LayoutMultipleChoice extends VBox {
         //tiempo.setStyle("-fx-font-weight: bold");
 
         Button bonusX2 = new Button("X2");
-        BotonMultipX2MultipleChoiceEventHandler multiplicX2Handler = new BotonMultipX2MultipleChoiceEventHandler(unMultipleChoice, unJugador, kahoot, unStage);
+        BotonMultipX2MultipleChoiceEventHandler multiplicX2Handler = new BotonMultipX2MultipleChoiceEventHandler(unMultipleChoice, unJugador, kahoot, unStage, manejadorDeTurnos);
         bonusX2.setOnAction(multiplicX2Handler);
 
         Button bonusX3 = new Button("X3");
-        BotonMultipX3MultipleChoiceEventHandler multiplicX3Handler = new BotonMultipX3MultipleChoiceEventHandler(unMultipleChoice, unJugador, kahoot, unStage);
+        BotonMultipX3MultipleChoiceEventHandler multiplicX3Handler = new BotonMultipX3MultipleChoiceEventHandler(unMultipleChoice, unJugador, kahoot, unStage, manejadorDeTurnos);
         bonusX3.setOnAction(multiplicX3Handler);
 
         Button exclusividad = new Button("Ex");
-        BotonExclusividadMultipleChoiceEventHandler exclusividadHandler = new BotonExclusividadMultipleChoiceEventHandler (unMultipleChoice, unJugador, kahoot, unStage);
+        BotonExclusividadMultipleChoiceEventHandler exclusividadHandler = new BotonExclusividadMultipleChoiceEventHandler (unMultipleChoice, unJugador, kahoot, unStage, manejadorDeTurnos);
         exclusividad.setOnAction(exclusividadHandler);
 
         if(unMultipleChoice.getClass() == MultipleChoiceClasico.class){
@@ -70,7 +75,7 @@ public class LayoutMultipleChoice extends VBox {
         Rectangle rectanguloConsigna = new Rectangle(20, 20, 350, 60);
         rectanguloConsigna.setFill(Color.LAVENDER);
 
-        Label consigna = new Label("Seleccione las opciones multiples");
+        Label consigna = new Label("Seleccione las opciones multiples"); //UTILIZAR LA CONSIGNA DE LA PREGUNTA
         consigna.setStyle("-fx-font-weight: bold");
 
         StackPane contenedorConsigna = new StackPane(rectanguloConsigna, consigna);
