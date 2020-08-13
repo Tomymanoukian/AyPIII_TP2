@@ -8,13 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class BotonEnviarHandler implements EventHandler<ActionEvent> {
+public class BotonEnviarOrderedChoiceHandler implements EventHandler<ActionEvent> {
 
     private OrderedChoice orderedChoice;
     private Kahoot kahoot;
     private ManejadorDeTurnos manejadorDeTurnos;
 
-    public BotonEnviarHandler (OrderedChoice unaOrderedChoice, Kahoot unKahoot, ManejadorDeTurnos unManejadorDeTurnos) {
+    public BotonEnviarOrderedChoiceHandler(OrderedChoice unaOrderedChoice, Kahoot unKahoot, ManejadorDeTurnos unManejadorDeTurnos) {
 
         orderedChoice = unaOrderedChoice;
         kahoot = unKahoot;

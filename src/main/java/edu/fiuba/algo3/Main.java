@@ -12,14 +12,15 @@ import java.util.Stack;
 public class Main extends Application {
 
     @Override
-    public void start(Stage stage) {   ////////////Empieza creacion de objetos para hacer pruebas de la vista VerdaderoFalso
+    public void start(Stage stage) {
+
+        ////////////Empieza creacion de objetos para hacer pruebas de la vista VerdaderoFalso
         String consignaVoF = "Elegir Verdadero o Falso";
 
         VerdaderoFalsoClasico verdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero(consignaVoF);
         ///////////Termina creacion de objetos para hacer pruebas de la vista OrderedChoice
-        ////////////Empieza creacion de objetos para hacer pruebas de la vista OrderedChoice
-        String consigna = "Ordene los siguientes números:";
 
+        ////////////Empieza creacion de objetos para hacer pruebas de la vista OrderedChoice
         ListaOpciones listaOpciones = new ListaOpciones();
 
         Opcion opcion1 = new Opcion("Numero 1");
@@ -34,19 +35,43 @@ public class Main extends Application {
         listaOpciones.agregar(opcion4);
         listaOpciones.agregar(opcion5);
 
-        OrderedChoice orderedChoice = new OrderedChoice(consigna, listaOpciones);
+        OrderedChoice orderedChoice = new OrderedChoice("Ordered Choice 1", listaOpciones);
 
-        OrderedChoice orderedChoice1 = new OrderedChoice("Coso 2", listaOpciones);
+        OrderedChoice orderedChoice1 = new OrderedChoice("Ordered Choice 2", listaOpciones);
 
         Jugador jugador1 = new Jugador("Jugador 1");
         Jugador jugador2 = new Jugador("Jugador 2");
-        ///////////Termina creacion de objetos para hacer pruebas de la vista OrderedChoice
+        ////////////Termina creacion de objetos para hacer pruebas de la vista OrderedChoice
+
+        ////////////Empieza creacion de objetos para hacer pruebas de la vista GroupChoice
+
+        ListaOpciones listaGrupoA = new ListaOpciones();
+        ListaOpciones listaGrupoB = new ListaOpciones();
+
+        Opcion opcionA = new Opcion("Letra A");
+        Opcion opcionB = new Opcion("Letra B");
+        Opcion opcionC = new Opcion("Letra C");
+        Opcion opcionD = new Opcion("Letra D");
+        Opcion opcionE = new Opcion("Letra E");
+        Opcion opcionF = new Opcion("Letra F");
+
+        listaGrupoA.agregar(opcionA);
+        listaGrupoA.agregar(opcionE);
+        listaGrupoB.agregar(opcionB);
+        listaGrupoB.agregar(opcionC);
+        listaGrupoB.agregar(opcionD);
+        listaGrupoB.agregar(opcionF);
+
+        GroupChoice groupChoice = new GroupChoice("Agrupe en vocales y consonantes", "Vocales", listaGrupoA, "Consonantes", listaGrupoB);
+
+        ////////////Termina creacion de objetos para hacer pruebas de la vista GroupChoice
 
         Kahoot kahoot = new Kahoot(jugador1, jugador2);
 
         Stack<Pregunta> unStack = new Stack<>();
+        unStack.add(groupChoice);
         unStack.add(orderedChoice);
-        unStack.add(orderedChoice1);
+        //unStack.add(orderedChoice1);
 
         ManejadorDeTurnos unManejadorDeTurnos = new ManejadorDeTurnos(unStack, jugador1, jugador2, kahoot, stage);
 

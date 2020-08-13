@@ -6,6 +6,8 @@ public class GroupChoice extends Pregunta{
 
     private ListaOpciones opcionesGrupoA;
     private ListaOpciones opcionesGrupoB;
+    private String nombreGrupoA;
+    private String nombreGrupoB;
 
     public GroupChoice(String unaConsigna, ListaOpciones unasOpcionesGrupoA, ListaOpciones unasOpcionesGrupoB) {
         super();
@@ -15,6 +17,20 @@ public class GroupChoice extends Pregunta{
         }
         consigna = unaConsigna;
         opcionesGrupoA = unasOpcionesGrupoA;
+        opcionesGrupoB = unasOpcionesGrupoB;
+    }
+
+    public GroupChoice(String unaConsigna, String unNombreGrupoA, ListaOpciones unasOpcionesGrupoA, String unNombreGrupoB, ListaOpciones unasOpcionesGrupoB) {
+
+        super();
+        if ((unasOpcionesGrupoA.cantidadDeRespuestas() + unasOpcionesGrupoB.cantidadDeRespuestas()) < 2 ||
+                (unasOpcionesGrupoA.cantidadDeRespuestas() + unasOpcionesGrupoB.cantidadDeRespuestas()) > 6) {
+            throw new CantidadDeOpcionesInvalidaException();
+        }
+        consigna = unaConsigna;
+        nombreGrupoA = unNombreGrupoA;
+        opcionesGrupoA = unasOpcionesGrupoA;
+        nombreGrupoB = unNombreGrupoB;
         opcionesGrupoB = unasOpcionesGrupoB;
     }
 
@@ -33,6 +49,10 @@ public class GroupChoice extends Pregunta{
     public ListaOpciones getOpcionesGrupoA() { return opcionesGrupoA; }
 
     public ListaOpciones getOpcionesGrupoB() { return opcionesGrupoB; }
+
+    public String getNombreGrupoA() {return nombreGrupoA;}
+
+    public String getNombreGrupoB() {return nombreGrupoB;}
 
     @Override
     public Boolean aceptaMultiplicador() {return false;}
