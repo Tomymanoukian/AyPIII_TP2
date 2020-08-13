@@ -13,29 +13,21 @@ public class BotonExclusividadHandler implements EventHandler<ActionEvent> {
     private OrderedChoice orderedChoice;
     private EscenaOrderedChoice escenaOrderedChoice;
     private Jugador jugador;
-    private Kahoot kahoot;
-    private Stage stage;
     private ManejadorDeTurnos manejadorDeTurnos;
 
-    public BotonExclusividadHandler (OrderedChoice unaOrderedChoice, EscenaOrderedChoice unaEscenaOrderedChoice, Jugador unJugador, Kahoot unKahoot, Stage unStage, ManejadorDeTurnos unManejadorDeTurnos) {
+    public BotonExclusividadHandler (OrderedChoice unaOrderedChoice, EscenaOrderedChoice unaEscenaOrderedChoice, Jugador unJugador, ManejadorDeTurnos unManejadorDeTurnos) {
 
         orderedChoice = unaOrderedChoice;
         escenaOrderedChoice = unaEscenaOrderedChoice;
         jugador = unJugador;
-        kahoot = unKahoot;
-        stage = unStage;
         manejadorDeTurnos = unManejadorDeTurnos;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        kahoot.agregarExclusividadJugador1(orderedChoice);
+        manejadorDeTurnos.getKahoot().agregarExclusividadJugador1(orderedChoice);
 
-        Scene scene = new Scene(new LayoutOrderedChoice(orderedChoice, escenaOrderedChoice, jugador, kahoot, stage, manejadorDeTurnos).getLayout(), 390, 400);
-
-        stage.setTitle("Kahoot!");
-        stage.setScene(scene);
-        stage.show();
+        escenaOrderedChoice.actualizar(jugador, manejadorDeTurnos);
     }
 }

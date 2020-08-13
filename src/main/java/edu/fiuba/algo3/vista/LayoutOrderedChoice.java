@@ -18,7 +18,7 @@ public class LayoutOrderedChoice extends VBox {
 
     private Pane layout;
 
-    public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, Kahoot kahoot, Stage unStage, ManejadorDeTurnos manejadorDeTurnos) {
+    public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
         OrderedChoice orderedChoice = (OrderedChoice) pregunta;
 
@@ -33,7 +33,7 @@ public class LayoutOrderedChoice extends VBox {
         bonusX3.setDisable(true);
 
         Button exclusividad = new Button("Ex");
-        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (orderedChoice, escenaOrderedChoice, jugador, kahoot, unStage, manejadorDeTurnos);
+        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (orderedChoice, escenaOrderedChoice, jugador, manejadorDeTurnos);
         exclusividad.setOnAction(exclusividadHandler);
         if (jugador.getExclusividades().size()==0)
             exclusividad.setDisable(true);
@@ -79,10 +79,10 @@ public class LayoutOrderedChoice extends VBox {
             listaHBoxOpciones.add(new HBox (botonBajar, new Label (opcionesMostradas.obtener(i).getOpcion()), botonSubir));
             listaHBoxOpciones.get(i).setAlignment(Pos.CENTER);
 
-            BotonBajarRespuestaHandler botonHandlerBajar = new BotonBajarRespuestaHandler(i, orderedChoice, escenaOrderedChoice, jugador, kahoot, unStage, manejadorDeTurnos);
+            BotonBajarRespuestaHandler botonHandlerBajar = new BotonBajarRespuestaHandler(i, escenaOrderedChoice, jugador, manejadorDeTurnos);
             botonBajar.setOnAction(botonHandlerBajar);
 
-            BotonSubirRespuestaHandler botonHandlerSubir = new BotonSubirRespuestaHandler(i, orderedChoice, escenaOrderedChoice, jugador, kahoot, unStage, manejadorDeTurnos);
+            BotonSubirRespuestaHandler botonHandlerSubir = new BotonSubirRespuestaHandler(i, escenaOrderedChoice, jugador, manejadorDeTurnos);
             botonSubir.setOnAction(botonHandlerSubir);
         }
 
@@ -93,7 +93,7 @@ public class LayoutOrderedChoice extends VBox {
         contenedorOpciones.getChildren().addAll(listaHBoxOpciones);
 
         Button botonEnviar = new Button ("Enviar");
-        BotonEnviarHandler enviarHandler = new BotonEnviarHandler (orderedChoice, kahoot, manejadorDeTurnos);
+        BotonEnviarHandler enviarHandler = new BotonEnviarHandler (orderedChoice, manejadorDeTurnos.getKahoot(), manejadorDeTurnos);
         botonEnviar.setOnAction(enviarHandler);
 
         HBox enviar = new HBox (botonEnviar);

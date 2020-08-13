@@ -38,11 +38,15 @@ public class    ManejadorDeTurnos {
 
             jugador2Respodio = false;
             pregunta = pilaDePreguntas.pop();
-            stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, kahoot, stage, this));
+            stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
         }
         else if (!juegoTerminado){
             jugador2Respodio = true;
-            stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador2, kahoot, stage, this));
+            stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador2, this));
         }
     }
+
+    public Kahoot getKahoot() {return kahoot;}
+
+    public Stage getStage() {return stage;}
 }
