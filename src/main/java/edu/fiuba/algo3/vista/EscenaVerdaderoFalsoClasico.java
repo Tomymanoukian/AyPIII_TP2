@@ -20,10 +20,10 @@ public class EscenaVerdaderoFalsoClasico implements Escena{
 
     private Pane layout;
 
-    public EscenaVerdaderoFalsoClasico(Pregunta pregunta, Jugador jugador, Kahoot kahoot, Stage stage) {
+    public EscenaVerdaderoFalsoClasico(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        //LayoutVerdaderoFalso layoutVerdaderoFalso = new LayoutVerdaderoFalso(pregunta, jugador, kahoot, stage);
-        //layout = layoutVerdaderoFalso.getLayout();
+        LayoutVerdaderoFalso layoutVerdaderoFalso = new LayoutVerdaderoFalso(pregunta, jugador, manejadorDeTurnos);
+        layout = layoutVerdaderoFalso.getLayout();
     }
 
     @Override

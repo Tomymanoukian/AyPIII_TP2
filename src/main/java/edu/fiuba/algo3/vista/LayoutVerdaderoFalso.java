@@ -17,21 +17,25 @@ public class LayoutVerdaderoFalso extends VBox{
 
     private Pane layout;
 
-    public LayoutVerdaderoFalso(VerdaderoFalso verdaderoFalso, Jugador unJugador, Kahoot kahoot, Stage stage) {
+    public LayoutVerdaderoFalso(Pregunta pregunta, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
+
+        VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
+        Kahoot kahoot = manejadorDeTurnos.getKahoot();
+        Stage stage = manejadorDeTurnos.getStage();
 
         Label nombreJugador = new Label(unJugador.getNombre());
         Label tiempo = new Label("00:00");
 
         Button bonusX2 = new Button("X2");
-        BotonMultipX2VoFEventHandler multiplicX2Handler = new BotonMultipX2VoFEventHandler(verdaderoFalso, unJugador, kahoot, stage);
+        BotonMultipX2VoFEventHandler multiplicX2Handler = new BotonMultipX2VoFEventHandler(pregunta, unJugador, manejadorDeTurnos);
         bonusX2.setOnAction(multiplicX2Handler);
 
         Button bonusX3 = new Button("X3");
-        BotonMultipX3VoFEventHandler multiplicX3Handler = new BotonMultipX3VoFEventHandler(verdaderoFalso, unJugador, kahoot, stage);
+        BotonMultipX3VoFEventHandler multiplicX3Handler = new BotonMultipX3VoFEventHandler(pregunta, unJugador, manejadorDeTurnos);
         bonusX3.setOnAction(multiplicX3Handler);
 
         Button exclusividad = new Button("Ex");
-        BotonExclusividadVoFEventHandler exclusividadHandler = new BotonExclusividadVoFEventHandler (verdaderoFalso, unJugador, kahoot, stage);
+        BotonExclusividadVoFEventHandler exclusividadHandler = new BotonExclusividadVoFEventHandler (pregunta, unJugador, manejadorDeTurnos);
         exclusividad.setOnAction(exclusividadHandler);
 
         if(verdaderoFalso.getClass() == VerdaderoFalsoConPenalidad.class){

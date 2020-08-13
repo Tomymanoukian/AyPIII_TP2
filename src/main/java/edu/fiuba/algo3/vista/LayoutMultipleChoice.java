@@ -13,9 +13,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class LayoutMultipleChoice extends VBox {
 
     private Pane layout;
@@ -87,7 +84,7 @@ public class LayoutMultipleChoice extends VBox {
         VBox checkBoxDeOpciones = new VBox();
         checkBoxDeOpciones.setAlignment(Pos.CENTER);
 
-        int cantidadDeOpcionesAMostrar = unMultipleChoice.getOpcionesCorrectas().cantidadDeRespuestas() + unMultipleChoice.getOpcionesIncorrectas().cantidadDeRespuestas();
+        int cantidadDeOpcionesAMostrar = unMultipleChoice.getOpcionesCorrectas().cantidadDeOpciones() + unMultipleChoice.getOpcionesIncorrectas().cantidadDeOpciones();
 
         ListaOpciones opciones = unMultipleChoice.getTodasLasOpcionesMezcladas();
 
