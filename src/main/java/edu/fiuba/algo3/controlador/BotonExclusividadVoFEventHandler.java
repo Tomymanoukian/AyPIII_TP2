@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.modelo.VerdaderoFalso;
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.vista.LayoutOrderedChoice;
 import edu.fiuba.algo3.vista.LayoutVerdaderoFalso;
 import javafx.event.ActionEvent;
@@ -13,23 +11,24 @@ import javafx.stage.Stage;
 
 public class BotonExclusividadVoFEventHandler implements EventHandler<ActionEvent> {
 
-    private VerdaderoFalso verdaderoFalso;
+    private Pregunta pregunta;
     private Jugador jugador;
     private Kahoot kahoot;
     private Stage stage;
+    private ManejadorDeTurnos manejadorDeTurnos;
 
-    public BotonExclusividadVoFEventHandler(VerdaderoFalso unVerdaderoFalse, Jugador unJugador, Kahoot unKahoot, Stage unStage){
-        verdaderoFalso = unVerdaderoFalse;
+    public BotonExclusividadVoFEventHandler(Pregunta unaPregunta, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos){
+        pregunta = unaPregunta;
         jugador = unJugador;
-        kahoot = unKahoot;
-        stage = unStage;
+        kahoot = manejadorDeTurnos.getKahoot();
+        stage = manejadorDeTurnos.getStage();
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        kahoot.agregarExclusividad(verdaderoFalso, jugador);
+        kahoot.agregarExclusividad(pregunta, jugador);
 
-        Scene scene = new Scene(new LayoutVerdaderoFalso(verdaderoFalso, jugador, kahoot, stage).getLayout(), 390, 400);
+        Scene scene = new Scene(new LayoutVerdaderoFalso(pregunta, jugador, manejadorDeTurnos).getLayout(), 390, 400);
 
         stage.setScene(scene);
         stage.show();

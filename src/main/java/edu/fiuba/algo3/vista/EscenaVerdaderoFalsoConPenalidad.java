@@ -11,10 +11,10 @@ import javafx.stage.Stage;
 public class EscenaVerdaderoFalsoConPenalidad implements Escena{
     private Pane layout;
 
-    public EscenaVerdaderoFalsoConPenalidad(Pregunta pregunta, Jugador jugador, Kahoot kahoot, Stage stage) {
+    public EscenaVerdaderoFalsoConPenalidad(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        //LayoutVerdaderoFalso layoutVerdaderoFalso = new LayoutVerdaderoFalso(pregunta, jugador, kahoot, stage);
-        //layout = layoutVerdaderoFalso.getLayout();
+        LayoutVerdaderoFalso layoutVerdaderoFalso = new LayoutVerdaderoFalso(pregunta, jugador, manejadorDeTurnos);
+        layout = layoutVerdaderoFalso.getLayout();
     }
 
     @Override

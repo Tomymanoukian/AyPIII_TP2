@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.modelo.VerdaderoFalso;
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.vista.LayoutVerdaderoFalso;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -12,23 +10,25 @@ import javafx.stage.Stage;
 
 public class BotonMultipX3VoFEventHandler implements EventHandler<ActionEvent> {
 
-    private VerdaderoFalso verdaderoFalso;
+    private Pregunta pregunta;
     private Jugador jugador;
     private Kahoot kahoot;
     private Stage stage;
+    private ManejadorDeTurnos manejadorDeTurnos;
 
-    public BotonMultipX3VoFEventHandler(VerdaderoFalso unVerdaderoFalso, Jugador unJugador, Kahoot unKahoot, Stage unStage ){
-        verdaderoFalso = unVerdaderoFalso;
+    public BotonMultipX3VoFEventHandler(Pregunta unaPregunta, Jugador unJugador, ManejadorDeTurnos unManejadorDeTurnos){
+        pregunta = unaPregunta;
         jugador = unJugador;
-        kahoot = unKahoot;
-        stage = unStage;
+        kahoot = unManejadorDeTurnos.getKahoot();
+        stage = unManejadorDeTurnos.getStage();
+        manejadorDeTurnos = unManejadorDeTurnos;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        kahoot.agregarMultiplicadorX3(verdaderoFalso, jugador);
+        kahoot.agregarMultiplicadorX3(pregunta, jugador);
 
-        Scene scene = new Scene(new LayoutVerdaderoFalso(verdaderoFalso, jugador, kahoot, stage).getLayout(), 390, 400);
+        Scene scene = new Scene(new LayoutVerdaderoFalso(pregunta, jugador, manejadorDeTurnos).getLayout(), 390, 400);
 
         stage.setScene(scene);
         stage.show();
