@@ -144,4 +144,31 @@ public class MultipleChoiceConPenalidadTest {
         MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
         assertEquals(false, multipleChoiceConPenalidad.aceptaExclusividad());
     }
+    /*
+    @Test
+    public void testMultipleChoiceMezclaTodasSusOpcionesSiPrimeroSeOrdenaIncorrectasYDespuesCorrectas(){
+
+        MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+        ListaOpciones opcionesMezcladas = multipleChoiceConPenalidad.getTodasLasOpcionesMezcladas();
+
+        ListaOpciones listaOpcionesMultipleChoice = new ListaOpciones();
+        listaOpcionesMultipleChoice.agregarTodo(multipleChoiceConPenalidad.getOpcionesIncorrectas());
+        listaOpcionesMultipleChoice.agregarTodo(multipleChoiceConPenalidad.getOpcionesCorrectas());
+
+        assert(!opcionesMezcladas.esIgual(listaOpcionesMultipleChoice));
+    }
+
+    @Test
+    public void testMultipleChoiceMezclaTodasSusOpcionesSiPrimeroSeOrdernaCorrectasYDespuesIncorrectas(){
+
+        MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+        ListaOpciones opcionesMezcladas = multipleChoiceConPenalidad.getTodasLasOpcionesMezcladas();
+
+        ListaOpciones listaOpcionesMultipleChoice = new ListaOpciones();
+        listaOpcionesMultipleChoice.agregarTodo(multipleChoiceConPenalidad.getOpcionesCorrectas());
+        listaOpcionesMultipleChoice.agregarTodo(multipleChoiceConPenalidad.getOpcionesIncorrectas());
+
+        assert(!opcionesMezcladas.esIgual(listaOpcionesMultipleChoice));
+    }
+    */
 }

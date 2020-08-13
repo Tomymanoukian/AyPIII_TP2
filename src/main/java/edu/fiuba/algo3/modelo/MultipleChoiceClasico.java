@@ -3,9 +3,7 @@ package edu.fiuba.algo3.modelo;
 import com.google.gson.JsonObject;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 
-public class MultipleChoiceClasico extends Pregunta {
-    private final ListaOpciones opcionesCorrectas;
-    private final ListaOpciones opcionesIncorrectas;
+public class MultipleChoiceClasico extends MultipleChoice {
 
     public MultipleChoiceClasico(String unaConsigna, ListaOpciones unasOpcionesCorrectas, ListaOpciones unasOpcionesIncorrectas) {
         super();
@@ -29,13 +27,6 @@ public class MultipleChoiceClasico extends Pregunta {
         return super.getConsigna();
     }
 
-    public ListaOpciones getOpcionesCorrectas() {
-        return opcionesCorrectas;
-    }
-
-    public ListaOpciones getOpcionesIncorrectas() {
-        return opcionesIncorrectas;
-    }
 
     public Puntaje calcularPuntajePara(Respuesta respuesta) {
         Puntaje puntaje = new Puntaje(0);
@@ -43,14 +34,6 @@ public class MultipleChoiceClasico extends Pregunta {
             puntaje.establecerPuntos(1);
         }
         return puntaje;
-    }
-    public ListaOpciones getTodasLasOpcionesMezcladas(){
-        ListaOpciones todasLasOpciones = new ListaOpciones();
-        todasLasOpciones.agregarTodo(opcionesCorrectas);
-        todasLasOpciones.agregarTodo(opcionesIncorrectas);
-        todasLasOpciones.desordenar();
-
-        return todasLasOpciones;
     }
 
     @Override

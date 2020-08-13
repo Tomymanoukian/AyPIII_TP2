@@ -194,4 +194,17 @@ public class ListaOpcionesTest {
         assertFalse(listaConCuatroOpciones.esIgual(listaConTresOpciones));
         assertFalse(listaConCuatroOpciones.esIgual(listaConCuatroOpcionesDesordenadas));
     }
+
+    @Test
+    public void testListaCreadaEliminaUnaDeSusOpcionesSiEsQueEsta(){
+        ListaOpciones listaOpciones = new ListaOpciones();
+        Opcion opcion1 = new Opcion("Respuesta1");
+        Opcion opcion2 = new Opcion("Respuesta2");
+        listaOpciones.agregar(opcion1);
+        listaOpciones.agregar(opcion2);
+
+        listaOpciones.eliminar(opcion2.getOpcion());
+
+        assert(!listaOpciones.obtenerLista().contains(opcion2.getOpcion()));
+    }
 }

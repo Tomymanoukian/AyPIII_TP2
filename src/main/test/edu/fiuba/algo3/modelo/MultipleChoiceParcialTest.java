@@ -203,4 +203,56 @@ public class MultipleChoiceParcialTest {
         MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
         assertEquals(true, multipleChoiceParcial.aceptaExclusividad());
     }
+    /*
+    @Test
+    public void testMultipleChoiceMezclaTodasSusOpcionesSiPrimeroSeOrdenaIncorrectasYDespuesCorrectas(){
+        ListaOpciones opcionesCorrectas = new ListaOpciones();
+        ListaOpciones opcionesIncorrectas = new ListaOpciones();
+        String consigna = "Indicar cuales de las siguientes opciones son quesos";
+
+        Opcion opcionCorrectaCheddar = new Opcion("Cheddar");
+        Opcion opcionCorrectaRoquefort = new Opcion("Roquefort");
+        Opcion opcionIncorrectaKetchup = new Opcion("Ketchup");
+
+        opcionesCorrectas.agregar(opcionCorrectaCheddar);
+        opcionesCorrectas.agregar(opcionCorrectaRoquefort);
+
+        opcionesIncorrectas.agregar(opcionIncorrectaKetchup);
+        MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+        ListaOpciones opcionesMezcladas = multipleChoiceParcial.getTodasLasOpcionesMezcladas();
+
+        ListaOpciones listaOpcionesMultipleChoice = new ListaOpciones();
+        listaOpcionesMultipleChoice.agregarTodo(multipleChoiceParcial.getOpcionesIncorrectas());
+        listaOpcionesMultipleChoice.agregarTodo(multipleChoiceParcial.getOpcionesCorrectas());
+
+        assert(!opcionesMezcladas.esIgual(listaOpcionesMultipleChoice));
+    }
+
+    @Test
+    public void testMultipleChoiceMezclaTodasSusOpcionesSiPrimeroSeOrdernaCorrectasYDespuesIncorrectas(){
+
+        ListaOpciones opcionesCorrectas = new ListaOpciones();
+        ListaOpciones opcionesIncorrectas = new ListaOpciones();
+        String consigna = "Indicar cuales de las siguientes opciones son quesos";
+
+        Opcion opcionCorrectaCheddar = new Opcion("Cheddar");
+        Opcion opcionCorrectaRoquefort = new Opcion("Roquefort");
+        Opcion opcionIncorrectaKetchup = new Opcion("Ketchup");
+
+        opcionesCorrectas.agregar(opcionCorrectaCheddar);
+        opcionesCorrectas.agregar(opcionCorrectaRoquefort);
+
+        opcionesIncorrectas.agregar(opcionIncorrectaKetchup);
+
+        MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+        ListaOpciones opcionesMezcladas = multipleChoiceParcial.getTodasLasOpcionesMezcladas();
+
+        ListaOpciones listaOpcionesMultipleChoice = new ListaOpciones();
+        listaOpcionesMultipleChoice.agregarTodo(multipleChoiceParcial.getOpcionesCorrectas());
+        listaOpcionesMultipleChoice.agregarTodo(multipleChoiceParcial.getOpcionesIncorrectas());
+
+        assert(!opcionesMezcladas.esIgual(listaOpcionesMultipleChoice));
+    }
+
+     */
 }

@@ -141,4 +141,31 @@ public class MultipleChoiceClasicoTest {
         MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
         assertEquals(true, multipleChoiceClasico.aceptaExclusividad());
     }
+    /*
+    @Test
+    public void testMultipleChoiceMezclaTodasSusOpcionesSiPrimeroSeOrdenaIncorrectasYDespuesCorrectas(){
+
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
+        ListaOpciones opcionesMezcladas = multipleChoiceClasico.getTodasLasOpcionesMezcladas();
+
+        ListaOpciones listaOpcionesMultipleChoice = new ListaOpciones();
+        listaOpcionesMultipleChoice.agregarTodo(multipleChoiceClasico.getOpcionesIncorrectas());
+        listaOpcionesMultipleChoice.agregarTodo(multipleChoiceClasico.getOpcionesCorrectas());
+
+        assert(!opcionesMezcladas.esIgual(listaOpcionesMultipleChoice));
+    }
+
+    @Test
+    public void testMultipleChoiceMezclaTodasSusOpcionesSiPrimeroSeOrdernaCorrectasYDespuesIncorrectas(){
+
+        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
+        ListaOpciones opcionesMezcladas = multipleChoiceClasico.getTodasLasOpcionesMezcladas();
+
+        ListaOpciones listaOpcionesMultipleChoice = new ListaOpciones();
+        listaOpcionesMultipleChoice.agregarTodo(multipleChoiceClasico.getOpcionesCorrectas());
+        listaOpcionesMultipleChoice.agregarTodo(multipleChoiceClasico.getOpcionesIncorrectas());
+
+        assert(!opcionesMezcladas.esIgual(listaOpcionesMultipleChoice));
+    }
+    */
 }
