@@ -48,6 +48,7 @@ public class    ManejadorDeTurnos {
             }
         }
         else if (!juegoTerminado){
+
             jugador2Respodio = true;
             try {
                 stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador2, this));
