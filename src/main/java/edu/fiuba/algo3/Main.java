@@ -7,16 +7,18 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.Stack;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage stage) {   ////////////Empieza creacion de objetos para hacer pruebas de la vista VerdaderoFalso
         String consignaVoF = "Elegir Verdadero o Falso";
-        VerdaderoFalsoClasico verdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero(consignaVoF);
-        ////////////Empieza creacion de objetos para hacer pruebas de la vista VerdaderoFalso
 
+        VerdaderoFalsoClasico verdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero(consignaVoF);
         ///////////Termina creacion de objetos para hacer pruebas de la vista OrderedChoice
-        String consignaOrdered = "Ordene los siguientes números:";
+        ////////////Empieza creacion de objetos para hacer pruebas de la vista OrderedChoice
+        String consigna = "Ordene los siguientes números:";
 
         ListaOpciones listaOpciones = new ListaOpciones();
 
@@ -32,24 +34,9 @@ public class Main extends Application {
         listaOpciones.agregar(opcion4);
         listaOpciones.agregar(opcion5);
 
-        OrderedChoice orderedChoice = new OrderedChoice(consignaOrdered, listaOpciones);
-        ////////////Empieza creacion de objetos para hacer pruebas de la vista OrderedChoice
+        OrderedChoice orderedChoice = new OrderedChoice(consigna, listaOpciones);
 
-        ////////////Empieza creacion de objetos para hacer pruebas de la vista MultipleChoice
-        ListaOpciones listaOpcionesCorrectas = new ListaOpciones();
-        listaOpcionesCorrectas.agregar(opcion1);
-        listaOpcionesCorrectas.agregar(opcion3);
-        listaOpcionesCorrectas.agregar(opcion5);
-
-        ListaOpciones listaOpcionesIncorrectas = new ListaOpciones();
-        listaOpcionesCorrectas.agregar(opcion2);
-        listaOpcionesCorrectas.agregar(opcion4);
-
-        String consignaMultipleChoice = "Elija numeros impares";
-        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consignaMultipleChoice, listaOpcionesCorrectas, listaOpcionesIncorrectas);
-
-        ////////////Empieza creacion de objetos para hacer pruebas de la vista MultipleChoice
-
+        OrderedChoice orderedChoice1 = new OrderedChoice("Coso 2", listaOpciones);
 
         Jugador jugador1 = new Jugador("Jugador 1");
         Jugador jugador2 = new Jugador("Jugador 2");
@@ -57,22 +44,34 @@ public class Main extends Application {
 
         Kahoot kahoot = new Kahoot(jugador1, jugador2);
 
-        LayoutVerdaderoFalso vistaVerdaderoFalso = new LayoutVerdaderoFalso(verdaderoFalsoClasico, kahoot.getJugador1(), kahoot, stage);
+        Stack<Pregunta> unStack = new Stack<>();
+        unStack.add(orderedChoice);
+        unStack.add(orderedChoice1);
+
+        ManejadorDeTurnos unManejadorDeTurnos = new ManejadorDeTurnos(unStack, jugador1, jugador2, kahoot, stage);
+
+        unManejadorDeTurnos.mostrarSiguientePregunta();
+
+        //stage.setScene(new Scene((new LayoutMenuBienvenida()).getLayout()));
+/*
+        LayoutVerdaderoFalso vistaVerdaderoFalso = new LayoutVerdaderoFalso(kahoot.getJugador1(), verdaderoFalsoClasico.getOpcionCorrecta(), verdaderoFalsoClasico.getOpcionIncorrecta(), kahoot);
         LayoutMenuBienvenida vistaBienvenida = new LayoutMenuBienvenida();
         LayoutOrderedChoice vistaOrderedChoice = new LayoutOrderedChoice(orderedChoice.desordenarOpciones(), kahoot.getJugador1(), kahoot, stage);
         LayoutPuntuaciones vistaPuntuaciones = new LayoutPuntuaciones();
-        LayoutMultipleChoice vistaMultipleChoice = new LayoutMultipleChoice(multipleChoiceClasico, kahoot.getJugador1(), kahoot, stage);
+        LayoutMultipleChoice vistaMultipleChoice = new LayoutMultipleChoice();
 
         Pane layout = new Pane();
         layout.getChildren().addAll(vistaBienvenida.getLayout(), vistaVerdaderoFalso.getLayout(), vistaOrderedChoice.getLayout(), vistaPuntuaciones.getLayout(), vistaMultipleChoice.getLayout());
 
-        vistaMultipleChoice.mostrarVista(layout);
+        vistaOrderedChoice.mostrarVista(layout);
 
         Scene scene = new Scene(layout, 390, 400);
-
+*/
         stage.setTitle("Kahoot!");
-        stage.setScene(scene);
+        //stage.setScene(scene);
         stage.show();
+
+
     }
 
     public static void main(String[] args) {

@@ -4,9 +4,7 @@ import edu.fiuba.algo3.controlador.BotonBajarRespuestaHandler;
 import edu.fiuba.algo3.controlador.BotonEnviarHandler;
 import edu.fiuba.algo3.controlador.BotonExclusividadHandler;
 import edu.fiuba.algo3.controlador.BotonSubirRespuestaHandler;
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.modelo.OrderedChoice;
+import edu.fiuba.algo3.modelo.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -20,7 +18,9 @@ public class LayoutOrderedChoice extends VBox {
 
     private Pane layout;
 
-    public LayoutOrderedChoice(OrderedChoice orderedChoice, Jugador jugador, Kahoot kahoot, Stage unStage) {
+    public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, Kahoot kahoot, Stage unStage, ManejadorDeTurnos manejadorDeTurnos) {
+
+        OrderedChoice orderedChoice = (OrderedChoice) pregunta;
 
         //Comienza primer renglón
         Label nombreJugador = new Label(jugador.getNombre());
@@ -33,7 +33,7 @@ public class LayoutOrderedChoice extends VBox {
         bonusX3.setDisable(true);
 
         Button exclusividad = new Button("Ex");
-        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (orderedChoice, jugador, kahoot, unStage);
+        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (orderedChoice, escenaOrderedChoice, jugador, kahoot, unStage, manejadorDeTurnos);
         exclusividad.setOnAction(exclusividadHandler);
         if (jugador.getExclusividades().size()==0)
             exclusividad.setDisable(true);
@@ -69,29 +69,31 @@ public class LayoutOrderedChoice extends VBox {
 
         ArrayList<HBox> listaHBoxOpciones = new ArrayList<>();
 
-        for (int i=0; i < orderedChoice.getOpciones().cantidadDeRespuestas(); i++) {
+        ListaOpciones opcionesMostradas = escenaOrderedChoice.getOpcionesMostradas();
+
+        for (int i=0; i < opcionesMostradas.cantidadDeRespuestas(); i++) {
 
             Button botonBajar = new Button ("▼");
             Button botonSubir = new Button ("▲");
 
-            listaHBoxOpciones.add(new HBox (botonBajar, new Label (orderedChoice.getOpciones().obtener(i).getOpcion()), botonSubir));
+            listaHBoxOpciones.add(new HBox (botonBajar, new Label (opcionesMostradas.obtener(i).getOpcion()), botonSubir));
             listaHBoxOpciones.get(i).setAlignment(Pos.CENTER);
 
-            BotonBajarRespuestaHandler botonHandlerBajar = new BotonBajarRespuestaHandler(i, orderedChoice, jugador, kahoot, unStage);
+            BotonBajarRespuestaHandler botonHandlerBajar = new BotonBajarRespuestaHandler(i, orderedChoice, escenaOrderedChoice, jugador, kahoot, unStage, manejadorDeTurnos);
             botonBajar.setOnAction(botonHandlerBajar);
 
-            BotonSubirRespuestaHandler botonHandlerSubir = new BotonSubirRespuestaHandler(i, orderedChoice, jugador, kahoot, unStage);
+            BotonSubirRespuestaHandler botonHandlerSubir = new BotonSubirRespuestaHandler(i, orderedChoice, escenaOrderedChoice, jugador, kahoot, unStage, manejadorDeTurnos);
             botonSubir.setOnAction(botonHandlerSubir);
         }
 
         listaHBoxOpciones.get(0).getChildren().get(2).setDisable(true);
-        listaHBoxOpciones.get(orderedChoice.getOpciones().cantidadDeRespuestas()-1).getChildren().get(0).setDisable(true);
+        listaHBoxOpciones.get(opcionesMostradas.cantidadDeRespuestas()-1).getChildren().get(0).setDisable(true);
 
         VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.getChildren().addAll(listaHBoxOpciones);
 
         Button botonEnviar = new Button ("Enviar");
-        BotonEnviarHandler enviarHandler = new BotonEnviarHandler (orderedChoice, jugador, kahoot, unStage);
+        BotonEnviarHandler enviarHandler = new BotonEnviarHandler (orderedChoice, kahoot, manejadorDeTurnos);
         botonEnviar.setOnAction(enviarHandler);
 
         HBox enviar = new HBox (botonEnviar);
@@ -105,10 +107,4 @@ public class LayoutOrderedChoice extends VBox {
     }
 
     public Pane getLayout() {return layout;}
-
-    public void mostrarVista(Pane unosLayouts) {
-
-        unosLayouts.getChildren().forEach(element -> element.setVisible(false));
-        layout.setVisible(true);
-    }
 }

@@ -29,9 +29,10 @@ public class OrderedChoice extends Pregunta {
         return puntaje;
     }
 
-    public OrderedChoice desordenarOpciones(){
-        listaDeOpciones.desordenar();
-        return this;
+    public ListaOpciones getOpcionesDesordenadas(){
+        ListaOpciones opcionesDesordenadas = new ListaOpciones(listaDeOpciones);
+        opcionesDesordenadas.desordenar();
+        return opcionesDesordenadas;
     }
 
 
