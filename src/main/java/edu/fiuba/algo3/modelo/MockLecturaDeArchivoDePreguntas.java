@@ -100,8 +100,8 @@ public class MockLecturaDeArchivoDePreguntas {
         pila.add(orderedChoice);
         pila.add(orderedChoice1);
         pila.add(groupChoice);
-        pila.add(multipleChoiceClasico); //falta implementar boton siguiente pregunta
-        pila.add(multipleChoiceConPenalidad); //falta implementar boton siguiente pregunta
+        //pila.add(multipleChoiceClasico); //falta implementar boton siguiente pregunta
+        //pila.add(multipleChoiceConPenalidad); //falta implementar boton siguiente pregunta
         return pila;
     }
 }

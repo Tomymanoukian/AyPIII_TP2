@@ -13,8 +13,6 @@ public class EscenaMultipleChoiceConPenalidad implements Escena{
 
     public EscenaMultipleChoiceConPenalidad(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        System.out.println("entra al constructor de la escena");
-
         LayoutMultipleChoice layoutMultipleChoice = new LayoutMultipleChoice(pregunta, jugador, manejadorDeTurnos);
         layout = layoutMultipleChoice.getLayout();
     }
