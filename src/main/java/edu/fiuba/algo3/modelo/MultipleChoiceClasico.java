@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 
-public class MultipleChoiceClasico extends Pregunta {
+public class MultipleChoiceClasico extends  MultipleChoice{
     private final ListaOpciones opcionesCorrectas;
     private final ListaOpciones opcionesIncorrectas;
 

@@ -9,13 +9,13 @@ import javafx.stage.Stage;
 
 public class BotonEnviarMultipleChoiceHandler implements EventHandler<ActionEvent> {
 
-    private MultipleChoiceClasico multipleChoice;
+    private MultipleChoice multipleChoice;
     private Jugador jugador;
     private Kahoot kahoot;
     private Stage stage;
     private ListaOpciones opcionesElegidas;
 
-    public BotonEnviarMultipleChoiceHandler (MultipleChoiceClasico unMultipleChoice, Jugador unJugador, ListaOpciones unasOpcionesElegidas, Kahoot unKahoot, Stage unStage) {
+    public BotonEnviarMultipleChoiceHandler (MultipleChoice unMultipleChoice, Jugador unJugador, ListaOpciones unasOpcionesElegidas, Kahoot unKahoot, Stage unStage) {
 
         multipleChoice = unMultipleChoice;
         jugador = unJugador;

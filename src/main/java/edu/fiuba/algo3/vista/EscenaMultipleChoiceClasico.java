@@ -13,7 +13,7 @@ public class EscenaMultipleChoiceClasico implements Escena {
 
     public EscenaMultipleChoiceClasico(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        LayoutMultipleChoice layoutMultipleChoice = new LayoutMultipleChoice(pregunta, jugador, );
+        LayoutMultipleChoice layoutMultipleChoice = new LayoutMultipleChoice(pregunta, jugador, manejadorDeTurnos);
         layout = layoutMultipleChoice.getLayout();
     }
 

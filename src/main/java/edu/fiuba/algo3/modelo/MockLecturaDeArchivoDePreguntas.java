@@ -11,26 +11,8 @@ public class MockLecturaDeArchivoDePreguntas {
     private OrderedChoice orderedChoice;
     private OrderedChoice orderedChoice1;
     private GroupChoice groupChoice;
-
-    /*public MockLecturaDeArchivoDePreguntas(){
-        //VoF
-        String consigna = "El Sol es azul";
-        preguntaVerderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso(consigna);
-
-        //OrderedChoice
-        consigna = "Ordene correctamente las opciones:";
-
-        Opcion primerOpcion = new Opcion("1er Opcion");
-        Opcion segundaOpcion = new Opcion("2da Opcion");
-        Opcion terceraOpcion = new Opcion("3era Opcion");
-        Opcion cuartaOpcion = new Opcion("4ta Opcion");
-        Opcion quintaOpcion = new Opcion("5ta Opcion");
-
-        List<Opcion> respuestasOrdenadasCorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion,cuartaOpcion,quintaOpcion));
-        ListaOpciones opcionesOrdenadasCorrectamente = new ListaOpciones(respuestasOrdenadasCorrectamenteList);
-
-        orderedChoice = new OrderedChoice(consigna, opcionesOrdenadasCorrectamente);
-    }*/
+    private MultipleChoiceClasico multipleChoiceClasico;
+    private MultipleChoiceConPenalidad multipleChoiceConPenalidad;
 
     public MockLecturaDeArchivoDePreguntas() {
 
@@ -83,6 +65,22 @@ public class MockLecturaDeArchivoDePreguntas {
         groupChoice = new GroupChoice("Agrupe en vocales y consonantes", "Vocales", listaGrupoA, "Consonantes", listaGrupoB);
 
         ////////////Termina creacion de objetos para hacer pruebas de la vista GroupChoice
+
+        String consigna = "Indicar cuales de los siguientes con planetas:";
+
+        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
+        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
+        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
+        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
+        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
+
+
+        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
+        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
+
+        multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
+        multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+
     }
 
     public ArrayList<Pregunta> getListaDePreguntas(){
@@ -91,6 +89,8 @@ public class MockLecturaDeArchivoDePreguntas {
         lista.add(orderedChoice);
         lista.add(orderedChoice1);
         lista.add(groupChoice);
+        lista.add(multipleChoiceClasico);
+        lista.add(multipleChoiceConPenalidad);
         return lista;
     }
 
@@ -100,6 +100,8 @@ public class MockLecturaDeArchivoDePreguntas {
         pila.add(orderedChoice);
         pila.add(orderedChoice1);
         pila.add(groupChoice);
+        pila.add(multipleChoiceClasico); //falta implementar boton siguiente pregunta
+        pila.add(multipleChoiceConPenalidad); //falta implementar boton siguiente pregunta
         return pila;
     }
 }
