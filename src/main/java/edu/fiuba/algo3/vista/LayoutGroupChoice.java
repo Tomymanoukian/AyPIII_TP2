@@ -4,12 +4,10 @@ import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -32,8 +30,8 @@ public class LayoutGroupChoice extends VBox {
         bonusX3.setDisable(true);
 
         Button exclusividad = new Button("Ex");
-        /*BotonExclusividadHandlerGroupChoice exclusividadHandler = new BotonExclusividadHandlerGroupChoice(groupChoice, jugador, kahoot, unStage);
-        exclusividad.setOnAction(exclusividadHandler);*/
+        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler(groupChoice, escenaGroupChoice, jugador, manejadorDeTurnos);
+        exclusividad.setOnAction(exclusividadHandler);
         if (jugador.getExclusividades().size()==0)
             exclusividad.setDisable(true);
 
@@ -66,15 +64,12 @@ public class LayoutGroupChoice extends VBox {
 
         //Comienzan Opciones
 
-        ListaOpciones listaOpciones = new ListaOpciones();
-        listaOpciones.agregarTodo(groupChoice.getOpcionesGrupoA());
-        listaOpciones.agregarTodo(groupChoice.getOpcionesGrupoB());
-        listaOpciones.desordenar();
+        ListaOpciones listaOpciones = escenaGroupChoice.getOpcionesMostradas();
 
         ArrayList<HBox> listaHBox = new ArrayList<>();
 
-        listaHBox.add(new HBox (10, new Label ("Opciones:"), new Label (groupChoice.getNombreGrupoA(), new Label (groupChoice.getNombreGrupoB()))));
-        listaHBox.get(0).setAlignment(Pos.CENTER);
+        HBox nombresGrupos = new HBox (10, new Label ("Opciones:"), new Label (groupChoice.getNombreGrupoA(), new Label (groupChoice.getNombreGrupoB())));
+        nombresGrupos.setAlignment(Pos.CENTER);
 
         for (int i=0; i < listaOpciones.cantidadDeRespuestas(); i++) {
 
@@ -85,16 +80,34 @@ public class LayoutGroupChoice extends VBox {
             botonGrupoB.setToggleGroup(grupoDeBotones);
 
             listaHBox.add(new HBox (10, new Label (listaOpciones.obtener(i).getOpcion()), botonGrupoA, botonGrupoB));
-            listaHBox.get(i+1).setAlignment(Pos.CENTER);
+            listaHBox.get(i).setAlignment(Pos.CENTER);
         }
 
         VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.getChildren().addAll(listaHBox);
         contenedorOpciones.setAlignment(Pos.CENTER);
 
+        /////////////////Se crea la respuesta dada
+
+        ListaOpciones respuestaGrupoA = new ListaOpciones();
+        ListaOpciones respuestaGrupoB = new ListaOpciones();
+
+        for (int i = 0; i < listaOpciones.cantidadDeRespuestas(); i++) {
+
+            if(((RadioButton)listaHBox.get(i).getChildren().get(1)).isArmed())
+                respuestaGrupoA.agregar(listaOpciones.obtener(i));
+
+            else if (((RadioButton)listaHBox.get(i).getChildren().get(2)).isArmed())
+                respuestaGrupoB.agregar(listaOpciones.obtener(i));
+        }
+
+        RespuestaDeGrupos respuestaDeGrupos = new RespuestaDeGrupos(respuestaGrupoA, respuestaGrupoB);
+
+        /////////////////
+
         Button botonEnviar = new Button ("Enviar");
-        /*BotonEnviarOrderedChoiceHandler enviarHandler = new BotonEnviarOrderedChoiceHandler (orderedChoice, jugador, kahoot, unStage);
-        botonEnviar.setOnAction(enviarHandler);*/
+        BotonEnviarGroupChoiceHandler enviarHandler = new BotonEnviarGroupChoiceHandler (groupChoice, respuestaDeGrupos, manejadorDeTurnos.getKahoot(), manejadorDeTurnos);
+        botonEnviar.setOnAction(enviarHandler);
 
         HBox enviar = new HBox (botonEnviar);
         enviar.setAlignment(Pos.CENTER);
