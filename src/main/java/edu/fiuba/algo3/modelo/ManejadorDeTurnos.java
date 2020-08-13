@@ -37,15 +37,16 @@ public class    ManejadorDeTurnos {
 
         if(jugador2Respodio && !juegoTerminado) {
 
-            jugador2Respodio = false;
             pregunta = pilaDePreguntas.pop();
 
             try {
                 stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
             } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
                 e.printStackTrace();
+                System.err.println("ERROR: Una pregunta de la lista se encontraba corrupta y no pudo ser mostrada");
                 this.mostrarSiguientePregunta();
             }
+            jugador2Respodio = false;
         }
         else if (!juegoTerminado){
             jugador2Respodio = true;
@@ -53,7 +54,7 @@ public class    ManejadorDeTurnos {
                 stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador2, this));
             } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
                 e.printStackTrace();
-                this.mostrarSiguientePregunta();
+                System.exit(1);
             }
         }
     }
