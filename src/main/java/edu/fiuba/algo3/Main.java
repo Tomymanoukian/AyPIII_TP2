@@ -53,17 +53,23 @@ public class Main extends Application {
         Opcion opcionE = new Opcion("Letra E");
         Opcion opcionF = new Opcion("Letra F");
 
-        //ListaOpciones listaGrupoA = new
+        listaGrupoA.agregar(opcionA);
+        listaGrupoA.agregar(opcionE);
+        listaGrupoB.agregar(opcionB);
+        listaGrupoB.agregar(opcionC);
+        listaGrupoB.agregar(opcionD);
+        listaGrupoB.agregar(opcionF);
+
+        GroupChoice groupChoice = new GroupChoice("Agrupe en vocales y consonantes", "Vocales", listaGrupoA, "Consonantes", listaGrupoB);
 
         ////////////Termina creacion de objetos para hacer pruebas de la vista GroupChoice
-
-
 
         Kahoot kahoot = new Kahoot(jugador1, jugador2);
 
         Stack<Pregunta> unStack = new Stack<>();
-        unStack.add(orderedChoice);
-        unStack.add(orderedChoice1);
+        unStack.add(groupChoice);
+        //unStack.add(orderedChoice);
+        //unStack.add(orderedChoice1);
 
         ManejadorDeTurnos unManejadorDeTurnos = new ManejadorDeTurnos(unStack, jugador1, jugador2, kahoot, stage);
 
