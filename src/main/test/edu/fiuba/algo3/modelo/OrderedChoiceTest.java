@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -37,7 +36,7 @@ public class OrderedChoiceTest {
         OrderedChoice orderedChoice = new OrderedChoice(consigna, listaDeOpciones);
 
         assertEquals("Ordenar los numeros de menor a mayor", orderedChoice.getConsigna());
-        assert (orderedChoice.getOpcionesOrdenadas().esIgual(listaDeOpciones));
+        assert (orderedChoice.getOpciones().esIgual(listaDeOpciones));
     }
 
     @Test
@@ -66,7 +65,7 @@ public class OrderedChoiceTest {
     public void testOrederedChoiceLanzaExcepcionSiSeLeIngresanMenosDeDosOpciones() {
         Opcion opcionUnica = new Opcion("1");
 
-        ListaOpciones listaDeOpcionesInvalida = new ListaOpciones(new ArrayList<>(Collections.singletonList(opcionUnica)));
+        ListaOpciones listaDeOpcionesInvalida = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionUnica)));
 
         assertThrows(CantidadDeOpcionesInvalidaException.class, () -> new OrderedChoice(consigna, listaDeOpcionesInvalida));
     }

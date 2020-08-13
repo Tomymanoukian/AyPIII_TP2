@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.vista.LayoutOrderedChoice;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -26,7 +27,7 @@ public class BotonEnviarHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        kahoot.setRespuestaJugador1(new RespuestaEnLista(orderedChoice.getOpcionesOrdenadas()));
+        kahoot.setRespuestaJugador1(new RespuestaEnLista(orderedChoice.getOpciones()));
 
         Pane fondoBlanco = new Pane();
 
