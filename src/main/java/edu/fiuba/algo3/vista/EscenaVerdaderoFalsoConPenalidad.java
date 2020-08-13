@@ -11,9 +11,9 @@ import javafx.stage.Stage;
 public class EscenaVerdaderoFalsoConPenalidad implements Escena{
     private Pane layout;
 
-    public EscenaVerdaderoFalsoConPenalidad(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
+    public EscenaVerdaderoFalsoConPenalidad(Pregunta pregunta, Escena unaEscena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        LayoutVerdaderoFalso layoutVerdaderoFalso = new LayoutVerdaderoFalso(pregunta, jugador, manejadorDeTurnos);
+        LayoutVerdaderoFalso layoutVerdaderoFalso = new LayoutVerdaderoFalso(pregunta, unaEscena, jugador, manejadorDeTurnos);
         layout = layoutVerdaderoFalso.getLayout();
     }
 

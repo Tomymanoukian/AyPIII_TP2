@@ -4,6 +4,7 @@ import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -17,7 +18,7 @@ public class LayoutVerdaderoFalso extends VBox{
 
     private Pane layout;
 
-    public LayoutVerdaderoFalso(Pregunta pregunta, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
+    public LayoutVerdaderoFalso(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
 
         VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
         Kahoot kahoot = manejadorDeTurnos.getKahoot();
@@ -27,15 +28,15 @@ public class LayoutVerdaderoFalso extends VBox{
         Label tiempo = new Label("00:00");
 
         Button bonusX2 = new Button("X2");
-        BotonMultipX2VoFEventHandler multiplicX2Handler = new BotonMultipX2VoFEventHandler(pregunta, unJugador, manejadorDeTurnos);
+        BotonMultipX2VoFEventHandler multiplicX2Handler = new BotonMultipX2VoFEventHandler(pregunta, scene, unJugador, manejadorDeTurnos);
         bonusX2.setOnAction(multiplicX2Handler);
 
         Button bonusX3 = new Button("X3");
-        BotonMultipX3VoFEventHandler multiplicX3Handler = new BotonMultipX3VoFEventHandler(pregunta, unJugador, manejadorDeTurnos);
+        BotonMultipX3VoFEventHandler multiplicX3Handler = new BotonMultipX3VoFEventHandler(pregunta, scene, unJugador, manejadorDeTurnos);
         bonusX3.setOnAction(multiplicX3Handler);
 
         Button exclusividad = new Button("Ex");
-        BotonExclusividadVoFEventHandler exclusividadHandler = new BotonExclusividadVoFEventHandler (pregunta, unJugador, manejadorDeTurnos);
+        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (verdaderoFalso, scene, unJugador, manejadorDeTurnos);
         exclusividad.setOnAction(exclusividadHandler);
 
         if(verdaderoFalso.getClass() == VerdaderoFalsoConPenalidad.class){
@@ -80,14 +81,15 @@ public class LayoutVerdaderoFalso extends VBox{
         contenedorConsigna.setStyle("-fx-font-size: 1.3em;");
 
 
-        Button botonVerdadero = new Button(verdaderoFalso.getOpcionCorrecta().getOpcion());
-        botonVerdadero.setOnAction(new BotonVerdaderoEventHandler(verdaderoFalso.getOpcionCorrecta(), unJugador,kahoot, stage));
+
+        Button botonVerdadero = new Button(verdaderoFalso.getOpcionVerdadera().getOpcion());
+        botonVerdadero.setOnAction(new BotonEnviarHandler(unJugador, new RespuestaUnica(verdaderoFalso.getOpcionVerdadera()), manejadorDeTurnos));
         HBox contenedroVerdadero = new HBox(botonVerdadero);
         contenedroVerdadero.setPadding(new Insets(10));
         contenedroVerdadero.setBackground(new Background(new BackgroundFill(Color.CORNFLOWERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        Button botonFalso = new Button(verdaderoFalso.getOpcionIncorrecta().getOpcion());
-        botonFalso.setOnAction(new BotonFalsoEventHandler(verdaderoFalso.getOpcionIncorrecta(), unJugador, kahoot, stage));
+        Button botonFalso = new Button(verdaderoFalso.getOpcionFalsa().getOpcion());
+        botonFalso.setOnAction(new BotonEnviarHandler(unJugador, new RespuestaUnica(verdaderoFalso.getOpcionFalsa()), manejadorDeTurnos));
         HBox contenedorFalso = new HBox(botonFalso);
         contenedorFalso.setPadding(new Insets(10));
         contenedorFalso.setBackground(new Background(new BackgroundFill(Color.CRIMSON, CornerRadii.EMPTY, Insets.EMPTY)));

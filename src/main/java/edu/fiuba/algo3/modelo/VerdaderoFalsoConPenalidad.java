@@ -10,6 +10,7 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
         opcionCorrecta = unaOpcionCorrecta;
         opcionIncorrecta = unaOpcionIncorrecta;
     }
+
     public static VerdaderoFalsoConPenalidad recuperar(JsonObject jsonPregunta) {
         String consigna = jsonPregunta.get("consigna").getAsString();
         Opcion opcionCorrecta = Opcion.recuperar(jsonPregunta.getAsJsonObject("opcionCorrecta"));
