@@ -26,7 +26,7 @@ public class BotonExclusividadHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        manejadorDeTurnos.getKahoot().agregarExclusividadJugador1(orderedChoice);
+        manejadorDeTurnos.getKahoot().agregarExclusividad(orderedChoice, jugador);
 
         escenaOrderedChoice.actualizar(jugador, manejadorDeTurnos);
     }

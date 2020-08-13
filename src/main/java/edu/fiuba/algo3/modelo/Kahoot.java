@@ -39,14 +39,17 @@ public class Kahoot{
 
     public void agregarExclusividad(Pregunta unaPregunta, Jugador jugador){
 
+        System.out.println("exclusividad");
+
         if (!unaPregunta.aceptaExclusividad())
             throw new EstaPreguntaNoAceptaExclusividadesException();
 
-        System.out.println(jugador);
-        System.out.println(jugador1);
-        System.out.println(jugador2);
-
-        exclusividades.agregarExclusividad(jugador.utilizarExclusividad());
+        if(jugador == jugador1 || jugador == jugador2) {
+            exclusividades.agregarExclusividad(jugador.utilizarExclusividad());
+        }
+        else{
+            throw new JugadorNoValidoException();
+        }
     }
 
     public void agregarMultiplicadorX2(Pregunta unaPregunta, Jugador jugador){
@@ -81,53 +84,6 @@ public class Kahoot{
         }
     }
 
-    public void agregarExclusividadJugador1(Pregunta unaPregunta){
-
-        if (!unaPregunta.aceptaExclusividad())
-            throw new EstaPreguntaNoAceptaExclusividadesException();
-
-        exclusividadesJ1.agregarExclusividad(jugador1.utilizarExclusividad());
-    }
-
-    public void agregarExclusividadJugador2(Pregunta unaPregunta){
-
-        if (!unaPregunta.aceptaExclusividad())
-            throw new EstaPreguntaNoAceptaExclusividadesException();
-
-        exclusividadesJ2.agregarExclusividad(jugador2.utilizarExclusividad());
-    }
-
-    public void agregarMultiplicadorX2Jugador1(Pregunta unaPregunta){
-
-        if (!unaPregunta.aceptaMultiplicador())
-            throw new EstaPreguntaNoAceptaMultiplicadoresException();
-
-        multiplicadoresJ1.agregarMultiplicador(jugador1.utilizarMultiplicadorX2());
-    }
-
-    public void agregarMultiplicadorX2Jugador2(Pregunta unaPregunta){
-
-        if (!unaPregunta.aceptaMultiplicador())
-            throw new EstaPreguntaNoAceptaMultiplicadoresException();
-
-        multiplicadoresJ2.agregarMultiplicador(jugador2.utilizarMultiplicadorX2());
-    }
-
-    public void agregarMultiplicadorX3Jugador1(Pregunta unaPregunta){
-
-        if (!unaPregunta.aceptaMultiplicador())
-            throw new EstaPreguntaNoAceptaMultiplicadoresException();
-
-        multiplicadoresJ1.agregarMultiplicador(jugador1.utilizarMultiplicadorX3());
-    }
-
-    public void agregarMultiplicadorX3Jugador2(Pregunta unaPregunta){
-
-        if (!unaPregunta.aceptaMultiplicador())
-            throw new EstaPreguntaNoAceptaMultiplicadoresException();
-
-        multiplicadoresJ2.agregarMultiplicador(jugador2.utilizarMultiplicadorX3());
-    }
 
     public void evaluarRespuestas(Pregunta unaPregunta) {
         Puntaje puntajeJ1 = new Puntaje();
@@ -155,10 +111,6 @@ public class Kahoot{
         VerdaderoFalsoClasico pregunta = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("Elegi:");
 
         pregunta.mostrarseEn(interfazDeUsuario);
-    }
-
-    public void setInterfazVisual(InterfazDeUsuario unaInterfazDeUsuario) {
-        interfazDeUsuario = unaInterfazDeUsuario;
     }
 
     public Jugador getJugador1() {return jugador1;}
