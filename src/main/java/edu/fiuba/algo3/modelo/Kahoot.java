@@ -39,8 +39,6 @@ public class Kahoot{
 
     public void agregarExclusividad(Pregunta unaPregunta, Jugador jugador){
 
-        System.out.println("exclusividad");
-
         if (!unaPregunta.aceptaExclusividad())
             throw new EstaPreguntaNoAceptaExclusividadesException();
 
