@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class LayoutVerdaderoFalso extends VBox{
+public class LayoutVerdaderoFalso {
 
     private Pane layout;
 
