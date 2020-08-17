@@ -2,6 +2,9 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.*;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -21,89 +24,14 @@ public class LayoutVerdaderoFalso {
     public LayoutVerdaderoFalso(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
 
         VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
-        Kahoot kahoot = manejadorDeTurnos.getKahoot();
-        Stage stage = manejadorDeTurnos.getStage();
 
-        Label nombreJugador = new Label(unJugador.getNombre());
-        Label tiempo = new Label("00:00");
+        ContenedorPrimerReglon contenedorPrimerReglon = new ContenedorPrimerReglon(verdaderoFalso, scene, unJugador, manejadorDeTurnos, new RespuestaUnica(verdaderoFalso.getOpcionIncorrecta()));
 
-        Button bonusX2 = new Button("X2");
-        BotonMultipX2VoFEventHandler multiplicX2Handler = new BotonMultipX2VoFEventHandler(pregunta, scene, unJugador, manejadorDeTurnos);
-        bonusX2.setOnAction(multiplicX2Handler);
+        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
 
-        Button bonusX3 = new Button("X3");
-        BotonMultipX3VoFEventHandler multiplicX3Handler = new BotonMultipX3VoFEventHandler(pregunta, scene, unJugador, manejadorDeTurnos);
-        bonusX3.setOnAction(multiplicX3Handler);
+        HBox contenedorVerdaderoFalso = this.obtenerContenedorDeOpcionesVoF(verdaderoFalso, unJugador, manejadorDeTurnos, contenedorPrimerReglon.getTiempo());
 
-        Button exclusividad = new Button("Ex");
-        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (verdaderoFalso, scene, unJugador, manejadorDeTurnos);
-        exclusividad.setOnAction(exclusividadHandler);
-
-        if(verdaderoFalso.getClass() == VerdaderoFalsoConPenalidad.class){
-            exclusividad.setDisable(true);
-
-            if (unJugador.getMultiplicadoresX2().size()==0)
-                bonusX2.setDisable(true);
-            if (unJugador.getMultiplicadoresX3().size()==0)
-                bonusX3.setDisable(true);
-
-        }else if(verdaderoFalso.getClass() != VerdaderoFalsoConPenalidad.class ){
-            bonusX2.setDisable(true);
-            bonusX3.setDisable(true);
-
-            if(unJugador.getExclusividades().size()==0)
-                exclusividad.setDisable(true);
-        }
-
-        VBox contenedorNombreJugador = new VBox(nombreJugador);
-
-        VBox contenedorTiempo = new VBox(tiempo);
-        contenedorTiempo.setStyle("-fx-font-weight: bold");
-
-        HBox contenedorBonus = new HBox(bonusX2, bonusX3, exclusividad);
-        contenedorBonus.setSpacing(3);
-
-        HBox contenedorPrimerRenglon = new HBox(contenedorNombreJugador, contenedorTiempo, contenedorBonus);
-        contenedorPrimerRenglon.setAlignment(Pos.CENTER);
-        contenedorPrimerRenglon.setStyle("-fx-font-size: 1.25em;");
-        contenedorPrimerRenglon.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
-        contenedorPrimerRenglon.setSpacing(40);
-        contenedorPrimerRenglon.setPadding(new Insets(20));
-
-        Label consigna = new Label("Kahoot es lo mejor que hay?");
-        consigna.setStyle("-fx-font-weight: bold");
-
-        Rectangle rectanguloConsigna = new Rectangle(20, 20, 350, 125);
-        rectanguloConsigna.setFill(Color.LAVENDER);
-
-        StackPane contenedorConsigna = new StackPane(rectanguloConsigna, consigna);
-        contenedorConsigna.setPadding(new Insets(20));
-        contenedorConsigna.setStyle("-fx-font-size: 1.3em;");
-
-
-
-        Button botonVerdadero = new Button(verdaderoFalso.getOpcionVerdadera().getOpcion());
-        botonVerdadero.setOnAction(new BotonEnviarHandler(unJugador, new RespuestaUnica(verdaderoFalso.getOpcionVerdadera()), manejadorDeTurnos));
-        HBox contenedroVerdadero = new HBox(botonVerdadero);
-        contenedroVerdadero.setPadding(new Insets(10));
-        contenedroVerdadero.setBackground(new Background(new BackgroundFill(Color.CORNFLOWERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        Button botonFalso = new Button(verdaderoFalso.getOpcionFalsa().getOpcion());
-        botonFalso.setOnAction(new BotonEnviarHandler(unJugador, new RespuestaUnica(verdaderoFalso.getOpcionFalsa()), manejadorDeTurnos));
-        HBox contenedorFalso = new HBox(botonFalso);
-        contenedorFalso.setPadding(new Insets(10));
-        contenedorFalso.setBackground(new Background(new BackgroundFill(Color.CRIMSON, CornerRadii.EMPTY, Insets.EMPTY)));
-
-
-        HBox contenedorHorizontal = new HBox(contenedroVerdadero, contenedorFalso);
-        contenedorHorizontal.setAlignment(Pos.CENTER);
-        contenedorHorizontal.setStyle("-fx-font-weight: bold");
-        contenedorHorizontal.setStyle("-fx-font-size: 1.5em;");
-
-        contenedorHorizontal.setSpacing(10);
-        contenedorHorizontal.setPadding(new Insets(15));
-
-        layout = new VBox(contenedorPrimerRenglon, contenedorConsigna, contenedorHorizontal);
+        layout = new VBox(contenedorPrimerReglon.getLayout(), contenedorConsigna.getLayout(), contenedorVerdaderoFalso);
         layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
@@ -113,5 +41,34 @@ public class LayoutVerdaderoFalso {
 
         unosLayouts.getChildren().forEach(element -> element.setVisible(false));
         layout.setVisible(true);
+    }
+
+    private HBox obtenerContenedorDeOpcionesVoF(VerdaderoFalso verdaderoFalso, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, Timeline tiempo){
+
+        Button botonVerdadero = new Button(verdaderoFalso.getOpcionVerdadera().getOpcion());
+        BotonEnviarHandler botonVerdaderoHandler = new BotonEnviarHandler(unJugador, new RespuestaUnica(verdaderoFalso.getOpcionVerdadera()), manejadorDeTurnos, tiempo);
+        botonVerdadero.setOnAction(botonVerdaderoHandler);
+
+        HBox contenedroVerdadero = new HBox(botonVerdadero);
+        contenedroVerdadero.setPadding(new Insets(10));
+        contenedroVerdadero.setBackground(new Background(new BackgroundFill(Color.CORNFLOWERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        Button botonFalso = new Button(verdaderoFalso.getOpcionFalsa().getOpcion());
+        BotonEnviarHandler botonFalsoHandler = new BotonEnviarHandler(unJugador, new RespuestaUnica(verdaderoFalso.getOpcionFalsa()), manejadorDeTurnos, tiempo);
+        botonVerdadero.setOnAction(botonFalsoHandler);
+
+        HBox contenedorFalso = new HBox(botonFalso);
+        contenedorFalso.setPadding(new Insets(10));
+        contenedorFalso.setBackground(new Background(new BackgroundFill(Color.CRIMSON, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        HBox contenedorDeOpcionesVoF = new HBox(contenedroVerdadero, contenedorFalso);
+        contenedorDeOpcionesVoF.setAlignment(Pos.CENTER);
+        contenedorDeOpcionesVoF.setStyle("-fx-font-weight: bold");
+        contenedorDeOpcionesVoF.setStyle("-fx-font-size: 1.5em;");
+
+        contenedorDeOpcionesVoF.setSpacing(10);
+        contenedorDeOpcionesVoF.setPadding(new Insets(15));
+
+        return contenedorDeOpcionesVoF;
     }
 }
