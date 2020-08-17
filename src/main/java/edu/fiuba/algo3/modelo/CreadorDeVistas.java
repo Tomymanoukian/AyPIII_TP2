@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.PreguntaCorruptaException;
 import edu.fiuba.algo3.vista.*;
 import javafx.scene.Scene;
 
@@ -7,11 +8,11 @@ import java.lang.reflect.InvocationTargetException;
 
 public class CreadorDeVistas {
 
-    public static Scene crearSiguienteEscena(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public static Scene crearSiguienteEscena(Pregunta pregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) throws PreguntaCorruptaException{
 
         Escena escena = null;
 
-        if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoClasico.class.getSimpleName())){
+        /*if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoClasico.class.getSimpleName())){
 
             //escena = new EscenaVerdaderoFalso();
 
@@ -19,7 +20,7 @@ public class CreadorDeVistas {
 
             //escena = new EscenaVerdaderoFalso();
 
-        }else if (pregunta.getClass().getSimpleName().equals(MultipleChoiceClasico.class.getSimpleName())){
+        }else*/ if (pregunta.getClass().getSimpleName().equals(MultipleChoiceClasico.class.getSimpleName())){
 
             escena = new EscenaMultipleChoice(pregunta, jugador, manejadorDeTurnos);
 
@@ -39,6 +40,8 @@ public class CreadorDeVistas {
 
             escena = new EscenaGroupChoice(pregunta, jugador, manejadorDeTurnos);
         }
+        else
+            throw new PreguntaCorruptaException();
 
         return escena.getEscena();
     }

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.PreguntaCorruptaException;
 import edu.fiuba.algo3.vista.LayoutPuntuaciones;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -33,15 +34,19 @@ public class    ManejadorDeTurnos {
             stage.setScene(new Scene(new LayoutPuntuaciones().getLayout()));
         }
 
-        pregunta = pilaDePreguntas.pop();
-        try {
-            stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
-        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
-            e.printStackTrace();
-            this.mostrarPrimeraPregunta();
-        }
+        else {
+            jugador2Respodio = false;
 
-        jugador2Respodio = false;
+            pregunta = pilaDePreguntas.pop();
+            try {
+                stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
+            } catch (PreguntaCorruptaException e) {
+                e.printStackTrace();
+                this.mostrarPrimeraPregunta();
+            }
+
+
+        }
     }
 
     public void mostrarSiguientePregunta(){
@@ -51,28 +56,25 @@ public class    ManejadorDeTurnos {
             stage.setScene(new Scene(new LayoutPuntuaciones().getLayout()));
         }
 
-        if(jugador2Respodio && !juegoTerminado) {
-
-            kahoot.evaluarRespuestas(pregunta);
-            jugador2Respodio = false;
+        else if(jugador2Respodio && !juegoTerminado) {
 
             pregunta = pilaDePreguntas.pop();
 
             try {
                 stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
-            } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
+            } catch (PreguntaCorruptaException e) {
                 e.printStackTrace();
-                System.err.println("ERROR: Una pregunta de la lista se encontraba corrupta y no pudo ser mostrada");
                 this.mostrarSiguientePregunta();
             }
+
+            kahoot.evaluarRespuestas(pregunta);
             jugador2Respodio = false;
         }
         else if (!juegoTerminado){
-
             jugador2Respodio = true;
             try {
                 stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador2, this));
-            } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
+            } catch (PreguntaCorruptaException e) {
                 e.printStackTrace();
                 System.exit(1);
             }
