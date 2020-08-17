@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.BotonExclusividadHandler;
-import edu.fiuba.algo3.controlador.BotonMultipX2MultipleChoiceEventHandler;
-import edu.fiuba.algo3.controlador.BotonMultipX3MultipleChoiceEventHandler;
+import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.*;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
@@ -26,12 +24,12 @@ public class ContenedorPrimerReglon {
         etiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);//Label tiempo = new Label("00:00");
 
         bonusX2 = new Button("X2");
-        //BotonMultipX2MultipleChoiceEventHandler multiplicX2Handler = new BotonMultipX2MultipleChoiceEventHandler(unMultipleChoice, jugador, kahoot, unStage, manejadorDeTurnos);
-        //bonusX2.setOnAction(multiplicX2Handler);
+        BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler(pregunta, escena, jugador, manejadorDeTurnos);
+        bonusX2.setOnAction(multiplicX2Handler);
 
         bonusX3 = new Button("X3");
-        //BotonMultipX3MultipleChoiceEventHandler multiplicX3Handler = new BotonMultipX3MultipleChoiceEventHandler(unMultipleChoice, jugador, kahoot, unStage, manejadorDeTurnos);
-        //bonusX3.setOnAction(multiplicX3Handler);
+        BotonMultiplicadorx3EventHandler multiplicX3Handler = new BotonMultiplicadorx3EventHandler(pregunta, escena, jugador, manejadorDeTurnos);
+        bonusX3.setOnAction(multiplicX3Handler);
 
         exclusividad = new Button("Ex");
         BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (pregunta, escena, jugador, manejadorDeTurnos);

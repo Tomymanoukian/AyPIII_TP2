@@ -28,8 +28,6 @@ public class KahootTest {
 
     }
 
-
-
     @Test
     public void testSeCreaUnKahootConDosJugadoresPidiendoleElPuntajeAlJugador1(){
 
@@ -239,5 +237,35 @@ public class KahootTest {
         assertThrows(JugadorNoValidoException.class, ()-> kahoot.agregarMultiplicadorX2(vofConPenalidad, otroJugador));
         assertThrows(JugadorNoValidoException.class, ()-> kahoot.agregarMultiplicadorX3(vofConPenalidad, otroJugador));
         assertThrows(JugadorNoValidoException.class, ()-> kahoot.agregarExclusividad(vofClasico, otroJugador));
+    }
+
+    @Test
+    public void devuelveCorrectamenteAlJugador1GanadorYAlJugador2Perdedor(){
+        Jugador martin = new Jugador("Martin");
+        Jugador jose = new Jugador("Jose");
+
+        Kahoot kahoot = new Kahoot(martin, jose);
+
+        martin.sumarPuntos(new Puntaje(20));
+        jose.sumarPuntos(new Puntaje(10));
+
+        assertEquals(martin, kahoot.getJugadorGanador());
+        assertEquals(jose, kahoot.getJugadorPerdedor());
+
+    }
+
+    @Test
+    public void devuelveCorrectamenteAlJugador2GanadorYAlJugador1Perdedor(){
+        Jugador martin = new Jugador("Martin");
+        Jugador jose = new Jugador("Jose");
+
+        Kahoot kahoot = new Kahoot(jose, martin);
+
+        martin.sumarPuntos(new Puntaje(20));
+        jose.sumarPuntos(new Puntaje(10));
+
+        assertEquals(martin, kahoot.getJugadorGanador());
+        assertEquals(jose, kahoot.getJugadorPerdedor());
+
     }
 }
