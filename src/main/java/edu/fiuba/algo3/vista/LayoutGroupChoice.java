@@ -11,7 +11,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 
-public class LayoutGroupChoice extends VBox {
+public class LayoutGroupChoice {
 
     private Pane layout;
 

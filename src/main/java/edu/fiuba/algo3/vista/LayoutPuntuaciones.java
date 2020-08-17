@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class LayoutPuntuaciones extends VBox {
+public class LayoutPuntuaciones {
 
     private Pane contenedorPuntuaciones;
 

@@ -38,4 +38,8 @@ public class ListaDeExclusividades {
             exclusividad.aplicarExclusividad(puntaje1, puntaje2);
         }
     }
+
+    public void limpiarExclusividades(){
+        exclusividades.clear();
+    }
 }

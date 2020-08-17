@@ -99,6 +99,11 @@ public class Kahoot{
 
         jugador1.sumarPuntos(puntajeJ1);
         jugador2.sumarPuntos(puntajeJ2);
+
+        exclusividades.limpiarExclusividades();
+        multiplicadoresJ1.limpiarMultiplicadores();
+        multiplicadoresJ2.limpiarMultiplicadores();
+
     }
 
     public Puntaje getPuntajeJugador1() {

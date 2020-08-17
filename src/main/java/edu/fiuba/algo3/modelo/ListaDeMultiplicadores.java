@@ -39,4 +39,8 @@ public class ListaDeMultiplicadores {
             multiplicador.aplicarMultiplicador(unPuntaje);
         }
     }
+
+    public void limpiarMultiplicadores(){
+        multiplicadores.clear();
+    }
 }

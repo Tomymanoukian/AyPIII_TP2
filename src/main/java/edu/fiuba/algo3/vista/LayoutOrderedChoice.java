@@ -14,7 +14,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 
-public class LayoutOrderedChoice extends VBox {
+public class LayoutOrderedChoice {
 
     private Pane layout;
 

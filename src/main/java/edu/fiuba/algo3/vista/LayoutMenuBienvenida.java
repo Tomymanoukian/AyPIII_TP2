@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-public class LayoutMenuBienvenida extends VBox {
+public class LayoutMenuBienvenida {
 
     private Pane layout;
 

@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class LayoutMultipleChoice extends VBox {
+public class LayoutMultipleChoice {
 
     private Pane layout;
 
