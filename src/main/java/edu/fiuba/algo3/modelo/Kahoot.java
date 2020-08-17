@@ -106,6 +106,21 @@ public class Kahoot{
 
     }
 
+    public Jugador getJugadorGanador(){
+        if( jugador1.getPuntaje().esMenorQue(jugador2.getPuntaje())){
+            return jugador2;
+        }
+        return jugador1;
+    }
+
+    public Jugador getJugadorPerdedor(){
+        if( jugador1.getPuntaje().esMenorQue(jugador2.getPuntaje())){
+            return jugador1;
+        }
+        return jugador2;
+    }
+
+
     public Puntaje getPuntajeJugador1() {
         return jugador1.getPuntaje();
     }

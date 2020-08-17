@@ -36,9 +36,14 @@ public class Puntaje {
         puntos *= factorDeMultiplicacion;
     }
 
+    public boolean esMenorQue(Puntaje otroPuntaje){
+        return puntos < otroPuntaje.getPuntos();
+    }
+
     public JsonObject guardar() {
         JsonObject jsonPuntaje = new JsonObject();
         jsonPuntaje.addProperty("puntos", puntos);
         return jsonPuntaje;
     }
+
 }
