@@ -55,7 +55,7 @@ public class LayoutVerdaderoFalso {
 
         Button botonFalso = new Button(verdaderoFalso.getOpcionFalsa().getOpcion());
         BotonEnviarHandler botonFalsoHandler = new BotonEnviarHandler(unJugador, new RespuestaUnica(verdaderoFalso.getOpcionFalsa()), manejadorDeTurnos, tiempo);
-        botonVerdadero.setOnAction(botonFalsoHandler);
+        botonFalso.setOnAction(botonFalsoHandler);
 
         HBox contenedorFalso = new HBox(botonFalso);
         contenedorFalso.setPadding(new Insets(10));

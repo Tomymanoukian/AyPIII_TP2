@@ -12,15 +12,15 @@ public class CreadorDeVistas {
 
         Escena escena = null;
 
-        /*if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoClasico.class.getSimpleName())){
+        if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoClasico.class.getSimpleName())){
 
-            //escena = new EscenaVerdaderoFalso();
+            escena = new EscenaVerdaderoFalso(pregunta, jugador, manejadorDeTurnos);
 
         }else if (pregunta.getClass().getSimpleName().equals(VerdaderoFalsoConPenalidad.class.getSimpleName())){
 
-            //escena = new EscenaVerdaderoFalso();
+            escena = new EscenaVerdaderoFalso(pregunta, jugador, manejadorDeTurnos);
 
-        }else*/ if (pregunta.getClass().getSimpleName().equals(MultipleChoiceClasico.class.getSimpleName())){
+        }else if (pregunta.getClass().getSimpleName().equals(MultipleChoiceClasico.class.getSimpleName())){
 
             escena = new EscenaMultipleChoice(pregunta, jugador, manejadorDeTurnos);
 

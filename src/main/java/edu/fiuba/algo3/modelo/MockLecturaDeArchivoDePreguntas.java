@@ -20,10 +20,11 @@ public class MockLecturaDeArchivoDePreguntas {
 
 
         ////////////Empieza creacion de objetos para hacer pruebas de la vista VerdaderoFalso
-        String consignaVoF = "Elegir Verdadero o Falso";
+        String consignaVoF1 = "El perro es el mejor amigo del hombre?";
+        String consignaVoF2 = "El perro NO es el mejor amigo del hombre?";
 
-        verdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero(consignaVoF);
-        verdaderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoFalso(consignaVoF);
+        verdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero(consignaVoF1);
+        verdaderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoFalso(consignaVoF2);
         ///////////Termina creacion de objetos para hacer pruebas de la vista OrderedChoice
 
         ////////////Empieza creacion de objetos para hacer pruebas de la vista OrderedChoice
@@ -80,13 +81,14 @@ public class MockLecturaDeArchivoDePreguntas {
         ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
         ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
 
-        multipleChoiceClasico = new MultipleChoiceClasico("Multiple Choice Clasico", opcionesCorrectas, opcionesIncorrectas);
-        multipleChoiceConPenalidad = new MultipleChoiceConPenalidad("Multiple Choice con penalidad", opcionesCorrectas, opcionesIncorrectas);
-        multipleChoiceParcial = new MultipleChoiceParcial("Multiple Choice Parcial", opcionesCorrectas, opcionesIncorrectas);
+        multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
+        multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+        multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
     }
 
-    public ArrayList<Pregunta> getListaDePreguntas(){
+    //Esto probablemente se borre
+    /*public ArrayList<Pregunta> getListaDePreguntas(){
         ArrayList<Pregunta> lista = new ArrayList<>();
         lista.add(verdaderoFalsoClasico);
         lista.add(orderedChoice);
@@ -95,7 +97,7 @@ public class MockLecturaDeArchivoDePreguntas {
         lista.add(multipleChoiceClasico);
         lista.add(multipleChoiceConPenalidad);
         return lista;
-    }
+    }*/
 
     public Stack<Pregunta> getPilaDePreguntas() {
         Stack<Pregunta> pila = new Stack<>();
@@ -105,8 +107,8 @@ public class MockLecturaDeArchivoDePreguntas {
         pila.add(multipleChoiceClasico);
         pila.add(multipleChoiceConPenalidad);
         pila.add(multipleChoiceParcial);
-        //pila.add(verdaderoFalsoConPenalidad);
-        //pila.add(verdaderoFalsoClasico);
+        pila.add(verdaderoFalsoConPenalidad);
+        pila.add(verdaderoFalsoClasico);
         return pila;
     }
 }
