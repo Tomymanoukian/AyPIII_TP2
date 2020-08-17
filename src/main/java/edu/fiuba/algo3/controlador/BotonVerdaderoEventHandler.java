@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.modelo.Opcion;
-import edu.fiuba.algo3.modelo.RespuestaUnica;
+import edu.fiuba.algo3.modelo.*;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -12,30 +10,24 @@ import javafx.stage.Stage;
 
 public class BotonVerdaderoEventHandler implements EventHandler<ActionEvent> {
 
-    private Opcion opcionVerdadero;
-    private Kahoot kahoot;
-    private Stage stage;
     private Jugador jugador;
+    private Respuesta respuesta;
+    private ManejadorDeTurnos manejadorDeTurnos;
+    private Timeline tiempo;
 
-    public BotonVerdaderoEventHandler(Opcion una0pcionVerdadero, Jugador unJugador, Kahoot unKahoot, Stage unaStage) {
+    public BotonVerdaderoEventHandler(Jugador unJugador, Respuesta unaRespuesta, ManejadorDeTurnos unManejadorDeTurnos, Timeline unTiempo) {
 
-        opcionVerdadero = una0pcionVerdadero;
-        kahoot = unKahoot;
-        stage = unaStage;
         jugador = unJugador;
+        respuesta = unaRespuesta;
+        manejadorDeTurnos = unManejadorDeTurnos;
+        tiempo = unTiempo;
+
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        kahoot.setRespuestaJugador1(new RespuestaUnica(opcionVerdadero));
-
-        Pane vistaBlanco = new Pane();
-
-        Scene scene = new Scene(vistaBlanco, 390, 400);
-
-        stage.setScene(scene);
-        stage.show();
-
-
+        tiempo.stop();
+        manejadorDeTurnos.getKahoot().setRespuestaJugador(respuesta, jugador);
+        manejadorDeTurnos.mostrarSiguientePregunta();
     }
 }
