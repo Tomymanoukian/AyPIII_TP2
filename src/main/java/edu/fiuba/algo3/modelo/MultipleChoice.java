@@ -2,9 +2,19 @@ package edu.fiuba.algo3.modelo;
 
 public abstract class MultipleChoice extends Pregunta {
 
-    public abstract ListaOpciones getOpcionesCorrectas();
+    protected ListaOpciones opcionesCorrectas;
+    protected ListaOpciones opcionesIncorrectas;
 
-    public abstract ListaOpciones getOpcionesIncorrectas();
+    public ListaOpciones getOpcionesCorrectas() {return opcionesCorrectas;}
 
-    public abstract ListaOpciones getTodasLasOpcionesMezcladas();
+    public ListaOpciones getOpcionesIncorrectas() {return opcionesIncorrectas;}
+
+    public ListaOpciones getTodasLasOpcionesMezcladas(){
+        ListaOpciones todasLasOpciones = new ListaOpciones();
+        todasLasOpciones.agregarTodo(opcionesCorrectas);
+        todasLasOpciones.agregarTodo(opcionesIncorrectas);
+        todasLasOpciones.desordenar();
+
+        return todasLasOpciones;
+    }
 }

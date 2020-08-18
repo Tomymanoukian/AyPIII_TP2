@@ -4,8 +4,6 @@ import com.google.gson.JsonObject;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 
 public class MultipleChoiceClasico extends  MultipleChoice{
-    private final ListaOpciones opcionesCorrectas;
-    private final ListaOpciones opcionesIncorrectas;
 
     public MultipleChoiceClasico(String unaConsigna, ListaOpciones unasOpcionesCorrectas, ListaOpciones unasOpcionesIncorrectas) {
         super();
@@ -17,22 +15,16 @@ public class MultipleChoiceClasico extends  MultipleChoice{
         opcionesCorrectas = unasOpcionesCorrectas;
         opcionesIncorrectas = unasOpcionesIncorrectas;
     }
+
     public static MultipleChoiceClasico recuperar(JsonObject jsonPregunta) {
         String consigna = jsonPregunta.get("consigna").getAsString();
         ListaOpciones opcionesCorrectas = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesCorrectas"));
         ListaOpciones opcionesIncorrectas = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesIncorrectas"));
         return new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
     }
+
     public String getConsigna() {
         return super.getConsigna();
-    }
-
-    public ListaOpciones getOpcionesCorrectas() {
-        return opcionesCorrectas;
-    }
-
-    public ListaOpciones getOpcionesIncorrectas() {
-        return opcionesIncorrectas;
     }
 
     public Puntaje calcularPuntajePara(Respuesta respuesta) {
@@ -41,14 +33,6 @@ public class MultipleChoiceClasico extends  MultipleChoice{
             puntaje.establecerPuntos(1);
         }
         return puntaje;
-    }
-    public ListaOpciones getTodasLasOpcionesMezcladas(){
-        ListaOpciones todasLasOpciones = new ListaOpciones();
-        todasLasOpciones.agregarTodo(opcionesCorrectas);
-        todasLasOpciones.agregarTodo(opcionesIncorrectas);
-        todasLasOpciones.desordenar();
-
-        return todasLasOpciones;
     }
 
     @Override
