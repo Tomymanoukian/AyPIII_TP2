@@ -58,8 +58,9 @@ public class    ManejadorDeTurnos {
 
         else if(jugador2Respodio && !juegoTerminado) {
 
-            pregunta = pilaDePreguntas.pop();
+            kahoot.evaluarRespuestas(pregunta);
 
+            pregunta = pilaDePreguntas.pop();
             try {
                 stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
             } catch (PreguntaCorruptaException e) {
@@ -67,7 +68,6 @@ public class    ManejadorDeTurnos {
                 this.mostrarSiguientePregunta();
             }
 
-            kahoot.evaluarRespuestas(pregunta);
             jugador2Respodio = false;
         }
         else if (!juegoTerminado){
