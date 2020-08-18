@@ -27,6 +27,7 @@ public class Multiplicador {
     }
 
     public void aplicarMultiplicador(Puntaje unPuntaje) {
+
         unPuntaje.multiplicarPuntos(factorDeMultiplicacion);
     }
 }

@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 public class MultipleChoiceConPenalidad extends MultipleChoice{
 
     public MultipleChoiceConPenalidad(String unaConsigna, ListaOpciones unasOpcionesCorrectas, ListaOpciones unasOpcionesIncorrectas) {
-
         super();
         if ((unasOpcionesCorrectas.cantidadDeOpciones() + unasOpcionesIncorrectas.cantidadDeOpciones()) < 2 ||
                 (unasOpcionesCorrectas.cantidadDeOpciones() + unasOpcionesIncorrectas.cantidadDeOpciones()) > 5) {

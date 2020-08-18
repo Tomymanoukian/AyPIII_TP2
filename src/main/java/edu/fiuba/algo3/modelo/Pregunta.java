@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import com.google.gson.JsonObject;
 
 public abstract class Pregunta {
+
     protected String consigna;
 
     public String getConsigna() {

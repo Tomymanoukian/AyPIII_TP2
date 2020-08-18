@@ -17,7 +17,6 @@ public class MockLecturaDeArchivoDePreguntas {
 
     public MockLecturaDeArchivoDePreguntas() {
 
-
         ////////////Empieza creacion de objetos para hacer pruebas de la vista VerdaderoFalso
         String consignaVoF1 = "Consigna verdadera";
         String consignaVoF2 = "Consigna falsa";
@@ -108,6 +107,7 @@ public class MockLecturaDeArchivoDePreguntas {
     }
 
     public Stack<Pregunta> getPilaDePreguntas() {
+
         Stack<Pregunta> pila = new Stack<>();
         pila.add(orderedChoice);
         pila.add(groupChoice);

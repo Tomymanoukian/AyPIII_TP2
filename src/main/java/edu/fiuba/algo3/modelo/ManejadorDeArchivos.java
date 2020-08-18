@@ -30,7 +30,8 @@ public class ManejadorDeArchivos {
             FileWriter writer = new FileWriter(FILENAME_RELATIVE_PATH);
             writer.write(json);
             writer.close();
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             throw new ErrorDeEscrituraException();
         }
     }
@@ -82,12 +83,11 @@ public class ManejadorDeArchivos {
             for (JsonElement jsonPregunta : arrayPreguntas) {
                 Pregunta pregunta = this.recuperar(jsonPregunta.getAsJsonObject());
                 preguntasDelJuego.add(pregunta);
-
             }
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             throw new ErrorDeLecturaException();
         }
-
     }
 
     public List<Pregunta> getPreguntas() {

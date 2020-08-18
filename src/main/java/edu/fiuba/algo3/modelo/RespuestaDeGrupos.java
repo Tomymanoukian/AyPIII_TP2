@@ -6,6 +6,7 @@ public class RespuestaDeGrupos implements Respuesta {
     private final ListaOpciones opcionesSeleccionadasGrupoB;
 
     public RespuestaDeGrupos(ListaOpciones unasOpcionesSeleccionadasDelGrupoA, ListaOpciones unasOpcionesSeleccionadasDelGrupoB) {
+
         opcionesSeleccionadasGrupoA = unasOpcionesSeleccionadasDelGrupoA;
         opcionesSeleccionadasGrupoB = unasOpcionesSeleccionadasDelGrupoB;
     }
