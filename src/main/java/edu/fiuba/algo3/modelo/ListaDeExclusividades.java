@@ -14,11 +14,13 @@ public class ListaDeExclusividades {
     }
 
     public ListaDeExclusividades(Exclusividad exclusividad) {
+
         exclusividades = new ArrayList<>();
         exclusividades.add(exclusividad);
     }
 
     public ListaDeExclusividades(List<Exclusividad> listExclusividades) {
+
         exclusividades = new ArrayList<>();
         exclusividades.addAll(listExclusividades);
     }
@@ -32,7 +34,9 @@ public class ListaDeExclusividades {
     }
 
     public void aplicarExclusividades(Puntaje puntaje1, Puntaje puntaje2){
+
         Iterator<Exclusividad> iterador = exclusividades.iterator();
+
         for (int i = 0; i < exclusividades.size(); i++) {
             Exclusividad exclusividad = iterador.next();
             exclusividad.aplicarExclusividad(puntaje1, puntaje2);

@@ -21,8 +21,6 @@ public class LayoutFinDelJuego {
 
     public LayoutFinDelJuego(Jugador jugadorGanador, Jugador jugadorPerdedor) {
 
-
-
         Label textoGanador = new Label("El ganador es: " + jugadorGanador.getNombre());
         textoGanador.setStyle("-fx-font-weight: bold");
 
@@ -39,7 +37,6 @@ public class LayoutFinDelJuego {
         StackPane contenedorGanador = new StackPane(rectanguloGanador, informacionGanador);
         contenedorGanador.setPadding(new Insets(10));
         contenedorGanador.setStyle("-fx-font-size: 1.5em;");
-
 
         Label textoPerdedor = new Label("El perdedor es: " + jugadorPerdedor.getNombre());
         textoPerdedor.setStyle("-fx-font-weight: bold");
@@ -59,14 +56,7 @@ public class LayoutFinDelJuego {
         contenedorPerdedor.setStyle("-fx-font-size: 1.2em;");
 
         contenedorPuntuaciones = new VBox(contenedorGanador, contenedorPerdedor);
-
     }
 
     public Pane getLayout() {return contenedorPuntuaciones;}
-
-    public void mostrarVista(Pane unosLayouts) {
-
-        unosLayouts.getChildren().forEach(element -> element.setVisible(false));
-        contenedorPuntuaciones.setVisible(true);
-    }
 }

@@ -6,6 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class EscenaMultipleChoice implements Escena {
+
     private Pane layout;
     private Pregunta pregunta;
     private ListaOpciones opcionesMostradas;

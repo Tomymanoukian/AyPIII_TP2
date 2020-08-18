@@ -19,7 +19,6 @@ public class LayoutMultipleChoice {
 
     public LayoutMultipleChoice(Pregunta pregunta, EscenaMultipleChoice escenaMultipleChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        MultipleChoice unMultipleChoice = (MultipleChoice) pregunta;
         ListaOpciones listaRespuestas = new ListaOpciones();
         StackPane contenedorOpciones = this.obtenerContenedorDeOpciones(escenaMultipleChoice.getOpcionesMostradas(), listaRespuestas);
         RespuestaEnLista respuesta = new RespuestaEnLista(listaRespuestas);

@@ -12,6 +12,7 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
     }
 
     public static VerdaderoFalsoConPenalidad recuperar(JsonObject jsonPregunta) {
+
         String consigna = jsonPregunta.get("consigna").getAsString();
         Opcion opcionCorrecta = Opcion.recuperar(jsonPregunta.getAsJsonObject("opcionCorrecta"));
         Opcion opcionIncorrecta = Opcion.recuperar(jsonPregunta.getAsJsonObject("opcionIncorrecta"));
@@ -40,6 +41,7 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
 
     @Override
     public JsonObject guardar() {
+
         JsonObject jsonVoFConPenalidad = new JsonObject();
         jsonVoFConPenalidad.addProperty("tipoDePregunta", VerdaderoFalsoConPenalidad.class.getName());
         jsonVoFConPenalidad.addProperty("consigna", consigna);

@@ -11,17 +11,18 @@ public class EscenaVerdaderoFalso implements Escena{
     private Pregunta pregunta;
 
     public EscenaVerdaderoFalso(Pregunta unaPregunta, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos){
-        pregunta = unaPregunta;
 
+        pregunta = unaPregunta;
         LayoutVerdaderoFalso layoutVerdaderoFalso = new LayoutVerdaderoFalso(pregunta, this , unJugador, manejadorDeTurnos);
         layout = layoutVerdaderoFalso.getLayout();
     }
 
     @Override
-    public Scene getEscena() { return (new Scene(layout)); }
+    public Scene getEscena() { return (new Scene(layout));}
 
     @Override
     public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
+
         Pane layout = (new LayoutVerdaderoFalso(pregunta, this, jugador, manejadorDeTurnos)).getLayout();
         manejadorDeTurnos.getStage().setScene(new Scene(layout));
     }

@@ -20,7 +20,6 @@ public class LayoutMenuBienvenida {
 
         ContenedorBotonEmpezar contenedorBotonEmpezar = new ContenedorBotonEmpezar(contenedorNombresJugadores.nombreJugador1(),
                                                     contenedorNombresJugadores.nombreJugador2(), manejadorDeTurnos);
-
         VBox contenedorInicioDeKahoot = new VBox(contenedorBienvenida.getLayout(), contenedorNombresJugadores.getLayout(), contenedorBotonEmpezar.getLayout());
 
         contenedorInicioDeKahoot.setSpacing(20);
@@ -30,10 +29,4 @@ public class LayoutMenuBienvenida {
     }
 
     public Pane getLayout(){return layout;}
-
-    public void mostrarVista(Pane unosLayouts) {
-
-        unosLayouts.getChildren().forEach(element -> element.setVisible(false));
-        layout.setVisible(true);
-    }
 }

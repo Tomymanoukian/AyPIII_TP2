@@ -17,6 +17,7 @@ public class ContenedorNombresJugadores {
     private TextField nombreJugador2;
 
     public ContenedorNombresJugadores(){
+
         Label pedirNombreJugador1 = new Label("Ingrese nombre del Jugador 1");
         nombreJugador1 = new TextField();
         Label pedirNombreJugador2 = new Label("Ingrese nombre del Jugador 2");

@@ -15,6 +15,7 @@ public class Kahoot{
     private ListaDeMultiplicadores multiplicadoresJ2;
 
     public Kahoot(Jugador unJugador, Jugador otroJugador) {
+
         jugador1 = unJugador;
         jugador2 = otroJugador;
         exclusividades = new ListaDeExclusividades();
@@ -89,6 +90,7 @@ public class Kahoot{
     }
 
     public void evaluarRespuestas(Pregunta unaPregunta) {
+
         Puntaje puntajeJ1 = new Puntaje();
         Puntaje puntajeJ2 = new Puntaje();
 
@@ -107,6 +109,7 @@ public class Kahoot{
     }
 
     public Jugador getJugadorGanador(){
+
         if( jugador1.getPuntaje().esMenorQue(jugador2.getPuntaje())){
             return jugador2;
         }
@@ -114,6 +117,7 @@ public class Kahoot{
     }
 
     public Jugador getJugadorPerdedor(){
+
         if( jugador1.getPuntaje().esMenorQue(jugador2.getPuntaje())){
             return jugador1;
         }
