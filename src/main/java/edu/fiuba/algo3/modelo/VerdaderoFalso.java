@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.OpcionNoValidaException;
 
 public abstract class VerdaderoFalso extends Pregunta {
+
     protected Opcion opcionCorrecta;
     protected Opcion opcionIncorrecta;
 
@@ -15,28 +16,28 @@ public abstract class VerdaderoFalso extends Pregunta {
     }
 
     public Opcion getOpcionVerdadera(){
-        if(opcionCorrecta.tieneLaMisma("Verdadero")){
+
+        if(opcionCorrecta.tieneLaMisma("Verdadero"))
             return opcionCorrecta;
-        }else
-        {
+        else
             return opcionIncorrecta;
-        }
     }
+
     public Opcion getOpcionFalsa(){
-        if(opcionCorrecta.tieneLaMisma("Falso")){
+
+        if(opcionCorrecta.tieneLaMisma("Falso"))
             return opcionCorrecta;
-        }else
-        {
+        else
             return opcionIncorrecta;
-        }
     }
 
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
 
-        if (!respuesta.esIgualA(opcionCorrecta) && !respuesta.esIgualA(opcionIncorrecta)) {
+        RespuestaUnica respuestaUnica = (RespuestaUnica) respuesta;
+
+        if (!respuestaUnica.esIgualA(opcionCorrecta) && !respuestaUnica.esIgualA(opcionIncorrecta))
             throw new OpcionNoValidaException();
-        }
 
         return respuesta.getPuntaje();
     }
