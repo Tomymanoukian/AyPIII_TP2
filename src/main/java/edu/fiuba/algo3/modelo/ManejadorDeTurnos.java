@@ -44,14 +44,15 @@ public class    ManejadorDeTurnos {
                 e.printStackTrace();
                 this.mostrarPrimeraPregunta();
             }
-
-
         }
     }
 
     public void mostrarSiguientePregunta(){
 
         if(pilaDePreguntas.isEmpty() && jugador2Respodio){
+
+            kahoot.evaluarRespuestas(pregunta);
+
             juegoTerminado = true;
             stage.setScene(new Scene(new LayoutPuntuaciones(kahoot.getJugadorGanador(), kahoot.getJugadorPerdedor()).getLayout()));
         }
