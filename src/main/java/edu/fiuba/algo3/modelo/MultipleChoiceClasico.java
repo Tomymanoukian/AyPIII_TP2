@@ -17,6 +17,7 @@ public class MultipleChoiceClasico extends  MultipleChoice{
     }
 
     public static MultipleChoiceClasico recuperar(JsonObject jsonPregunta) {
+
         String consigna = jsonPregunta.get("consigna").getAsString();
         ListaOpciones opcionesCorrectas = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesCorrectas"));
         ListaOpciones opcionesIncorrectas = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesIncorrectas"));
@@ -28,10 +29,13 @@ public class MultipleChoiceClasico extends  MultipleChoice{
     }
 
     public Puntaje calcularPuntajePara(Respuesta respuesta) {
+
+        RespuestaEnLista respuestaEnLista = (RespuestaEnLista) respuesta;
         Puntaje puntaje = new Puntaje(0);
-        if (respuesta.contieneLoMismo(opcionesCorrectas)) {
+
+        if (respuestaEnLista.contieneLoMismo(opcionesCorrectas))
             puntaje.establecerPuntos(1);
-        }
+
         return puntaje;
     }
 
@@ -49,6 +53,7 @@ public class MultipleChoiceClasico extends  MultipleChoice{
 
     @Override
     public JsonObject guardar() {
+
         JsonObject jsonMultipleChoiceClasico = new JsonObject();
         jsonMultipleChoiceClasico.addProperty("tipoDePregunta", MultipleChoiceClasico.class.getName());
         jsonMultipleChoiceClasico.addProperty("consigna", consigna);

@@ -23,7 +23,10 @@ public class MultipleChoiceConPenalidad extends MultipleChoice{
     }
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
-        return respuesta.calcularPuntaje();
+
+        RespuestaEnLista respuestaEnLista = (RespuestaEnLista) respuesta;
+
+        return respuestaEnLista.calcularPuntaje();
     }
 
     @Override
