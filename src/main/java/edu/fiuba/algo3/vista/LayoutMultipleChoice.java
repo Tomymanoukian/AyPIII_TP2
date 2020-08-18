@@ -17,11 +17,11 @@ public class LayoutMultipleChoice {
 
     private Pane layout;
 
-    public LayoutMultipleChoice(Pregunta pregunta, Escena escenaMultipleChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
+    public LayoutMultipleChoice(Pregunta pregunta, EscenaMultipleChoice escenaMultipleChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
         MultipleChoice unMultipleChoice = (MultipleChoice) pregunta;
         ListaOpciones listaRespuestas = new ListaOpciones();
-        StackPane contenedorOpciones = this.obtenerContenedorDeOpciones(unMultipleChoice, listaRespuestas);
+        StackPane contenedorOpciones = this.obtenerContenedorDeOpciones(escenaMultipleChoice.getOpcionesMostradas(), listaRespuestas);
         RespuestaEnLista respuesta = new RespuestaEnLista(listaRespuestas);
 
         ContenedorPrimerReglon contenedorPrimerRenglon = new ContenedorPrimerReglon(pregunta, escenaMultipleChoice, jugador, manejadorDeTurnos, respuesta);
@@ -35,25 +35,23 @@ public class LayoutMultipleChoice {
 
     public Pane getLayout() {return layout;}
 
-    private StackPane obtenerContenedorDeOpciones(MultipleChoice unMultipleChoice, ListaOpciones listaRespuestas){
+    private StackPane obtenerContenedorDeOpciones(ListaOpciones opcionesMostradas, ListaOpciones listaRespuestas){
 
         VBox checkBoxDeOpciones = new VBox();
         checkBoxDeOpciones.setAlignment(Pos.CENTER);
 
-        int cantidadDeOpcionesAMostrar = unMultipleChoice.getOpcionesCorrectas().cantidadDeOpciones() + unMultipleChoice.getOpcionesIncorrectas().cantidadDeOpciones();
-
-        ListaOpciones opciones = unMultipleChoice.getTodasLasOpcionesMezcladas();
+        int cantidadDeOpcionesAMostrar = opcionesMostradas.cantidadDeOpciones();
 
         for (int i = 0; i < cantidadDeOpcionesAMostrar; i++) {
 
-            CheckBox checkBox = new CheckBox(opciones.obtener(i).getOpcion());
+            CheckBox checkBox = new CheckBox(opcionesMostradas.obtener(i).getOpcion());
             checkBox.setPadding(new Insets(5));
 
             checkBoxDeOpciones.getChildren().add(checkBox);
 
             checkBox.setIndeterminate(false);
-            String opcion = opciones.obtener(i).getOpcion();
-            Puntaje puntaje = opciones.obtener(i).getPuntaje();
+            String opcion = opcionesMostradas.obtener(i).getOpcion();
+            Puntaje puntaje = opcionesMostradas.obtener(i).getPuntaje();
 
             EventHandler<ActionEvent> event = e -> {
 
