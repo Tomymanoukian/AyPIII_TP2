@@ -44,14 +44,15 @@ public class GroupChoice extends Pregunta{
 
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
+
+        RespuestaDeGrupos respuestaDeGrupos = (RespuestaDeGrupos) respuesta;
+
         Puntaje puntaje = new Puntaje(0);
 
-        if(respuesta.grupoAContieneLoMismo(opcionesGrupoA) && respuesta.grupoBContieneLoMismo(opcionesGrupoB)){
+        if(respuestaDeGrupos.grupoAContieneLoMismo(opcionesGrupoA) && respuestaDeGrupos.grupoBContieneLoMismo(opcionesGrupoB)){
             puntaje.establecerPuntos(1);
         }
         return puntaje;
-
-        //unJugador.modificarPuntos(unaRespuesta.calcularPuntaje(opcionesGrupoA, opcionesGrupoB));
     }
 
     public ListaOpciones getOpcionesGrupoA() { return opcionesGrupoA; }
