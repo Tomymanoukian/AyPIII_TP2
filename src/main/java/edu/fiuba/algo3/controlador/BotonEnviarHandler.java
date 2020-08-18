@@ -28,6 +28,6 @@ public class BotonEnviarHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         tiempo.stop();
         manejadorDeTurnos.getKahoot().setRespuestaJugador(respuesta, jugador);
-        manejadorDeTurnos.mostrarSiguientePregunta();
+        manejadorDeTurnos.mostrarPuntos();
     }
 }

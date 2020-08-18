@@ -19,46 +19,46 @@ public class LayoutFinDelJuego {
 
     private Pane contenedorPuntuaciones;
 
-    public LayoutFinDelJuego(Jugador jugadorGanador, Jugador jugadorPerdedor) {
+    public LayoutFinDelJuego(Jugador unJugador, Jugador otroJugador) {
 
 
 
-        Label textoGanador = new Label("El ganador es: " + jugadorGanador.getNombre());
-        textoGanador.setStyle("-fx-font-weight: bold");
+        Label textoPrimerJugador = new Label("El jugador: " + unJugador.getNombre());
+        textoPrimerJugador.setStyle("-fx-font-weight: bold");
 
-        Label puntuacionGanador = new Label("Su puntuacion fue: " + jugadorGanador.getPuntaje().getPuntos());
-        puntuacionGanador.setStyle("-fx-font-weight: bold");
+        Label puntuacionPrimerJugador = new Label("obtuvo: " + unJugador.getPuntaje().getPuntos() + " puntos");
+        puntuacionPrimerJugador.setStyle("-fx-font-weight: bold");
 
-        Rectangle rectanguloGanador = new Rectangle(20, 20, 300, 100);
-        rectanguloGanador.setFill(Color.LAVENDER);
+        Rectangle rectanguloPrimerJugador = new Rectangle(20, 20, 300, 100);
+        rectanguloPrimerJugador.setFill(Color.LAVENDER);
 
-        VBox informacionGanador = new VBox(textoGanador, puntuacionGanador);
-        informacionGanador.setSpacing(10);
-        informacionGanador.setAlignment(Pos.CENTER);
+        VBox informacionPrimerJugador = new VBox(textoPrimerJugador, puntuacionPrimerJugador);
+        informacionPrimerJugador.setSpacing(10);
+        informacionPrimerJugador.setAlignment(Pos.CENTER);
 
-        StackPane contenedorGanador = new StackPane(rectanguloGanador, informacionGanador);
-        contenedorGanador.setPadding(new Insets(10));
-        contenedorGanador.setStyle("-fx-font-size: 1.5em;");
+        StackPane contenedorPrimerJugador = new StackPane(rectanguloPrimerJugador, informacionPrimerJugador);
+        contenedorPrimerJugador.setPadding(new Insets(10));
+        contenedorPrimerJugador.setStyle("-fx-font-size: 1.5em;");
 
 
-        Label textoPerdedor = new Label("El perdedor es: " + jugadorPerdedor.getNombre());
-        textoPerdedor.setStyle("-fx-font-weight: bold");
+        Label textoSegundoJugador = new Label("El jugador: " + otroJugador.getNombre());
+        textoSegundoJugador.setStyle("-fx-font-weight: bold");
 
-        Label puntuacionPerdedor = new Label("Su puntuacion fue: " + jugadorPerdedor.getPuntaje().getPuntos());
-        puntuacionPerdedor.setStyle("-fx-font-weight: bold");
+        Label puntuacionSegundoJugador = new Label("obtuvo: " + otroJugador.getPuntaje().getPuntos() + " puntos");
+        puntuacionSegundoJugador.setStyle("-fx-font-weight: bold");
 
-        Rectangle rectanguloPerdedor= new Rectangle(20, 20, 300, 100);
-        rectanguloPerdedor.setFill(Color.LIGHTGRAY);
+        Rectangle rectanguloSegundoJugador= new Rectangle(20, 20, 300, 100);
+        rectanguloSegundoJugador.setFill(Color.LIGHTGRAY);
 
-        VBox informacionPerdedor = new VBox(textoPerdedor, puntuacionPerdedor);
-        informacionPerdedor.setPadding(new Insets(5));
-        informacionPerdedor.setAlignment(Pos.CENTER);
+        VBox informacionSegundoJugador = new VBox(textoSegundoJugador, puntuacionSegundoJugador);
+        informacionSegundoJugador.setPadding(new Insets(5));
+        informacionSegundoJugador.setAlignment(Pos.CENTER);
 
-        StackPane contenedorPerdedor = new StackPane(rectanguloPerdedor, informacionPerdedor);
-        contenedorPerdedor.setPadding(new Insets(10));
-        contenedorPerdedor.setStyle("-fx-font-size: 1.2em;");
+        StackPane contenedorSegundoJugador = new StackPane(rectanguloSegundoJugador, informacionSegundoJugador);
+        contenedorSegundoJugador.setPadding(new Insets(10));
+        contenedorSegundoJugador.setStyle("-fx-font-size: 1.5em;");
 
-        contenedorPuntuaciones = new VBox(contenedorGanador, contenedorPerdedor);
+        contenedorPuntuaciones = new VBox(contenedorPrimerJugador, contenedorSegundoJugador);
 
     }
 
