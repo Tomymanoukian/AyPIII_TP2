@@ -14,7 +14,6 @@ public class RespuestaUnica extends Respuesta {
         return opcionSeleccionada;
     }
 
-    @Override
     public boolean esIgualA(Opcion opcion) {
         return opcionSeleccionada.esIgualA(opcion);
     }

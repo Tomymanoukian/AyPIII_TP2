@@ -10,10 +10,6 @@ public class Respuesta {
         return false;
     }
 
-    public boolean esIgualA(Opcion opcion) {
-        return false;
-    }
-
     public Puntaje getPuntaje() {
         return new Puntaje(0);
     }
