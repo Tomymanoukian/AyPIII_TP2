@@ -25,12 +25,4 @@ public class Respuesta {
     public Puntaje getPuntaje() {
         return new Puntaje(0);
     }
-
-    public boolean grupoAContieneLoMismo(ListaOpciones opcionesGrupoA) {
-        return false;
-    }
-
-    public boolean grupoBContieneLoMismo(ListaOpciones opcionesGrupoB) {
-        return false;
-    }
 }
