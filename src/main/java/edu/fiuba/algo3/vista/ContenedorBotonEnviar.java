@@ -19,6 +19,7 @@ public class ContenedorBotonEnviar {
     private HBox layout;
 
     public ContenedorBotonEnviar(Jugador jugador, Respuesta respuesta, ManejadorDeTurnos manejadorDeTurnos, Timeline tiempo) {
+
         Button enviar = new Button("Enviar");
         enviar.setStyle("-fx-border-color: #A8E3E7; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
 

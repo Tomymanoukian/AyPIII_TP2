@@ -22,6 +22,7 @@ public class EscenaVerdaderoFalso implements Escena{
 
     @Override
     public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
+
         Pane layout = (new LayoutVerdaderoFalso(pregunta, this, jugador, manejadorDeTurnos)).getLayout();
         manejadorDeTurnos.getStage().setScene(new Scene(layout));
     }

@@ -37,7 +37,6 @@ public class ContenedorConsigna {
 
         layout = new VBox(contenedorTipoDePregunta, contenedorConsinga);
         layout.setPadding(new Insets(10));
-
     }
 
     public VBox getLayout() {
