@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class RespuestaDeGrupos extends Respuesta {
+public class RespuestaDeGrupos implements Respuesta {
 
     private final ListaOpciones opcionesSeleccionadasGrupoA;
     private final ListaOpciones opcionesSeleccionadasGrupoB;
