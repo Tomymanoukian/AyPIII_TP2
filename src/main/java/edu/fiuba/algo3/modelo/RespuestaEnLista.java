@@ -20,7 +20,6 @@ public class RespuestaEnLista extends Respuesta {
         return opcionesSeleccionadas.contieneLoMismo(opciones);
     }
 
-    @Override
     public boolean contieneAlguna(ListaOpciones opciones) {
         return opcionesSeleccionadas.contieneAlguna(opciones);
     }

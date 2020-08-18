@@ -10,9 +10,9 @@ public class Respuesta {
         return false;
     }
 
-    public boolean contieneAlguna(ListaOpciones opciones) {
+    /*public boolean contieneAlguna(ListaOpciones opciones) {
         return false;
-    }
+    }*/
 
     public boolean esIgual(ListaOpciones listaDeOpciones) {
         return false;
