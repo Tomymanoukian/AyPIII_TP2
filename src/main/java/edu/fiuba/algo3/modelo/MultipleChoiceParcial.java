@@ -24,11 +24,14 @@ public class MultipleChoiceParcial extends MultipleChoice{
     }
 
     @Override
-    public Puntaje evaluarRespuestaPara(Respuesta unaRespuestaEnLista) {
-        if(unaRespuestaEnLista.contieneAlguna(opcionesIncorrectas)){
+    public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
+
+        RespuestaEnLista respuestaEnLista = (RespuestaEnLista) respuesta;
+
+        if(respuestaEnLista.contieneAlguna(opcionesIncorrectas)){
             return new Puntaje(0);
         }
-        return unaRespuestaEnLista.calcularPuntaje();
+        return respuestaEnLista.calcularPuntaje();
     }
 
     @Override
