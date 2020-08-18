@@ -8,10 +8,15 @@ import javafx.stage.Stage;
 public class EscenaMultipleChoice implements Escena {
     private Pane layout;
     private Pregunta pregunta;
+    private ListaOpciones opcionesMostradas;
 
     public EscenaMultipleChoice(Pregunta unaPregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
+        MultipleChoice multipleChoice = (MultipleChoice) unaPregunta;
         pregunta = unaPregunta;
+        opcionesMostradas = new ListaOpciones(multipleChoice.getOpcionesCorrectas());
+        opcionesMostradas.agregarTodo(multipleChoice.getOpcionesIncorrectas());
+        opcionesMostradas.desordenar();
 
         LayoutMultipleChoice layoutMultipleChoice = new LayoutMultipleChoice(pregunta, this, jugador, manejadorDeTurnos);
         layout = layoutMultipleChoice.getLayout();
@@ -21,6 +26,8 @@ public class EscenaMultipleChoice implements Escena {
     public Scene getEscena() {
         return (new Scene(layout));
     }
+
+    public ListaOpciones getOpcionesMostradas() {return opcionesMostradas;}
 
     @Override
     public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {

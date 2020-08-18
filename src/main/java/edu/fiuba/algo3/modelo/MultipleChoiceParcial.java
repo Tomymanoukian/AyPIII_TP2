@@ -4,8 +4,6 @@ import com.google.gson.JsonObject;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 
 public class MultipleChoiceParcial extends MultipleChoice{
-    private final ListaOpciones opcionesCorrectas;
-    private final ListaOpciones opcionesIncorrectas;
 
     public MultipleChoiceParcial(String unaConsigna, ListaOpciones unasOpcionesCorrectas, ListaOpciones unasOpcionesIncorrectas) {
         super();
@@ -31,24 +29,6 @@ public class MultipleChoiceParcial extends MultipleChoice{
             return new Puntaje(0);
         }
         return unaRespuestaEnLista.calcularPuntaje();
-    }
-
-    public ListaOpciones getOpcionesCorrectas() {
-        return opcionesCorrectas;
-    }
-
-    public ListaOpciones getOpcionesIncorrectas() {
-        return opcionesIncorrectas;
-    }
-
-    @Override
-    public ListaOpciones getTodasLasOpcionesMezcladas() {
-        ListaOpciones todasLasOpciones = new ListaOpciones();
-        todasLasOpciones.agregarTodo(opcionesCorrectas);
-        todasLasOpciones.agregarTodo(opcionesIncorrectas);
-        todasLasOpciones.desordenar();
-
-        return todasLasOpciones;
     }
 
     @Override
