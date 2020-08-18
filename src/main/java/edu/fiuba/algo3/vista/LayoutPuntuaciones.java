@@ -1,14 +1,17 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonEnviarHandler;
+import edu.fiuba.algo3.controlador.BotonSiguienteEventHandler;
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.ListaOpciones;
-import edu.fiuba.algo3.modelo.Opcion;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
+import edu.fiuba.algo3.modelo.Pregunta;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -19,54 +22,34 @@ public class LayoutPuntuaciones {
 
     private Pane contenedorPuntuaciones;
 
-    public LayoutPuntuaciones(Jugador jugadorGanador, Jugador jugadorPerdedor) {
+    public LayoutPuntuaciones(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos){
+
+        Label nombre = new Label("Actualmente los puntos de: " + jugador.getNombre() );
+        Label puntos = new Label("son: " + jugador.getPuntaje().getPuntos());
+
+        Rectangle rectangulo = new Rectangle(20, 20, 300, 100);
+        rectangulo.setFill(Color.LAVENDER);
+
+        VBox informacion = new VBox(nombre, puntos);
+        informacion.setSpacing(10);
+        informacion.setAlignment(Pos.CENTER);
+
+        StackPane contenedor = new StackPane(rectangulo, informacion);
+        contenedor.setPadding(new Insets(10));
+        contenedor.setStyle("-fx-font-size: 1.3em;");
+
+        Button enviar = new Button("Siguiente");
+        enviar.setStyle("-fx-border-color: #A8E3E7; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
+
+        BotonSiguienteEventHandler botonEnviarHandler = new BotonSiguienteEventHandler(manejadorDeTurnos);
+        enviar.setOnAction(botonEnviarHandler);
 
 
 
-        Label textoGanador = new Label("El ganador es: " + jugadorGanador.getNombre());
-        textoGanador.setStyle("-fx-font-weight: bold");
-
-        Label puntuacionGanador = new Label("Su puntuacion fue: " + jugadorGanador.getPuntaje().getPuntos());
-        puntuacionGanador.setStyle("-fx-font-weight: bold");
-
-        Rectangle rectanguloGanador = new Rectangle(20, 20, 300, 100);
-        rectanguloGanador.setFill(Color.LAVENDER);
-
-        VBox informacionGanador = new VBox(textoGanador, puntuacionGanador);
-        informacionGanador.setSpacing(10);
-        informacionGanador.setAlignment(Pos.CENTER);
-
-        StackPane contenedorGanador = new StackPane(rectanguloGanador, informacionGanador);
-        contenedorGanador.setPadding(new Insets(10));
-        contenedorGanador.setStyle("-fx-font-size: 1.5em;");
-
-
-        Label textoPerdedor = new Label("El perdedor es: " + jugadorPerdedor.getNombre());
-        textoPerdedor.setStyle("-fx-font-weight: bold");
-
-        Label puntuacionPerdedor = new Label("Su puntuacion fue: " + jugadorPerdedor.getPuntaje().getPuntos());
-        puntuacionPerdedor.setStyle("-fx-font-weight: bold");
-
-        Rectangle rectanguloPerdedor= new Rectangle(20, 20, 300, 100);
-        rectanguloPerdedor.setFill(Color.LIGHTGRAY);
-
-        VBox informacionPerdedor = new VBox(textoPerdedor, puntuacionPerdedor);
-        informacionPerdedor.setPadding(new Insets(5));
-        informacionPerdedor.setAlignment(Pos.CENTER);
-
-        StackPane contenedorPerdedor = new StackPane(rectanguloPerdedor, informacionPerdedor);
-        contenedorPerdedor.setPadding(new Insets(10));
-        contenedorPerdedor.setStyle("-fx-font-size: 1.2em;");
-
-        contenedorPuntuaciones = new VBox(contenedorGanador, contenedorPerdedor);
+        contenedorPuntuaciones = new VBox(contenedor, enviar);
 
     }
 
     public Pane getLayout() {return contenedorPuntuaciones;}
 
-    public void mostrarVista(Pane unosLayouts) {
-
-        unosLayouts.getChildren().forEach(element -> element.setVisible(false));
-        contenedorPuntuaciones.setVisible(true);
-    }
 }

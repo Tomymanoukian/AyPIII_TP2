@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.PreguntaCorruptaException;
+import edu.fiuba.algo3.vista.LayoutFinDelJuego;
 import edu.fiuba.algo3.vista.LayoutPuntuaciones;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Stack;
 
 public class    ManejadorDeTurnos {
@@ -31,7 +31,7 @@ public class    ManejadorDeTurnos {
     public void mostrarPrimeraPregunta () {
 
         if(pilaDePreguntas.isEmpty()){
-            stage.setScene(new Scene(new LayoutPuntuaciones(kahoot.getJugadorGanador(), kahoot.getJugadorPerdedor()).getLayout()));
+            stage.setScene(new Scene(new LayoutFinDelJuego(kahoot.getJugadorGanador(), kahoot.getJugadorPerdedor()).getLayout()));
         }
 
         else {
@@ -44,16 +44,27 @@ public class    ManejadorDeTurnos {
                 e.printStackTrace();
                 this.mostrarPrimeraPregunta();
             }
-
-
         }
     }
+
+
+    /*public void mostrarPuntos(){
+        if(jugador2Respodio){
+            //stage.setScene(new Scene(new LayoutPuntuaciones(jugador2, jugador2 )));
+            stage.setScene(new Scene(new LayoutPuntuaciones(jugador2, this));
+
+        }
+        else{
+            //stage.setScene(new Scene(new LayoutPuntuaciones(jugador1, this )));
+            stage.setScene(new Scene(new LayoutFinDelJuego(kahoot.getJugadorGanador(), kahoot.getJugadorPerdedor()).getLayout()));
+        }
+    }*/
 
     public void mostrarSiguientePregunta(){
 
         if(pilaDePreguntas.isEmpty() && jugador2Respodio){
             juegoTerminado = true;
-            stage.setScene(new Scene(new LayoutPuntuaciones(kahoot.getJugadorGanador(), kahoot.getJugadorPerdedor()).getLayout()));
+            stage.setScene(new Scene(new LayoutFinDelJuego(kahoot.getJugadorGanador(), kahoot.getJugadorPerdedor()).getLayout()));
         }
 
         else if(jugador2Respodio && !juegoTerminado) {
