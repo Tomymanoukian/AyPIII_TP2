@@ -22,7 +22,6 @@ public class GroupChoice extends Pregunta{
     }
 
     public GroupChoice(String unaConsigna, String unNombreGrupoA, ListaOpciones unasOpcionesGrupoA, String unNombreGrupoB, ListaOpciones unasOpcionesGrupoB) {
-
         super();
         if ((unasOpcionesGrupoA.cantidadDeOpciones() + unasOpcionesGrupoB.cantidadDeOpciones()) < 2 ||
                 (unasOpcionesGrupoA.cantidadDeOpciones() + unasOpcionesGrupoB.cantidadDeOpciones()) > 6) {
@@ -36,6 +35,7 @@ public class GroupChoice extends Pregunta{
     }
 
     public static GroupChoice recuperar(JsonObject jsonPregunta) {
+
         String consigna = jsonPregunta.get("consigna").getAsString();
         ListaOpciones opcionesGrupoA = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesGrupoA"));
         ListaOpciones opcionesGrupoB = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesGrupoB"));
@@ -71,6 +71,7 @@ public class GroupChoice extends Pregunta{
 
     @Override
     public JsonObject guardar() {
+
         JsonObject jsonGroupChoice = new JsonObject();
         jsonGroupChoice.addProperty("tipoDePregunta", GroupChoice.class.getName());
         jsonGroupChoice.addProperty("consigna", consigna);
