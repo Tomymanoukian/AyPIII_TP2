@@ -10,7 +10,6 @@ public class RespuestaEnLista extends Respuesta {
         opcionesSeleccionadas = unasOpcionesSeleccionadas;
     }
 
-    @Override
     public Puntaje calcularPuntaje() {
         return opcionesSeleccionadas.calcularPuntaje();
     }
