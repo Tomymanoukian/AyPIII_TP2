@@ -31,11 +31,14 @@ public class LayoutGroupChoice {
 
         ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
 
+        HBox contenedorGrupos = new HBox(new Label("Grupo"), new Label (groupChoice.getNombreGrupoA()), new Label (groupChoice.getNombreGrupoB()));
+        contenedorGrupos.setAlignment(Pos.CENTER);
+
         ContenedorBotonEnviarGroupChoice contenedorBotonEnviarGroupChoice = new ContenedorBotonEnviarGroupChoice(jugador, listaOpciones, listaHBox, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
 
         //Se crea el layout final
 
-        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviarGroupChoice.getLayout());
+        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorGrupos, contenedorOpciones, contenedorBotonEnviarGroupChoice.getLayout());
         layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
