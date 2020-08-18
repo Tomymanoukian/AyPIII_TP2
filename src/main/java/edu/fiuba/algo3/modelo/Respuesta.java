@@ -6,10 +6,6 @@ public class Respuesta {
         return new Puntaje(0);
     }
 
-    public boolean contieneLoMismo(ListaOpciones opciones) {
-        return false;
-    }
-
     public Puntaje getPuntaje() {
         return new Puntaje(0);
     }

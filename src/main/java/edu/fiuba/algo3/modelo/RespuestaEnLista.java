@@ -15,7 +15,6 @@ public class RespuestaEnLista extends Respuesta {
         return opcionesSeleccionadas.calcularPuntaje();
     }
 
-    @Override
     public boolean contieneLoMismo(ListaOpciones opciones) {
         return opcionesSeleccionadas.contieneLoMismo(opciones);
     }
