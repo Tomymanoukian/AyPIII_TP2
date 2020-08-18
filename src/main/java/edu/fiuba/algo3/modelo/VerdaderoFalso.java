@@ -39,6 +39,6 @@ public abstract class VerdaderoFalso extends Pregunta {
         if (!respuestaUnica.esIgualA(opcionCorrecta) && !respuestaUnica.esIgualA(opcionIncorrecta))
             throw new OpcionNoValidaException();
 
-        return respuesta.getPuntaje();
+        return respuestaUnica.getPuntaje();
     }
 }
