@@ -10,6 +10,7 @@ public abstract class MultipleChoice extends Pregunta {
     public ListaOpciones getOpcionesIncorrectas() {return opcionesIncorrectas;}
 
     public ListaOpciones getTodasLasOpcionesMezcladas(){
+
         ListaOpciones todasLasOpciones = new ListaOpciones();
         todasLasOpciones.agregarTodo(opcionesCorrectas);
         todasLasOpciones.agregarTodo(opcionesIncorrectas);
