@@ -18,14 +18,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class LayoutPuntuaciones {
+public class LayoutPuntuaciones{
 
     private Pane contenedorPuntuaciones;
 
     public LayoutPuntuaciones(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos){
 
-        Label nombre = new Label("Actualmente los puntos de: " + jugador.getNombre() );
+        /*Label nombre = new Label("Actualmente los puntos de: " + jugador.getNombre() );
+        nombre.setStyle("-fx-font-weight: bold");
         Label puntos = new Label("son: " + jugador.getPuntaje().getPuntos());
+        puntos.setStyle("-fx-font-weight: bold");
 
         Rectangle rectangulo = new Rectangle(20, 20, 300, 100);
         rectangulo.setFill(Color.LAVENDER);
@@ -34,17 +36,34 @@ public class LayoutPuntuaciones {
         informacion.setSpacing(10);
         informacion.setAlignment(Pos.CENTER);
 
-        StackPane contenedor = new StackPane(rectangulo, informacion);
-        contenedor.setPadding(new Insets(10));
-        contenedor.setStyle("-fx-font-size: 1.3em;");
+        StackPane contenedorInformacion = new StackPane(rectangulo, informacion);
+        contenedorInformacion.setPadding(new Insets(10));
+        contenedorInformacion.setStyle("-fx-font-size: 1.3em;");
+        */
+
+        Label texto = new Label("Es el turno de: " + jugador.getNombre());
+        texto.setStyle("-fx-font-weight: bold");
+
+        Rectangle rectanguloTexto = new Rectangle(20, 20, 300, 100);
+        rectanguloTexto.setFill(Color.LAVENDER);
+
+        StackPane contenedorTexto = new StackPane(rectanguloTexto, texto);
+        contenedorTexto.setPadding(new Insets(10));
+        contenedorTexto.setStyle("-fx-font-size: 1.3em;");
 
         Button enviar = new Button("Siguiente");
         enviar.setStyle("-fx-border-color: #A8E3E7; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
 
-        BotonSiguienteEventHandler botonEnviarHandler = new BotonSiguienteEventHandler(manejadorDeTurnos);
-        enviar.setOnAction(botonEnviarHandler);
+        BotonSiguienteEventHandler botonSiguiente = new BotonSiguienteEventHandler(manejadorDeTurnos);
+        enviar.setOnAction(botonSiguiente);
 
-        contenedorPuntuaciones = new VBox(contenedor, enviar);
+        VBox contenedorBoton = new VBox(enviar);
+        contenedorBoton.setPadding(new Insets(50));
+        contenedorBoton.setAlignment(Pos.BOTTOM_RIGHT);
+
+        contenedorPuntuaciones = new VBox(contenedorTexto, contenedorBoton);
+        contenedorPuntuaciones.setMinWidth(150);
+        contenedorPuntuaciones.setMinHeight(250);
     }
 
     public Pane getLayout() {return contenedorPuntuaciones;}
