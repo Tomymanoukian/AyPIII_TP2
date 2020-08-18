@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 
 import java.util.Stack;
 
-public class    ManejadorDeTurnos {
+public class ManejadorDeTurnos {
+
     private Stack<Pregunta> pilaDePreguntas ;
     private Jugador jugador1;
     private Jugador jugador2;
@@ -19,6 +20,7 @@ public class    ManejadorDeTurnos {
     private Stage stage;
 
     public ManejadorDeTurnos(Stack<Pregunta> pilaDePreguntas, Jugador jugador1, Jugador jugador2, Kahoot kahoot, Stage stage){
+
         this.pilaDePreguntas = pilaDePreguntas;
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
@@ -47,7 +49,6 @@ public class    ManejadorDeTurnos {
         }
     }
 
-
     public void mostrarPuntos(){
         if(jugador2Respodio){
             stage.setScene(new Scene(new LayoutPuntuaciones(jugador1, this).getLayout()));
@@ -56,7 +57,7 @@ public class    ManejadorDeTurnos {
             stage.setScene(new Scene(new LayoutPuntuaciones(jugador2, this ).getLayout()));
         }
     }
-
+  
     public void mostrarSiguientePregunta(){
 
         if(pilaDePreguntas.isEmpty() && jugador2Respodio){
@@ -70,11 +71,12 @@ public class    ManejadorDeTurnos {
         else if(jugador2Respodio && !juegoTerminado) {
 
             kahoot.evaluarRespuestas(pregunta);
-
             pregunta = pilaDePreguntas.pop();
+
             try {
                 stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
-            } catch (PreguntaCorruptaException e) {
+            }
+            catch (PreguntaCorruptaException e) {
                 e.printStackTrace();
                 this.mostrarSiguientePregunta();
             }
@@ -85,7 +87,8 @@ public class    ManejadorDeTurnos {
             jugador2Respodio = true;
             try {
                 stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador2, this));
-            } catch (PreguntaCorruptaException e) {
+            }
+            catch (PreguntaCorruptaException e) {
                 e.printStackTrace();
                 System.exit(1);
             }

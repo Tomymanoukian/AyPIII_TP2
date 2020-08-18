@@ -17,6 +17,7 @@ public class OrderedChoice extends Pregunta {
     }
 
     public static OrderedChoice recuperar(JsonObject jsonPregunta) {
+
         String consigna = jsonPregunta.get("consigna").getAsString();
         ListaOpciones opcionesOrdenadas = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesOrdenadas"));
         return new OrderedChoice(consigna, opcionesOrdenadas);
@@ -42,6 +43,7 @@ public class OrderedChoice extends Pregunta {
     }
 
     public ListaOpciones getOpcionesDesordenadas() {
+
         ListaOpciones opcionesDesordenadas = new ListaOpciones(opcionesOrdenadas);
         opcionesDesordenadas.desordenar();
         return opcionesDesordenadas;
@@ -65,6 +67,7 @@ public class OrderedChoice extends Pregunta {
 
     @Override
     public JsonObject guardar() {
+
         JsonObject jsonOrderedChoice = new JsonObject();
         jsonOrderedChoice.addProperty("tipoDePregunta", OrderedChoice.class.getName());
         jsonOrderedChoice.addProperty("consigna", consigna);

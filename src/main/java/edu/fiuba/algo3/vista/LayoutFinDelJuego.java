@@ -21,10 +21,9 @@ public class LayoutFinDelJuego {
 
     public LayoutFinDelJuego(Jugador unJugador, Jugador otroJugador) {
 
-
-
         Label textoPrimerJugador = new Label("El jugador: " + unJugador.getNombre());
         textoPrimerJugador.setStyle("-fx-font-weight: bold");
+
 
         Label puntuacionPrimerJugador = new Label("obtuvo: " + unJugador.getPuntaje().getPuntos() + " puntos");
         puntuacionPrimerJugador.setStyle("-fx-font-weight: bold");
@@ -39,7 +38,6 @@ public class LayoutFinDelJuego {
         StackPane contenedorPrimerJugador = new StackPane(rectanguloPrimerJugador, informacionPrimerJugador);
         contenedorPrimerJugador.setPadding(new Insets(10));
         contenedorPrimerJugador.setStyle("-fx-font-size: 1.5em;");
-
 
         Label textoSegundoJugador = new Label("El jugador: " + otroJugador.getNombre());
         textoSegundoJugador.setStyle("-fx-font-weight: bold");
@@ -63,10 +61,4 @@ public class LayoutFinDelJuego {
     }
 
     public Pane getLayout() {return contenedorPuntuaciones;}
-
-    public void mostrarVista(Pane unosLayouts) {
-
-        unosLayouts.getChildren().forEach(element -> element.setVisible(false));
-        contenedorPuntuaciones.setVisible(true);
-    }
 }

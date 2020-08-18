@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.vista.EscenaOrderedChoice;
+import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import edu.fiuba.algo3.vista.LayoutOrderedChoice;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,12 +15,16 @@ public class BotonSubirRespuestaHandler implements EventHandler<ActionEvent> {
     private EscenaOrderedChoice escena;
     private Jugador jugador;
     private ManejadorDeTurnos manejadorDeTurnos;
+    private EtiquetaTiempo etiquetaTiempo;
 
-    public BotonSubirRespuestaHandler (int unaPosicion, EscenaOrderedChoice unaEscena, Jugador unJugador, ManejadorDeTurnos unManejadorDeTurnos) {
+    public BotonSubirRespuestaHandler (int unaPosicion, EscenaOrderedChoice unaEscena, Jugador unJugador, ManejadorDeTurnos unManejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
+
         posicion = unaPosicion;
         escena = unaEscena;
         jugador = unJugador;
         manejadorDeTurnos = unManejadorDeTurnos;
+        etiquetaTiempo = unaEtiquetaTiempo;
+
     }
 
     @Override
@@ -29,6 +34,6 @@ public class BotonSubirRespuestaHandler implements EventHandler<ActionEvent> {
         escena.getOpcionesMostradas().establecer(posicion, escena.getOpcionesMostradas().obtener(posicion-1));
         escena.getOpcionesMostradas().establecer(posicion-1, opcionVaso);
 
-        escena.actualizar(jugador, manejadorDeTurnos);
+        escena.actualizar(jugador, manejadorDeTurnos, etiquetaTiempo);
     }
 }

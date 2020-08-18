@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.excepciones.JugadorSinNombreException;
 import java.util.Stack;
 
 public class Jugador {
+
     private Puntaje puntaje;
     private String nombre;
     private Stack <Multiplicador> multiplicadoresX2;
@@ -13,6 +14,7 @@ public class Jugador {
     private Stack <Exclusividad> exclusividades;
 
     public Jugador(String unNombre) {
+
         if (unNombre.equals("")) {
             throw new JugadorSinNombreException();
         }
@@ -38,11 +40,9 @@ public class Jugador {
         return nombre;
     }
 
-
     public void sumarPuntos(Puntaje unPuntaje) {
         puntaje.sumarPuntos(unPuntaje);
     }
-
 
     public void setNombre(String unNombre) {
         nombre = unNombre;

@@ -5,11 +5,13 @@ import com.google.gson.JsonObject;
 public class VerdaderoFalsoClasico extends VerdaderoFalso {
 
     public static VerdaderoFalsoClasico recuperar(JsonObject jsonPregunta) {
+
         String consigna = jsonPregunta.get("consigna").getAsString();
         Opcion opcionCorrecta = Opcion.recuperar(jsonPregunta.getAsJsonObject("opcionCorrecta"));
         Opcion opcionIncorrecta = Opcion.recuperar(jsonPregunta.getAsJsonObject("opcionIncorrecta"));
         return new VerdaderoFalsoClasico(consigna, opcionCorrecta, opcionIncorrecta);
     }
+
     private VerdaderoFalsoClasico(String unaConsigna, Opcion unaOpcionCorrecta, Opcion unaOpcionIncorrecta) {
 
         consigna = unaConsigna;
@@ -39,6 +41,7 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
 
     @Override
     public JsonObject guardar() {
+
         JsonObject jsonVoFClasico = new JsonObject();
         jsonVoFClasico.addProperty("tipoDePregunta",VerdaderoFalsoClasico.class.getName());
         jsonVoFClasico.addProperty("consigna",consigna);

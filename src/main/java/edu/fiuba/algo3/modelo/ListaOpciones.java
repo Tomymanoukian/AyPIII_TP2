@@ -17,21 +17,26 @@ public class ListaOpciones {
     }
 
     public ListaOpciones(List<Opcion> unaLista) {
+
         listaOpciones = new ArrayList<>();
         listaOpciones.addAll(unaLista);
     }
 
     public ListaOpciones(ListaOpciones unaListaDeRespuestas) {
+
         listaOpciones = new ArrayList<>();
         listaOpciones.addAll(unaListaDeRespuestas.obtenerLista());
     }
 
     public static ListaOpciones recuperar(JsonArray jsonOpciones) {
+
         ListaOpciones opciones = new ListaOpciones();
+
         for (JsonElement jsonOpcion : jsonOpciones) {
             Opcion opcion = Opcion.recuperar(jsonOpcion.getAsJsonObject());
             opciones.agregar(opcion);
         }
+
         return opciones;
     }
 
@@ -65,6 +70,7 @@ public class ListaOpciones {
     }
 
     public int calculoDeCoincidencias(List<Opcion> otraLista) {
+
         int coincidencias = 0;
         Iterator<Opcion> iterador1 = otraLista.iterator();
         Iterator<Opcion> iterador2 = listaOpciones.iterator();
@@ -73,7 +79,9 @@ public class ListaOpciones {
             Opcion otraOpcion = iterador1.next();
 
             for (int j = 0; j < listaOpciones.size(); j++) {
+
                 Opcion opcion = iterador2.next();
+
                 if (opcion.getOpcion().equals(otraOpcion.getOpcion())) {
                     coincidencias++;
                 }
@@ -107,6 +115,7 @@ public class ListaOpciones {
     }
 
     public Puntaje calcularPuntaje() {
+
         Puntaje puntaje = new Puntaje();
 
         for (Opcion opcion : listaOpciones) {
@@ -120,18 +129,22 @@ public class ListaOpciones {
     }
 
     public void eliminar(String opcionAEliminar) {
+
         Opcion opcion = this.obtenerOpcionDe(opcionAEliminar);
+
         if (opcion != null) {
             listaOpciones.remove(opcion);
         }
     }
 
     public Opcion obtenerOpcionDe(String opcionBuscada){
+
         Iterator<Opcion> iterador = listaOpciones.iterator();
         boolean contiene = false;
         Opcion opcion = null;
 
         while( iterador.hasNext() && !contiene ) {
+
             Opcion opcionIterador = iterador.next();
 
             if (opcionIterador.tieneLaMisma(opcionBuscada)) {
@@ -144,7 +157,6 @@ public class ListaOpciones {
 
     public boolean contieneAlguna(ListaOpciones opciones) {
         return (this.obtenerCoincidencias(opciones) != 0);
-
     }
 
     public void establecer(int posicion, Opcion unaOpcion) {
@@ -152,6 +164,7 @@ public class ListaOpciones {
     }
 
     public JsonArray guardar() {
+
         JsonArray jsonArrayDeOpciones = new JsonArray();
 
         for (Opcion opcion : listaOpciones) {
@@ -162,7 +175,6 @@ public class ListaOpciones {
     }
 
     public void quitarOpcion(Opcion opcion) {
-
         listaOpciones.remove(opcion);
     }
 }

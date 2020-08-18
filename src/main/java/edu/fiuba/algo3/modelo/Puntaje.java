@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import com.google.gson.JsonObject;
 
 public class Puntaje {
+
     private int puntos;
 
     public Puntaje(){
@@ -14,6 +15,7 @@ public class Puntaje {
     }
 
     public static Puntaje recuperar(JsonObject jsonPuntaje) {
+
         int puntos = jsonPuntaje.get("puntos").getAsInt();
         return new Puntaje(puntos);
     }
@@ -41,9 +43,9 @@ public class Puntaje {
     }
 
     public JsonObject guardar() {
+
         JsonObject jsonPuntaje = new JsonObject();
         jsonPuntaje.addProperty("puntos", puntos);
         return jsonPuntaje;
     }
-
 }

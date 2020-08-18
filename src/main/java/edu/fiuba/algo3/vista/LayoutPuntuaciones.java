@@ -64,9 +64,7 @@ public class LayoutPuntuaciones{
         contenedorPuntuaciones = new VBox(contenedorTexto, contenedorBoton);
         contenedorPuntuaciones.setMinWidth(150);
         contenedorPuntuaciones.setMinHeight(250);
-
     }
 
     public Pane getLayout() {return contenedorPuntuaciones;}
-
 }

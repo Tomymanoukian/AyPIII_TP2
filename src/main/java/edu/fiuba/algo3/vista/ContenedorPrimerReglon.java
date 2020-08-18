@@ -24,15 +24,48 @@ public class ContenedorPrimerReglon {
         etiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);//Label tiempo = new Label("00:00");
 
         bonusX2 = new Button("X2");
-        BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler(pregunta, escena, jugador, manejadorDeTurnos);
+        BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         bonusX2.setOnAction(multiplicX2Handler);
 
         bonusX3 = new Button("X3");
-        BotonMultiplicadorx3EventHandler multiplicX3Handler = new BotonMultiplicadorx3EventHandler(pregunta, escena, jugador, manejadorDeTurnos);
+        BotonMultiplicadorx3EventHandler multiplicX3Handler = new BotonMultiplicadorx3EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         bonusX3.setOnAction(multiplicX3Handler);
 
         exclusividad = new Button("Ex");
-        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (pregunta, escena, jugador, manejadorDeTurnos);
+        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        exclusividad.setOnAction(exclusividadHandler);
+
+        VBox contenedorNombreJugador = new VBox(nombreJugador);
+        VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
+        HBox contenedorBonus = new HBox(bonusX2, bonusX3, exclusividad);
+        contenedorBonus.setSpacing(3);
+
+        this.habilitarBonusPosibles(pregunta, jugador);
+
+        layout = new HBox(contenedorNombreJugador, contenedorTiempo, contenedorBonus);
+
+        layout.setAlignment(Pos.CENTER);
+        layout.setStyle("-fx-font-size: 1.25em;");
+        layout.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setSpacing(40);
+        layout.setPadding(new Insets(10));
+    }
+
+    public ContenedorPrimerReglon(Pregunta pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta, EtiquetaTiempo unaEtiquetaTiempo){
+
+        Label nombreJugador = new Label(jugador.getNombre());
+        etiquetaTiempo = unaEtiquetaTiempo;//Label tiempo = new Label("00:00");
+
+        bonusX2 = new Button("X2");
+        BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        bonusX2.setOnAction(multiplicX2Handler);
+
+        bonusX3 = new Button("X3");
+        BotonMultiplicadorx3EventHandler multiplicX3Handler = new BotonMultiplicadorx3EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        bonusX3.setOnAction(multiplicX3Handler);
+
+        exclusividad = new Button("Ex");
+        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         exclusividad.setOnAction(exclusividadHandler);
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
@@ -58,6 +91,7 @@ public class ContenedorPrimerReglon {
     }
 
     private void habilitarBonusPosibles(Pregunta pregunta, Jugador jugador){
+
         if(pregunta.aceptaMultiplicador()){
 
             exclusividad.setDisable(true);
