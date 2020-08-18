@@ -44,12 +44,8 @@ public class LayoutPuntuaciones {
         BotonSiguienteEventHandler botonEnviarHandler = new BotonSiguienteEventHandler(manejadorDeTurnos);
         enviar.setOnAction(botonEnviarHandler);
 
-
-
         contenedorPuntuaciones = new VBox(contenedor, enviar);
-
     }
 
     public Pane getLayout() {return contenedorPuntuaciones;}
-
 }

@@ -51,12 +51,6 @@ public class LayoutVerdaderoFalso {
 
     public Pane getLayout() {return layout;}
 
-    public void mostrarVista(Pane unosLayouts) {
-
-        unosLayouts.getChildren().forEach(element -> element.setVisible(false));
-        layout.setVisible(true);
-    }
-
     private HBox obtenerContenedorDeOpcionesVoF(VerdaderoFalso verdaderoFalso, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, Timeline tiempo){
 
         Button botonVerdadero = new Button(verdaderoFalso.getOpcionVerdadera().getOpcion());

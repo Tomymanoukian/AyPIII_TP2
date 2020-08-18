@@ -20,8 +20,6 @@ public class LayoutOrderedChoice {
 
     public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        OrderedChoice orderedChoice = (OrderedChoice) pregunta;
-
         //Comienzan Opciones
 
         ListaOpciones opcionesMostradas = escenaOrderedChoice.getOpcionesMostradas();

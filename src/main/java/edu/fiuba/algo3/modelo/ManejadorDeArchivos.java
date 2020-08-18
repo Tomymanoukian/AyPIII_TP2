@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManejadorDeArchivos {
+
     static String FILENAME_RELATIVE_PATH = "preguntas.json";
     private List<Pregunta> preguntasDelJuego;
 
@@ -20,6 +21,7 @@ public class ManejadorDeArchivos {
     }
 
     public void escribirPreguntas(List<Pregunta> preguntasAEscribir) {
+
         try {
             Gson gson = new Gson();
 
@@ -28,14 +30,14 @@ public class ManejadorDeArchivos {
             FileWriter writer = new FileWriter(FILENAME_RELATIVE_PATH);
             writer.write(json);
             writer.close();
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             throw new ErrorDeEscrituraException();
         }
-
-
     }
 
     private JsonArray guardar(List<Pregunta> preguntasAEscribir) {
+
         JsonArray jsonArrayPreguntas = new JsonArray();
         for (Pregunta pregunta : preguntasAEscribir) {
             jsonArrayPreguntas.add(pregunta.guardar());
@@ -72,6 +74,7 @@ public class ManejadorDeArchivos {
     }
 
     public void leerPreguntas()  {
+
         try {
             String texto = Files.readString(Path.of(FILENAME_RELATIVE_PATH));
 
@@ -80,12 +83,11 @@ public class ManejadorDeArchivos {
             for (JsonElement jsonPregunta : arrayPreguntas) {
                 Pregunta pregunta = this.recuperar(jsonPregunta.getAsJsonObject());
                 preguntasDelJuego.add(pregunta);
-
             }
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             throw new ErrorDeLecturaException();
         }
-
     }
 
     public List<Pregunta> getPreguntas() {

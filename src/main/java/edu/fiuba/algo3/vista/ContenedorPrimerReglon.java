@@ -91,6 +91,7 @@ public class ContenedorPrimerReglon {
     }
 
     private void habilitarBonusPosibles(Pregunta pregunta, Jugador jugador){
+
         if(pregunta.aceptaMultiplicador()){
 
             exclusividad.setDisable(true);
