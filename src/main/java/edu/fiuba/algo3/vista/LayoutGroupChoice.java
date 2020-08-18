@@ -23,19 +23,22 @@ public class LayoutGroupChoice {
 
         ArrayList<HBox> listaHBox = new ArrayList<>();
 
-        VBox contenedorOpciones = this.obtenerContenedorDeOpciones(groupChoice, listaOpciones, listaHBox);
+        RespuestaDeGrupos respuesta = new RespuestaDeGrupos(new ListaOpciones(), new ListaOpciones());
 
-        RespuestaDeGrupos respuestaDeGrupos = new RespuestaDeGrupos(new ListaOpciones(), new ListaOpciones());
+        VBox contenedorOpciones = this.obtenerContenedorDeOpciones(groupChoice, listaOpciones, respuesta, listaHBox);
 
-        ContenedorPrimerReglon contenedorPrimerRenglon = new ContenedorPrimerReglon(pregunta, escenaGroupChoice, jugador, manejadorDeTurnos, respuestaDeGrupos);
+        ContenedorPrimerReglon contenedorPrimerRenglon = new ContenedorPrimerReglon(pregunta, escenaGroupChoice, jugador, manejadorDeTurnos, respuesta);
 
         ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
 
-        ContenedorBotonEnviarGroupChoice contenedorBotonEnviarGroupChoice = new ContenedorBotonEnviarGroupChoice(jugador, listaOpciones, listaHBox, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
+        HBox contenedorGrupos = new HBox(new Label("Grupo"), new Label (groupChoice.getNombreGrupoA()), new Label (groupChoice.getNombreGrupoB()));
+        contenedorGrupos.setAlignment(Pos.CENTER);
+
+        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
 
         //Se crea el layout final
 
-        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviarGroupChoice.getLayout());
+        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorGrupos, contenedorOpciones, contenedorBotonEnviar.getLayout());
         layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
@@ -43,7 +46,7 @@ public class LayoutGroupChoice {
         return layout;
     }
 
-    private VBox obtenerContenedorDeOpciones(GroupChoice groupChoice, ListaOpciones listaOpciones, ArrayList<HBox> listaHBox) {
+    private VBox obtenerContenedorDeOpciones(GroupChoice groupChoice, ListaOpciones listaOpciones, RespuestaDeGrupos respuesta, ArrayList<HBox> listaHBox) {
 
         HBox nombresGrupos = new HBox(10, new Label("Opciones:"), new Label(groupChoice.getNombreGrupoA(), new Label(groupChoice.getNombreGrupoB())));
         nombresGrupos.setAlignment(Pos.CENTER);
@@ -51,10 +54,14 @@ public class LayoutGroupChoice {
         for (int i = 0; i < listaOpciones.cantidadDeOpciones(); i++) {
 
             ToggleGroup grupoDeBotones = new ToggleGroup();
+
             RadioButton botonGrupoA = new RadioButton();
             botonGrupoA.setToggleGroup(grupoDeBotones);
+            botonGrupoA.setOnAction(new BotonAsignarGrupoHandler(listaOpciones.obtener(i), respuesta.getOpcionesSeleccionadasGrupoB(), respuesta.getOpcionesSeleccionadasGrupoA()));
+
             RadioButton botonGrupoB = new RadioButton();
             botonGrupoB.setToggleGroup(grupoDeBotones);
+            botonGrupoB.setOnAction(new BotonAsignarGrupoHandler(listaOpciones.obtener(i), respuesta.getOpcionesSeleccionadasGrupoA(), respuesta.getOpcionesSeleccionadasGrupoB()));
 
             listaHBox.add(new HBox(10, new Label(listaOpciones.obtener(i).getOpcion()), botonGrupoA, botonGrupoB));
             listaHBox.get(i).setAlignment(Pos.CENTER);
