@@ -35,6 +35,20 @@ public class LayoutVerdaderoFalso {
         layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
+    public LayoutVerdaderoFalso(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
+
+        VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
+
+        ContenedorPrimerReglon contenedorPrimerReglon = new ContenedorPrimerReglon(verdaderoFalso, scene, unJugador, manejadorDeTurnos, new RespuestaUnica(verdaderoFalso.getOpcionIncorrecta()), unaEtiquetaTiempo);
+
+        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
+
+        HBox contenedorVerdaderoFalso = this.obtenerContenedorDeOpcionesVoF(verdaderoFalso, unJugador, manejadorDeTurnos, contenedorPrimerReglon.getTiempo());
+
+        layout = new VBox(contenedorPrimerReglon.getLayout(), contenedorConsigna.getLayout(), contenedorVerdaderoFalso);
+        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+    }
+
     public Pane getLayout() {return layout;}
 
     private HBox obtenerContenedorDeOpcionesVoF(VerdaderoFalso verdaderoFalso, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, Timeline tiempo){

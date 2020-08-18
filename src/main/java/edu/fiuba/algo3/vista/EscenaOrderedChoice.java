@@ -29,9 +29,9 @@ public class EscenaOrderedChoice implements Escena {
     public ListaOpciones getOpcionesMostradas() {return opcionesMostradas;}
 
     @Override
-    public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
+    public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
-        Pane layout = (new LayoutOrderedChoice(pregunta, this, jugador, manejadorDeTurnos)).getLayout();
+        Pane layout = (new LayoutOrderedChoice(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
         manejadorDeTurnos.getStage().setScene(new Scene(layout));
     }
 }
