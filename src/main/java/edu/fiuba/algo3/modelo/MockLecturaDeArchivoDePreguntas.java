@@ -10,7 +10,6 @@ public class MockLecturaDeArchivoDePreguntas {
     private VerdaderoFalsoClasico verdaderoFalsoClasico;
     private VerdaderoFalsoConPenalidad  verdaderoFalsoConPenalidad;
     private OrderedChoice orderedChoice;
-    private OrderedChoice orderedChoice1;
     private GroupChoice groupChoice;
     private MultipleChoiceClasico multipleChoiceClasico;
     private MultipleChoiceParcial multipleChoiceParcial;
@@ -20,8 +19,8 @@ public class MockLecturaDeArchivoDePreguntas {
 
 
         ////////////Empieza creacion de objetos para hacer pruebas de la vista VerdaderoFalso
-        String consignaVoF1 = "El perro es el mejor amigo del hombre?";
-        String consignaVoF2 = "El perro NO es el mejor amigo del hombre?";
+        String consignaVoF1 = "Consigna verdadera";
+        String consignaVoF2 = "Consigna falsa";
 
         verdaderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero(consignaVoF1);
         verdaderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoFalso(consignaVoF2);
@@ -43,8 +42,6 @@ public class MockLecturaDeArchivoDePreguntas {
         listaOpciones.agregar(opcion5);
 
         orderedChoice = new OrderedChoice("Ordered Choice 1", listaOpciones);
-
-        orderedChoice1 = new OrderedChoice("Ordered Choice 2", listaOpciones);
 
         ////////////Termina creacion de objetos para hacer pruebas de la vista OrderedChoice
         ////////////Empieza creacion de objetos para hacer pruebas de la vista GroupChoice
@@ -70,43 +67,55 @@ public class MockLecturaDeArchivoDePreguntas {
 
         ////////////Termina creacion de objetos para hacer pruebas de la vista GroupChoice
 
+        ////////////Empieza creacion de objetos para hacer pruebas de la vista MultipleChoiceParcial
         String consigna = "Indicar cuales de los siguientes con planetas:";
 
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
+        Opcion opcionTierraParcial = new Opcion("Tierra", new Puntaje(1));
+        Opcion opcionMarteParcial = new Opcion("Marte", new Puntaje(1));
+        Opcion opcionJupiterParcial = new Opcion("Jupiter", new Puntaje(1));
+        Opcion opcionAzulParcial = new Opcion("Azul", new Puntaje(0));
+        Opcion opcionAmarilloParcial = new Opcion("Amarillo", new Puntaje(0));
 
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
+        ListaOpciones opcionesCorrectasParcial = new ListaOpciones(Arrays.asList(opcionTierraParcial, opcionMarteParcial, opcionJupiterParcial));
+        ListaOpciones opcionesIncorrectasParcial = new ListaOpciones(Arrays.asList(opcionAzulParcial, opcionAmarilloParcial));
 
-        multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
-        multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
-        multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+        multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectasParcial, opcionesIncorrectasParcial);
+        ////////////Termina creacion de objetos para hacer pruebas de la vista MultipleChoiceParcial
 
+        ////////////Empieza creacion de objetos para hacer pruebas de la vista MultipleChoicePenalidad
+        Opcion opcionTierraPenalidad = new Opcion("Tierra", new Puntaje(1));
+        Opcion opcionMartePenalidad = new Opcion("Marte", new Puntaje(1));
+        Opcion opcionJupiterPenalidad = new Opcion("Jupiter", new Puntaje(1));
+        Opcion opcionAzulPenalidad = new Opcion("Azul", new Puntaje(-1));
+        Opcion opcionAmarilloPenalidad = new Opcion("Amarillo", new Puntaje(-1));
+
+        ListaOpciones opcionesCorrectasPenalidad = new ListaOpciones(Arrays.asList(opcionTierraPenalidad, opcionMartePenalidad, opcionJupiterPenalidad));
+        ListaOpciones opcionesIncorrectasPenalidad = new ListaOpciones(Arrays.asList(opcionAzulPenalidad, opcionAmarilloPenalidad));
+
+        multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectasPenalidad, opcionesIncorrectasPenalidad);
+        ////////////Termina creacion de objetos para hacer pruebas de la vista MultipleChoicePenalidad
+
+        ////////////Empieza creacion de objetos para hacer pruebas de la vista MultipleChoiceClasico
+        Opcion opcionTierraClasico = new Opcion("Tierra", new Puntaje(1));
+        Opcion opcionMarteClasico = new Opcion("Marte", new Puntaje(1));
+        Opcion opcionJupiterClasico = new Opcion("Jupiter", new Puntaje(1));
+        Opcion opcionAzulClasico = new Opcion("Azul", new Puntaje(-1));
+        Opcion opcionAmarilloClasico = new Opcion("Amarillo", new Puntaje(-1));
+
+        ListaOpciones opcionesCorrectasClasico = new ListaOpciones(Arrays.asList(opcionTierraClasico, opcionMarteClasico, opcionJupiterClasico));
+        ListaOpciones opcionesIncorrectasClasico = new ListaOpciones(Arrays.asList(opcionAzulClasico, opcionAmarilloClasico));
+
+        multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectasClasico, opcionesIncorrectasClasico);
+        ////////////Termina creacion de objetos para hacer pruebas de la vista MultipleChoiceClasico
     }
-
-    //Esto probablemente se borre
-    /*public ArrayList<Pregunta> getListaDePreguntas(){
-        ArrayList<Pregunta> lista = new ArrayList<>();
-        lista.add(verdaderoFalsoClasico);
-        lista.add(orderedChoice);
-        lista.add(orderedChoice1);
-        lista.add(groupChoice);
-        lista.add(multipleChoiceClasico);
-        lista.add(multipleChoiceConPenalidad);
-        return lista;
-    }*/
 
     public Stack<Pregunta> getPilaDePreguntas() {
         Stack<Pregunta> pila = new Stack<>();
         pila.add(orderedChoice);
-        //pila.add(orderedChoice1);
-        pila.add(groupChoice);
+        pila.add(groupChoice);  //Se asigna mal el puntaje
         pila.add(multipleChoiceClasico);
-        pila.add(multipleChoiceConPenalidad);
-        pila.add(multipleChoiceParcial);
+        pila.add(multipleChoiceConPenalidad);  //Se asigna mal el puntaje
+        pila.add(multipleChoiceParcial);   //Se asigna mal el puntaje
         pila.add(verdaderoFalsoConPenalidad);
         pila.add(verdaderoFalsoClasico);
         return pila;

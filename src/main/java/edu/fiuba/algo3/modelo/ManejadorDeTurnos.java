@@ -52,7 +52,6 @@ public class    ManejadorDeTurnos {
         if(jugador2Respodio){
             //stage.setScene(new Scene(new LayoutPuntuaciones(jugador2, jugador2 )));
             stage.setScene(new Scene(new LayoutPuntuaciones(jugador2, this));
-
         }
         else{
             //stage.setScene(new Scene(new LayoutPuntuaciones(jugador1, this )));
@@ -63,6 +62,9 @@ public class    ManejadorDeTurnos {
     public void mostrarSiguientePregunta(){
 
         if(pilaDePreguntas.isEmpty() && jugador2Respodio){
+
+            kahoot.evaluarRespuestas(pregunta);
+
             juegoTerminado = true;
             stage.setScene(new Scene(new LayoutFinDelJuego(kahoot.getJugadorGanador(), kahoot.getJugadorPerdedor()).getLayout()));
         }
