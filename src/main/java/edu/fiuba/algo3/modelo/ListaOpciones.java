@@ -160,4 +160,9 @@ public class ListaOpciones {
 
         return jsonArrayDeOpciones;
     }
+
+    public void quitarOpcion(Opcion opcion) {
+
+        listaOpciones.remove(opcion);
+    }
 }
