@@ -26,11 +26,15 @@ public class LayoutOrderedChoice {
 
         ListaOpciones opcionesMostradas = escenaOrderedChoice.getOpcionesMostradas();
 
-        VBox contenedorOpciones = this.obtenerContenedorDeOpciones(opcionesMostradas, escenaOrderedChoice, jugador, manejadorDeTurnos);
+       // VBox contenedorOpciones = this.obtenerContenedorDeOpciones(opcionesMostradas, escenaOrderedChoice, jugador, manejadorDeTurnos);
 
         RespuestaEnLista respuesta = new RespuestaEnLista(opcionesMostradas);
 
-        ContenedorPrimerReglon contenedorPrimerRenglon = new ContenedorPrimerReglon(pregunta, escenaOrderedChoice, jugador, manejadorDeTurnos, respuesta);
+        EtiquetaTiempo unaEtiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);
+
+        VBox contenedorOpciones = this.obtenerContenedorDeOpciones(opcionesMostradas, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
+
+        ContenedorPrimerReglon contenedorPrimerRenglon = new ContenedorPrimerReglon(pregunta, escenaOrderedChoice, jugador, manejadorDeTurnos, respuesta, unaEtiquetaTiempo);
 
         ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
 
@@ -40,9 +44,33 @@ public class LayoutOrderedChoice {
         layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
+    public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
+
+        OrderedChoice orderedChoice = (OrderedChoice) pregunta;
+
+        //Comienzan Opciones
+
+        ListaOpciones opcionesMostradas = escenaOrderedChoice.getOpcionesMostradas();
+
+        VBox contenedorOpciones = this.obtenerContenedorDeOpciones(opcionesMostradas, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
+
+        RespuestaEnLista respuesta = new RespuestaEnLista(opcionesMostradas);
+
+        ContenedorPrimerReglon contenedorPrimerRenglon = new ContenedorPrimerReglon(pregunta, escenaOrderedChoice, jugador, manejadorDeTurnos, respuesta, unaEtiquetaTiempo);
+
+        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
+
+        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
+
+        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
+        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+
+    }
+
     public Pane getLayout() {return layout;}
 
-    private VBox obtenerContenedorDeOpciones(ListaOpciones opcionesMostradas, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos){
+    private VBox obtenerContenedorDeOpciones(ListaOpciones opcionesMostradas, EscenaOrderedChoice escenaOrderedChoice,
+                                             Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
 
         ArrayList<HBox> listaHBoxOpciones = new ArrayList<>();
 
@@ -54,10 +82,10 @@ public class LayoutOrderedChoice {
             listaHBoxOpciones.add(new HBox (botonBajar, new Label (opcionesMostradas.obtener(i).getOpcion()), botonSubir));
             listaHBoxOpciones.get(i).setAlignment(Pos.CENTER);
 
-            BotonBajarRespuestaHandler botonHandlerBajar = new BotonBajarRespuestaHandler(i, escenaOrderedChoice, jugador, manejadorDeTurnos);
+            BotonBajarRespuestaHandler botonHandlerBajar = new BotonBajarRespuestaHandler(i, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
             botonBajar.setOnAction(botonHandlerBajar);
 
-            BotonSubirRespuestaHandler botonHandlerSubir = new BotonSubirRespuestaHandler(i, escenaOrderedChoice, jugador, manejadorDeTurnos);
+            BotonSubirRespuestaHandler botonHandlerSubir = new BotonSubirRespuestaHandler(i, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
             botonSubir.setOnAction(botonHandlerSubir);
         }
 

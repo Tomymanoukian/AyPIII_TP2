@@ -9,5 +9,5 @@ public interface Escena {
 
     public abstract Scene getEscena();
 
-    public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos);
+    public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo);
 }

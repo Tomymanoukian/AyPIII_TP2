@@ -33,6 +33,22 @@ public class LayoutMultipleChoice {
         layout = new VBox(contendorPrincipal);
     }
 
+    public LayoutMultipleChoice(Pregunta pregunta, EscenaMultipleChoice escenaMultipleChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
+
+        MultipleChoice unMultipleChoice = (MultipleChoice) pregunta;
+        ListaOpciones listaRespuestas = new ListaOpciones();
+        StackPane contenedorOpciones = this.obtenerContenedorDeOpciones(escenaMultipleChoice.getOpcionesMostradas(), listaRespuestas);
+        RespuestaEnLista respuesta = new RespuestaEnLista(listaRespuestas);
+
+        ContenedorPrimerReglon contenedorPrimerRenglon = new ContenedorPrimerReglon(pregunta, escenaMultipleChoice, jugador, manejadorDeTurnos, respuesta, unaEtiquetaTiempo);
+        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
+        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
+
+        VBox contendorPrincipal = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
+        contendorPrincipal.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        layout = new VBox(contendorPrincipal);
+    }
+
     public Pane getLayout() {return layout;}
 
     private StackPane obtenerContenedorDeOpciones(ListaOpciones opcionesMostradas, ListaOpciones listaRespuestas){
