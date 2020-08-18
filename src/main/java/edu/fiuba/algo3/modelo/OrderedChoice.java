@@ -30,7 +30,10 @@ public class OrderedChoice extends Pregunta {
         return super.getConsigna();
     }
 
-    public Puntaje calcularPuntajePara(Respuesta respuestaEnLista) {
+    public Puntaje calcularPuntajePara(Respuesta respuesta) {
+
+        RespuestaEnLista respuestaEnLista = (RespuestaEnLista) respuesta;
+
         Puntaje puntaje = new Puntaje(0);
         if (respuestaEnLista.esIgual(opcionesOrdenadas)) {
             puntaje.establecerPuntos(1);
