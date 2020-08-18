@@ -10,14 +10,6 @@ public class Respuesta {
         return false;
     }
 
-    /*public boolean contieneAlguna(ListaOpciones opciones) {
-        return false;
-    }*/
-
-    public boolean esIgual(ListaOpciones listaDeOpciones) {
-        return false;
-    }
-
     public boolean esIgualA(Opcion opcion) {
         return false;
     }

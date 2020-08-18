@@ -24,11 +24,9 @@ public class RespuestaEnLista extends Respuesta {
         return opcionesSeleccionadas.contieneAlguna(opciones);
     }
 
-    @Override
     public boolean esIgual(ListaOpciones listaDeOpciones) {
         return opcionesSeleccionadas.esIgual(listaDeOpciones);
     }
-
 
     public ListaOpciones getOpcionesSeleccionadas() {
         return opcionesSeleccionadas;
