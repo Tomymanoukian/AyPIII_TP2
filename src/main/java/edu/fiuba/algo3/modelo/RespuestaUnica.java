@@ -18,7 +18,6 @@ public class RespuestaUnica extends Respuesta {
         return opcionSeleccionada.esIgualA(opcion);
     }
 
-    @Override
     public Puntaje getPuntaje() {
         return opcionSeleccionada.getPuntaje();
     }
