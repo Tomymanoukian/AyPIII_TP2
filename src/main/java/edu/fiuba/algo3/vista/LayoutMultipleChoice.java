@@ -36,6 +36,7 @@ public class LayoutMultipleChoice {
     public Pane getLayout() {return layout;}
 
     private StackPane obtenerContenedorDeOpciones(MultipleChoice unMultipleChoice, ListaOpciones listaRespuestas){
+
         VBox checkBoxDeOpciones = new VBox();
         checkBoxDeOpciones.setAlignment(Pos.CENTER);
 
@@ -44,25 +45,24 @@ public class LayoutMultipleChoice {
         ListaOpciones opciones = unMultipleChoice.getTodasLasOpcionesMezcladas();
 
         for (int i = 0; i < cantidadDeOpcionesAMostrar; i++) {
-            // create a checkbox
+
             CheckBox checkBox = new CheckBox(opciones.obtener(i).getOpcion());
             checkBox.setPadding(new Insets(5));
-            // add label
+
             checkBoxDeOpciones.getChildren().add(checkBox);
-            // set IndeterMinate
+
             checkBox.setIndeterminate(false);
             String opcion = opciones.obtener(i).getOpcion();
             Puntaje puntaje = opciones.obtener(i).getPuntaje();
 
-            // create a event handler
             EventHandler<ActionEvent> event = e -> {
 
-                if (checkBox.isSelected()) {
+                if (checkBox.isSelected())
                     listaRespuestas.agregar(new Opcion(opcion, puntaje));
-                }else {
+                else
                     listaRespuestas.eliminar(opcion);
-                }
             };
+
             checkBox.setOnAction(event);
         }
 
