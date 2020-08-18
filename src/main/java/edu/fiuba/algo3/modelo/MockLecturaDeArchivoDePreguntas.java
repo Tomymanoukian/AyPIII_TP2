@@ -42,10 +42,9 @@ public class MockLecturaDeArchivoDePreguntas {
         listaOpciones.agregar(opcion5);
 
         orderedChoice = new OrderedChoice("Ordered Choice 1", listaOpciones);
-
         ////////////Termina creacion de objetos para hacer pruebas de la vista OrderedChoice
-        ////////////Empieza creacion de objetos para hacer pruebas de la vista GroupChoice
 
+        ////////////Empieza creacion de objetos para hacer pruebas de la vista GroupChoice
         ListaOpciones listaGrupoA = new ListaOpciones();
         ListaOpciones listaGrupoB = new ListaOpciones();
 
@@ -64,7 +63,6 @@ public class MockLecturaDeArchivoDePreguntas {
         listaGrupoB.agregar(opcionF);
 
         groupChoice = new GroupChoice("Agrupe en vocales y consonantes", "Vocales", listaGrupoA, "Consonantes", listaGrupoB);
-
         ////////////Termina creacion de objetos para hacer pruebas de la vista GroupChoice
 
         ////////////Empieza creacion de objetos para hacer pruebas de la vista MultipleChoiceParcial
@@ -96,11 +94,11 @@ public class MockLecturaDeArchivoDePreguntas {
         ////////////Termina creacion de objetos para hacer pruebas de la vista MultipleChoicePenalidad
 
         ////////////Empieza creacion de objetos para hacer pruebas de la vista MultipleChoiceClasico
-        Opcion opcionTierraClasico = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionMarteClasico = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionJupiterClasico = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionAzulClasico = new Opcion("Azul", new Puntaje(-1));
-        Opcion opcionAmarilloClasico = new Opcion("Amarillo", new Puntaje(-1));
+        Opcion opcionTierraClasico = new Opcion("Tierra");
+        Opcion opcionMarteClasico = new Opcion("Marte");
+        Opcion opcionJupiterClasico = new Opcion("Jupiter");
+        Opcion opcionAzulClasico = new Opcion("Azul");
+        Opcion opcionAmarilloClasico = new Opcion("Amarillo");
 
         ListaOpciones opcionesCorrectasClasico = new ListaOpciones(Arrays.asList(opcionTierraClasico, opcionMarteClasico, opcionJupiterClasico));
         ListaOpciones opcionesIncorrectasClasico = new ListaOpciones(Arrays.asList(opcionAzulClasico, opcionAmarilloClasico));
@@ -112,10 +110,10 @@ public class MockLecturaDeArchivoDePreguntas {
     public Stack<Pregunta> getPilaDePreguntas() {
         Stack<Pregunta> pila = new Stack<>();
         pila.add(orderedChoice);
-        pila.add(groupChoice);  //Se asigna mal el puntaje
+        pila.add(groupChoice);
         pila.add(multipleChoiceClasico);
-        pila.add(multipleChoiceConPenalidad);  //Se asigna mal el puntaje
-        pila.add(multipleChoiceParcial);   //Se asigna mal el puntaje
+        pila.add(multipleChoiceParcial);
+        pila.add(multipleChoiceConPenalidad);
         pila.add(verdaderoFalsoConPenalidad);
         pila.add(verdaderoFalsoClasico);
         return pila;
