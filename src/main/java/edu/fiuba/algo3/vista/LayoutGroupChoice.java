@@ -25,22 +25,17 @@ public class LayoutGroupChoice {
 
         VBox contenedorOpciones = this.obtenerContenedorDeOpciones(groupChoice, listaOpciones, listaHBox);
 
-        ListaOpciones respuestaGrupoA = new ListaOpciones();
-        ListaOpciones respuestaGrupoB = new ListaOpciones();
-
-        this.ordenar(respuestaGrupoA, respuestaGrupoB,listaOpciones, listaHBox);
-
-        RespuestaDeGrupos respuestaDeGrupos = new RespuestaDeGrupos(respuestaGrupoA, respuestaGrupoB);
+        RespuestaDeGrupos respuestaDeGrupos = new RespuestaDeGrupos(new ListaOpciones(), new ListaOpciones());
 
         ContenedorPrimerReglon contenedorPrimerRenglon = new ContenedorPrimerReglon(pregunta, escenaGroupChoice, jugador, manejadorDeTurnos, respuestaDeGrupos);
 
         ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
 
-        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuestaDeGrupos, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
+        ContenedorBotonEnviarGroupChoice contenedorBotonEnviarGroupChoice = new ContenedorBotonEnviarGroupChoice(jugador, listaOpciones, listaHBox, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
 
         //Se crea el layout final
 
-        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
+        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviarGroupChoice.getLayout());
         layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
@@ -71,18 +66,5 @@ public class LayoutGroupChoice {
         contenedorOpciones.setAlignment(Pos.CENTER);
 
         return contenedorOpciones;
-
-    }
-
-    private void ordenar(ListaOpciones respuestaGrupoA, ListaOpciones respuestaGrupoB, ListaOpciones listaOpciones, ArrayList<HBox> listaHBox){
-
-        for (int i = 0; i < listaOpciones.cantidadDeOpciones(); i++) {
-
-            if (((RadioButton) listaHBox.get(i).getChildren().get(1)).isArmed())
-                respuestaGrupoA.agregar(listaOpciones.obtener(i));
-
-            else if (((RadioButton) listaHBox.get(i).getChildren().get(2)).isArmed())
-                respuestaGrupoB.agregar(listaOpciones.obtener(i));
-        }
     }
 }

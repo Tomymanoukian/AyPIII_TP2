@@ -27,7 +27,6 @@ public class TiempoEventHandler implements EventHandler<ActionEvent> {
         jugador = unJugador;
         respuesta = unaRespuesta;
         manejadorDeTurnos = unManejadorDeTurnos;
-
     }
 
     @Override
