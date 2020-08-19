@@ -15,7 +15,7 @@ public class LayoutMenuBienvenida {
     public LayoutMenuBienvenida(ManejadorDeTurnos manejadorDeTurnos) {
         ContenedorBienvenida contenedorBienvenida = new ContenedorBienvenida();
 
-        ContenedorNombresJugadores contenedorNombresJugadores = new ContenedorNombresJugadores();
+        ContenedorNombresJugadores contenedorNombresJugadores = new ContenedorNombresJugadores(manejadorDeTurnos.getJugador1(), manejadorDeTurnos.getJugador2());
 
         ContenedorBotonEmpezar contenedorBotonEmpezar = new ContenedorBotonEmpezar(contenedorNombresJugadores.nombreJugador1(),
                                                     contenedorNombresJugadores.nombreJugador2(), manejadorDeTurnos);
