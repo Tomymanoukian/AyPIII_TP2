@@ -15,7 +15,7 @@ public class Jugador {
 
     public Jugador(String unNombre) {
 
-        if (unNombre.equals("")) {
+        if (unNombre.trim().equals("")) {
             throw new JugadorSinNombreException();
         }
         nombre = unNombre;
@@ -39,6 +39,10 @@ public class Jugador {
     }
 
     public void setNombre(String unNombre) {
+
+        if (unNombre.trim().equals("")) {
+            throw new JugadorSinNombreException();
+        }
         nombre = unNombre;
     }
 
