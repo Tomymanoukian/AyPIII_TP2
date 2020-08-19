@@ -99,4 +99,8 @@ public class ManejadorDeTurnos {
     public Kahoot getKahoot() {return kahoot;}
 
     public Stage getStage() {return stage;}
+
+    public Jugador getJugador1(){ return jugador1;}
+
+    public Jugador getJugador2(){ return jugador2;}
 }
