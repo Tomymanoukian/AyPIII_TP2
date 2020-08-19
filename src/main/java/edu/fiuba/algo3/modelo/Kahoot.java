@@ -19,6 +19,15 @@ public class Kahoot{
     private ListaDeMultiplicadores multiplicadoresJ1;
     private ListaDeMultiplicadores multiplicadoresJ2;
 
+    public Kahoot() {
+
+        jugador1 = new Jugador("Jugador 1");
+        jugador2 = new Jugador("Jugador 2");
+        exclusividades = new ListaDeExclusividades();
+        multiplicadoresJ1 = new ListaDeMultiplicadores();
+        multiplicadoresJ2 = new ListaDeMultiplicadores();
+    }
+    
     public Kahoot(Jugador unJugador, Jugador otroJugador) {
 
         jugador1 = unJugador;
