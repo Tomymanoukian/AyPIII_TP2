@@ -31,6 +31,6 @@ public class BotonEmpezarJuegoEventHandler implements EventHandler<ActionEvent> 
         if(!(nombreJugador2.getText().trim().equals(""))) {
             kahoot.getJugador2().setNombre(nombreJugador2.getText());
         }
-        manejadorDeTurnos.mostrarPrimeraPregunta();
+        manejadorDeTurnos.mostrarLayoutPrimerJugador();
     }
 }

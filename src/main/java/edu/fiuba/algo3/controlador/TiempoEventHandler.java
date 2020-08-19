@@ -35,7 +35,7 @@ public class TiempoEventHandler implements EventHandler<ActionEvent> {
         if (segundos < 0) {
             tiempo.stop();
             manejadorDeTurnos.getKahoot().setRespuestaJugador(respuesta, jugador);
-            manejadorDeTurnos.mostrarPuntos();
+            manejadorDeTurnos.mostrarLayoutSiguienteJugador();
         }
     }
 }

@@ -3,7 +3,8 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.excepciones.PreguntaCorruptaException;
 import edu.fiuba.algo3.vista.Layouts.LayoutFinDelJuego;
-import edu.fiuba.algo3.vista.Layouts.LayoutPuntuaciones;
+import edu.fiuba.algo3.vista.Layouts.LayoutPrimerJugador;
+import edu.fiuba.algo3.vista.Layouts.LayoutSiguienteJugador;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -50,13 +51,17 @@ public class ManejadorDeTurnos {
         }
     }
 
-    public void mostrarPuntos(){
+    public void mostrarLayoutSiguienteJugador(){
         if(jugador2Respodio){
-            stage.setScene(new Scene(new LayoutPuntuaciones(jugador1, this).getLayout()));
+            stage.setScene(new Scene(new LayoutSiguienteJugador(jugador1, this).getLayout()));
         }
         else{
-            stage.setScene(new Scene(new LayoutPuntuaciones(jugador2, this ).getLayout()));
+            stage.setScene(new Scene(new LayoutSiguienteJugador(jugador2, this ).getLayout()));
         }
+    }
+
+    public void mostrarLayoutPrimerJugador(){
+        stage.setScene(new Scene(new LayoutPrimerJugador(jugador1, this).getLayout()));
     }
   
     public void mostrarSiguientePregunta(){
