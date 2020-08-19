@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
+import edu.fiuba.algo3.modelo.Preguntas.*;
+
 import java.util.Arrays;
-import java.util.List;
 import java.util.Stack;
 
 public class MockLecturaDeArchivoDePreguntas {

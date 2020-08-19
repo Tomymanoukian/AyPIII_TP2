@@ -2,6 +2,8 @@ package edu.fiuba.algo3.entrega_3;
 
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Preguntas.MultipleChoiceConPenalidad;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

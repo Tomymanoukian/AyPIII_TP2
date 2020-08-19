@@ -3,14 +3,10 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.controlador.TiempoEventHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
-import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 

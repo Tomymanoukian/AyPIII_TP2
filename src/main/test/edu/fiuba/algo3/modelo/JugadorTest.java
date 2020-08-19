@@ -19,9 +19,9 @@ public class JugadorTest {
 
         assertEquals(0,jugador.getPuntaje().getPuntos());
         assertEquals("Pepito", jugador.getNombre());
-        assertEquals(1, jugador.getMultiplicadoresX2().size());
-        assertEquals(1, jugador.getMultiplicadoresX3().size());
-        assertEquals(2, jugador.getExclusividades().size());
+        assertEquals(1, jugador.cantMultiplicadoresX2Restantes());
+        assertEquals(1, jugador.cantMultiplicadoresX3Restantes());
+        assertEquals(2, jugador.cantExclusividadesRestantes());
     }
 
     @Test

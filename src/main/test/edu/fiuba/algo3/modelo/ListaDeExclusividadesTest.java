@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
+import edu.fiuba.algo3.modelo.Bonus.ListaDeExclusividades;
+import edu.fiuba.algo3.modelo.Bonus.ListaDeMultiplicadores;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

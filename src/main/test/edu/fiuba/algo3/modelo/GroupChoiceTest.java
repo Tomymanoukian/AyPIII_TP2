@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 
+import edu.fiuba.algo3.modelo.Preguntas.GroupChoice;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaDeGrupos;
 import org.junit.jupiter.api.BeforeEach;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 import org.junit.jupiter.api.Test;

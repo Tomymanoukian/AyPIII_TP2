@@ -9,9 +9,9 @@ public class Jugador {
 
     private Puntaje puntaje;
     private String nombre;
-    private Stack <Multiplicador> multiplicadoresX2;
-    private Stack <Multiplicador> multiplicadoresX3;
-    private Stack <Exclusividad> exclusividades;
+    private int multiplicadoresX2Restantes;
+    private int multiplicadoresX3Restantes;
+    private int exclusividadesRestantes;
 
     public Jugador(String unNombre) {
 
@@ -21,15 +21,9 @@ public class Jugador {
         nombre = unNombre;
         puntaje = new Puntaje();
 
-        multiplicadoresX2 = new Stack<>();
-        multiplicadoresX2.push(new Multiplicador(2));
-
-        multiplicadoresX3 = new Stack<>();
-        multiplicadoresX3.push(new Multiplicador(3));
-
-        exclusividades = new Stack <>();
-        exclusividades.push(new Exclusividad());
-        exclusividades.push(new Exclusividad());
+        multiplicadoresX2Restantes = 1;
+        multiplicadoresX3Restantes = 1;
+        exclusividadesRestantes = 2;
     }
 
     public Puntaje getPuntaje() {
@@ -48,36 +42,33 @@ public class Jugador {
         nombre = unNombre;
     }
 
-    public Stack<Multiplicador> getMultiplicadoresX2() { return multiplicadoresX2;}
+    public int cantMultiplicadoresX2Restantes(){ return multiplicadoresX2Restantes;}
 
-    public Stack<Multiplicador> getMultiplicadoresX3() { return multiplicadoresX3;}
+    public int cantMultiplicadoresX3Restantes(){ return multiplicadoresX3Restantes;}
 
-    public Stack<Exclusividad> getExclusividades() { return exclusividades;}
+    public int cantExclusividadesRestantes(){ return exclusividadesRestantes;}
 
-    public Exclusividad utilizarExclusividad() {
+    public void utilizarExclusividad() {
 
-        if (exclusividades.empty()) {
+        if (exclusividadesRestantes == 0) {
             throw new ErrorSinBonusesException();
         }
-
-        return exclusividades.pop();
+        exclusividadesRestantes--;
     }
 
-    public Multiplicador utilizarMultiplicadorX2 () {
+    public void utilizarMultiplicadorX2 () {
 
-        if (multiplicadoresX2.empty()) {
+        if (multiplicadoresX2Restantes == 0) {
             throw new ErrorSinBonusesException();
         }
-
-        return multiplicadoresX2.pop();
+        multiplicadoresX2Restantes--;
     }
 
-    public Multiplicador utilizarMultiplicadorX3() {
+    public void utilizarMultiplicadorX3() {
 
-        if (multiplicadoresX3.empty()) {
+        if (multiplicadoresX3Restantes == 0) {
             throw new ErrorSinBonusesException();
         }
-
-        return multiplicadoresX3.pop();
+        multiplicadoresX3Restantes--;
     }
 }
