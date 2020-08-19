@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 
 import java.util.Stack;
 
+import static edu.fiuba.algo3.vista.Constantes.ALTO_VENTANA;
+import static edu.fiuba.algo3.vista.Constantes.ANCHO_VENTANA;
+
 public class Main extends Application {
 
     @Override
@@ -24,8 +27,8 @@ public class Main extends Application {
 
         stage.setScene(new Scene(new LayoutMenuBienvenida(unManejadorDeTurnos).getLayout()));
 
-        stage.setHeight(700);
-        stage.setWidth(600);
+        stage.setWidth(ANCHO_VENTANA);
+        stage.setHeight(ALTO_VENTANA);
         stage.setTitle("Kahoot!");
         stage.show();
     }

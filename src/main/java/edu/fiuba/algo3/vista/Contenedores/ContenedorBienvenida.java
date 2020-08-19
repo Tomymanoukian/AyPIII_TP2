@@ -9,6 +9,8 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import static edu.fiuba.algo3.vista.Constantes.COLOR_CINTA;
+
 public class ContenedorBienvenida {
 
     private VBox contenedorBienvenida;
@@ -20,7 +22,7 @@ public class ContenedorBienvenida {
 
         contenedorBienvenida = new VBox(bienvenida);
         contenedorBienvenida.setAlignment(Pos.CENTER);
-        contenedorBienvenida.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        contenedorBienvenida.setBackground(new Background(new BackgroundFill(Color.web(COLOR_CINTA), CornerRadii.EMPTY, Insets.EMPTY)));
         contenedorBienvenida.setPadding(new Insets(25));
         contenedorBienvenida.setStyle("-fx-font-size: 1.5em;");
     }
