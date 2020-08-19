@@ -8,6 +8,8 @@ public abstract class Constantes {
     public static final int ANCHO_CONTENEDOR_CONSIGNA = 500;
     public static final int ALTO_CONTENEDOR_CONSIGNA = 150;
 
+    public static final int ANCHO_OPCION = 360;
+
     public static final String COLOR_BOTONES = "2670A3";
     public static final String COLOR_CINTA = "5296C2";
     public static final String COLOR_CONTENEDOR_CONSIGNA = "A9DDFF";
