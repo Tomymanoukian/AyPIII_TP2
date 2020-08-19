@@ -15,7 +15,7 @@ public abstract class Constantes {
     public static final String COLOR_BOTONES = "2670A3";
     public static final String COLOR_CINTA = "5296C2";
     public static final String COLOR_CONTENEDOR_CONSIGNA = "A9DDFF";
-    public static final String COLOR_FONDO = "C8E9FF";
+    public static final String COLOR_FONDO = "EDF9FF";
     public static final String COLOR_OPCIONES = "FAFAFA";
 
     public static final String COLOR_GRUPOS = "C8E9FF";
