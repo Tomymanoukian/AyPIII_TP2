@@ -14,19 +14,15 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
-        Jugador jugador1 = new Jugador("Jugador 1");
-        Jugador jugador2 = new Jugador("Jugador 2");
-
-        Kahoot kahoot = new Kahoot(jugador1, jugador2);
+        Kahoot kahoot = new Kahoot();
 
         MockLecturaDeArchivoDePreguntas mockLecturaDeArchivoDePreguntas = new MockLecturaDeArchivoDePreguntas();
 
         Stack<Pregunta> pilaDePreguntas = mockLecturaDeArchivoDePreguntas.getPilaDePreguntas();
 
-        ManejadorDeTurnos unManejadorDeTurnos = new ManejadorDeTurnos(pilaDePreguntas, jugador1, jugador2, kahoot, stage);
+        ManejadorDeTurnos unManejadorDeTurnos = new ManejadorDeTurnos(pilaDePreguntas, kahoot.getJugador1(), kahoot.getJugador2(), kahoot, stage);
 
         stage.setScene(new Scene(new LayoutMenuBienvenida(unManejadorDeTurnos).getLayout()));
-        //unManejadorDeTurnos.mostrarPrimeraPregunta();
 
         stage.setTitle("Kahoot!");
         stage.show();
