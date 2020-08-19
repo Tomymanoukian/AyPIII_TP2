@@ -17,7 +17,7 @@ public class ContenedorBotonEnviar {
     public ContenedorBotonEnviar(Jugador jugador, Respuesta respuesta, ManejadorDeTurnos manejadorDeTurnos, Timeline tiempo) {
 
         Button enviar = new Button("Enviar");
-        enviar.setStyle("-fx-border-color: #A8E3E7; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
+        enviar.setStyle("-fx-border-color: #000000; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
 
         BotonEnviarHandler botonEnviarHandler = new BotonEnviarHandler(jugador, respuesta, manejadorDeTurnos, tiempo);
         enviar.setOnAction(botonEnviarHandler);
