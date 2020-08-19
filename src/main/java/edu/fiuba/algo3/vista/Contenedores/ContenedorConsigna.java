@@ -1,43 +1,58 @@
 package edu.fiuba.algo3.vista.Contenedores;
 
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.vista.Constantes;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.TextAlignment;
+
+import static edu.fiuba.algo3.vista.Constantes.*;
 
 public class ContenedorConsigna {
 
-    private VBox layout;
+    private Pane layout;
 
-    public ContenedorConsigna(Pregunta pregunta) {
+    public ContenedorConsigna(Pregunta unaPregunta) {
 
-        Rectangle rectanguloTipoDePregunta = new Rectangle(10, 20, 200, 50);
-        rectanguloTipoDePregunta.setFill(Color.LIGHTSTEELBLUE);
+        Label tipoPregunta = new Label (unaPregunta.getClass().getSimpleName());
+        Label pregunta = new Label(unaPregunta.getConsigna());
 
-        Label tipoDePregunta = new Label(pregunta.getClass().getSimpleName());
+        tipoPregunta.setMinSize(ANCHO_CONTENEDOR_CONSIGNA-50, 20);
+        tipoPregunta.setMaxSize(ANCHO_CONTENEDOR_CONSIGNA-50, 20);
+        tipoPregunta.setAlignment(Pos.CENTER);
 
-        StackPane contenedorTipoDePregunta = new StackPane(rectanguloTipoDePregunta, tipoDePregunta);
-        contenedorTipoDePregunta.setPadding(new Insets(10));
-        contenedorTipoDePregunta.setStyle("-fx-font-size: 1em;");
+        pregunta.setStyle("-fx-font-weight: bold");
+        pregunta.setMinSize(ANCHO_CONTENEDOR_CONSIGNA-50, ALTO_CONTENEDOR_CONSIGNA-70);
+        pregunta.setMaxSize(ANCHO_CONTENEDOR_CONSIGNA-50, ALTO_CONTENEDOR_CONSIGNA-70);
+        pregunta.setWrapText(true);
+        pregunta.setAlignment(Pos.CENTER);
+        pregunta.setTextAlignment(TextAlignment.CENTER);
 
-        Label consigna = new Label(pregunta.getConsigna());
-        consigna.setStyle("-fx-font-weight: bold");
+        VBox consigna = new VBox(tipoPregunta, pregunta);
+        pregunta.setMinSize(ANCHO_CONTENEDOR_CONSIGNA-50, ALTO_CONTENEDOR_CONSIGNA-50);
+        pregunta.setMaxSize(ANCHO_CONTENEDOR_CONSIGNA-50, ALTO_CONTENEDOR_CONSIGNA-50);
+        consigna.setAlignment(Pos.CENTER);
 
-        Rectangle rectanguloConsigna = new Rectangle(20, 20, 300, 100);
-        rectanguloConsigna.setFill(Color.LAVENDER);
+        Rectangle fondoConsigna = new Rectangle(
+                ANCHO_CONTENEDOR_CONSIGNA,
+                ALTO_CONTENEDOR_CONSIGNA,
+                Color.web(COLOR_CONTENEDOR_CONSIGNA));
 
-        StackPane contenedorConsinga = new StackPane(rectanguloConsigna, consigna);
-        contenedorConsinga.setPadding(new Insets(10));
-        contenedorConsinga.setStyle("-fx-font-size: 1.3em;");
+        StackPane contenedorConsigna = new StackPane(fondoConsigna, consigna);
+        contenedorConsigna.setPadding(new Insets(40));
+        contenedorConsigna.setStyle("-fx-font-size: 1.3em;");
 
-        layout = new VBox(contenedorTipoDePregunta, contenedorConsinga);
-        layout.setPadding(new Insets(10));
+        layout = contenedorConsigna;
+        layout.setPadding(new Insets(40));
     }
 
-    public VBox getLayout() {
+    public Pane getLayout() {
         return layout;
     }
 }
