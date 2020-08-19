@@ -24,6 +24,8 @@ public class Main extends Application {
 
         stage.setScene(new Scene(new LayoutMenuBienvenida(unManejadorDeTurnos).getLayout()));
 
+        stage.setHeight(700);
+        stage.setWidth(600);
         stage.setTitle("Kahoot!");
         stage.show();
     }
