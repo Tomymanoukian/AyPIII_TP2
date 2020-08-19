@@ -100,9 +100,9 @@ public class ContenedorPrimerReglon {
 
             exclusividad.setDisable(true);
 
-            if (jugador.getMultiplicadoresX2().size()==0)
+            if (jugador.cantMultiplicadoresX2Restantes() == 0)
                 bonusX2.setDisable(true);
-            if (jugador.getMultiplicadoresX3().size()==0)
+            if (jugador.cantMultiplicadoresX3Restantes() == 0)
                 bonusX3.setDisable(true);
 
         }else if(pregunta.aceptaExclusividad()){
@@ -110,7 +110,7 @@ public class ContenedorPrimerReglon {
             bonusX2.setDisable(true);
             bonusX3.setDisable(true);
 
-            if(jugador.getExclusividades().size()==0)
+            if(jugador.cantExclusividadesRestantes() == 0)
                 exclusividad.setDisable(true);
         }
     }
