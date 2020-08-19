@@ -1,9 +1,13 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
 
 import com.google.gson.JsonObject;
+import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 
-public class OrderedChoice extends Pregunta {
+public class OrderedChoice extends Pregunta implements PreguntaSinPenalidad {
 
     private final ListaOpciones opcionesOrdenadas;
 
@@ -73,5 +77,10 @@ public class OrderedChoice extends Pregunta {
         jsonOrderedChoice.addProperty("consigna", consigna);
         jsonOrderedChoice.add("opcionesOrdenadas", opcionesOrdenadas.guardar());
         return jsonOrderedChoice;
+    }
+
+    @Override
+    public Exclusividad getExclusividad() {
+        return new Exclusividad();
     }
 }

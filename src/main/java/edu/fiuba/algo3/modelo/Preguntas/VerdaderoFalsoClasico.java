@@ -1,8 +1,11 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
 
 import com.google.gson.JsonObject;
+import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
+import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.Puntaje;
 
-public class VerdaderoFalsoClasico extends VerdaderoFalso {
+public class VerdaderoFalsoClasico extends VerdaderoFalso implements PreguntaSinPenalidad {
 
     public static VerdaderoFalsoClasico recuperar(JsonObject jsonPregunta) {
 
@@ -48,5 +51,10 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
         jsonVoFClasico.add("opcionCorrecta",opcionCorrecta.guardar());
         jsonVoFClasico.add("opcionIncorrecta",opcionIncorrecta.guardar());
         return jsonVoFClasico;
+    }
+
+    @Override
+    public Exclusividad getExclusividad() {
+        return new Exclusividad();
     }
 }

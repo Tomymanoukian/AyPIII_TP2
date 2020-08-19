@@ -2,14 +2,12 @@ package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
-import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 
 public class TiempoEventHandler implements EventHandler<ActionEvent> {
 

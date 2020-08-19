@@ -2,7 +2,7 @@ package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
-import edu.fiuba.algo3.modelo.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.vista.Escena;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import javafx.event.ActionEvent;

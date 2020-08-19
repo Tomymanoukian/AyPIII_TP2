@@ -3,16 +3,12 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.controlador.BotonEnviarHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
-import edu.fiuba.algo3.modelo.Respuesta;
-import edu.fiuba.algo3.modelo.RespuestaEnLista;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.shape.Box;
 
 public class ContenedorBotonEnviar {
 

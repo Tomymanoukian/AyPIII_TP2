@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Preguntas.MultipleChoiceClasico;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
-import java.util.ArrayList;
+
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

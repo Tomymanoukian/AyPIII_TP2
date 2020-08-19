@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.modelo.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;

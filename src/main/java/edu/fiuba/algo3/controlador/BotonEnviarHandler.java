@@ -1,13 +1,10 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.vista.LayoutOrderedChoice;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 public class BotonEnviarHandler implements EventHandler<ActionEvent> {
 

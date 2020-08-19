@@ -2,12 +2,14 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Preguntas.GroupChoice;
+import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaDeGrupos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 

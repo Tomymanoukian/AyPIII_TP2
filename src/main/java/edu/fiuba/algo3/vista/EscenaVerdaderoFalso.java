@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.*;
-import javafx.beans.property.ListProperty;
+import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 

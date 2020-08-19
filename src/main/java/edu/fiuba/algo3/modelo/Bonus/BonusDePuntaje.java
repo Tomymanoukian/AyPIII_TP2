@@ -1,4 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Bonus;
+
+import edu.fiuba.algo3.modelo.Bonus.ListaDeExclusividades;
+import edu.fiuba.algo3.modelo.Bonus.ListaDeMultiplicadores;
+import edu.fiuba.algo3.modelo.Puntaje;
 
 public class BonusDePuntaje {
 

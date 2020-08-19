@@ -1,5 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Bonus.BonusDePuntaje;
+import edu.fiuba.algo3.modelo.Bonus.ListaDeExclusividades;
+import edu.fiuba.algo3.modelo.Bonus.ListaDeMultiplicadores;
+import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.excepciones.JugadorNoValidoException;
 import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaExclusividadesException;
 import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaMultiplicadoresException;

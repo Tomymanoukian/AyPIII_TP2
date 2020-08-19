@@ -2,20 +2,16 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalso;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
 public class LayoutVerdaderoFalso {
 

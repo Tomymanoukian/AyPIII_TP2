@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Preguntas.*;
 import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaExclusividadesException;
 import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaMultiplicadoresException;
 import edu.fiuba.algo3.modelo.excepciones.JugadorNoValidoException;
-import edu.fiuba.algo3.modelo.excepciones.OpcionNoValidaException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

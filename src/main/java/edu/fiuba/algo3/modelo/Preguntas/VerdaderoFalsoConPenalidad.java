@@ -1,8 +1,11 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
 
 import com.google.gson.JsonObject;
+import edu.fiuba.algo3.modelo.Bonus.Multiplicador;
+import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.Puntaje;
 
-public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
+public class VerdaderoFalsoConPenalidad extends VerdaderoFalso implements PreguntaConPenalidad{
 
     private VerdaderoFalsoConPenalidad(String unaConsigna, Opcion unaOpcionCorrecta, Opcion unaOpcionIncorrecta) {
 
@@ -48,5 +51,10 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso {
         jsonVoFConPenalidad.add("opcionCorrecta", opcionCorrecta.guardar());
         jsonVoFConPenalidad.add("opcionIncorrecta", opcionIncorrecta.guardar());
         return jsonVoFConPenalidad;
+    }
+
+    @Override
+    public Multiplicador getMultiplicador() {
+        return new Multiplicador();
     }
 }

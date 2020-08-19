@@ -1,17 +1,17 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
+import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 
 public class LayoutMultipleChoice {
 

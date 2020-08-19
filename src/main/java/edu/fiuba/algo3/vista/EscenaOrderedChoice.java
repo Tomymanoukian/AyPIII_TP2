@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Preguntas.OrderedChoice;
+import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 public class EscenaOrderedChoice implements Escena {
 

@@ -1,9 +1,14 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
 
 import com.google.gson.JsonObject;
+import edu.fiuba.algo3.modelo.Bonus.Multiplicador;
+import edu.fiuba.algo3.modelo.ListaOpciones;
+import edu.fiuba.algo3.modelo.Puntaje;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 
-public class MultipleChoiceConPenalidad extends MultipleChoice{
+public class MultipleChoiceConPenalidad extends MultipleChoice implements PreguntaConPenalidad {
 
     public MultipleChoiceConPenalidad(String unaConsigna, ListaOpciones unasOpcionesCorrectas, ListaOpciones unasOpcionesIncorrectas) {
         super();
@@ -47,6 +52,11 @@ public class MultipleChoiceConPenalidad extends MultipleChoice{
         jsonMultipleChoiceConPenalidad.add("opcionesCorrectas", opcionesCorrectas.guardar());
         jsonMultipleChoiceConPenalidad.add("opcionesIncorrectas", opcionesIncorrectas.guardar());
         return jsonMultipleChoiceConPenalidad;
+    }
+
+    @Override
+    public Multiplicador getMultiplicador() {
+        return new Multiplicador();
     }
 }
 

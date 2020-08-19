@@ -1,4 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
+
+import edu.fiuba.algo3.modelo.ListaOpciones;
 
 public abstract class MultipleChoice extends Pregunta {
 

@@ -1,6 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
 
 import com.google.gson.JsonObject;
+import edu.fiuba.algo3.modelo.Puntaje;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
 public abstract class Pregunta {
 

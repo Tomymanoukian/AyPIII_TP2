@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalsoClasico;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
 import edu.fiuba.algo3.modelo.excepciones.OpcionNoValidaException;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

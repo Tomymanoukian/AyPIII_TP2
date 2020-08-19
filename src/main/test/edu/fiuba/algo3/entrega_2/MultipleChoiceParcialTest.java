@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Preguntas.MultipleChoiceParcial;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

@@ -1,9 +1,13 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
 
 import com.google.gson.JsonObject;
+import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaDeGrupos;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 
-public class GroupChoice extends Pregunta{
+public class GroupChoice extends Pregunta implements PreguntaSinPenalidad {
 
     private ListaOpciones opcionesGrupoA;
     private ListaOpciones opcionesGrupoB;
@@ -78,5 +82,10 @@ public class GroupChoice extends Pregunta{
         jsonGroupChoice.add("opcionesGrupoA", opcionesGrupoA.guardar());
         jsonGroupChoice.add("opcionesGrupoB", opcionesGrupoB.guardar());
         return jsonGroupChoice;
+    }
+
+    @Override
+    public Exclusividad getExclusividad() {
+        return new Exclusividad();
     }
 }

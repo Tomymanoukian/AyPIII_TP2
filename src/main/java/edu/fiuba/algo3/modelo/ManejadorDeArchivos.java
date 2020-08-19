@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import com.google.gson.*;
+import edu.fiuba.algo3.modelo.Preguntas.*;
 import edu.fiuba.algo3.modelo.excepciones.ErrorDeEscrituraException;
 import edu.fiuba.algo3.modelo.excepciones.ErrorDeLecturaException;
 

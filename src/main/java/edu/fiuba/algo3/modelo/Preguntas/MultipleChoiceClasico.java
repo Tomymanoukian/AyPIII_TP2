@@ -1,9 +1,14 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
 
 import com.google.gson.JsonObject;
+import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
+import edu.fiuba.algo3.modelo.ListaOpciones;
+import edu.fiuba.algo3.modelo.Puntaje;
+import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
 
-public class MultipleChoiceClasico extends  MultipleChoice{
+public class MultipleChoiceClasico extends MultipleChoice implements PreguntaSinPenalidad{
 
     public MultipleChoiceClasico(String unaConsigna, ListaOpciones unasOpcionesCorrectas, ListaOpciones unasOpcionesIncorrectas) {
         super();
@@ -60,5 +65,10 @@ public class MultipleChoiceClasico extends  MultipleChoice{
         jsonMultipleChoiceClasico.add("opcionesCorrectas", opcionesCorrectas.guardar());
         jsonMultipleChoiceClasico.add("opcionesIncorrectas", opcionesIncorrectas.guardar());
         return jsonMultipleChoiceClasico;
+    }
+
+    @Override
+    public Exclusividad getExclusividad() {
+        return new Exclusividad();
     }
 }
