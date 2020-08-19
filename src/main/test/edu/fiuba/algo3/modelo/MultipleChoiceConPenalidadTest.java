@@ -91,7 +91,7 @@ public class MultipleChoiceConPenalidadTest {
         MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
         opcionesElegidas.agregar(opcionCorrecta1);
-        opcionesElegidas.agregar(opcionCorrecta1);
+        opcionesElegidas.agregar(opcionCorrecta2);
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 

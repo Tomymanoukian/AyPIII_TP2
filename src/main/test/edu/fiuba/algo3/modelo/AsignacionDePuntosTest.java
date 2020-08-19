@@ -353,12 +353,12 @@ public class AsignacionDePuntosTest {
         String consigna = "Agrupe en las categorias A y B:";
 
 
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion3DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB");
+        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA1");
+        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA2");
+        Opcion opcion3DeGrupoA = new Opcion("respuestaGrupoA3");
+        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB1");
+        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB2");
+        Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB3");
 
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));

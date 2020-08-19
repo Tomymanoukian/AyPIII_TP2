@@ -2,11 +2,13 @@ package edu.fiuba.algo3.modelo;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import edu.fiuba.algo3.modelo.excepciones.OpcionesRepetidasException;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ListaOpciones {
 
@@ -17,15 +19,31 @@ public class ListaOpciones {
     }
 
     public ListaOpciones(List<Opcion> unaLista) {
-
+        if (this.contienePreguntasRepetidas(unaLista)) {
+            throw new OpcionesRepetidasException();
+        }
         listaOpciones = new ArrayList<>();
         listaOpciones.addAll(unaLista);
     }
 
     public ListaOpciones(ListaOpciones unaListaDeRespuestas) {
-
         listaOpciones = new ArrayList<>();
         listaOpciones.addAll(unaListaDeRespuestas.obtenerLista());
+    }
+
+    private boolean contienePreguntasRepetidas(List<Opcion> unaLista) {
+        boolean hayPreguntasRepetidas = false;
+        Iterator<Opcion> iterador = unaLista.iterator();
+        List<Opcion> listaEvaluada = new ArrayList<>(unaLista);
+
+        while (iterador.hasNext() && !hayPreguntasRepetidas) {
+            Opcion opcion = iterador.next();
+            listaEvaluada.remove(opcion);
+            for (Opcion otraOpcion : listaEvaluada) {
+                hayPreguntasRepetidas = opcion.esIgualA(otraOpcion);
+            }
+        }
+        return hayPreguntasRepetidas;
     }
 
     public static ListaOpciones recuperar(JsonArray jsonOpciones) {
@@ -41,11 +59,20 @@ public class ListaOpciones {
     }
 
     public void agregar(Opcion opcion) {
+        if (this.contiene(opcion)) {
+            throw new OpcionesRepetidasException();
+        }
         listaOpciones.add(opcion);
     }
 
+    private boolean contiene(Opcion opcion) {
+        return (this.obtenerOpcionDe(opcion.getOpcion()) != null);
+    }
+
     public void agregarTodo(ListaOpciones otraListaOpciones) {
-        listaOpciones.addAll(otraListaOpciones.obtenerLista());
+        for (Opcion opcion : otraListaOpciones.getOpciones()) {
+            this.agregar(opcion);
+        }
     }
 
     public boolean contieneTodo(ListaOpciones otraLista) {
@@ -66,19 +93,23 @@ public class ListaOpciones {
     }
 
     public int obtenerCoincidencias(ListaOpciones otraLista) {
-        return otraLista.calculoDeCoincidencias(listaOpciones);
+        return this.calculoDeCoincidencias(listaOpciones, otraLista.getOpciones());
     }
 
-    public int calculoDeCoincidencias(List<Opcion> otraLista) {
+    private List<Opcion> getOpciones() {
+        return listaOpciones;
+    }
+
+    private int calculoDeCoincidencias(List<Opcion> lista, List<Opcion> otraLista) {
 
         int coincidencias = 0;
         Iterator<Opcion> iterador1 = otraLista.iterator();
-        Iterator<Opcion> iterador2 = listaOpciones.iterator();
+        Iterator<Opcion> iterador2 = lista.iterator();
 
         for (int i = 0; i < otraLista.size(); i++) {
             Opcion otraOpcion = iterador1.next();
 
-            for (int j = 0; j < listaOpciones.size(); j++) {
+            for (int j = 0; j < lista.size(); j++) {
 
                 Opcion opcion = iterador2.next();
 
@@ -86,7 +117,7 @@ public class ListaOpciones {
                     coincidencias++;
                 }
             }
-            iterador2 = listaOpciones.iterator();
+            iterador2 = lista.iterator();
         }
         return coincidencias;
     }
@@ -137,13 +168,13 @@ public class ListaOpciones {
         }
     }
 
-    public Opcion obtenerOpcionDe(String opcionBuscada){
+    public Opcion obtenerOpcionDe(String opcionBuscada) {
 
         Iterator<Opcion> iterador = listaOpciones.iterator();
         boolean contiene = false;
         Opcion opcion = null;
 
-        while( iterador.hasNext() && !contiene ) {
+        while (iterador.hasNext() && !contiene) {
 
             Opcion opcionIterador = iterador.next();
 

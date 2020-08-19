@@ -54,13 +54,13 @@ public class GroupChoiceTest {
     public void testGroupChoiceLanzaExcepcionSiSeLeIngresan7Opciones(){
         String consigna = "Agrupe las opciones en dos grupos";
 
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion3DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion4DeGrupoA = new Opcion("respuestaGrupoA");
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB");
-        Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB");
+        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA1");
+        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA2");
+        Opcion opcion3DeGrupoA = new Opcion("respuestaGrupoA3");
+        Opcion opcion4DeGrupoA = new Opcion("respuestaGrupoA4");
+        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB1");
+        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB2");
+        Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB3");
 
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA, opcion4DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
@@ -74,7 +74,7 @@ public class GroupChoiceTest {
         Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
 
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA)));
-        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList()));
+        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>());
 
         assertThrows(CantidadDeOpcionesInvalidaException.class, ()-> new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB));
     }
