@@ -4,5 +4,7 @@ import edu.fiuba.algo3.modelo.Bonus.Multiplicador;
 
 public interface PreguntaConPenalidad {
 
-    public Multiplicador getMultiplicador();
+    public Multiplicador getMultiplicadorX2();
+
+    public Multiplicador getMultiplicadorX3();
 }

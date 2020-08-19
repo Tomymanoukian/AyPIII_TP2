@@ -54,7 +54,12 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso implements Pregun
     }
 
     @Override
-    public Multiplicador getMultiplicador() {
-        return new Multiplicador();
+    public Multiplicador getMultiplicadorX2() {
+        return new Multiplicador(2);
+    }
+
+    @Override
+    public Multiplicador getMultiplicadorX3() {
+        return new Multiplicador(3);
     }
 }

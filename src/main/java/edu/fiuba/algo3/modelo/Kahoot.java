@@ -52,7 +52,8 @@ public class Kahoot{
     public void agregarExclusividad(PreguntaSinPenalidad unaPregunta, Jugador jugador){
 
         if(jugador == jugador1 || jugador == jugador2) {
-            exclusividades.agregarExclusividad(jugador.utilizarExclusividad());
+            exclusividades.agregarExclusividad(unaPregunta.getExclusividad());
+            jugador.utilizarExclusividad();
         }
         else{
             throw new JugadorNoValidoException();
@@ -63,10 +64,12 @@ public class Kahoot{
 
 
         if(jugador == jugador1) {
-            multiplicadoresJ1.agregarMultiplicador(jugador.utilizarMultiplicadorX2());
+            multiplicadoresJ1.agregarMultiplicador(unaPregunta.getMultiplicadorX2());
+            jugador.utilizarMultiplicadorX2();
         }
         else if(jugador == jugador2) {
-            multiplicadoresJ2.agregarMultiplicador(jugador.utilizarMultiplicadorX2());
+            multiplicadoresJ2.agregarMultiplicador(unaPregunta.getMultiplicadorX2());
+            jugador.utilizarMultiplicadorX2();
         }
         else{
             throw new JugadorNoValidoException();
@@ -76,10 +79,12 @@ public class Kahoot{
     public void agregarMultiplicadorX3(PreguntaConPenalidad unaPregunta, Jugador jugador){
 
         if(jugador == jugador1) {
-            multiplicadoresJ1.agregarMultiplicador(jugador.utilizarMultiplicadorX3());
+            multiplicadoresJ1.agregarMultiplicador(unaPregunta.getMultiplicadorX3());
+            jugador.utilizarMultiplicadorX3();
         }
         else if(jugador == jugador2) {
-            multiplicadoresJ2.agregarMultiplicador(jugador.utilizarMultiplicadorX3());
+            multiplicadoresJ2.agregarMultiplicador(unaPregunta.getMultiplicadorX3());
+            jugador.utilizarMultiplicadorX3();
         }
         else{
             throw new JugadorNoValidoException();
