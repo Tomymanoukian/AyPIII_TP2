@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.vista.Contenedores;
 
+import edu.fiuba.algo3.controlador.KeyEnterPrimerJugadorHandler;
+import edu.fiuba.algo3.controlador.KeyEnterSegundoJugadorHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

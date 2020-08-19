@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.vista.Layouts;
 
+import edu.fiuba.algo3.controlador.KeyEnterPrimerJugadorHandler;
+import edu.fiuba.algo3.controlador.KeyEnterSegundoJugadorHandler;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorBienvenida;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorBotonEmpezar;
@@ -19,6 +21,13 @@ public class LayoutMenuBienvenida {
 
         ContenedorBotonEmpezar contenedorBotonEmpezar = new ContenedorBotonEmpezar(contenedorNombresJugadores.nombreJugador1(),
                                                     contenedorNombresJugadores.nombreJugador2(), manejadorDeTurnos);
+
+        KeyEnterPrimerJugadorHandler keyEnterPrimerJugadorHandler = new KeyEnterPrimerJugadorHandler(contenedorNombresJugadores.nombreJugador2());
+        contenedorNombresJugadores.nombreJugador1().setOnKeyPressed(keyEnterPrimerJugadorHandler);
+
+        KeyEnterSegundoJugadorHandler keyEnterSegundoJugadorHandler = new KeyEnterSegundoJugadorHandler(contenedorBotonEmpezar);
+        contenedorNombresJugadores.nombreJugador2().setOnKeyPressed(keyEnterSegundoJugadorHandler);
+
         VBox contenedorInicioDeKahoot = new VBox(contenedorBienvenida.getLayout(), contenedorNombresJugadores.getLayout(), contenedorBotonEmpezar.getLayout());
 
         contenedorInicioDeKahoot.setSpacing(20);

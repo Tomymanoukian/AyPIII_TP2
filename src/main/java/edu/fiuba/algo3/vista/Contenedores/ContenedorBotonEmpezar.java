@@ -11,10 +11,11 @@ import javafx.scene.layout.HBox;
 public class ContenedorBotonEmpezar {
 
     private HBox contenedorBoton;
+    private Button iniciarJuego;
 
     public ContenedorBotonEmpezar(TextField nombreJugador1, TextField nombreJugador2, ManejadorDeTurnos manejadorDeTurnos) {
 
-        Button iniciarJuego = new Button("Iniciar Kahoot");
+        iniciarJuego = new Button("Iniciar Kahoot");
         iniciarJuego.setStyle("-fx-border-color: #000000; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
 
         BotonEmpezarJuegoEventHandler botonComienzoDeJuego = new BotonEmpezarJuegoEventHandler(nombreJugador1,
@@ -30,4 +31,6 @@ public class ContenedorBotonEmpezar {
     public HBox getLayout(){
         return contenedorBoton;
     }
+
+    public Button getButton(){ return iniciarJuego;}
 }
