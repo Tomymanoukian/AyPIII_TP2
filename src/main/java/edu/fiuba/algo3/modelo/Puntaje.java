@@ -26,10 +26,6 @@ public class Puntaje {
 
     public void establecerPuntos(int cantPuntos){puntos = cantPuntos;}
 
-    public void sumarPuntos(int cantPuntos){
-        puntos += cantPuntos;
-    }
-
     public void sumarPuntos(Puntaje unPuntaje){
         puntos += unPuntaje.getPuntos();
     }

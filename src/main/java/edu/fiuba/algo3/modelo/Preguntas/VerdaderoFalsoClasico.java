@@ -37,12 +37,6 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso implements PreguntaSin
     }
 
     @Override
-    public Boolean aceptaMultiplicador() {return false;}
-
-    @Override
-    public Boolean aceptaExclusividad() {return true;}
-
-    @Override
     public JsonObject guardar() {
 
         JsonObject jsonVoFClasico = new JsonObject();

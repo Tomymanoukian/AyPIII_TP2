@@ -27,10 +27,6 @@ public class ListaDeExclusividades {
         exclusividades.addAll(listExclusividades);
     }
 
-    public List<Exclusividad> getExclusividades() {
-        return exclusividades;
-    }
-
     public void agregarExclusividad(Exclusividad unaExclusividad){
         exclusividades.add(unaExclusividad);
     }

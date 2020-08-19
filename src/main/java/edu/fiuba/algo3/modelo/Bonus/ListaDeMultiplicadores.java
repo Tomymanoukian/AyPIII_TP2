@@ -26,10 +26,6 @@ public class ListaDeMultiplicadores {
         multiplicadores.addAll(listMultiplicadores);
     }
 
-    public List<Multiplicador> getMultiplicadores() {
-        return multiplicadores;
-    }
-
     public void agregarMultiplicador(Multiplicador unMultiplicador){
         multiplicadores.add(unMultiplicador);
     }

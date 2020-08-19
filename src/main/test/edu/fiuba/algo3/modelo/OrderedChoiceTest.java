@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.Preguntas.OrderedChoice;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
@@ -87,18 +88,9 @@ public class OrderedChoiceTest {
     }
 
     @Test
-    public void testSeVerificaQueSePuedaUtilizarMultiplicador(){
-
-        OrderedChoice orderedChoice = new OrderedChoice(consigna, listaDeOpciones);
-
-        assertEquals(false, orderedChoice.aceptaMultiplicador());
-    }
-
-    @Test
     public void testSeVerificaQueSePuedaUtilizarExclusividad(){
-
         OrderedChoice orderedChoice = new OrderedChoice(consigna, listaDeOpciones);
 
-        assertEquals(true, orderedChoice.aceptaExclusividad());
+        assert(orderedChoice.getExclusividad().getClass() == Exclusividad.class);
     }
 }

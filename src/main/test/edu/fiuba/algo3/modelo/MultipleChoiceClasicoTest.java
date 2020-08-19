@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.Preguntas.MultipleChoiceClasico;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import org.junit.jupiter.api.BeforeEach;
@@ -131,16 +132,8 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void testSeVerificaQueSePuedaUtilizarMultiplicador(){
-
-        MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
-        assertEquals(false, multipleChoiceClasico.aceptaMultiplicador());
-    }
-
-    @Test
     public void testSeVerificaQueSePuedaUtilizarExclusividad(){
-
         MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
-        assertEquals(true, multipleChoiceClasico.aceptaExclusividad());
+        assert(multipleChoiceClasico.getExclusividad().getClass() == Exclusividad.class);
     }
 }

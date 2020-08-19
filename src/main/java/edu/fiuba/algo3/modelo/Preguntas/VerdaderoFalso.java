@@ -11,10 +11,6 @@ public abstract class VerdaderoFalso extends Pregunta {
     protected Opcion opcionCorrecta;
     protected Opcion opcionIncorrecta;
 
-    public Opcion getOpcionCorrecta() {
-        return opcionCorrecta;
-    }
-
     public Opcion getOpcionIncorrecta() {
         return opcionIncorrecta;
     }

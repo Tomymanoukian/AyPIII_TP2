@@ -15,7 +15,7 @@ public class MultipleChoiceParcialTest {
     @Test
     public void testCrearMultipleChoiceParcial() {
 
-        ListaOpciones respuestasCorrectas = new ListaOpciones();
+        ListaOpciones opcionesCorrectas = new ListaOpciones();
         ListaOpciones respuestasIncorrectas = new ListaOpciones();
         String consigna = "Indicar cuales de las siguientes opciones son quesos";
 
@@ -23,16 +23,16 @@ public class MultipleChoiceParcialTest {
         Opcion opcionCorrectaRoquefort = new Opcion("Roquefort");
         Opcion opcionIncorrectaKetchup = new Opcion("Ketchup");
 
-        respuestasCorrectas.agregar(opcionCorrectaCheddar);
-        respuestasCorrectas.agregar(opcionCorrectaRoquefort);
+        opcionesCorrectas.agregar(opcionCorrectaCheddar);
+        opcionesCorrectas.agregar(opcionCorrectaRoquefort);
 
         respuestasIncorrectas.agregar(opcionIncorrectaKetchup);
 
-        MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas);
+        MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, respuestasIncorrectas);
 
         assertEquals("Indicar cuales de las siguientes opciones son quesos", multipleChoiceParcial.getConsigna());
-        assert (multipleChoiceParcial.getOpcionesCorrectas().contieneTodo(respuestasCorrectas));
-        assert (multipleChoiceParcial.getOpcionesIncorrectas().contieneTodo(respuestasIncorrectas));
+        assert (multipleChoiceParcial.getOpcionesCorrectas().contieneLoMismo(opcionesCorrectas));
+        assert (multipleChoiceParcial.getOpcionesIncorrectas().contieneLoMismo(respuestasIncorrectas));
     }
 
     @Test

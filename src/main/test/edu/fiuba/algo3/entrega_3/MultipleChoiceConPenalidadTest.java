@@ -48,8 +48,8 @@ public class MultipleChoiceConPenalidadTest {
         MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
         assertEquals("Indicar cuales de las siguientes opciones son quesos", multipleChoiceConPenalidad.getConsigna());
-        assert( multipleChoiceConPenalidad.getOpcionesCorrectas().contieneTodo(opcionesCorrectas));
-        assert( multipleChoiceConPenalidad.getOpcionesIncorrectas().contieneTodo(opcionesIncorrectas));
+        assert( multipleChoiceConPenalidad.getOpcionesCorrectas().contieneLoMismo(opcionesCorrectas));
+        assert( multipleChoiceConPenalidad.getOpcionesIncorrectas().contieneLoMismo(opcionesIncorrectas));
     }
 
     @Test

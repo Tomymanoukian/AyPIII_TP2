@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Respuestas.RespuestaDeGrupos;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -17,11 +18,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class AsignacionDePuntosTest {
+    private Opcion opcionVerdaderaCorrecta;
+    private Opcion opcionFalsaCorrecta;
 
-    @Before
-    public void setUp() {
-
-
+    @BeforeEach
+    public void setup() {
+        opcionVerdaderaCorrecta = new Opcion("Verdadero", new Puntaje(1));
+        opcionFalsaCorrecta = new Opcion("Falso", new Puntaje(1));
     }
 
     @Test
@@ -32,7 +35,7 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(preguntaVerderoFalsoClasico.getOpcionCorrecta());
+        RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(opcionFalsaCorrecta);
         RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoClasico.getOpcionIncorrecta());
 
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
@@ -52,7 +55,7 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(preguntaVerderoFalsoConPenalidad.getOpcionCorrecta());
+        RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(opcionFalsaCorrecta);
         RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoConPenalidad.getOpcionIncorrecta());
 
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
@@ -598,7 +601,7 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(preguntaVerderoFalsoClasico.getOpcionCorrecta());
+        RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(opcionFalsaCorrecta);
         RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoClasico.getOpcionIncorrecta());
 
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
@@ -619,7 +622,7 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(preguntaVerderoFalsoConPenalidad.getOpcionCorrecta());
+        RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(opcionFalsaCorrecta);
         RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoConPenalidad.getOpcionIncorrecta());
 
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
