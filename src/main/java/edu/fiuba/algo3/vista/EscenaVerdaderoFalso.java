@@ -2,6 +2,8 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalsoClasico;
+import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalsoConPenalidad;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
@@ -13,8 +15,15 @@ public class EscenaVerdaderoFalso implements Escena{
     public EscenaVerdaderoFalso(Pregunta unaPregunta, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos){
 
         pregunta = unaPregunta;
-        LayoutVerdaderoFalso layoutVerdaderoFalso = new LayoutVerdaderoFalso(pregunta, this , unJugador, manejadorDeTurnos);
-        layout = layoutVerdaderoFalso.getLayout();
+
+        if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoClasico.class.getSimpleName())) {
+            LayoutVerdaderoFalsoSinPenalidad layoutVerdaderoFalso = new LayoutVerdaderoFalsoSinPenalidad(pregunta, this, unJugador, manejadorDeTurnos);
+            layout = layoutVerdaderoFalso.getLayout();
+        }
+        if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoConPenalidad.class.getSimpleName())) {
+            LayoutVerdaderoFalsoConPenalidad layoutVerdaderoFalso = new LayoutVerdaderoFalsoConPenalidad(pregunta, this, unJugador, manejadorDeTurnos);
+            layout = layoutVerdaderoFalso.getLayout();
+        }
     }
 
     @Override
@@ -22,7 +31,14 @@ public class EscenaVerdaderoFalso implements Escena{
 
     @Override
     public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
-        Pane layout = (new LayoutVerdaderoFalso(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
-        manejadorDeTurnos.getStage().setScene(new Scene(layout));
+
+        if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoClasico.class.getSimpleName())) {
+            Pane layout = (new LayoutVerdaderoFalsoSinPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
+            manejadorDeTurnos.getStage().setScene(new Scene(layout));
+        }
+        if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoConPenalidad.class.getSimpleName())) {
+            Pane layout = (new LayoutVerdaderoFalsoConPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
+            manejadorDeTurnos.getStage().setScene(new Scene(layout));
+        }
     }
 }

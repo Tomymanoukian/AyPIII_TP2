@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
-import edu.fiuba.algo3.modelo.Bonus.Multiplicador;
 import edu.fiuba.algo3.modelo.excepciones.ErrorSinBonusesException;
 import edu.fiuba.algo3.modelo.excepciones.JugadorSinNombreException;
 

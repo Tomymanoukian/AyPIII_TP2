@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.*;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
@@ -20,8 +19,19 @@ public class EscenaMultipleChoice implements Escena {
         opcionesMostradas.agregarTodo(multipleChoice.getOpcionesIncorrectas());
         opcionesMostradas.desordenar();
 
-        LayoutMultipleChoice layoutMultipleChoice = new LayoutMultipleChoice(pregunta, this, jugador, manejadorDeTurnos);
-        layout = layoutMultipleChoice.getLayout();
+        if(pregunta.getClass().getSimpleName().equals(MultipleChoiceClasico.class.getSimpleName())) {
+            LayoutMultipleChoiceSinPenalidad layoutMultipleChoice = new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos);
+            layout = layoutMultipleChoice.getLayout();
+        }
+        if(pregunta.getClass().getSimpleName().equals(MultipleChoiceParcial.class.getSimpleName())) {
+            LayoutMultipleChoiceSinPenalidad layoutMultipleChoice = new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos);
+            layout = layoutMultipleChoice.getLayout();
+        }
+        if(pregunta.getClass().getSimpleName().equals(MultipleChoiceConPenalidad.class.getSimpleName())) {
+            LayoutMultipleChoiceConPenalidad layoutMultipleChoice = new LayoutMultipleChoiceConPenalidad(pregunta, this, jugador, manejadorDeTurnos);
+            layout = layoutMultipleChoice.getLayout();
+        }
+
     }
 
     @Override
@@ -34,7 +44,17 @@ public class EscenaMultipleChoice implements Escena {
     @Override
     public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
-        Pane layout = (new LayoutMultipleChoice(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
-        manejadorDeTurnos.getStage().setScene(new Scene(layout));
+        if(pregunta.getClass().getSimpleName().equals(MultipleChoiceClasico.class.getSimpleName())) {
+            Pane layout = (new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
+            manejadorDeTurnos.getStage().setScene(new Scene(layout));
+        }
+        if(pregunta.getClass().getSimpleName().equals(MultipleChoiceParcial.class.getSimpleName())) {
+            Pane layout = (new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
+            manejadorDeTurnos.getStage().setScene(new Scene(layout));
+        }
+        if(pregunta.getClass().getSimpleName().equals(MultipleChoiceConPenalidad.class.getSimpleName())) {
+            Pane layout = (new LayoutMultipleChoiceConPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
+            manejadorDeTurnos.getStage().setScene(new Scene(layout));
+        }
     }
 }

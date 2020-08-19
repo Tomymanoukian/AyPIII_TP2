@@ -1,27 +1,28 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.*;
-import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.controlador.BotonEnviarHandler;
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
 import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.layout.VBox;
 
-public class LayoutVerdaderoFalso {
+public class LayoutVerdaderoFalsoConPenalidad {
 
     private Pane layout;
 
-    public LayoutVerdaderoFalso(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
+    public LayoutVerdaderoFalsoConPenalidad(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
 
         VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
 
-        ContenedorPrimerReglon contenedorPrimerReglon = new ContenedorPrimerReglon(verdaderoFalso, scene, unJugador, manejadorDeTurnos, new RespuestaUnica(verdaderoFalso.getOpcionIncorrecta()));
+        ContenedorPrimerReglonPreguntaConPenalidad contenedorPrimerReglon = new ContenedorPrimerReglonPreguntaConPenalidad((PreguntaConPenalidad) verdaderoFalso, scene, unJugador, manejadorDeTurnos, new RespuestaUnica(verdaderoFalso.getOpcionIncorrecta()));
 
         ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
 
@@ -31,11 +32,11 @@ public class LayoutVerdaderoFalso {
         layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
-    public LayoutVerdaderoFalso(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
+    public LayoutVerdaderoFalsoConPenalidad(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
         VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
 
-        ContenedorPrimerReglon contenedorPrimerReglon = new ContenedorPrimerReglon(verdaderoFalso, scene, unJugador, manejadorDeTurnos, new RespuestaUnica(verdaderoFalso.getOpcionIncorrecta()), unaEtiquetaTiempo);
+        ContenedorPrimerReglonPreguntaConPenalidad contenedorPrimerReglon = new ContenedorPrimerReglonPreguntaConPenalidad((PreguntaConPenalidad) verdaderoFalso, scene, unJugador, manejadorDeTurnos, new RespuestaUnica(verdaderoFalso.getOpcionIncorrecta()), unaEtiquetaTiempo);
 
         ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
 
