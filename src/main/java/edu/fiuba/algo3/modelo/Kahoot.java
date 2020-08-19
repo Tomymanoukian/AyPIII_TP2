@@ -4,10 +4,10 @@ import edu.fiuba.algo3.modelo.Bonus.BonusDePuntaje;
 import edu.fiuba.algo3.modelo.Bonus.ListaDeExclusividades;
 import edu.fiuba.algo3.modelo.Bonus.ListaDeMultiplicadores;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.excepciones.JugadorNoValidoException;
-import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaExclusividadesException;
-import edu.fiuba.algo3.modelo.excepciones.EstaPreguntaNoAceptaMultiplicadoresException;
 
 public class Kahoot{
 
@@ -49,10 +49,7 @@ public class Kahoot{
         respuestaJugador2 = unaRespuesta;
     }
 
-    public void agregarExclusividad(Pregunta unaPregunta, Jugador jugador){
-
-        if (!unaPregunta.aceptaExclusividad())
-            throw new EstaPreguntaNoAceptaExclusividadesException();
+    public void agregarExclusividad(PreguntaSinPenalidad unaPregunta, Jugador jugador){
 
         if(jugador == jugador1 || jugador == jugador2) {
             exclusividades.agregarExclusividad(jugador.utilizarExclusividad());
@@ -62,10 +59,8 @@ public class Kahoot{
         }
     }
 
-    public void agregarMultiplicadorX2(Pregunta unaPregunta, Jugador jugador){
+    public void agregarMultiplicadorX2(PreguntaConPenalidad unaPregunta, Jugador jugador){
 
-        if (!unaPregunta.aceptaMultiplicador())
-            throw new EstaPreguntaNoAceptaMultiplicadoresException();
 
         if(jugador == jugador1) {
             multiplicadoresJ1.agregarMultiplicador(jugador.utilizarMultiplicadorX2());
@@ -78,10 +73,7 @@ public class Kahoot{
         }
     }
 
-    public void agregarMultiplicadorX3(Pregunta unaPregunta, Jugador jugador){
-
-        if (!unaPregunta.aceptaMultiplicador())
-            throw new EstaPreguntaNoAceptaMultiplicadoresException();
+    public void agregarMultiplicadorX3(PreguntaConPenalidad unaPregunta, Jugador jugador){
 
         if(jugador == jugador1) {
             multiplicadoresJ1.agregarMultiplicador(jugador.utilizarMultiplicadorX3());

@@ -3,6 +3,8 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
@@ -26,15 +28,15 @@ public class ContenedorPrimerReglon {
         etiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);//Label tiempo = new Label("00:00");
 
         bonusX2 = new Button("X2");
-        BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler((PreguntaConPenalidad) pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         bonusX2.setOnAction(multiplicX2Handler);
 
         bonusX3 = new Button("X3");
-        BotonMultiplicadorx3EventHandler multiplicX3Handler = new BotonMultiplicadorx3EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        BotonMultiplicadorx3EventHandler multiplicX3Handler = new BotonMultiplicadorx3EventHandler((PreguntaConPenalidad)pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         bonusX3.setOnAction(multiplicX3Handler);
 
         exclusividad = new Button("Ex");
-        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler ((PreguntaSinPenalidad) pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         exclusividad.setOnAction(exclusividadHandler);
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
@@ -59,15 +61,15 @@ public class ContenedorPrimerReglon {
         etiquetaTiempo = unaEtiquetaTiempo;//Label tiempo = new Label("00:00");
 
         bonusX2 = new Button("X2");
-        BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler((PreguntaConPenalidad) pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         bonusX2.setOnAction(multiplicX2Handler);
 
         bonusX3 = new Button("X3");
-        BotonMultiplicadorx3EventHandler multiplicX3Handler = new BotonMultiplicadorx3EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        BotonMultiplicadorx3EventHandler multiplicX3Handler = new BotonMultiplicadorx3EventHandler((PreguntaConPenalidad)pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         bonusX3.setOnAction(multiplicX3Handler);
 
         exclusividad = new Button("Ex");
-        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler (pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler ((PreguntaSinPenalidad) pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         exclusividad.setOnAction(exclusividadHandler);
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
