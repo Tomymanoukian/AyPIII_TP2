@@ -178,8 +178,8 @@ public class ManejadorDeArchivosTest {
         ListaOpciones opcionesOrdenadas = new ListaOpciones(Arrays.asList(opcion1, opcion2, opcion3, opcion4));
 
 
-        OrderedChoice orderedChoiceParcial = new OrderedChoice("consigna ordered choice", opcionesOrdenadas);
-        preguntasAEscribir.add(orderedChoiceParcial);
+        OrderedChoice orderedChoice = new OrderedChoice("consigna ordered choice", opcionesOrdenadas);
+        preguntasAEscribir.add(orderedChoice);
 
         assert (manejadorDeArchivos.getPreguntas().isEmpty());
 
@@ -190,8 +190,8 @@ public class ManejadorDeArchivosTest {
         OrderedChoice orderedChoiceLeido = (OrderedChoice) preguntas.get(0);
 
         assertEquals(1, preguntas.size());
-        assertEquals(orderedChoiceParcial.getConsigna(), orderedChoiceLeido.getConsigna());
-        assert (orderedChoiceParcial.getOpciones().esIgual(orderedChoiceLeido.getOpciones()));
+        assertEquals(orderedChoice.getConsigna(), orderedChoiceLeido.getConsigna());
+        assert (orderedChoice.getOpciones().esIgual(orderedChoiceLeido.getOpciones()));
 
     }
 
@@ -199,6 +199,8 @@ public class ManejadorDeArchivosTest {
     public void testEscribeYLeeGroupChoice() {
         ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
         List<Pregunta> preguntasAEscribir = new ArrayList<>();
+        String nombreGrupoA = "Grupo A";
+        String nombreGrupoB = "Grupo B";
 
         Opcion opcionGrupoA1 = new Opcion("opcion grupo A 1", new Puntaje(0));
         Opcion opcionGrupoA2 = new Opcion("opcion grupo A 2", new Puntaje(0));
@@ -208,8 +210,8 @@ public class ManejadorDeArchivosTest {
         Opcion opcionGrupoB2 = new Opcion("opcion grupo B 2", new Puntaje(0));
         ListaOpciones opcionesGrupoB = new ListaOpciones(Arrays.asList(opcionGrupoB1, opcionGrupoB2));
 
-        GroupChoice groupChoiceParcial = new GroupChoice("consigna ordered choice", opcionesGrupoA, opcionesGrupoB);
-        preguntasAEscribir.add(groupChoiceParcial);
+        GroupChoice groupChoice = new GroupChoice("consigna ordered choice", nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
+        preguntasAEscribir.add(groupChoice);
 
         assert (manejadorDeArchivos.getPreguntas().isEmpty());
 
@@ -220,9 +222,11 @@ public class ManejadorDeArchivosTest {
         GroupChoice groupChoiceLeido = (GroupChoice) preguntas.get(0);
 
         assertEquals(1, preguntas.size());
-        assertEquals(groupChoiceParcial.getConsigna(), groupChoiceLeido.getConsigna());
-        assert (groupChoiceParcial.getOpcionesGrupoA().esIgual(groupChoiceLeido.getOpcionesGrupoA()));
-        assert (groupChoiceParcial.getOpcionesGrupoB().esIgual(groupChoiceLeido.getOpcionesGrupoB()));
+        assertEquals(groupChoice.getConsigna(), groupChoiceLeido.getConsigna());
+        assertEquals(groupChoice.getNombreGrupoA(), groupChoiceLeido.getNombreGrupoA());
+        assertEquals(groupChoice.getNombreGrupoB(), groupChoiceLeido.getNombreGrupoB());
+        assert (groupChoice.getOpcionesGrupoA().esIgual(groupChoiceLeido.getOpcionesGrupoA()));
+        assert (groupChoice.getOpcionesGrupoB().esIgual(groupChoiceLeido.getOpcionesGrupoB()));
 
     }
 }
