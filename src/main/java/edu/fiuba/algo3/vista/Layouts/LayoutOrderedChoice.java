@@ -20,11 +20,11 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
-import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
+import static edu.fiuba.algo3.vista.Constantes.*;
 
 public class LayoutOrderedChoice {
 
-    private Pane layout;
+    private VBox layout;
 
     public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
@@ -44,6 +44,7 @@ public class LayoutOrderedChoice {
 
         layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
         layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setAlignment(Pos.TOP_CENTER);
     }
 
     public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
@@ -62,6 +63,7 @@ public class LayoutOrderedChoice {
 
         layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
         layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setAlignment(Pos.TOP_CENTER);
     }
 
     public Pane getLayout() {return layout;}
@@ -74,10 +76,20 @@ public class LayoutOrderedChoice {
         for (int i = 0; i < opcionesMostradas.cantidadDeOpciones(); i++) {
 
             Button botonBajar = new Button ("▼");
+
+            Label opcionMostrada = new Label (opcionesMostradas.obtener(i).getOpcion());
+            opcionMostrada.setPrefWidth(ANCHO_OPCION-70);
+            opcionMostrada.setAlignment(Pos.CENTER);
+
             Button botonSubir = new Button ("▲");
 
-            listaHBoxOpciones.add(new HBox (botonBajar, new Label (opcionesMostradas.obtener(i).getOpcion()), botonSubir));
-            listaHBoxOpciones.get(i).setAlignment(Pos.CENTER);
+            HBox linea = new HBox (botonBajar, opcionMostrada, botonSubir);
+            linea.setBackground(new Background(new BackgroundFill(Color.web(COLOR_OPCIONES), CornerRadii.EMPTY, Insets.EMPTY)));
+            linea.setMinSize(ANCHO_OPCION, 40);
+            linea.setMaxSize(ANCHO_OPCION, 40);
+            linea.setAlignment(Pos.CENTER);
+
+            listaHBoxOpciones.add(linea);
 
             BotonBajarRespuestaHandler botonHandlerBajar = new BotonBajarRespuestaHandler(i, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
             botonBajar.setOnAction(botonHandlerBajar);
@@ -91,6 +103,9 @@ public class LayoutOrderedChoice {
 
         VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.getChildren().addAll(listaHBoxOpciones);
+
+        contenedorOpciones.setBackground(new Background(new BackgroundFill(Color.web(COLOR_CONTENEDOR_CONSIGNA), CornerRadii.EMPTY, new Insets(-20))));
+        contenedorOpciones.setMaxWidth(ANCHO_OPCION);
         contenedorOpciones.setAlignment(Pos.CENTER);
 
         return contenedorOpciones;
