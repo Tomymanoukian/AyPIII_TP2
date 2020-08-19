@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import static edu.fiuba.algo3.vista.Constantes.COLOR_CINTA;
+
 public class ContenedorPrimerReglonPreguntaSinPenalidad {
 
     private HBox layout;
@@ -51,7 +53,7 @@ public class ContenedorPrimerReglonPreguntaSinPenalidad {
 
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-font-size: 1.25em;");
-        layout.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_CINTA), CornerRadii.EMPTY, Insets.EMPTY)));
         layout.setSpacing(40);
         layout.setPadding(new Insets(10));
     }
@@ -85,7 +87,7 @@ public class ContenedorPrimerReglonPreguntaSinPenalidad {
 
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-font-size: 1.25em;");
-        layout.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_CINTA), CornerRadii.EMPTY, Insets.EMPTY)));
         layout.setSpacing(40);
         layout.setPadding(new Insets(10));
     }
