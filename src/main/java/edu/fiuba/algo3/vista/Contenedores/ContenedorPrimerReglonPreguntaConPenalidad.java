@@ -26,25 +26,26 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
 
     public ContenedorPrimerReglonPreguntaConPenalidad(PreguntaConPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta){
 
-        System.out.println("se crea un primer renglon con penalidad");
-
         Label nombreJugador = new Label(jugador.getNombre());
         etiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);//Label tiempo = new Label("00:00");
 
         bonusX2 = new Button("X2");
         BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         bonusX2.setOnAction(multiplicX2Handler);
+        ContenedorBonus contenedorBonusX2 = new ContenedorBonus(bonusX2, jugador.cantMultiplicadoresX2Restantes());
 
         bonusX3 = new Button("X3");
         BotonMultiplicadorx3EventHandler multiplicX3Handler = new BotonMultiplicadorx3EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         bonusX3.setOnAction(multiplicX3Handler);
+        ContenedorBonus contenedorBonusX3 = new ContenedorBonus(bonusX3, jugador.cantMultiplicadoresX3Restantes());
 
         exclusividad = new Button("Ex");
         exclusividad.setDisable(true);
+        ContenedorBonus contenedorExclusividad = new ContenedorBonus(exclusividad, jugador.cantExclusividadesRestantes());
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
         VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
-        HBox contenedorBonus = new HBox(bonusX2, bonusX3, exclusividad);
+        HBox contenedorBonus = new HBox(contenedorBonusX2.getLayout(), contenedorBonusX3.getLayout(), contenedorExclusividad.getLayout());
         contenedorBonus.setSpacing(3);
 
         this.habilitarMultiplicadores(jugador);
@@ -60,25 +61,26 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
 
     public ContenedorPrimerReglonPreguntaConPenalidad(PreguntaConPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta, EtiquetaTiempo unaEtiquetaTiempo){
 
-        System.out.println("se crea un primer renglon con penalidad");
-
         Label nombreJugador = new Label(jugador.getNombre());
         etiquetaTiempo = unaEtiquetaTiempo;//Label tiempo = new Label("00:00");
 
         bonusX2 = new Button("X2");
         BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         bonusX2.setOnAction(multiplicX2Handler);
+        ContenedorBonus contenedorBonusX2 = new ContenedorBonus(bonusX2, jugador.cantMultiplicadoresX2Restantes());
 
         bonusX3 = new Button("X3");
         BotonMultiplicadorx3EventHandler multiplicX3Handler = new BotonMultiplicadorx3EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         bonusX3.setOnAction(multiplicX3Handler);
+        ContenedorBonus contenedorBonusX3 = new ContenedorBonus(bonusX3, jugador.cantMultiplicadoresX3Restantes());
 
         exclusividad = new Button("Ex");
         exclusividad.setDisable(true);
+        ContenedorBonus contenedorExclusividad = new ContenedorBonus(exclusividad, jugador.cantExclusividadesRestantes());
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
         VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
-        HBox contenedorBonus = new HBox(bonusX2, bonusX3, exclusividad);
+        HBox contenedorBonus = new HBox(contenedorBonusX2.getLayout(), contenedorBonusX3.getLayout(), contenedorExclusividad.getLayout());
         contenedorBonus.setSpacing(3);
 
         this.habilitarMultiplicadores(jugador);

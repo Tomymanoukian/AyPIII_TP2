@@ -24,24 +24,25 @@ public class ContenedorPrimerReglonPreguntaSinPenalidad {
 
     public ContenedorPrimerReglonPreguntaSinPenalidad(PreguntaSinPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta) {
 
-        System.out.println("se crea un primer renglon sin penalidad 1");
-
         Label nombreJugador = new Label(jugador.getNombre());
         etiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);//Label tiempo = new Label("00:00");
 
         bonusX2 = new Button("X2");
         bonusX2.setDisable(true);
+        ContenedorBonus contenedorBonusX2 = new ContenedorBonus(bonusX2, jugador.cantMultiplicadoresX2Restantes());
 
         bonusX3 = new Button("X3");
         bonusX3.setDisable(true);
+        ContenedorBonus contenedorBonusX3 = new ContenedorBonus(bonusX3, jugador.cantMultiplicadoresX3Restantes());
 
         exclusividad = new Button("Ex");
         BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         exclusividad.setOnAction(exclusividadHandler);
+        ContenedorBonus contenedorExclusividad = new ContenedorBonus(exclusividad, jugador.cantExclusividadesRestantes());
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
         VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
-        HBox contenedorBonus = new HBox(bonusX2, bonusX3, exclusividad);
+        HBox contenedorBonus = new HBox(contenedorBonusX2.getLayout(), contenedorBonusX3.getLayout(), contenedorExclusividad.getLayout());
         contenedorBonus.setSpacing(3);
 
         this.habilitarExcepciones(jugador);
@@ -57,24 +58,25 @@ public class ContenedorPrimerReglonPreguntaSinPenalidad {
 
     public ContenedorPrimerReglonPreguntaSinPenalidad(PreguntaSinPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta, EtiquetaTiempo unaEtiquetaTiempo) {
 
-        System.out.println("se crea un primer renglon sin penalidad 2");
-
         Label nombreJugador = new Label(jugador.getNombre());
         etiquetaTiempo = unaEtiquetaTiempo;//Label tiempo = new Label("00:00");
 
         bonusX2 = new Button("X2");
         bonusX2.setDisable(true);
+        ContenedorBonus contenedorBonusX2 = new ContenedorBonus(bonusX2, jugador.cantMultiplicadoresX2Restantes());
 
         bonusX3 = new Button("X3");
         bonusX3.setDisable(true);
+        ContenedorBonus contenedorBonusX3 = new ContenedorBonus(bonusX3, jugador.cantMultiplicadoresX3Restantes());
 
         exclusividad = new Button("Ex");
         BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
         exclusividad.setOnAction(exclusividadHandler);
+        ContenedorBonus contenedorExclusividad = new ContenedorBonus(exclusividad, jugador.cantExclusividadesRestantes());
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
         VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
-        HBox contenedorBonus = new HBox(bonusX2, bonusX3, exclusividad);
+        HBox contenedorBonus = new HBox(contenedorBonusX2.getLayout(), contenedorBonusX3.getLayout(), contenedorExclusividad.getLayout());
         contenedorBonus.setSpacing(3);
 
         this.habilitarExcepciones(jugador);
