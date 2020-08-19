@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.OpcionesRepetidasException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ListaOpcionesTest {
 
     @Test
-    public void testAgregoUnaRespuestaCorrectamente(){
+    public void testAgregoUnaRespuestaCorrectamente() {
         ListaOpciones listaOpciones = new ListaOpciones();
         Opcion opcion = new Opcion("Una gran respuesta");
         listaOpciones.agregar(opcion);
@@ -23,7 +24,7 @@ public class ListaOpcionesTest {
     }
 
     @Test
-    public void testAgregoTodosLosElementosDeUnaListaAOtra(){
+    public void testAgregoTodosLosElementosDeUnaListaAOtra() {
         Opcion opcion1 = new Opcion("Respuesta1");
         Opcion opcion2 = new Opcion("Respuesta2");
         Opcion opcion3 = new Opcion("Respuesta3");
@@ -33,10 +34,11 @@ public class ListaOpcionesTest {
         ListaOpciones otraListaOpciones = new ListaOpciones();
         otraListaOpciones.agregarTodo(listaOpciones);
 
-        assert(otraListaOpciones.contieneTodo(listaOpciones));
+        assert (otraListaOpciones.contieneTodo(listaOpciones));
     }
+
     @Test
-    public void testEliminaCorrectamenteUnaOpcionDeUnaLista(){
+    public void testEliminaCorrectamenteUnaOpcionDeUnaLista() {
         Opcion opcion1 = new Opcion("Respuesta1");
         Opcion opcion2 = new Opcion("Respuesta2");
         Opcion opcion3 = new Opcion("Respuesta3");
@@ -48,11 +50,11 @@ public class ListaOpcionesTest {
         listaOpciones.eliminar("Respuesta2");
 
         assertEquals(2, listaOpciones.cantidadDeOpciones());
-        assertEquals(null, listaOpciones.obtenerOpcionDe("Respuesta2"));
+        assertNull(listaOpciones.obtenerOpcionDe("Respuesta2"));
     }
 
     @Test
-    public void testNoEliminaUnaOpcionInexisteDeUnaLista(){
+    public void testNoEliminaUnaOpcionInexisteDeUnaLista() {
         Opcion opcion1 = new Opcion("Respuesta1");
         Opcion opcion2 = new Opcion("Respuesta2");
         Opcion opcion3 = new Opcion("Respuesta3");
@@ -60,7 +62,7 @@ public class ListaOpcionesTest {
         ListaOpciones listaOpciones = new ListaOpciones(Arrays.asList(opcion1, opcion2, opcion3));
 
         assertEquals(3, listaOpciones.cantidadDeOpciones());
-        assertEquals(null, listaOpciones.obtenerOpcionDe("Respuesta4"));
+        assertNull(listaOpciones.obtenerOpcionDe("Respuesta4"));
 
         listaOpciones.eliminar("Respuesta4");
 
@@ -68,7 +70,7 @@ public class ListaOpcionesTest {
     }
 
     @Test
-    public void testCompruebaQueUnaListaContieneTodosLosElementosDeOtraLista(){
+    public void testCompruebaQueUnaListaContieneTodosLosElementosDeOtraLista() {
         Opcion opcion1 = new Opcion("Respuesta1");
         Opcion opcion2 = new Opcion("Respuesta2");
         Opcion opcion3 = new Opcion("Respuesta3");
@@ -81,11 +83,11 @@ public class ListaOpcionesTest {
         ListaOpciones listaOpciones = new ListaOpciones(arrayList);
         ListaOpciones otraListaOpciones = new ListaOpciones(otroArrayList);
 
-        assert(listaOpciones.contieneTodo(otraListaOpciones));
+        assert (listaOpciones.contieneTodo(otraListaOpciones));
     }
 
     @Test
-    public void testDevuelveCorrectamenteLaOpcionConElMismoRotulo(){
+    public void testDevuelveCorrectamenteLaOpcionConElMismoRotulo() {
         String rotulo = "Opcion1";
 
         ListaOpciones listaOpciones = new ListaOpciones();
@@ -96,7 +98,7 @@ public class ListaOpcionesTest {
     }
 
     @Test
-    public void testDevuelveNullSiNoExisteOpcionConElMismoRotulo(){
+    public void testDevuelveNullSiNoExisteOpcionConElMismoRotulo() {
         String rotulo = "Opcion1";
         String otroRotulo = "Opcion2";
 
@@ -104,13 +106,12 @@ public class ListaOpcionesTest {
         Opcion opcion1 = new Opcion(otroRotulo);
         listaOpciones.agregar(opcion1);
 
-        assertEquals(null, listaOpciones.obtenerOpcionDe(rotulo));
+        assertNull(listaOpciones.obtenerOpcionDe(rotulo));
     }
 
 
-
     @Test
-    public void testCompruebaQueUnaListaNoContieneTodosLosElementosDeOtraLista(){
+    public void testCompruebaQueUnaListaNoContieneTodosLosElementosDeOtraLista() {
         ListaOpciones listaOpciones = new ListaOpciones();
         Opcion opcion1 = new Opcion("Respuesta1");
         Opcion opcion2 = new Opcion("Respuesta2");
@@ -120,11 +121,11 @@ public class ListaOpcionesTest {
         ListaOpciones otraListaOpciones = new ListaOpciones();
         otraListaOpciones.agregar(opcion1);
 
-        assert(!otraListaOpciones.contieneTodo(listaOpciones));
+        assert (!otraListaOpciones.contieneTodo(listaOpciones));
     }
 
     @Test
-    public void testObtieneCorrectamenteUnElementoDeLaLista(){
+    public void testObtieneCorrectamenteUnElementoDeLaLista() {
         ListaOpciones listaOpciones = new ListaOpciones();
         Opcion opcion1 = new Opcion("Respuesta1");
         Opcion opcion2 = new Opcion("Respuesta2");
@@ -136,7 +137,7 @@ public class ListaOpcionesTest {
     }
 
     @Test
-    public void testObtieneLaListaDeRespuestasCorrectamente(){
+    public void testObtieneLaListaDeRespuestasCorrectamente() {
         ListaOpciones listaOpciones = new ListaOpciones();
         Opcion opcion1 = new Opcion("Respuesta1");
         Opcion opcion2 = new Opcion("Respuesta2");
@@ -151,7 +152,7 @@ public class ListaOpcionesTest {
     }
 
     @Test
-    public void testObtieneCantidadDeCoincidenciasCorrectamenteDevolviendo2(){
+    public void testObtieneCantidadDeCoincidenciasCorrectamenteDevolviendo2() {
         ListaOpciones listaOpciones = new ListaOpciones();
         Opcion opcion1 = new Opcion("Respuesta1");
         Opcion opcion2 = new Opcion("Respuesta2");
@@ -168,7 +169,7 @@ public class ListaOpcionesTest {
     }
 
     @Test
-    public void testObtieneCeroCantidadDeCoincidenciasEntreDosListas(){
+    public void testObtieneCeroCantidadDeCoincidenciasEntreDosListas() {
         ListaOpciones listaOpciones = new ListaOpciones();
         Opcion opcion1 = new Opcion("Respuesta1");
         Opcion opcion2 = new Opcion("Respuesta2");
@@ -185,7 +186,7 @@ public class ListaOpcionesTest {
     }
 
     @Test
-    public void listaDeRespuestasSeCreaConUnArrayListDeRespuestas(){
+    public void listaDeRespuestasSeCreaConUnArrayListDeRespuestas() {
         Opcion opcion1 = new Opcion("respuesta1");
         Opcion opcion2 = new Opcion("respuesta2");
         Opcion opcion3 = new Opcion("respuesta3");
@@ -198,7 +199,7 @@ public class ListaOpcionesTest {
     }
 
     @Test
-    public void testContieneLoMismoFuncionaCorrectamente(){
+    public void testContieneLoMismoFuncionaCorrectamente() {
         Opcion opcion1 = new Opcion("respuesta1");
         Opcion opcion2 = new Opcion("respuesta2");
         Opcion opcion3 = new Opcion("respuesta3");
@@ -223,7 +224,7 @@ public class ListaOpcionesTest {
     }
 
     @Test
-    public void testEsIgualFuncionaCorrectamente(){
+    public void testEsIgualFuncionaCorrectamente() {
         Opcion opcion1 = new Opcion("respuesta1");
         Opcion opcion2 = new Opcion("respuesta2");
         Opcion opcion3 = new Opcion("respuesta3");
@@ -247,5 +248,37 @@ public class ListaOpcionesTest {
         assertFalse(listaConTresOpciones.esIgual(listaConCuatroOpciones));
         assertFalse(listaConCuatroOpciones.esIgual(listaConTresOpciones));
         assertFalse(listaConCuatroOpciones.esIgual(listaConCuatroOpcionesDesordenadas));
+    }
+
+    @Test
+    public void testNoSePuedenCrearListasDeOpcionesConOpcionesRepetidas() {
+        Opcion opcion1 = new Opcion("respuesta1");
+        Opcion opcion2 = new Opcion("respuesta1");
+
+        assertThrows(OpcionesRepetidasException.class, () -> new ListaOpciones(Arrays.asList(opcion1, opcion2)));
+    }
+
+    @Test
+    public void testNoSePuedenAgregarUnaOpcionRepetida() {
+        Opcion opcion = new Opcion("respuesta1");
+
+        ListaOpciones listaOpciones = new ListaOpciones(Arrays.asList(opcion));
+
+        Opcion opcionRepetida = new Opcion("respuesta1");
+
+        assertThrows(OpcionesRepetidasException.class, () -> listaOpciones.agregar(opcionRepetida));
+    }
+
+    @Test
+    public void testNoSePuedenAgregarListasDeOpcionesSiYaContienenOpcionesIguales() {
+        Opcion opcion = new Opcion("respuesta1");
+
+        ListaOpciones listaOpciones = new ListaOpciones(Arrays.asList(opcion));
+
+        Opcion opcionRepetida = new Opcion("respuesta1");
+
+        ListaOpciones listaConOpcionRepetidas = new ListaOpciones(Arrays.asList(opcionRepetida));
+
+        assertThrows(OpcionesRepetidasException.class, () -> listaOpciones.agregarTodo(listaConOpcionRepetidas));
     }
 }
