@@ -17,6 +17,7 @@ public class ManejadorDeTurnos {
     private Jugador jugador2;
     private Boolean jugador2Respodio;
     private Boolean juegoTerminado;
+    private Boolean ultimaPregunta;
     private Pregunta pregunta;
     private Kahoot kahoot;
     private Stage stage;
@@ -29,6 +30,7 @@ public class ManejadorDeTurnos {
         this.kahoot = kahoot;
         jugador2Respodio = true;
         juegoTerminado = false;
+        ultimaPregunta = false;
         this.stage = stage;
     }
 
@@ -42,6 +44,11 @@ public class ManejadorDeTurnos {
             jugador2Respodio = false;
 
             pregunta = pilaDePreguntas.pop();
+
+            if(pilaDePreguntas.isEmpty()){
+                ultimaPregunta = true;
+            }
+
             try {
                 stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
             } catch (PreguntaCorruptaException e) {
@@ -52,11 +59,15 @@ public class ManejadorDeTurnos {
     }
 
     public void mostrarLayoutSiguienteJugador(){
-        if(jugador2Respodio){
+
+        if(jugador2Respodio && !ultimaPregunta){
             stage.setScene(new Scene(new LayoutSiguienteJugador(jugador1, this).getLayout()));
         }
-        else{
+        else if(!jugador2Respodio){
             stage.setScene(new Scene(new LayoutSiguienteJugador(jugador2, this ).getLayout()));
+        }
+        else{
+            mostrarSiguientePregunta();
         }
     }
 
@@ -78,6 +89,10 @@ public class ManejadorDeTurnos {
 
             kahoot.evaluarRespuestas(pregunta);
             pregunta = pilaDePreguntas.pop();
+
+            if(pilaDePreguntas.isEmpty()){
+                ultimaPregunta = true;
+            }
 
             try {
                 stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
