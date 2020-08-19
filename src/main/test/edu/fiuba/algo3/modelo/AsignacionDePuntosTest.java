@@ -290,6 +290,8 @@ public class AsignacionDePuntosTest {
     @Test
     public void testGroupChoiceJugador1YJugador2AgrupanCorrectamenteLasRespuestasAsignandolesUnPuntoACadaUno() {
         String consigna = "Agrupe en las categorias A y B:";
+        String nombreGrupoA = "Grupo A";
+        String nombreGrupoB = "Grupo B";
 
         Opcion opcion1DeGrupoA = new Opcion("respuesta1GrupoA");
         Opcion opcion2DeGrupoA = new Opcion("respuesta2GrupoA");
@@ -301,7 +303,7 @@ public class AsignacionDePuntosTest {
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
 
-        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
+        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
 
         RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB);
         RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB);
@@ -320,6 +322,8 @@ public class AsignacionDePuntosTest {
     @Test
     public void testGroupChoiceJugador1AgrupaCorrectamenteLasOpcionesYJugador2AgrupaIncorrectamenteLasOpcionesAsignandolesCorrectamenteLosPuntajes() {
         String consigna = "Agrupe en las categorias A y B:";
+        String nombreGrupoA = "Grupo A";
+        String nombreGrupoB = "Grupo B";
 
 
         Opcion opcion1DeGrupoA = new Opcion("respuesta1GrupoA");
@@ -332,9 +336,9 @@ public class AsignacionDePuntosTest {
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
 
-        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
+        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
 
-        RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB );
+        RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB);
         RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
 
         Kahoot kahoot = new Kahoot();
@@ -351,6 +355,8 @@ public class AsignacionDePuntosTest {
     @Test
     public void testGroupChoiceJugador1YJugador2AgrupanIncorrectamenteLasOpcionesAsignandolesCeroPuntosACadaUno() {
         String consigna = "Agrupe en las categorias A y B:";
+        String nombreGrupoA = "Grupo A";
+        String nombreGrupoB = "Grupo B";
 
 
         Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA1");
@@ -363,7 +369,7 @@ public class AsignacionDePuntosTest {
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
 
-        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
+        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
 
         RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
         RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
@@ -391,14 +397,14 @@ public class AsignacionDePuntosTest {
         Opcion quintaOpcion = new Opcion("5ta Opcion");
 
 
-        List<Opcion> respuestasOrdenadasCorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion,cuartaOpcion,quintaOpcion));
+        List<Opcion> respuestasOrdenadasCorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion, cuartaOpcion, quintaOpcion));
         ListaOpciones opcionesOrdenadasCorrectamente = new ListaOpciones(respuestasOrdenadasCorrectamenteList);
 
 
         OrderedChoice preguntaGroupChoice = new OrderedChoice(consigna, opcionesOrdenadasCorrectamente);
 
-        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones(opcionesOrdenadasCorrectamente));
-        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones(opcionesOrdenadasCorrectamente));
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasCorrectamente));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasCorrectamente));
 
         Kahoot kahoot = new Kahoot();
 
@@ -423,9 +429,9 @@ public class AsignacionDePuntosTest {
         Opcion quintaOpcion = new Opcion("5ta Opcion");
 
 
-        List<Opcion> respuestasOrdenadasCorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion,cuartaOpcion,quintaOpcion));
+        List<Opcion> respuestasOrdenadasCorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion, cuartaOpcion, quintaOpcion));
         ListaOpciones opcionesOrdenadasCorrectamente = new ListaOpciones(respuestasOrdenadasCorrectamenteList);
-        List<Opcion> respuestasOrdenadasInorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion,terceraOpcion ,segundaOpcion ,cuartaOpcion,quintaOpcion));
+        List<Opcion> respuestasOrdenadasInorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion, terceraOpcion, segundaOpcion, cuartaOpcion, quintaOpcion));
         ListaOpciones opcionesOrdenadasInorrectamente = new ListaOpciones(respuestasOrdenadasInorrectamenteList);
 
 
@@ -457,14 +463,14 @@ public class AsignacionDePuntosTest {
         Opcion quintaOpcion = new Opcion("5ta Opcion");
 
 
-        ListaOpciones opcionesOrdenadasCorrectamente = new ListaOpciones(new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion,cuartaOpcion,quintaOpcion)));
-        ListaOpciones opcionesOrdenadasInorrectamente = new ListaOpciones(new ArrayList<>(Arrays.asList(primerOpcion,terceraOpcion ,segundaOpcion ,cuartaOpcion,quintaOpcion)));
+        ListaOpciones opcionesOrdenadasCorrectamente = new ListaOpciones(new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion, cuartaOpcion, quintaOpcion)));
+        ListaOpciones opcionesOrdenadasInorrectamente = new ListaOpciones(new ArrayList<>(Arrays.asList(primerOpcion, terceraOpcion, segundaOpcion, cuartaOpcion, quintaOpcion)));
 
 
         OrderedChoice preguntaOrderedChoice = new OrderedChoice(consigna, opcionesOrdenadasCorrectamente);
 
-        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones(opcionesOrdenadasCorrectamente));
-        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones(opcionesOrdenadasInorrectamente));
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasCorrectamente));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasInorrectamente));
 
         Kahoot kahoot = new Kahoot();
 
@@ -494,8 +500,8 @@ public class AsignacionDePuntosTest {
         ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
         ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
 
-        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones(opcionesCorrectas));
-        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones(opcionesCorrectas));
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesCorrectas));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesCorrectas));
 
         MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
@@ -529,8 +535,8 @@ public class AsignacionDePuntosTest {
         List<Opcion> respuestasJugador1List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionInorrectaAzul));
         List<Opcion> respuestasJugador2List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionIncorrectaAmarillo, opcionInorrectaAzul));
 
-        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones (respuestasJugador1List));
-        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones (respuestasJugador2List));
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(respuestasJugador1List));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(respuestasJugador2List));
 
         MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
@@ -566,8 +572,8 @@ public class AsignacionDePuntosTest {
         List<Opcion> opcionesJugador1List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionIncorrectaAmarillo, opcionInorrectaAzul));
         List<Opcion> opcionesJugador2List = new ArrayList<>(Arrays.asList(opcionIncorrectaAmarillo, opcionInorrectaAzul));
 
-        RespuestaEnLista opcionesJugador1 = new RespuestaEnLista (new ListaOpciones (opcionesJugador1List));
-        RespuestaEnLista opcionesJugador2 = new RespuestaEnLista (new ListaOpciones (opcionesJugador2List));
+        RespuestaEnLista opcionesJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesJugador1List));
+        RespuestaEnLista opcionesJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesJugador2List));
 
         MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
@@ -696,7 +702,8 @@ public class AsignacionDePuntosTest {
     @Test
     public void testGroupChoiceJugador1AgrupaCorrectamenteLasOpcionesYJugador2AgrupaIncorrectamenteLasOpcionesAsignandolesCorrectamenteLosPuntajesConDosExclusividades() {
         String consigna = "Agrupe en las categorias A y B:";
-
+        String nombreGrupoA = "Grupo A";
+        String nombreGrupoB = "Grupo B";
 
         Opcion opcion1DeGrupoA = new Opcion("respuesta1GrupoA");
         Opcion opcion2DeGrupoA = new Opcion("respuesta2GrupoA");
@@ -708,9 +715,9 @@ public class AsignacionDePuntosTest {
         ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
         ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
 
-        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
+        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
 
-        RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB );
+        RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB);
         RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
 
         Kahoot kahoot = new Kahoot();
@@ -743,8 +750,8 @@ public class AsignacionDePuntosTest {
         ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
         ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
 
-        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones(opcionesCorrectas));
-        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones(opcionesCorrectas));
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesCorrectas));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesCorrectas));
 
         MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
@@ -779,11 +786,11 @@ public class AsignacionDePuntosTest {
         ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
         ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
 
-        List<Opcion> respuestasJugador1List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaJupiter, opcionCorrectaMarte,opcionInorrectaAzul));
-        List<Opcion> respuestasJugador2List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte,opcionIncorrectaAmarillo,opcionInorrectaAzul));
+        List<Opcion> respuestasJugador1List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaJupiter, opcionCorrectaMarte, opcionInorrectaAzul));
+        List<Opcion> respuestasJugador2List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionIncorrectaAmarillo, opcionInorrectaAzul));
 
-        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones (respuestasJugador1List));
-        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones (respuestasJugador2List));
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(respuestasJugador1List));
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(respuestasJugador2List));
 
         MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 

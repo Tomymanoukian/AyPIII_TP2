@@ -14,17 +14,6 @@ public class GroupChoice extends Pregunta implements PreguntaSinPenalidad {
     private String nombreGrupoA;
     private String nombreGrupoB;
 
-    public GroupChoice(String unaConsigna, ListaOpciones unasOpcionesGrupoA, ListaOpciones unasOpcionesGrupoB) {
-        super();
-        if ((unasOpcionesGrupoA.cantidadDeOpciones() + unasOpcionesGrupoB.cantidadDeOpciones()) < 2 ||
-                (unasOpcionesGrupoA.cantidadDeOpciones() + unasOpcionesGrupoB.cantidadDeOpciones()) > 6) {
-            throw new CantidadDeOpcionesInvalidaException();
-        }
-        consigna = unaConsigna;
-        opcionesGrupoA = unasOpcionesGrupoA;
-        opcionesGrupoB = unasOpcionesGrupoB;
-    }
-
     public GroupChoice(String unaConsigna, String unNombreGrupoA, ListaOpciones unasOpcionesGrupoA, String unNombreGrupoB, ListaOpciones unasOpcionesGrupoB) {
         super();
         if ((unasOpcionesGrupoA.cantidadDeOpciones() + unasOpcionesGrupoB.cantidadDeOpciones()) < 2 ||
@@ -41,9 +30,11 @@ public class GroupChoice extends Pregunta implements PreguntaSinPenalidad {
     public static GroupChoice recuperar(JsonObject jsonPregunta) {
 
         String consigna = jsonPregunta.get("consigna").getAsString();
+        String nombreGrupoA = jsonPregunta.get("nombreGrupoA").getAsString();
+        String nombreGrupoB = jsonPregunta.get("nombreGrupoB").getAsString();
         ListaOpciones opcionesGrupoA = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesGrupoA"));
         ListaOpciones opcionesGrupoB = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesGrupoB"));
-        return new GroupChoice(consigna, opcionesGrupoA, opcionesGrupoB);
+        return new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
     }
 
     @Override
@@ -53,25 +44,37 @@ public class GroupChoice extends Pregunta implements PreguntaSinPenalidad {
 
         Puntaje puntaje = new Puntaje(0);
 
-        if(respuestaDeGrupos.grupoAContieneLoMismo(opcionesGrupoA) && respuestaDeGrupos.grupoBContieneLoMismo(opcionesGrupoB)){
+        if (respuestaDeGrupos.grupoAContieneLoMismo(opcionesGrupoA) && respuestaDeGrupos.grupoBContieneLoMismo(opcionesGrupoB)) {
             puntaje.establecerPuntos(1);
         }
         return puntaje;
     }
 
-    public ListaOpciones getOpcionesGrupoA() { return opcionesGrupoA; }
+    public ListaOpciones getOpcionesGrupoA() {
+        return opcionesGrupoA;
+    }
 
-    public ListaOpciones getOpcionesGrupoB() { return opcionesGrupoB; }
+    public ListaOpciones getOpcionesGrupoB() {
+        return opcionesGrupoB;
+    }
 
-    public String getNombreGrupoA() {return nombreGrupoA;}
+    public String getNombreGrupoA() {
+        return nombreGrupoA;
+    }
 
-    public String getNombreGrupoB() {return nombreGrupoB;}
+    public String getNombreGrupoB() {
+        return nombreGrupoB;
+    }
 
     @Override
-    public Boolean aceptaMultiplicador() {return false;}
+    public Boolean aceptaMultiplicador() {
+        return false;
+    }
 
     @Override
-    public Boolean aceptaExclusividad() {return true;}
+    public Boolean aceptaExclusividad() {
+        return true;
+    }
 
     @Override
     public JsonObject guardar() {
@@ -79,6 +82,8 @@ public class GroupChoice extends Pregunta implements PreguntaSinPenalidad {
         JsonObject jsonGroupChoice = new JsonObject();
         jsonGroupChoice.addProperty("tipoDePregunta", GroupChoice.class.getName());
         jsonGroupChoice.addProperty("consigna", consigna);
+        jsonGroupChoice.addProperty("nombreGrupoA", nombreGrupoA);
+        jsonGroupChoice.addProperty("nombreGrupoB", nombreGrupoB);
         jsonGroupChoice.add("opcionesGrupoA", opcionesGrupoA.guardar());
         jsonGroupChoice.add("opcionesGrupoB", opcionesGrupoB.guardar());
         return jsonGroupChoice;
