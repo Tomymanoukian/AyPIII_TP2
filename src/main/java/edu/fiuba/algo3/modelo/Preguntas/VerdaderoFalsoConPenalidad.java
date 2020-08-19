@@ -37,12 +37,6 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso implements Pregun
     }
 
     @Override
-    public Boolean aceptaMultiplicador() {return true;}
-
-    @Override
-    public Boolean aceptaExclusividad() {return false;}
-
-    @Override
     public JsonObject guardar() {
 
         JsonObject jsonVoFConPenalidad = new JsonObject();

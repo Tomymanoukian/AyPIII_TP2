@@ -17,16 +17,6 @@ public class Multiplicador {
         factorDeMultiplicacion = unFactorDeMultiplicacion;
     }
 
-    public void setFactorDeMultiplicacion (int unFactorDeMultiplicacion) {
-
-        factorDeMultiplicacion = unFactorDeMultiplicacion;
-    }
-
-    public int getFactorDeMultiplicacion () {
-
-        return factorDeMultiplicacion;
-    }
-
     public void aplicarMultiplicador(Puntaje unPuntaje) {
 
         unPuntaje.multiplicarPuntos(factorDeMultiplicacion);

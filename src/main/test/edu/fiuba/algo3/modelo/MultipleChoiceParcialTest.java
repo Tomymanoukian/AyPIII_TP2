@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.Preguntas.MultipleChoiceParcial;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
@@ -28,8 +29,8 @@ public class MultipleChoiceParcialTest {
         MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
         assertEquals("Indicar cuales de las siguientes opciones son quesos", multipleChoiceParcial.getConsigna());
-        assert( multipleChoiceParcial.getOpcionesCorrectas().contieneTodo(opcionesCorrectas));
-        assert( multipleChoiceParcial.getOpcionesIncorrectas().contieneTodo(opcionesIncorrectas));
+        assert( multipleChoiceParcial.getOpcionesCorrectas().contieneLoMismo(opcionesCorrectas));
+        assert( multipleChoiceParcial.getOpcionesIncorrectas().contieneLoMismo(opcionesIncorrectas));
     }
 
     @Test
@@ -169,27 +170,7 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void testSeVerificaQueSePuedaUtilizarMultiplicador(){
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones();
-        ListaOpciones opcionesIncorrectas = new ListaOpciones();
-        String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
-
-        Opcion opcionCorrectaAlpha = new Opcion("Alpha",new Puntaje(1));
-        Opcion opcionInorrectaDobleV = new Opcion("DobleV",new Puntaje(0));
-        Opcion opcionIncorrectaJota = new Opcion("Jota",new Puntaje(0));
-
-        opcionesCorrectas.agregar(opcionCorrectaAlpha);
-        opcionesIncorrectas.agregar(opcionInorrectaDobleV);
-        opcionesIncorrectas.agregar(opcionIncorrectaJota);
-
-        MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
-        assertEquals(false, multipleChoiceParcial.aceptaMultiplicador());
-    }
-
-    @Test
     public void testSeVerificaQueSePuedaUtilizarExclusividad(){
-
         ListaOpciones opcionesCorrectas = new ListaOpciones();
         ListaOpciones opcionesIncorrectas = new ListaOpciones();
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
@@ -203,6 +184,6 @@ public class MultipleChoiceParcialTest {
         opcionesIncorrectas.agregar(opcionIncorrectaJota);
 
         MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
-        assertEquals(true, multipleChoiceParcial.aceptaExclusividad());
+        assert(multipleChoiceParcial.getExclusividad().getClass() == Exclusividad.class);
     }
 }

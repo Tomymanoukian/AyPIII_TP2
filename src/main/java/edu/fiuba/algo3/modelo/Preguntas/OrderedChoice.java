@@ -60,16 +60,6 @@ public class OrderedChoice extends Pregunta implements PreguntaSinPenalidad {
     }
 
     @Override
-    public Boolean aceptaMultiplicador() {
-        return false;
-    }
-
-    @Override
-    public Boolean aceptaExclusividad() {
-        return true;
-    }
-
-    @Override
     public JsonObject guardar() {
 
         JsonObject jsonOrderedChoice = new JsonObject();

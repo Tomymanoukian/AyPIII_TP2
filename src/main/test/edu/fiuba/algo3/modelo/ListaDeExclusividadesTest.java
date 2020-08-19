@@ -14,47 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ListaDeExclusividadesTest {
 
     @Test
-    public void listeDeExclusividadesSeCreaConUnaExclusividad(){
-        Exclusividad exclusividad = new Exclusividad();
-
-        List<Exclusividad> arrayListExclusividad = new ArrayList<>(Arrays.asList(exclusividad));
-
-        ListaDeExclusividades listaDeExclusividades = new ListaDeExclusividades(exclusividad);
-
-        assertEquals(arrayListExclusividad, listaDeExclusividades.getExclusividades());
-    }
-
-    @Test
-    public void listeDeExclusividadesSeCreaConUnArrayListDeExclusividadesCorrectamente(){
-        Exclusividad ex1 = new Exclusividad();
-        Exclusividad ex2 = new Exclusividad();
-        Exclusividad ex3 = new Exclusividad();
-
-        List<Exclusividad> arrayListExclusividades = new ArrayList<>(Arrays.asList(ex1, ex2, ex3));
-
-        ListaDeExclusividades listaDeExclusividades = new ListaDeExclusividades(arrayListExclusividades);
-
-        assertEquals(arrayListExclusividades, listaDeExclusividades.getExclusividades());
-    }
-
-    @Test
-    public void agregarExclusividadesFuncionaCorrectamente(){
-        Exclusividad ex1 = new Exclusividad();
-        Exclusividad ex2 = new Exclusividad();
-        Exclusividad ex3 = new Exclusividad();
-
-        List<Exclusividad> arrayListExclusividades = new ArrayList<>(Arrays.asList(ex1, ex2, ex3));
-
-        ListaDeExclusividades listaDeExclusividades = new ListaDeExclusividades();
-
-        listaDeExclusividades.agregarExclusividad(ex1);
-        listaDeExclusividades.agregarExclusividad(ex2);
-        listaDeExclusividades.agregarExclusividad(ex3);
-
-        assertEquals(arrayListExclusividades, listaDeExclusividades.getExclusividades());
-    }
-
-    @Test
     public void AplicarExclusividadesFuncionaCorrectamenteConTresMultiplicadores(){
         Puntaje puntaje1 = new Puntaje(2);
         Puntaje puntaje2 = new Puntaje(0);

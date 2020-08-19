@@ -75,10 +75,6 @@ public class ListaOpciones {
         }
     }
 
-    public boolean contieneTodo(ListaOpciones otraLista) {
-        return (this.obtenerCoincidencias(otraLista) == otraLista.cantidadDeOpciones());
-    }
-
     public boolean contieneLoMismo(ListaOpciones otraLista) {
         return (this.cantidadDeOpciones() == otraLista.cantidadDeOpciones() &&
                 this.obtenerCoincidencias(otraLista) == otraLista.cantidadDeOpciones());

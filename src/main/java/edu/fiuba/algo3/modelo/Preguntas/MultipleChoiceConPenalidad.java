@@ -38,12 +38,6 @@ public class MultipleChoiceConPenalidad extends MultipleChoice implements Pregun
     }
 
     @Override
-    public Boolean aceptaMultiplicador() {return true;}
-
-    @Override
-    public Boolean aceptaExclusividad() {return false;}
-
-    @Override
     public JsonObject guardar() {
 
         JsonObject jsonMultipleChoiceConPenalidad = new JsonObject();

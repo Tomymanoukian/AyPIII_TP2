@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 
+import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
+import edu.fiuba.algo3.modelo.Bonus.Multiplicador;
 import edu.fiuba.algo3.modelo.Preguntas.MultipleChoiceConPenalidad;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import org.junit.jupiter.api.BeforeEach;
@@ -47,8 +49,8 @@ public class MultipleChoiceConPenalidadTest {
         MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
         assertEquals("Indicar cuales de las siguientes opciones son quesos", multipleChoiceConPenalidad.getConsigna());
-        assert( multipleChoiceConPenalidad.getOpcionesCorrectas().contieneTodo(opcionesCorrectas));
-        assert( multipleChoiceConPenalidad.getOpcionesIncorrectas().contieneTodo(opcionesIncorrectas));
+        assert( multipleChoiceConPenalidad.getOpcionesCorrectas().contieneLoMismo(opcionesCorrectas));
+        assert( multipleChoiceConPenalidad.getOpcionesIncorrectas().contieneLoMismo(opcionesIncorrectas));
     }
 
     @Test
@@ -134,16 +136,15 @@ public class MultipleChoiceConPenalidadTest {
     }
 
     @Test
-    public void testSeVerificaQueSePuedaUtilizarMultiplicador(){
-
+    public void testSeVerificaQueSePuedaUtilizarMultiplicadorX2(){
         MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
-        assertEquals(true, multipleChoiceConPenalidad.aceptaMultiplicador());
+        assert(multipleChoiceConPenalidad.getMultiplicadorX2().getClass() == Multiplicador.class);
     }
 
     @Test
-    public void testSeVerificaQueSePuedaUtilizarExclusividad(){
-
+    public void testSeVerificaQueSePuedaUtilizarMultiplicadorX3(){
         MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
-        assertEquals(false, multipleChoiceConPenalidad.aceptaExclusividad());
+        assert(multipleChoiceConPenalidad.getMultiplicadorX3().getClass() == Multiplicador.class);
     }
+
 }

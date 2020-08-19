@@ -20,13 +20,6 @@ public class PuntajeTest {
     }
 
     @Test
-    public void unPuntajeSeSumaCorrectamenteUnEntero(){
-        Puntaje puntaje = new Puntaje();
-        puntaje.sumarPuntos(4);
-        assertEquals(4, puntaje.getPuntos());
-    }
-
-    @Test
     public void unPuntajeSeSumaCorrectamenteOtroPuntaje(){
         Puntaje puntaje = new Puntaje();
         Puntaje otroPuntaje = new Puntaje(8);

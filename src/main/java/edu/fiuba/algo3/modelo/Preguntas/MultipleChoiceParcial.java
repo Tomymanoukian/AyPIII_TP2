@@ -41,12 +41,6 @@ public class MultipleChoiceParcial extends MultipleChoice implements PreguntaSin
     }
 
     @Override
-    public Boolean aceptaMultiplicador() {return false;}
-
-    @Override
-    public Boolean aceptaExclusividad() {return true;}
-
-    @Override
     public JsonObject guardar() {
 
         JsonObject jsonMultipleChoiceParcial = new JsonObject();

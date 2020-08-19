@@ -13,45 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ListaDeMultiplicadoresTest {
 
     @Test
-    public void listeDeMultiplicadoresSeCreaConUnMultiplicador(){
-        Multiplicador multiplicador = new Multiplicador();
-
-        List<Multiplicador> arrayListMultiplicador = new ArrayList<>(Arrays.asList(multiplicador));
-
-        ListaDeMultiplicadores listaDeMultiplicadores = new ListaDeMultiplicadores(multiplicador);
-
-        assertEquals(arrayListMultiplicador, listaDeMultiplicadores.getMultiplicadores());
-    }
-
-    @Test
-    public void listeDeMultiplicadoresSeCreaConUnArrayListDeMultilpicadoresCorrectamente(){
-        Multiplicador m1 = new Multiplicador(2);
-        Multiplicador m2 = new Multiplicador(3);
-        Multiplicador m3 = new Multiplicador(4);
-        List<Multiplicador> arrayListMultiplicadores = new ArrayList<>(Arrays.asList(m1, m2, m3));
-
-        ListaDeMultiplicadores listaDeMultiplicadores = new ListaDeMultiplicadores(arrayListMultiplicadores);
-
-        assertEquals(arrayListMultiplicadores, listaDeMultiplicadores.getMultiplicadores());
-    }
-
-    @Test
-    public void agregarMultiplicadorFuncionaCorrectamente(){
-        Multiplicador m1 = new Multiplicador(2);
-        Multiplicador m2 = new Multiplicador(3);
-        Multiplicador m3 = new Multiplicador(4);
-        List<Multiplicador> arrayListMultiplicadores = new ArrayList<>(Arrays.asList(m1, m2, m3));
-
-        ListaDeMultiplicadores listaDeMultiplicadores = new ListaDeMultiplicadores();
-
-        listaDeMultiplicadores.agregarMultiplicador(m1);
-        listaDeMultiplicadores.agregarMultiplicador(m2);
-        listaDeMultiplicadores.agregarMultiplicador(m3);
-
-        assertEquals(arrayListMultiplicadores, listaDeMultiplicadores.getMultiplicadores());
-    }
-
-    @Test
     public void AplicarMultiplicadoresFuncionaCorrectamenteConTresMultiplicadores(){
         Puntaje puntaje = new Puntaje(1);
 

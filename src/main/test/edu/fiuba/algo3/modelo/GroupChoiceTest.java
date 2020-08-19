@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 
+import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.Preguntas.GroupChoice;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaDeGrupos;
 import org.junit.jupiter.api.BeforeEach;
@@ -112,17 +113,10 @@ public class GroupChoiceTest {
         assertEquals(0, preguntaGroupChoice.evaluarRespuestaPara(respuestasDelJugador).getPuntos());
     }
 
-    @Test
-    public void testSeVerificaQueSePuedaUtilizarMultiplicador() {
-
-        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
-        assertEquals(false, preguntaGroupChoice.aceptaMultiplicador());
-    }
 
     @Test
     public void testSeVerificaQueSePuedaUtilizarExclusividad() {
-
         GroupChoice preguntaGroupChoice = new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
-        assertEquals(true, preguntaGroupChoice.aceptaExclusividad());
+        assert(preguntaGroupChoice.getExclusividad().getClass() == Exclusividad.class);
     }
 }

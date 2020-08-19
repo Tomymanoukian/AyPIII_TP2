@@ -34,7 +34,7 @@ public class ListaOpcionesTest {
         ListaOpciones otraListaOpciones = new ListaOpciones();
         otraListaOpciones.agregarTodo(listaOpciones);
 
-        assert (otraListaOpciones.contieneTodo(listaOpciones));
+        assert (otraListaOpciones.contieneLoMismo(listaOpciones));
     }
 
     @Test
@@ -67,23 +67,6 @@ public class ListaOpcionesTest {
         listaOpciones.eliminar("Respuesta4");
 
         assertEquals(3, listaOpciones.cantidadDeOpciones());
-    }
-
-    @Test
-    public void testCompruebaQueUnaListaContieneTodosLosElementosDeOtraLista() {
-        Opcion opcion1 = new Opcion("Respuesta1");
-        Opcion opcion2 = new Opcion("Respuesta2");
-        Opcion opcion3 = new Opcion("Respuesta3");
-        Opcion otraOpcion1 = new Opcion("Respuesta1");
-        Opcion otraOpcion2 = new Opcion("Respuesta2");
-
-        List<Opcion> arrayList = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3));
-        List<Opcion> otroArrayList = new ArrayList<>(Arrays.asList(otraOpcion1, otraOpcion2));
-
-        ListaOpciones listaOpciones = new ListaOpciones(arrayList);
-        ListaOpciones otraListaOpciones = new ListaOpciones(otroArrayList);
-
-        assert (listaOpciones.contieneTodo(otraListaOpciones));
     }
 
     @Test
@@ -121,7 +104,7 @@ public class ListaOpcionesTest {
         ListaOpciones otraListaOpciones = new ListaOpciones();
         otraListaOpciones.agregar(opcion1);
 
-        assert (!otraListaOpciones.contieneTodo(listaOpciones));
+        assert (!otraListaOpciones.contieneLoMismo(listaOpciones));
     }
 
     @Test

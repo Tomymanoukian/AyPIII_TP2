@@ -38,17 +38,4 @@ public class OpcionTest {
         assert(!opcion1.tieneLaMisma(otroRotulo) );
     }
 
-    @Test
-    public void testSeCreaUnaRespuestaConPuntajePositivoAlAplicarselaAlJugadorSumaPuntos(){
-        Puntaje puntaje = new Puntaje(2);
-        Opcion opcion = new Opcion("Cosigna :", puntaje);
-        Jugador unJugador = new Jugador("Pablo");
-
-        opcion.aplicarPuntajeA(unJugador);
-
-        assertEquals(2, unJugador.getPuntaje().getPuntos());
-
-
-    }
-
 }

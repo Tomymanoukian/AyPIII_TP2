@@ -41,10 +41,6 @@ public class Opcion {
         return opcion;
     }
 
-    public void aplicarPuntajeA(Jugador unJugador) {
-        unJugador.sumarPuntos(puntaje);
-    }
-
     public Puntaje getPuntaje() { return puntaje; }
 
     public JsonObject guardar() {

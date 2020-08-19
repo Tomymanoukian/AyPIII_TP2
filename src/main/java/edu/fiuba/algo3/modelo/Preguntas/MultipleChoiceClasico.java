@@ -51,12 +51,6 @@ public class MultipleChoiceClasico extends MultipleChoice implements PreguntaSin
     }
 
     @Override
-    public Boolean aceptaMultiplicador() {return false;}
-
-    @Override
-    public Boolean aceptaExclusividad() {return true;}
-
-    @Override
     public JsonObject guardar() {
 
         JsonObject jsonMultipleChoiceClasico = new JsonObject();

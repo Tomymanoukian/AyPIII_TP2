@@ -38,7 +38,6 @@ public class ManejadorDeArchivosTest {
 
         assertEquals(1, preguntas.size());
         assertEquals(vofClasico.getConsigna(), vofLeido.getConsigna());
-        assert (vofClasico.getOpcionCorrecta().esIgualA(vofLeido.getOpcionCorrecta()));
         assert (vofClasico.getOpcionIncorrecta().esIgualA(vofLeido.getOpcionIncorrecta()));
 
     }
@@ -61,7 +60,6 @@ public class ManejadorDeArchivosTest {
 
         assertEquals(1, preguntas.size());
         assertEquals(vofConPenalidad.getConsigna(), vofLeido.getConsigna());
-        assert (vofConPenalidad.getOpcionCorrecta().esIgualA(vofLeido.getOpcionCorrecta()));
         assert (vofConPenalidad.getOpcionIncorrecta().esIgualA(vofLeido.getOpcionIncorrecta()));
 
     }
