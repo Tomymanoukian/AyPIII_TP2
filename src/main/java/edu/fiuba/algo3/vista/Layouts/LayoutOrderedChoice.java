@@ -20,17 +20,15 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
+import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
+
 public class LayoutOrderedChoice {
 
     private Pane layout;
 
     public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        //Comienzan Opciones
-
         ListaOpciones opcionesMostradas = escenaOrderedChoice.getOpcionesMostradas();
-
-       // VBox contenedorOpciones = this.obtenerContenedorDeOpciones(opcionesMostradas, escenaOrderedChoice, jugador, manejadorDeTurnos);
 
         RespuestaEnLista respuesta = new RespuestaEnLista(opcionesMostradas);
 
@@ -45,14 +43,10 @@ public class LayoutOrderedChoice {
         ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
 
         layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
-        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
-
-        OrderedChoice orderedChoice = (OrderedChoice) pregunta;
-
-        //Comienzan Opciones
 
         ListaOpciones opcionesMostradas = escenaOrderedChoice.getOpcionesMostradas();
 
@@ -67,8 +61,7 @@ public class LayoutOrderedChoice {
         ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
 
         layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
-        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-
+        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     public Pane getLayout() {return layout;}
