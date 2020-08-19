@@ -46,13 +46,11 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testVerdaderoFalsoConPenalidadJugador1AsertaYJugador2FallaSumandoleCorrectamenteLosPuntajes() {
+
         String consigna = "El Sol es azul";
         VerdaderoFalsoConPenalidad preguntaVerderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoFalso(consigna);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(preguntaVerderoFalsoConPenalidad.getOpcionCorrecta());
         RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoConPenalidad.getOpcionIncorrecta());
@@ -83,10 +81,7 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
@@ -119,10 +114,7 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
@@ -153,17 +145,13 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
 
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
-
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
@@ -187,10 +175,7 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
@@ -222,10 +207,7 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
@@ -259,10 +241,7 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
@@ -294,17 +273,13 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
 
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
-
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceClasico);
 
@@ -331,11 +306,7 @@ public class AsignacionDePuntosTest {
         RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB);
         RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB);
 
-
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
@@ -366,10 +337,7 @@ public class AsignacionDePuntosTest {
         RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB );
         RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
@@ -400,11 +368,7 @@ public class AsignacionDePuntosTest {
         RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
         RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
 
-
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
@@ -417,8 +381,8 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testOrderedChoiceJugador1YJugador2OrdenanCorrectamenteLasOpcionesAsignandolesCeroPuntosACadaUno() {
-        String consigna = "Ordene correctamente las opciones:";
 
+        String consigna = "Ordene correctamente las opciones:";
 
         Opcion primerOpcion = new Opcion("1er Opcion");
         Opcion segundaOpcion = new Opcion("2da Opcion");
@@ -436,11 +400,7 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones(opcionesOrdenadasCorrectamente));
         RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones(opcionesOrdenadasCorrectamente));
 
-
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
@@ -453,8 +413,8 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testOrderedChoiceJugador1YJugador2OrdenanIncorrectamenteLasOpcionesAsignandolesCeroPuntosACadaUno() {
-        String consigna = "Ordene correctamente las opciones:";
 
+        String consigna = "Ordene correctamente las opciones:";
 
         Opcion primerOpcion = new Opcion("1er Opcion");
         Opcion segundaOpcion = new Opcion("2da Opcion");
@@ -474,11 +434,7 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasInorrectamente));
         RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasInorrectamente));
 
-
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
@@ -510,11 +466,7 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista respuestasJugador1 = new RespuestaEnLista (new ListaOpciones(opcionesOrdenadasCorrectamente));
         RespuestaEnLista respuestasJugador2 = new RespuestaEnLista (new ListaOpciones(opcionesOrdenadasInorrectamente));
 
-
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
@@ -547,10 +499,7 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
@@ -585,10 +534,7 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
@@ -623,13 +569,9 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista opcionesJugador1 = new RespuestaEnLista (new ListaOpciones (opcionesJugador1List));
         RespuestaEnLista opcionesJugador2 = new RespuestaEnLista (new ListaOpciones (opcionesJugador2List));
 
-
         MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         kahoot.setRespuestaJugador1(opcionesJugador1);
         kahoot.setRespuestaJugador2(opcionesJugador2);
@@ -644,13 +586,11 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testVerdaderoFalsoClasicoJugador1AsertaYJugador2FallaSumandoCorrectamenteLosPuntajesConUnaExclusividad() {
+
         String consigna = "El Sol es azul";
         VerdaderoFalsoClasico preguntaVerderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso(consigna);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(preguntaVerderoFalsoClasico.getOpcionCorrecta());
         RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoClasico.getOpcionIncorrecta());
@@ -658,7 +598,7 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
 
-        kahoot.agregarExclusividad(preguntaVerderoFalsoClasico, juan);
+        kahoot.agregarExclusividad(preguntaVerderoFalsoClasico, kahoot.getJugador1());
 
         kahoot.evaluarRespuestas(preguntaVerderoFalsoClasico);
 
@@ -671,10 +611,7 @@ public class AsignacionDePuntosTest {
         String consigna = "El Sol es azul";
         VerdaderoFalsoConPenalidad preguntaVerderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoFalso(consigna);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(preguntaVerderoFalsoConPenalidad.getOpcionCorrecta());
         RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoConPenalidad.getOpcionIncorrecta());
@@ -682,7 +619,7 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
 
-        kahoot.agregarMultiplicadorX2(preguntaVerderoFalsoConPenalidad, maria);
+        kahoot.agregarMultiplicadorX2(preguntaVerderoFalsoConPenalidad, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaVerderoFalsoConPenalidad);
 
@@ -692,8 +629,8 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceParcialJugadorAciertanTodasLasRespuestasCorrectasSumandolesCorrectamenteLosPuntosDeLasRespuestasCorrectasConUnaExclusividad() {
-        String consigna = "Indicar cuales de los siguientes con planetas:";
 
+        String consigna = "Indicar cuales de los siguientes con planetas:";
 
         Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
         Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
@@ -707,10 +644,7 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
@@ -718,7 +652,7 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
 
-        kahoot.agregarExclusividad(preguntaMultipleChoiceParcial, juan);
+        kahoot.agregarExclusividad(preguntaMultipleChoiceParcial, kahoot.getJugador1());
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
@@ -728,6 +662,7 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceParcialJugadoresNoAciertaNingunaCorrectasSumandolesCeroPuntosConExclusividad() {
+
         String consigna = "Indicar cuales de los siguientes con planetas:";
 
         Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
@@ -742,10 +677,7 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
@@ -753,7 +685,7 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador1(respuestaDelJugador1);
         kahoot.setRespuestaJugador2(respuestaDelJugador2);
 
-        kahoot.agregarExclusividad(preguntaMultipleChoiceParcial, juan);
+        kahoot.agregarExclusividad(preguntaMultipleChoiceParcial, kahoot.getJugador1());
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
@@ -781,16 +713,13 @@ public class AsignacionDePuntosTest {
         RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB );
         RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
 
-        kahoot.agregarExclusividad(preguntaGroupChoice, juan);
-        kahoot.agregarExclusividad(preguntaGroupChoice, maria);
+        kahoot.agregarExclusividad(preguntaGroupChoice, kahoot.getJugador1());
+        kahoot.agregarExclusividad(preguntaGroupChoice, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaGroupChoice);
 
@@ -819,16 +748,13 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
 
-        kahoot.agregarMultiplicadorX2(preguntaMultipleChoiceConPenalidad, juan);
-        kahoot.agregarMultiplicadorX2(preguntaMultipleChoiceConPenalidad, maria);
+        kahoot.agregarMultiplicadorX2(preguntaMultipleChoiceConPenalidad, kahoot.getJugador1());
+        kahoot.agregarMultiplicadorX2(preguntaMultipleChoiceConPenalidad, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
 
@@ -861,16 +787,13 @@ public class AsignacionDePuntosTest {
 
         MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         kahoot.setRespuestaJugador1(respuestasJugador1);
         kahoot.setRespuestaJugador2(respuestasJugador2);
 
-        kahoot.agregarMultiplicadorX2(preguntaMultipleChoiceConPenalidad, juan);
-        kahoot.agregarMultiplicadorX3(preguntaMultipleChoiceConPenalidad, juan);
+        kahoot.agregarMultiplicadorX2(preguntaMultipleChoiceConPenalidad, kahoot.getJugador1());
+        kahoot.agregarMultiplicadorX3(preguntaMultipleChoiceConPenalidad, kahoot.getJugador1());
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
 

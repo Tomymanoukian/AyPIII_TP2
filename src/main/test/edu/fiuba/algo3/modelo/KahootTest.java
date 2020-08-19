@@ -16,48 +16,34 @@ public class KahootTest {
     @Test
     public void testSeCreaUnKahootConDosJugadoresConPuntaje0(){
 
-        Jugador pablo = new Jugador("Pablo");
-        Jugador matias = new Jugador("Matias");
-
-        Kahoot kahoot = new Kahoot(pablo, matias);
+        Kahoot kahoot = new Kahoot();
 
         assertEquals(0,kahoot.getPuntajeJugador1().getPuntos());
         assertEquals(0,kahoot.getPuntajeJugador2().getPuntos());
-
     }
 
     @Test
     public void testSeCreaUnKahootConDosJugadoresPidiendoleElPuntajeAlJugador1(){
 
-        Jugador martin = new Jugador("Martin");
-        Jugador jose = new Jugador("Jose");
-
-        Kahoot kahoot = new Kahoot(martin, jose);
+        Kahoot kahoot = new Kahoot();
 
         assertEquals(0,kahoot.getPuntajeJugador1().getPuntos());
-
     }
 
     @Test
     public void testSeCreaUnKahootConDosJugadoresPidiendoleElPuntajeAlJugador2(){
 
-        Jugador martin = new Jugador("Martin");
-        Jugador jose = new Jugador("Jose");
-
-        Kahoot kahoot = new Kahoot(martin, jose);
+        Kahoot kahoot = new Kahoot();
 
         assertEquals(0,kahoot.getPuntajeJugador2().getPuntos());
-
     }
 
     @Test
     public void testUtilizarBonusConOtroJugadorLanzaExcepcion() {
 
-        Jugador martin = new Jugador("Martin");
-        Jugador jose = new Jugador("Jose");
         Jugador otroJugador = new Jugador("otroJugador");
 
-        Kahoot kahoot = new Kahoot(martin, jose);
+        Kahoot kahoot = new Kahoot();
 
         VerdaderoFalsoClasico vofClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectaVerdadero("consigna");
         VerdaderoFalsoConPenalidad vofConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoFalso("consigna");
@@ -81,31 +67,25 @@ public class KahootTest {
 
     @Test
     public void devuelveCorrectamenteAlJugador1GanadorYAlJugador2Perdedor(){
-        Jugador martin = new Jugador("Martin");
-        Jugador jose = new Jugador("Jose");
 
-        Kahoot kahoot = new Kahoot(martin, jose);
+        Kahoot kahoot = new Kahoot();
 
-        martin.sumarPuntos(new Puntaje(20));
-        jose.sumarPuntos(new Puntaje(10));
+        kahoot.getJugador1().sumarPuntos(new Puntaje(20));
+        kahoot.getJugador2().sumarPuntos(new Puntaje(10));
 
-        assertEquals(martin, kahoot.getJugadorGanador());
-        assertEquals(jose, kahoot.getJugadorPerdedor());
-
+        assertEquals(kahoot.getJugador1(), kahoot.getJugadorGanador());
+        assertEquals(kahoot.getJugador2(), kahoot.getJugadorPerdedor());
     }
 
     @Test
     public void devuelveCorrectamenteAlJugador2GanadorYAlJugador1Perdedor(){
-        Jugador martin = new Jugador("Martin");
-        Jugador jose = new Jugador("Jose");
 
-        Kahoot kahoot = new Kahoot(jose, martin);
+        Kahoot kahoot = new Kahoot();
 
-        martin.sumarPuntos(new Puntaje(20));
-        jose.sumarPuntos(new Puntaje(10));
+        kahoot.getJugador1().sumarPuntos(new Puntaje(20));
+        kahoot.getJugador2().sumarPuntos(new Puntaje(10));
 
-        assertEquals(martin, kahoot.getJugadorGanador());
-        assertEquals(jose, kahoot.getJugadorPerdedor());
-
+        assertEquals(kahoot.getJugador1(), kahoot.getJugadorGanador());
+        assertEquals(kahoot.getJugador2(), kahoot.getJugadorPerdedor());
     }
 }
