@@ -26,13 +26,11 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testVerdaderoFalsoClasicoJugador1AsertaYJugador2FallaSumandoCorrectamenteLosPuntajes() {
+
         String consigna = "El Sol es azul";
         VerdaderoFalsoClasico preguntaVerderoFalsoClasico = VerdaderoFalsoClasico.crearVerdaderoFalsoCorrectoFalso(consigna);
 
-        Jugador juan = new Jugador("Juan");
-        Jugador maria = new Jugador("Maria");
-
-        Kahoot kahoot = new Kahoot(juan, maria);
+        Kahoot kahoot = new Kahoot();
 
         RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(preguntaVerderoFalsoClasico.getOpcionCorrecta());
         RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoClasico.getOpcionIncorrecta());
