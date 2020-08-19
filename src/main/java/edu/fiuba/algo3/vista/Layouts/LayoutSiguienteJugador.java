@@ -13,11 +13,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class LayoutPuntuaciones{
+public class LayoutSiguienteJugador {
 
     private Pane contenedorPuntuaciones;
 
-    public LayoutPuntuaciones(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos){
+    public LayoutSiguienteJugador(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos){
 
         /*Label nombre = new Label("Actualmente los puntos de: " + jugador.getNombre() );
         nombre.setStyle("-fx-font-weight: bold");
