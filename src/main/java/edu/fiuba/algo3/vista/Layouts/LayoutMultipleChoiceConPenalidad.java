@@ -1,30 +1,35 @@
-package edu.fiuba.algo3.vista;
+package edu.fiuba.algo3.vista.Layouts;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Preguntas.MultipleChoice;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
+import edu.fiuba.algo3.vista.Contenedores.ContenedorBotonEnviar;
+import edu.fiuba.algo3.vista.Contenedores.ContenedorConsigna;
+import edu.fiuba.algo3.vista.Contenedores.ContenedorPrimerReglonPreguntaConPenalidad;
+import edu.fiuba.algo3.vista.Escenas.EscenaMultipleChoice;
+import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class LayoutMultipleChoiceSinPenalidad {
+public class LayoutMultipleChoiceConPenalidad {
 
     private Pane layout;
 
-    public LayoutMultipleChoiceSinPenalidad(Pregunta pregunta, EscenaMultipleChoice escenaMultipleChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
+    public LayoutMultipleChoiceConPenalidad(Pregunta pregunta, EscenaMultipleChoice escenaMultipleChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
         ListaOpciones listaRespuestas = new ListaOpciones();
         StackPane contenedorOpciones = this.obtenerContenedorDeOpciones(escenaMultipleChoice.getOpcionesMostradas(), listaRespuestas);
         RespuestaEnLista respuesta = new RespuestaEnLista(listaRespuestas);
 
-        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaMultipleChoice, jugador, manejadorDeTurnos, respuesta);
+        ContenedorPrimerReglonPreguntaConPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaConPenalidad((PreguntaConPenalidad) pregunta, escenaMultipleChoice, jugador, manejadorDeTurnos, respuesta);
         ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
         ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
 
@@ -33,14 +38,14 @@ public class LayoutMultipleChoiceSinPenalidad {
         layout = new VBox(contendorPrincipal);
     }
 
-    public LayoutMultipleChoiceSinPenalidad(Pregunta pregunta, EscenaMultipleChoice escenaMultipleChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
+    public LayoutMultipleChoiceConPenalidad(Pregunta pregunta, EscenaMultipleChoice escenaMultipleChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
         MultipleChoice unMultipleChoice = (MultipleChoice) pregunta;
         ListaOpciones listaRespuestas = new ListaOpciones();
         StackPane contenedorOpciones = this.obtenerContenedorDeOpciones(escenaMultipleChoice.getOpcionesMostradas(), listaRespuestas);
         RespuestaEnLista respuesta = new RespuestaEnLista(listaRespuestas);
 
-        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaMultipleChoice, jugador, manejadorDeTurnos, respuesta, unaEtiquetaTiempo);
+        ContenedorPrimerReglonPreguntaConPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaConPenalidad((PreguntaConPenalidad)pregunta, escenaMultipleChoice, jugador, manejadorDeTurnos, respuesta, unaEtiquetaTiempo);
         ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
         ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
 
@@ -88,4 +93,5 @@ public class LayoutMultipleChoiceSinPenalidad {
 
         return contenedorOpciones;
     }
+
 }

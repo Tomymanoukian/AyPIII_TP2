@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
-import edu.fiuba.algo3.vista.Escena;
+import edu.fiuba.algo3.vista.Escenas.Escena;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

@@ -1,8 +1,10 @@
-package edu.fiuba.algo3.vista;
+package edu.fiuba.algo3.vista.Escenas;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Preguntas.OrderedChoice;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.vista.EtiquetaTiempo;
+import edu.fiuba.algo3.vista.Layouts.LayoutOrderedChoice;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 

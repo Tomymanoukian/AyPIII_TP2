@@ -2,8 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.excepciones.PreguntaCorruptaException;
-import edu.fiuba.algo3.vista.LayoutFinDelJuego;
-import edu.fiuba.algo3.vista.LayoutPuntuaciones;
+import edu.fiuba.algo3.vista.Layouts.LayoutFinDelJuego;
+import edu.fiuba.algo3.vista.Layouts.LayoutPuntuaciones;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 

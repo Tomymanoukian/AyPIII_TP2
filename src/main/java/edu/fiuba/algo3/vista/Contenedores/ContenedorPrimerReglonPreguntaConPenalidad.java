@@ -1,11 +1,13 @@
-package edu.fiuba.algo3.vista;
+package edu.fiuba.algo3.vista.Contenedores;
 
-import edu.fiuba.algo3.controlador.*;
-import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.controlador.BotonMultiplicadorX2EventHandler;
+import edu.fiuba.algo3.controlador.BotonMultiplicadorx3EventHandler;
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
+import edu.fiuba.algo3.vista.Escenas.Escena;
+import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-public class ContenedorPrimerReglonPreguntaSinPenalidad {
+public class ContenedorPrimerReglonPreguntaConPenalidad {
 
     private HBox layout;
     private EtiquetaTiempo etiquetaTiempo;
@@ -22,29 +24,30 @@ public class ContenedorPrimerReglonPreguntaSinPenalidad {
     private Button bonusX3;
     private Button exclusividad;
 
-    public ContenedorPrimerReglonPreguntaSinPenalidad(PreguntaSinPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta) {
+    public ContenedorPrimerReglonPreguntaConPenalidad(PreguntaConPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta){
 
-        System.out.println("se crea un primer renglon sin penalidad 1");
+        System.out.println("se crea un primer renglon con penalidad");
 
         Label nombreJugador = new Label(jugador.getNombre());
         etiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);//Label tiempo = new Label("00:00");
 
         bonusX2 = new Button("X2");
-        bonusX2.setDisable(true);
+        BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        bonusX2.setOnAction(multiplicX2Handler);
 
         bonusX3 = new Button("X3");
-        bonusX3.setDisable(true);
+        BotonMultiplicadorx3EventHandler multiplicX3Handler = new BotonMultiplicadorx3EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        bonusX3.setOnAction(multiplicX3Handler);
 
         exclusividad = new Button("Ex");
-        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
-        exclusividad.setOnAction(exclusividadHandler);
+        exclusividad.setDisable(true);
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
         VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
         HBox contenedorBonus = new HBox(bonusX2, bonusX3, exclusividad);
         contenedorBonus.setSpacing(3);
 
-        this.habilitarExcepciones(jugador);
+        this.habilitarMultiplicadores(jugador);
 
         layout = new HBox(contenedorNombreJugador, contenedorTiempo, contenedorBonus);
 
@@ -55,29 +58,30 @@ public class ContenedorPrimerReglonPreguntaSinPenalidad {
         layout.setPadding(new Insets(10));
     }
 
-    public ContenedorPrimerReglonPreguntaSinPenalidad(PreguntaSinPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta, EtiquetaTiempo unaEtiquetaTiempo) {
+    public ContenedorPrimerReglonPreguntaConPenalidad(PreguntaConPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta, EtiquetaTiempo unaEtiquetaTiempo){
 
-        System.out.println("se crea un primer renglon sin penalidad 2");
+        System.out.println("se crea un primer renglon con penalidad");
 
         Label nombreJugador = new Label(jugador.getNombre());
         etiquetaTiempo = unaEtiquetaTiempo;//Label tiempo = new Label("00:00");
 
         bonusX2 = new Button("X2");
-        bonusX2.setDisable(true);
+        BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        bonusX2.setOnAction(multiplicX2Handler);
 
         bonusX3 = new Button("X3");
-        bonusX3.setDisable(true);
+        BotonMultiplicadorx3EventHandler multiplicX3Handler = new BotonMultiplicadorx3EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
+        bonusX3.setOnAction(multiplicX3Handler);
 
         exclusividad = new Button("Ex");
-        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
-        exclusividad.setOnAction(exclusividadHandler);
+        exclusividad.setDisable(true);
 
         VBox contenedorNombreJugador = new VBox(nombreJugador);
         VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
         HBox contenedorBonus = new HBox(bonusX2, bonusX3, exclusividad);
         contenedorBonus.setSpacing(3);
 
-        this.habilitarExcepciones(jugador);
+        this.habilitarMultiplicadores(jugador);
 
         layout = new HBox(contenedorNombreJugador, contenedorTiempo, contenedorBonus);
 
@@ -88,18 +92,19 @@ public class ContenedorPrimerReglonPreguntaSinPenalidad {
         layout.setPadding(new Insets(10));
     }
 
-    public HBox getLayout() {
-        return layout;
-    }
+    public HBox getLayout() {return layout;}
 
-    public Timeline getTiempo() {
+    public Timeline getTiempo(){
         return etiquetaTiempo.getTiempo();
     }
 
-    private void habilitarExcepciones(Jugador jugador) {
+    private void habilitarMultiplicadores(Jugador jugador){
 
-        if (jugador.cantExclusividadesRestantes() == 0) {
-            exclusividad.setDisable(true);
+        if(jugador.cantMultiplicadoresX2Restantes() == 0){
+            bonusX2.setDisable(true);
+        }
+        if(jugador.cantMultiplicadoresX3Restantes() == 0){
+            bonusX3.setDisable(true);
         }
     }
 }

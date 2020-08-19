@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista;
+package edu.fiuba.algo3.vista.Layouts;
 
 import edu.fiuba.algo3.controlador.BotonBajarRespuestaHandler;
 import edu.fiuba.algo3.controlador.BotonSubirRespuestaHandler;
@@ -7,6 +7,11 @@ import edu.fiuba.algo3.modelo.Preguntas.OrderedChoice;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
+import edu.fiuba.algo3.vista.Contenedores.ContenedorBotonEnviar;
+import edu.fiuba.algo3.vista.Contenedores.ContenedorConsigna;
+import edu.fiuba.algo3.vista.Contenedores.ContenedorPrimerReglonPreguntaSinPenalidad;
+import edu.fiuba.algo3.vista.Escenas.EscenaOrderedChoice;
+import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista;
+package edu.fiuba.algo3.vista.Layouts;
 
 import edu.fiuba.algo3.controlador.BotonSiguienteEventHandler;
 import edu.fiuba.algo3.modelo.Jugador;

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista;
+package edu.fiuba.algo3.vista.Contenedores;
 
 import edu.fiuba.algo3.controlador.BotonEmpezarJuegoEventHandler;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;

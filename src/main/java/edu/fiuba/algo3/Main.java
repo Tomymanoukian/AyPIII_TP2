@@ -2,7 +2,7 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.vista.*;
+import edu.fiuba.algo3.vista.Layouts.LayoutMenuBienvenida;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
