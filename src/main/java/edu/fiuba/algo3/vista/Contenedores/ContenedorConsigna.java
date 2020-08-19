@@ -45,11 +45,10 @@ public class ContenedorConsigna {
                 Color.web(COLOR_CONTENEDOR_CONSIGNA));
 
         StackPane contenedorConsigna = new StackPane(fondoConsigna, consigna);
-        contenedorConsigna.setPadding(new Insets(40));
         contenedorConsigna.setStyle("-fx-font-size: 1.3em;");
 
         layout = contenedorConsigna;
-        layout.setPadding(new Insets(40));
+        layout.setPadding(new Insets(40, 0, 60,0));
     }
 
     public Pane getLayout() {
