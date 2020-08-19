@@ -1,3 +1,4 @@
-ignore:
-  - "AyPIII_TP2/src/main/java/edu/fiuba/algo3/vista"  # ignore folders and all its contents
+codecov:
+  ignore:
+    - "AyPIII_TP2/src/main/java/edu/fiuba/algo3/vista"  # ignore folders and all its contents
  
