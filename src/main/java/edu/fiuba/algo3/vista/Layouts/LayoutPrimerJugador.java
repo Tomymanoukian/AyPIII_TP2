@@ -4,6 +4,7 @@ import edu.fiuba.algo3.controlador.BotonPrimeraPreguntaEventHandler;
 import edu.fiuba.algo3.controlador.BotonSiguienteEventHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
+import edu.fiuba.algo3.vista.Constantes;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -20,17 +21,23 @@ public class LayoutPrimerJugador {
     public LayoutPrimerJugador(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos){
 
         Label texto = new Label("Es el turno de: " + jugador.getNombre());
-        texto.setStyle("-fx-font-weight: bold");
+        Label puntos = new Label("sus puntos actuales son: " + jugador.getPuntaje().getPuntos());
 
-        Rectangle rectanguloTexto = new Rectangle(20, 20, 300, 100);
+        VBox informacion = new VBox(texto, puntos);
+        informacion.setStyle("-fx-font-weight: bold");
+        informacion.setAlignment(Pos.CENTER);
+        informacion.setPadding(new Insets(50));
+        informacion.setSpacing(40);
+
+        Rectangle rectanguloTexto = new Rectangle(20, 20, Constantes.ANCHO_CONTENEDOR_CONSIGNA, Constantes.ALTO_CONTENEDOR_CONSIGNA);
         rectanguloTexto.setFill(Color.LAVENDER);
 
-        StackPane contenedorTexto = new StackPane(rectanguloTexto, texto);
-        contenedorTexto.setPadding(new Insets(10));
-        contenedorTexto.setStyle("-fx-font-size: 1.3em;");
+        StackPane contenedorTexto = new StackPane(rectanguloTexto, informacion);
+        contenedorTexto.setStyle("-fx-font-size: 1.5em;");
+        contenedorTexto.setPadding(new Insets(50));
 
         Button enviar = new Button("Siguiente");
-        enviar.setStyle("-fx-border-color: #A8E3E7; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
+        enviar.setStyle("-fx-border-color: #000000; -fx-font-size: 1.6em; -fx-background-color: #A8E3E7");
 
         BotonPrimeraPreguntaEventHandler botonSiguiente = new BotonPrimeraPreguntaEventHandler(manejadorDeTurnos);
         enviar.setOnAction(botonSiguiente);
@@ -40,8 +47,9 @@ public class LayoutPrimerJugador {
         contenedorBoton.setAlignment(Pos.BOTTOM_RIGHT);
 
         contenedorPuntuaciones = new VBox(contenedorTexto, contenedorBoton);
-        contenedorPuntuaciones.setMinWidth(150);
-        contenedorPuntuaciones.setMinHeight(250);
+        contenedorPuntuaciones.setMinWidth(Constantes.ANCHO_VENTANA);
+        contenedorPuntuaciones.setMinHeight(Constantes.ALTO_VENTANA);
+
     }
 
     public Pane getLayout() {return contenedorPuntuaciones;}
