@@ -6,13 +6,17 @@ import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import edu.fiuba.algo3.vista.Layouts.LayoutOrderedChoice;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+
+import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 
 public class EscenaOrderedChoice implements Escena {
 
-    private Pane layout;
+    private VBox layout;
     private Pregunta pregunta;
     private ListaOpciones opcionesMostradas;
     private BarraDeMenu barraDeMenu;
@@ -26,6 +30,9 @@ public class EscenaOrderedChoice implements Escena {
 
         LayoutOrderedChoice layoutOrderedChoice = new LayoutOrderedChoice(pregunta, this, jugador, manejadorDeTurnos);
         layout = new VBox(barraDeMenu, layoutOrderedChoice.getLayout());
+
+        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setAlignment(Pos.TOP_CENTER);
     }
 
     @Override
@@ -40,6 +47,8 @@ public class EscenaOrderedChoice implements Escena {
 
         Pane layout = (new LayoutOrderedChoice(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
         VBox layoutConBarraDeMenu = new VBox(barraDeMenu, layout);
+        layoutConBarraDeMenu.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        layoutConBarraDeMenu.setAlignment(Pos.TOP_CENTER);
         manejadorDeTurnos.getStage().setScene(new Scene(layoutConBarraDeMenu));
     }
 }

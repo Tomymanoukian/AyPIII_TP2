@@ -7,12 +7,16 @@ import edu.fiuba.algo3.modelo.excepciones.PreguntaCorruptaException;
 import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.Layouts.LayoutFinDelJuego;
 import edu.fiuba.algo3.vista.Layouts.LayoutSiguienteJugador;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.Stack;
+
+import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 
 public class ManejadorDeTurnos {
 
@@ -137,6 +141,8 @@ public class ManejadorDeTurnos {
         BarraDeMenu barraDeMenu = new BarraDeMenu(stage);
 
         VBox vBox = new VBox(barraDeMenu, pane);
+        vBox.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        vBox.setAlignment(Pos.TOP_CENTER);
 
         return new Scene(vBox);
     }
