@@ -1,0 +1,66 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+hide circle
+
+abstract class Pregunta {
+    -consigna
+    {abstract}+evaluarRespuestaPara(unasRespuestas, unJugador)
+}
+
+abstract class VerdaderoFalso {
+    -opcionCorrecta
+    -opcionIncorrecta
+    +evaluarRespuestaPara(unasRespuestas, unJugador)
+}
+
+class VerdaderoFalsoClasico {
+    +{static}crearVerdaderoFalsoCorrectaVerdadero(unaConsigna):unVerdaderoFalsoConClasico
+    +{static}crearVerdaderoFalsoCorrectaVerdadero(unaConsigna):unVerdaderoFalsoConClasico
+}
+
+class VerdaderoFalsoConPenalidad {
+    +{static}crearVerdaderoFalsoCorrectoFalso(unaConsigna):unVerdaderoFalsoConPenalidad
+    +{static}crearVerdaderoFalsoCorrectoVerdadero(unaConsigna):unVerdaderoFalsoConPenalidad
+}
+
+class MultipleChoiceClasico {
+    +evaluarRespuestaPara(unaRespuesta): unPuntaje
+}
+
+class MultipleChoiceParcial {
+    +evaluarRespuestaPara(unaRespuesta): unPuntaje
+}
+
+class MultipleChoiceConPenalidad {
+    +evaluarRespuestaPara(unaRespuesta): unPuntaje
+}
+
+class OrderedChoice {
+    +calcularPuntajePara(unasOpciones): unPuntaje
+    +evaluarRespuesta(unaRespuesta): unPuntaje
+}
+
+class GroupChoice {
+    +evaluarRespuestaPara(unaRespuesta): unPuntaje
+}
+
+Pregunta <|--- VerdaderoFalso
+Pregunta <|--- MultipleChoiceClasico
+Pregunta <|--- MultipleChoiceParcial
+Pregunta <|--- MultipleChoiceConPenalidad
+Pregunta <|--- OrderedChoice
+Pregunta <|--- GroupChoice
+
+MultipleChoiceClasico --> "2    " ListaOpciones
+MultipleChoiceParcial --> "2  " ListaOpciones
+MultipleChoiceConPenalidad --> "2  " ListaOpciones
+OrderedChoice --> "1  " ListaOpciones
+GroupChoice --> "  2" ListaOpciones
+
+VerdaderoFalso <|-- VerdaderoFalsoClasico
+VerdaderoFalso <|-- VerdaderoFalsoConPenalidad
+
+
+@enduml
