@@ -22,7 +22,7 @@ public class OpcionPantallaCompletaEventHandler implements EventHandler<ActionEv
     public void handle(ActionEvent actionEvent) {
         if (!stage.isFullScreen()) {
             stage.hide();
-            stage.setFullScreen(true);
+            stage.setMaximized(true);
             menuVer.getItems().clear();
             menuVer.getItems().addAll(opcionSalirDePantallaCompleta);
             stage.show();

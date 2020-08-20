@@ -9,8 +9,8 @@ import javafx.stage.Stage;
 
 public class BarraDeMenu extends MenuBar {
 
-    private MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
-    private MenuItem opcionSalirDePantallaCompleta = new MenuItem("Salir de pantalla completa");
+    private MenuItem opcionPantallaCompleta = new MenuItem("Maximizar tamaño");
+    private MenuItem opcionSalirDePantallaCompleta = new MenuItem("Minimizar tamaño");
 
     public BarraDeMenu(Stage stage) {
 

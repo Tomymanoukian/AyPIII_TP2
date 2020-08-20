@@ -22,7 +22,7 @@ public class OpcionSalirDePantallaCompletaEventHandler implements EventHandler<A
     public void handle(ActionEvent actionEvent) {
 
         stage.show();
-        stage.setFullScreen(false);
+        stage.setMaximized(false);
         menuVer.getItems().clear();
         menuVer.getItems().addAll(opcionPantallaCompleta);
         stage.show();
