@@ -7,11 +7,6 @@ public class Multiplicador {
 
     private int factorDeMultiplicacion;
 
-    public Multiplicador () {
-
-        factorDeMultiplicacion = 1;
-    }
-
     public Multiplicador (int unFactorDeMultiplicacion) {
 
         factorDeMultiplicacion = unFactorDeMultiplicacion;
