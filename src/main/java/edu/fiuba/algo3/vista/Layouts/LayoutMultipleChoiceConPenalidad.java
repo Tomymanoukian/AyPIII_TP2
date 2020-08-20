@@ -51,5 +51,6 @@ public class LayoutMultipleChoiceConPenalidad extends LayoutMultipleChoice{
         layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
         layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
         layout.setAlignment(Pos.TOP_CENTER);
+        layout.setSpacing(40);
     }
 }

@@ -57,6 +57,11 @@ public abstract class LayoutMultipleChoice {
             checkBox.setOnAction(event);
         }
 
-        return contenedorOpciones;
+        VBox estructuraContenedorOpciones = new VBox(contenedorOpciones);
+        estructuraContenedorOpciones.setAlignment(Pos.CENTER);
+        estructuraContenedorOpciones.setMinHeight(260);
+        estructuraContenedorOpciones.setMaxHeight(260);
+
+        return estructuraContenedorOpciones;
     }
 }
