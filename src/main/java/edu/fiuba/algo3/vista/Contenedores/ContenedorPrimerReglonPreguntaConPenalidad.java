@@ -5,7 +5,6 @@ import edu.fiuba.algo3.controlador.BotonMultiplicadorx3EventHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
-import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import edu.fiuba.algo3.vista.Escenas.Escena;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import javafx.animation.Timeline;
@@ -13,18 +12,20 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-import static edu.fiuba.algo3.vista.Constantes.*;
+import static edu.fiuba.algo3.vista.Constantes.ALTO_CINTA;
+import static edu.fiuba.algo3.vista.Constantes.ESTILO_CINTA;
 
 public class ContenedorPrimerReglonPreguntaConPenalidad {
 
-    private HBox layout;
-    private EtiquetaTiempo etiquetaTiempo;
-    private Button bonusX2;
-    private Button bonusX3;
+    private final HBox layout;
+    private final EtiquetaTiempo etiquetaTiempo;
+    private final Button bonusX2;
+    private final Button bonusX3;
     private Button exclusividad;
 
     public ContenedorPrimerReglonPreguntaConPenalidad(PreguntaConPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){

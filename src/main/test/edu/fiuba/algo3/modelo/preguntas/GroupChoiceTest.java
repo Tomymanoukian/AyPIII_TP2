@@ -1,17 +1,14 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
 
+import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
+import edu.fiuba.algo3.modelo.Preguntas.GroupChoice;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaDeGrupos;
 import edu.fiuba.algo3.modelo.bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
-import edu.fiuba.algo3.modelo.Preguntas.GroupChoice;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestaDeGrupos;
 import org.junit.jupiter.api.BeforeEach;
-import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -41,8 +38,8 @@ public class GroupChoiceTest {
         opcion1DeGrupoB = new Opcion("respuesta1GrupoB");
         opcion2DeGrupoB = new Opcion("respuesta2GrupoB");
 
-        opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA)));
-        opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB)));
+        opcionesGrupoA = opcion1DeGrupoA.con(opcion2DeGrupoA);
+        opcionesGrupoB = opcion1DeGrupoB.con(opcion2DeGrupoB);
     }
 
 
@@ -67,20 +64,17 @@ public class GroupChoiceTest {
         Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB2");
         Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB3");
 
-        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA, opcion4DeGrupoA)));
-        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
+        ListaOpciones opcionesGrupoA = opcion1DeGrupoA.con(opcion2DeGrupoA).con(opcion3DeGrupoA).con(opcion4DeGrupoA);
+        ListaOpciones opcionesGrupoB = opcion1DeGrupoB.con(opcion2DeGrupoB).con(opcion3DeGrupoB);
 
         assertThrows(CantidadDeOpcionesInvalidaException.class, () -> new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB));
     }
 
     @Test
     public void testGroupChoiceLanzaExcepcionSiSeLeIngresa1Opcion() {
-        String consigna = "Agrupe las opciones en dos grupos";
-
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA");
-
-        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA)));
-        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>());
+        ListaOpciones opcionesGrupoA = new ListaOpciones();
+        opcionesGrupoA.agregar(opcion1DeGrupoA);
+        ListaOpciones opcionesGrupoB = new ListaOpciones();
 
         assertThrows(CantidadDeOpcionesInvalidaException.class, () -> new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB));
     }
@@ -98,8 +92,9 @@ public class GroupChoiceTest {
     public void testLeAsignaCeroPuntosConUnaRespuestaDeGruposCorrectaYTresIncorrectas() {
         GroupChoice preguntaGroupChoice = new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
 
-        ListaOpciones opcionesDelJugadorGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion1DeGrupoB, opcion2DeGrupoB)));
-        ListaOpciones opcionesDelJugadorGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion2DeGrupoA)));
+        ListaOpciones opcionesDelJugadorGrupoA = opcion1DeGrupoA.con(opcion1DeGrupoB).con(opcion2DeGrupoB);
+        ListaOpciones opcionesDelJugadorGrupoB = new ListaOpciones();
+        opcionesDelJugadorGrupoB.agregar(opcion2DeGrupoA);
 
         RespuestaDeGrupos respuestasDelJugador = new RespuestaDeGrupos(opcionesDelJugadorGrupoA, opcionesDelJugadorGrupoB);
 
@@ -119,6 +114,6 @@ public class GroupChoiceTest {
     @Test
     public void testSeVerificaQueSePuedaUtilizarExclusividad() {
         GroupChoice preguntaGroupChoice = new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
-        assert(preguntaGroupChoice.getExclusividad().getClass() == Exclusividad.class);
+        assert (preguntaGroupChoice.getExclusividad().getClass() == Exclusividad.class);
     }
 }

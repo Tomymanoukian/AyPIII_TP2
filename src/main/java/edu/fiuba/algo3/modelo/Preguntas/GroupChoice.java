@@ -10,10 +10,10 @@ import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
 
 public class GroupChoice extends Pregunta implements PreguntaSinPenalidad {
 
-    private ListaOpciones opcionesGrupoA;
-    private ListaOpciones opcionesGrupoB;
-    private String nombreGrupoA;
-    private String nombreGrupoB;
+    private final ListaOpciones opcionesGrupoA;
+    private final ListaOpciones opcionesGrupoB;
+    private final String nombreGrupoA;
+    private final String nombreGrupoB;
 
     public GroupChoice(String unaConsigna, String unNombreGrupoA, ListaOpciones unasOpcionesGrupoA, String unNombreGrupoB, ListaOpciones unasOpcionesGrupoB) {
         super();

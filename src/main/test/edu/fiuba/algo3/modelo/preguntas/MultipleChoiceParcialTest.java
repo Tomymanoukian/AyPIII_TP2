@@ -1,46 +1,42 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
-import edu.fiuba.algo3.modelo.bonus.Exclusividad;
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 import edu.fiuba.algo3.modelo.Preguntas.MultipleChoiceParcial;
 import edu.fiuba.algo3.modelo.Puntaje;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
-import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
+import edu.fiuba.algo3.modelo.bonus.Exclusividad;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class MultipleChoiceParcialTest {
     @Test
-    public void testCrearMultipleChoiceParcial(){
+    public void testCrearMultipleChoiceParcial() {
 
-        ListaOpciones opcionesCorrectas = new ListaOpciones();
-        ListaOpciones opcionesIncorrectas = new ListaOpciones();
         String consigna = "Indicar cuales de las siguientes opciones son quesos";
 
         Opcion opcionCorrectaCheddar = new Opcion("Cheddar");
         Opcion opcionCorrectaRoquefort = new Opcion("Roquefort");
         Opcion opcionIncorrectaKetchup = new Opcion("Ketchup");
 
-        opcionesCorrectas.agregar(opcionCorrectaCheddar);
-        opcionesCorrectas.agregar(opcionCorrectaRoquefort);
-
+        ListaOpciones opcionesCorrectas = opcionCorrectaCheddar.con(opcionCorrectaRoquefort);
+        ListaOpciones opcionesIncorrectas = new ListaOpciones();
         opcionesIncorrectas.agregar(opcionIncorrectaKetchup);
 
         MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
         assertEquals("Indicar cuales de las siguientes opciones son quesos", multipleChoiceParcial.getConsigna());
-        assert( multipleChoiceParcial.getOpcionesCorrectas().contieneLoMismo(opcionesCorrectas));
-        assert( multipleChoiceParcial.getOpcionesIncorrectas().contieneLoMismo(opcionesIncorrectas));
+        assert (multipleChoiceParcial.getOpcionesCorrectas().contieneLoMismo(opcionesCorrectas));
+        assert (multipleChoiceParcial.getOpcionesIncorrectas().contieneLoMismo(opcionesIncorrectas));
     }
 
     @Test
     public void testMultipleChoiceParcialLanzaExcepcionSiSeLeIngresan6Opciones() {
-        ListaOpciones respuestasCorrectas = new ListaOpciones();
-        ListaOpciones respuestasIncorrectas = new ListaOpciones();
+
         String consigna = "Indicar cuáles de las siguientes opciones son colores";
 
         Opcion opcionCorrecta1 = new Opcion("Amarillo");
@@ -50,14 +46,10 @@ public class MultipleChoiceParcialTest {
         Opcion opcionIncorrecta1 = new Opcion("Tractor");
         Opcion opcionIncorrecta2 = new Opcion("Auto");
 
-        respuestasCorrectas.agregar(opcionCorrecta1);
-        respuestasCorrectas.agregar(opcionCorrecta2);
-        respuestasCorrectas.agregar(opcionCorrecta3);
-        respuestasCorrectas.agregar(opcionCorrecta4);
-        respuestasIncorrectas.agregar(opcionIncorrecta1);
-        respuestasIncorrectas.agregar(opcionIncorrecta2);
+        ListaOpciones opcionesCorrectas = opcionCorrecta1.con(opcionCorrecta2).con(opcionCorrecta3).con(opcionCorrecta4);
+        ListaOpciones opcionesIncorrectas = opcionIncorrecta1.con(opcionIncorrecta2);
 
-        assertThrows(CantidadDeOpcionesInvalidaException.class, () -> new MultipleChoiceParcial(consigna, respuestasCorrectas, respuestasIncorrectas));
+        assertThrows(CantidadDeOpcionesInvalidaException.class, () -> new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas));
     }
 
     @Test
@@ -74,47 +66,40 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void testAplicaPuntajeAUnJugadorDeDosopcionesCorrectas(){
-        ListaOpciones opcionesCorrectas = new ListaOpciones();
-        ListaOpciones opcionesIncorrectas = new ListaOpciones();
+    public void testAplicaPuntajeAUnJugadorDeDosopcionesCorrectas() {
+
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
 
-        Opcion opcionCorrectaAlpha = new Opcion("Alpha",new Puntaje(1));
-        Opcion opcionCorrectaBetta = new Opcion("Betta",new Puntaje(1));
-        Opcion opcionIncorrectaJota = new Opcion("Jota",new Puntaje(0));
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha", new Puntaje(1));
+        Opcion opcionCorrectaBetta = new Opcion("Betta", new Puntaje(1));
+        Opcion opcionIncorrectaJota = new Opcion("Jota", new Puntaje(0));
 
-        opcionesCorrectas.agregar(opcionCorrectaAlpha);
-        opcionesCorrectas.agregar(opcionCorrectaBetta);
+        ListaOpciones opcionesCorrectas = opcionCorrectaAlpha.con(opcionCorrectaBetta);
+        ListaOpciones opcionesIncorrectas = new ListaOpciones();
         opcionesIncorrectas.agregar(opcionIncorrectaJota);
 
         MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador jugador = new Jugador("Pepe");
-        ListaOpciones opcionesElegidas = new ListaOpciones();
-        opcionesElegidas.agregar(opcionCorrectaAlpha);
-        opcionesElegidas.agregar(opcionCorrectaBetta);
-
+        ListaOpciones opcionesElegidas = opcionCorrectaAlpha.con(opcionCorrectaBetta);
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
         assertEquals(2, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador).getPuntos());
     }
+
     @Test
-    public void testAplicaPuntajeDeUnaListaDeopcionesAdivinandoUno(){
-        ListaOpciones opcionesCorrectas = new ListaOpciones();
-        ListaOpciones opcionesIncorrectas = new ListaOpciones();
+    public void testAplicaPuntajeDeUnaListaDeopcionesAdivinandoUno() {
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
 
-        Opcion opcionCorrectaAlpha = new Opcion("Alpha",new Puntaje(1));
-        Opcion opcionCorrectaBetta = new Opcion("Betta",new Puntaje(1));
-        Opcion opcionIncorrectaJota = new Opcion("Jota",new Puntaje(0));
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha", new Puntaje(1));
+        Opcion opcionCorrectaBetta = new Opcion("Betta", new Puntaje(1));
+        Opcion opcionIncorrectaJota = new Opcion("Jota", new Puntaje(0));
 
-        opcionesCorrectas.agregar(opcionCorrectaAlpha);
-        opcionesCorrectas.agregar(opcionCorrectaBetta);
+        ListaOpciones opcionesCorrectas = opcionCorrectaAlpha.con(opcionCorrectaBetta);
+        ListaOpciones opcionesIncorrectas = new ListaOpciones();
         opcionesIncorrectas.agregar(opcionIncorrectaJota);
 
         MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador jugador = new Jugador("Pepe");
         ListaOpciones opcionesElegidas = new ListaOpciones();
         opcionesElegidas.agregar(opcionCorrectaAlpha);
 
@@ -122,48 +107,42 @@ public class MultipleChoiceParcialTest {
 
         assertEquals(1, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador).getPuntos());
     }
+
     @Test
-    public void testAplicaPuntajeDeUnaRespuestaCorrectaYOtraIncorrectaSumandoCeroPuntos(){
-        ListaOpciones opcionesCorrectas = new ListaOpciones();
-        ListaOpciones opcionesIncorrectas = new ListaOpciones();
+    public void testAplicaPuntajeDeUnaRespuestaCorrectaYOtraIncorrectaSumandoCeroPuntos() {
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
 
-        Opcion opcionCorrectaAlpha = new Opcion("Alpha",new Puntaje(1));
-        Opcion opcionCorrectaBetta = new Opcion("Betta",new Puntaje(1));
-        Opcion opcionIncorrectaJota = new Opcion("Jota",new Puntaje(0));
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha", new Puntaje(1));
+        Opcion opcionCorrectaBetta = new Opcion("Betta", new Puntaje(1));
+        Opcion opcionIncorrectaJota = new Opcion("Jota", new Puntaje(0));
 
-        opcionesCorrectas.agregar(opcionCorrectaAlpha);
-        opcionesCorrectas.agregar(opcionCorrectaBetta);
+        ListaOpciones opcionesCorrectas = opcionCorrectaAlpha.con(opcionCorrectaBetta);
+        ListaOpciones opcionesIncorrectas = new ListaOpciones();
         opcionesIncorrectas.agregar(opcionIncorrectaJota);
 
         MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador jugador = new Jugador("Pepe");
-        ListaOpciones opcionesElegidas = new ListaOpciones();
-        opcionesElegidas.agregar(opcionCorrectaAlpha);
-        opcionesElegidas.agregar(opcionIncorrectaJota);
+        ListaOpciones opcionesElegidas = opcionCorrectaAlpha.con(opcionIncorrectaJota);
 
         RespuestaEnLista respuestaDelJugador = new RespuestaEnLista(opcionesElegidas);
 
         assertEquals(0, multipleChoiceParcial.evaluarRespuestaPara(respuestaDelJugador).getPuntos());
     }
+
     @Test
-    public void testAplicaElPuntajeDeTodasLasopcionesIncorrectas(){
-        ListaOpciones opcionesCorrectas = new ListaOpciones();
-        ListaOpciones opcionesIncorrectas = new ListaOpciones();
+    public void testAplicaElPuntajeDeTodasLasopcionesIncorrectas() {
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
 
-        Opcion opcionCorrectaAlpha = new Opcion("Alpha",new Puntaje(1));
-        Opcion opcionInorrectaDobleV = new Opcion("DobleV",new Puntaje(0));
-        Opcion opcionIncorrectaJota = new Opcion("Jota",new Puntaje(0));
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha", new Puntaje(1));
+        Opcion opcionInorrectaDobleV = new Opcion("DobleV", new Puntaje(0));
+        Opcion opcionIncorrectaJota = new Opcion("Jota", new Puntaje(0));
 
+        ListaOpciones opcionesCorrectas = new ListaOpciones();
         opcionesCorrectas.agregar(opcionCorrectaAlpha);
-        opcionesIncorrectas.agregar(opcionInorrectaDobleV);
-        opcionesIncorrectas.agregar(opcionIncorrectaJota);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaJota.con(opcionInorrectaDobleV);
 
         MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
 
-        Jugador jugador = new Jugador("Pepe");
         ListaOpciones opcionesElegidas = new ListaOpciones();
         opcionesElegidas.agregar(opcionInorrectaDobleV);
         opcionesElegidas.agregar(opcionIncorrectaJota);
@@ -174,20 +153,19 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void testSeVerificaQueSePuedaUtilizarExclusividad(){
-        ListaOpciones opcionesCorrectas = new ListaOpciones();
-        ListaOpciones opcionesIncorrectas = new ListaOpciones();
+    public void testSeVerificaQueSePuedaUtilizarExclusividad() {
         String consigna = "Indicar cuales de las siguientes opciones son letras griegas";
 
-        Opcion opcionCorrectaAlpha = new Opcion("Alpha",new Puntaje(1));
-        Opcion opcionInorrectaDobleV = new Opcion("DobleV",new Puntaje(0));
-        Opcion opcionIncorrectaJota = new Opcion("Jota",new Puntaje(0));
+        Opcion opcionCorrectaAlpha = new Opcion("Alpha", new Puntaje(1));
+        Opcion opcionInorrectaDobleV = new Opcion("DobleV", new Puntaje(0));
+        Opcion opcionIncorrectaJota = new Opcion("Jota", new Puntaje(0));
 
+        ListaOpciones opcionesCorrectas = new ListaOpciones();
         opcionesCorrectas.agregar(opcionCorrectaAlpha);
-        opcionesIncorrectas.agregar(opcionInorrectaDobleV);
-        opcionesIncorrectas.agregar(opcionIncorrectaJota);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaJota.con(opcionInorrectaDobleV);
+
 
         MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
-        assert(multipleChoiceParcial.getExclusividad().getClass() == Exclusividad.class);
+        assert (multipleChoiceParcial.getExclusividad().getClass() == Exclusividad.class);
     }
 }

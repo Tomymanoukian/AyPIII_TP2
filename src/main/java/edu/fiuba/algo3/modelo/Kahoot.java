@@ -11,13 +11,13 @@ import edu.fiuba.algo3.modelo.Excepciones.JugadorNoValidoException;
 
 public class Kahoot{
 
-    private Jugador jugador1;
-    private Jugador jugador2;
+    private final Jugador jugador1;
+    private final Jugador jugador2;
     private Respuesta respuestaJugador1;
     private Respuesta respuestaJugador2;
-    private ListaDeExclusividades exclusividades;
-    private ListaDeMultiplicadores multiplicadoresJ1;
-    private ListaDeMultiplicadores multiplicadoresJ2;
+    private final ListaDeExclusividades exclusividades;
+    private final ListaDeMultiplicadores multiplicadoresJ1;
+    private final ListaDeMultiplicadores multiplicadoresJ2;
 
     public Kahoot() {
 

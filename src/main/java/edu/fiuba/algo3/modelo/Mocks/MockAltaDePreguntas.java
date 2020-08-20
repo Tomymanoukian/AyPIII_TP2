@@ -12,13 +12,13 @@ import java.util.Stack;
 
 public class MockAltaDePreguntas {
 
-    private VerdaderoFalsoClasico verdaderoFalsoClasico;
-    private VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad;
-    private OrderedChoice orderedChoice;
-    private GroupChoice groupChoice;
-    private MultipleChoiceClasico multipleChoiceClasico;
-    private MultipleChoiceParcial multipleChoiceParcial;
-    private MultipleChoiceConPenalidad multipleChoiceConPenalidad;
+    private final VerdaderoFalsoClasico verdaderoFalsoClasico;
+    private final VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad;
+    private final OrderedChoice orderedChoice;
+    private final GroupChoice groupChoice;
+    private final MultipleChoiceClasico multipleChoiceClasico;
+    private final MultipleChoiceParcial multipleChoiceParcial;
+    private final MultipleChoiceConPenalidad multipleChoiceConPenalidad;
 
     public MockAltaDePreguntas() {
 

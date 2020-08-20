@@ -18,8 +18,8 @@ import static edu.fiuba.algo3.vista.Constantes.*;
 
 public class ContenedorPrimerReglonPreguntaSinPenalidad {
 
-    private HBox layout;
-    private EtiquetaTiempo etiquetaTiempo;
+    private final HBox layout;
+    private final EtiquetaTiempo etiquetaTiempo;
     private Button bonusX2;
     private Button bonusX3;
     private Button exclusividad;

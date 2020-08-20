@@ -19,9 +19,9 @@ import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 public class EscenaMultipleChoice implements Escena {
 
     private LayoutMultipleChoice layoutMultipleChoice;
-    private Pregunta pregunta;
-    private ListaOpciones opcionesMostradas;
-    private BarraDeMenu barraDeMenu;
+    private final Pregunta pregunta;
+    private final ListaOpciones opcionesMostradas;
+    private final BarraDeMenu barraDeMenu;
 
     public EscenaMultipleChoice(Pregunta unaPregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 

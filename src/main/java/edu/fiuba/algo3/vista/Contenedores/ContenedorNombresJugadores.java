@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.vista.Contenedores;
 
-import edu.fiuba.algo3.controlador.KeyEnterPrimerJugadorHandler;
-import edu.fiuba.algo3.controlador.KeyEnterSegundoJugadorHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -18,9 +16,9 @@ import static edu.fiuba.algo3.vista.Constantes.COLOR_CONTENEDOR_CONSIGNA;
 
 public class ContenedorNombresJugadores {
 
-    private VBox contenedorNombresJugadores;
-    private TextField nombreJugador1;
-    private TextField nombreJugador2;
+    private final VBox contenedorNombresJugadores;
+    private final TextField nombreJugador1;
+    private final TextField nombreJugador2;
 
     public ContenedorNombresJugadores(Jugador jugador1, Jugador jugador2){
 

@@ -11,7 +11,7 @@ import static edu.fiuba.algo3.vista.Constantes.*;
 
 public class LayoutFinDelJuego {
 
-    private VBox layout;
+    private final VBox layout;
 
     public LayoutFinDelJuego(Jugador unJugador, Jugador otroJugador) {
 

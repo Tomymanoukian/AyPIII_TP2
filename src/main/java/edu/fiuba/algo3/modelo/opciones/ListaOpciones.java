@@ -204,4 +204,9 @@ public class ListaOpciones {
     public void quitarOpcion(Opcion opcion) {
         listaOpciones.remove(opcion);
     }
+
+    public ListaOpciones con(Opcion opcion) {
+        this.agregar(opcion);
+        return this;
+    }
 }

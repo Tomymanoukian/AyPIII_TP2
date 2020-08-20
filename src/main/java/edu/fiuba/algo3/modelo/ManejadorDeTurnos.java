@@ -20,15 +20,15 @@ import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 
 public class ManejadorDeTurnos {
 
-    private Stack<Pregunta> pilaDePreguntas ;
-    private Jugador jugador1;
-    private Jugador jugador2;
+    private final Stack<Pregunta> pilaDePreguntas ;
+    private final Jugador jugador1;
+    private final Jugador jugador2;
     private Boolean jugador2Respodio;
     private Boolean juegoTerminado;
     private Boolean ultimaPregunta;
     private Pregunta pregunta;
-    private Kahoot kahoot;
-    private Stage stage;
+    private final Kahoot kahoot;
+    private final Stage stage;
 
     public ManejadorDeTurnos(Stack<Pregunta> pilaDePreguntas, Jugador jugador1, Jugador jugador2, Kahoot kahoot, Stage stage){
 

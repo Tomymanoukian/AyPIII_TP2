@@ -19,8 +19,8 @@ import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 public class EscenaVerdaderoFalso implements Escena {
 
     private VBox layout;
-    private Pregunta pregunta;
-    private BarraDeMenu barraDeMenu;
+    private final Pregunta pregunta;
+    private final BarraDeMenu barraDeMenu;
 
     public EscenaVerdaderoFalso(Pregunta unaPregunta, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos){
 

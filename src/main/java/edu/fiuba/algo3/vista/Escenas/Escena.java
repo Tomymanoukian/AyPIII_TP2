@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 
 public interface Escena {
 
-    public abstract Scene getEscena();
+    Scene getEscena();
 
-    public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo);
+    void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo);
 }

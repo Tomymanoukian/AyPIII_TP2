@@ -17,10 +17,10 @@ import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 
 public class EscenaOrderedChoice implements Escena {
 
-    private VBox layout;
-    private Pregunta pregunta;
-    private ListaOpciones opcionesMostradas;
-    private BarraDeMenu barraDeMenu;
+    private final VBox layout;
+    private final Pregunta pregunta;
+    private final ListaOpciones opcionesMostradas;
+    private final BarraDeMenu barraDeMenu;
 
     public EscenaOrderedChoice(Pregunta unaPregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 

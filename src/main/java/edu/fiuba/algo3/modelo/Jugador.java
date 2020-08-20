@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.Excepciones.JugadorSinNombreException;
 
 public class Jugador {
 
-    private Puntaje puntaje;
+    private final Puntaje puntaje;
     private String nombre;
     private int multiplicadoresX2Restantes;
     private int multiplicadoresX3Restantes;

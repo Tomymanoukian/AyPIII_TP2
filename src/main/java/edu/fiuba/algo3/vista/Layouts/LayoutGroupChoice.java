@@ -26,7 +26,7 @@ public class LayoutGroupChoice {
 
     private VBox layout;
     protected VBox contenedorDeOpciones;
-    private RespuestaDeGrupos respuesta;
+    private final RespuestaDeGrupos respuesta;
 
     public LayoutGroupChoice(Pregunta pregunta, EscenaGroupChoice escenaGroupChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 

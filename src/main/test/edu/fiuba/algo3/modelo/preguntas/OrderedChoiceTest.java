@@ -1,16 +1,13 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
+import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
+import edu.fiuba.algo3.modelo.Preguntas.OrderedChoice;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
-import edu.fiuba.algo3.modelo.Preguntas.OrderedChoice;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
-import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -33,7 +30,7 @@ public class OrderedChoiceTest {
         opcion2da = new Opcion("2");
         opcion3ra = new Opcion("3");
 
-        listaDeOpciones = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1ra, opcion2da, opcion3ra)));
+        listaDeOpciones = opcion1ra.con(opcion2da).con(opcion3ra);
     }
 
     @Test
@@ -48,7 +45,7 @@ public class OrderedChoiceTest {
     public void testCalculaPuntajeParaRespuestasOrdenadas() {
         OrderedChoice orderedChoice = new OrderedChoice(consigna, listaDeOpciones);
 
-        ListaOpciones opcionesElegidas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1ra, opcion2da, opcion3ra)));
+        ListaOpciones opcionesElegidas = opcion1ra.con(opcion2da).con(opcion3ra);
 
         RespuestaEnLista respuestaEnLista = new RespuestaEnLista(opcionesElegidas);
 
@@ -59,7 +56,7 @@ public class OrderedChoiceTest {
     public void testCalculaPuntajeParaRespuestasDesordenadas() {
         OrderedChoice orderedChoice = new OrderedChoice(consigna, listaDeOpciones);
 
-        ListaOpciones opcionesElegidas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1ra, opcion3ra, opcion2da)));
+        ListaOpciones opcionesElegidas = opcion1ra.con(opcion3ra).con(opcion2da);
 
         RespuestaEnLista respuestaEnLista = new RespuestaEnLista(opcionesElegidas);
 
@@ -70,7 +67,8 @@ public class OrderedChoiceTest {
     public void testOrederedChoiceLanzaExcepcionSiSeLeIngresanMenosDeDosOpciones() {
         Opcion opcionUnica = new Opcion("1");
 
-        ListaOpciones listaDeOpcionesInvalida = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionUnica)));
+        ListaOpciones listaDeOpcionesInvalida = new ListaOpciones();
+        listaDeOpcionesInvalida.agregar(opcionUnica);
 
         assertThrows(CantidadDeOpcionesInvalidaException.class, () -> new OrderedChoice(consigna, listaDeOpcionesInvalida));
     }
@@ -84,15 +82,15 @@ public class OrderedChoiceTest {
         Opcion opcion5ta = new Opcion("5");
         Opcion opcion6ta = new Opcion("6");
 
-        ListaOpciones listaDeOpcionesInvalida = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1ra, opcion2da, opcion3ra, opcion4ta, opcion5ta, opcion6ta)));
+        ListaOpciones listaDeOpcionesInvalida = opcion1ra.con(opcion2da).con(opcion3ra).con(opcion4ta).con(opcion5ta).con(opcion6ta);
 
         assertThrows(CantidadDeOpcionesInvalidaException.class, () -> new OrderedChoice(consigna, listaDeOpcionesInvalida));
     }
 
     @Test
-    public void testSeVerificaQueSePuedaUtilizarExclusividad(){
+    public void testSeVerificaQueSePuedaUtilizarExclusividad() {
         OrderedChoice orderedChoice = new OrderedChoice(consigna, listaDeOpciones);
 
-        assert(orderedChoice.getExclusividad().getClass() == Exclusividad.class);
+        assert (orderedChoice.getExclusividad().getClass() == Exclusividad.class);
     }
 }

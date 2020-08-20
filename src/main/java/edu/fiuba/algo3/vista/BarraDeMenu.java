@@ -4,12 +4,11 @@ import edu.fiuba.algo3.controlador.*;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
 import javafx.stage.Stage;
 
 public class BarraDeMenu extends MenuBar {
 
-    private MenuItem opcionPantallaCompleta = new MenuItem("Maximizar tamaño");
+    private final MenuItem opcionPantallaCompleta = new MenuItem("Maximizar tamaño");
     private MenuItem opcionSalirDePantallaCompleta = new MenuItem("Minimizar tamaño");
 
     public BarraDeMenu(Stage stage) {

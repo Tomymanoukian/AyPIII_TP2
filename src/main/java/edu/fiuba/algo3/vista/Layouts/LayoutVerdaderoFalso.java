@@ -9,10 +9,11 @@ import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-import static edu.fiuba.algo3.vista.Constantes.*;
+import static edu.fiuba.algo3.vista.Constantes.ESTILO_FALSO;
+import static edu.fiuba.algo3.vista.Constantes.ESTILO_VERDADERO;
 
 public abstract class LayoutVerdaderoFalso {
 
