@@ -19,12 +19,6 @@ public class Opcion {
         puntaje = unPuntaje;
     }
 
-    public Opcion (Opcion unaOpcion) {
-
-        opcion = unaOpcion.getOpcion();
-        puntaje = unaOpcion.getPuntaje();
-    }
-
     public static Opcion recuperar(JsonObject jsonOpcion) {
 
         String opcion = jsonOpcion.get("opcion").getAsString();
