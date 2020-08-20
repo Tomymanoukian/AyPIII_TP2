@@ -48,6 +48,11 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso implements Pregun
     }
 
     @Override
+    public String getTipoDePregunta() {
+        return "Verdadero/Falso con penalidad";
+    }
+
+    @Override
     public Multiplicador getMultiplicadorX2() {
         return new Multiplicador(2);
     }

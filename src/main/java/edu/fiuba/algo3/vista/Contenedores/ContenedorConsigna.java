@@ -20,7 +20,7 @@ public class ContenedorConsigna {
 
     public ContenedorConsigna(Pregunta unaPregunta) {
 
-        Label tipoPregunta = new Label (unaPregunta.getClass().getSimpleName());
+        Label tipoPregunta = new Label (unaPregunta.getTipoDePregunta());
         Label pregunta = new Label(unaPregunta.getConsigna());
 
         tipoPregunta.setMinSize(ANCHO_CONTENEDOR_CONSIGNA-50, 20);

@@ -62,6 +62,11 @@ public class MultipleChoiceClasico extends MultipleChoice implements PreguntaSin
     }
 
     @Override
+    public String getTipoDePregunta() {
+        return "Multiple Choice clásico";
+    }
+
+    @Override
     public Exclusividad getExclusividad() {
         return new Exclusividad();
     }

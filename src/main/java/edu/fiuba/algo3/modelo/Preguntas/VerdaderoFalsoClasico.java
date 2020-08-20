@@ -48,6 +48,11 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso implements PreguntaSin
     }
 
     @Override
+    public String getTipoDePregunta() {
+        return "Verdadero/Falso clásico";
+    }
+
+    @Override
     public Exclusividad getExclusividad() {
         return new Exclusividad();
     }

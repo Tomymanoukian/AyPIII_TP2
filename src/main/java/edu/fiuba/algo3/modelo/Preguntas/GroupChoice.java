@@ -80,6 +80,11 @@ public class GroupChoice extends Pregunta implements PreguntaSinPenalidad {
     }
 
     @Override
+    public String getTipoDePregunta() {
+        return "Group choice";
+    }
+
+    @Override
     public Exclusividad getExclusividad() {
         return new Exclusividad();
     }

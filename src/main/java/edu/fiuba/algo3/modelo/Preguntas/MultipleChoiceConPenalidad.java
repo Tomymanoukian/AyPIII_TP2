@@ -49,6 +49,11 @@ public class MultipleChoiceConPenalidad extends MultipleChoice implements Pregun
     }
 
     @Override
+    public String getTipoDePregunta() {
+        return "Multiple Choice con penalidad";
+    }
+
+    @Override
     public Multiplicador getMultiplicadorX2() {
         return new Multiplicador(2);
     }
