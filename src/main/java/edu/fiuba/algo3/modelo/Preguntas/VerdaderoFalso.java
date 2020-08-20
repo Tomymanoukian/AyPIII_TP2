@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.Opcion;
 import edu.fiuba.algo3.modelo.Puntaje;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
-import edu.fiuba.algo3.modelo.excepciones.OpcionNoValidaException;
+import edu.fiuba.algo3.modelo.Excepciones.OpcionNoValidaException;
 
 public abstract class VerdaderoFalso extends Pregunta {
 

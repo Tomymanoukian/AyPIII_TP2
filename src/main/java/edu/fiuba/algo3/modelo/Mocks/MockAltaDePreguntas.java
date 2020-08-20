@@ -1,21 +1,26 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Mocks;
 
+import edu.fiuba.algo3.modelo.ListaOpciones;
+import edu.fiuba.algo3.modelo.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.*;
+import edu.fiuba.algo3.modelo.Puntaje;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
-public class MockLecturaDeArchivoDePreguntas {
+public class MockAltaDePreguntas {
 
     private VerdaderoFalsoClasico verdaderoFalsoClasico;
-    private VerdaderoFalsoConPenalidad  verdaderoFalsoConPenalidad;
+    private VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad;
     private OrderedChoice orderedChoice;
     private GroupChoice groupChoice;
     private MultipleChoiceClasico multipleChoiceClasico;
     private MultipleChoiceParcial multipleChoiceParcial;
     private MultipleChoiceConPenalidad multipleChoiceConPenalidad;
 
-    public MockLecturaDeArchivoDePreguntas() {
+    public MockAltaDePreguntas() {
 
         ////////////Empieza creacion de objetos para hacer pruebas de la vista VerdaderoFalso
         String consignaVoF1 = "Consigna verdadera";
@@ -106,16 +111,29 @@ public class MockLecturaDeArchivoDePreguntas {
         ////////////Termina creacion de objetos para hacer pruebas de la vista MultipleChoiceClasico
     }
 
-    public Stack<Pregunta> getPilaDePreguntas() {
+    public List<Pregunta> getListaDePreguntas() {
 
-        Stack<Pregunta> pila = new Stack<>();
-        pila.add(groupChoice);
-        pila.add(orderedChoice);
-        pila.add(multipleChoiceClasico);
-        pila.add(multipleChoiceParcial);
-        pila.add(multipleChoiceConPenalidad);
-        pila.add(verdaderoFalsoConPenalidad);
-        pila.add(verdaderoFalsoClasico);
-        return pila;
+        List<Pregunta> listaDePreguntas = new ArrayList<>();
+        listaDePreguntas.add(groupChoice);
+        listaDePreguntas.add(orderedChoice);
+        listaDePreguntas.add(multipleChoiceClasico);
+        listaDePreguntas.add(multipleChoiceParcial);
+        listaDePreguntas.add(multipleChoiceConPenalidad);
+        listaDePreguntas.add(verdaderoFalsoConPenalidad);
+        listaDePreguntas.add(verdaderoFalsoClasico);
+        return listaDePreguntas;
+    }
+
+    public List<Pregunta> getPilaDePreguntas() {
+
+        Stack<Pregunta> pilaDePreguntas = new Stack<>();
+        pilaDePreguntas.add(groupChoice);
+        pilaDePreguntas.add(orderedChoice);
+        pilaDePreguntas.add(multipleChoiceClasico);
+        pilaDePreguntas.add(multipleChoiceParcial);
+        pilaDePreguntas.add(multipleChoiceConPenalidad);
+        pilaDePreguntas.add(verdaderoFalsoConPenalidad);
+        pilaDePreguntas.add(verdaderoFalsoClasico);
+        return pilaDePreguntas;
     }
 }

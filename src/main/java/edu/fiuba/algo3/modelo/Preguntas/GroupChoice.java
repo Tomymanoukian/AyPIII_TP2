@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaDeGrupos;
-import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
+import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 
 public class GroupChoice extends Pregunta implements PreguntaSinPenalidad {
 

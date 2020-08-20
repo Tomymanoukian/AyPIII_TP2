@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.ListaOpciones;
 import edu.fiuba.algo3.modelo.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.OrderedChoice;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
-import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
+import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

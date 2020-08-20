@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.Preguntas.MultipleChoiceParcial;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
-import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
+import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

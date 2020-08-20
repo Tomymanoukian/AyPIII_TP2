@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.OpcionesRepetidasException;
+import edu.fiuba.algo3.modelo.Excepciones.OpcionesRepetidasException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

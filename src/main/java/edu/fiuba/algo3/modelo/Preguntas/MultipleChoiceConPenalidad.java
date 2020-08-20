@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.ListaOpciones;
 import edu.fiuba.algo3.modelo.Puntaje;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
-import edu.fiuba.algo3.modelo.excepciones.CantidadDeOpcionesInvalidaException;
+import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 
 public class MultipleChoiceConPenalidad extends MultipleChoice implements PreguntaConPenalidad {
 
