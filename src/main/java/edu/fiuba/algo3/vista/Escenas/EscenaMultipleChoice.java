@@ -34,7 +34,6 @@ public class EscenaMultipleChoice implements Escena {
             LayoutMultipleChoiceConPenalidad layoutMultipleChoice = new LayoutMultipleChoiceConPenalidad(pregunta, this, jugador, manejadorDeTurnos);
             layout = layoutMultipleChoice.getLayout();
         }
-
     }
 
     @Override
