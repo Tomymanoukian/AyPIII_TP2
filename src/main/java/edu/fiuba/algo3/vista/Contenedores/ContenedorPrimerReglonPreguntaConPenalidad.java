@@ -34,11 +34,11 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
 
         Label puntos = new Label("Puntos: " +jugador.getPuntaje().getPuntos());
         puntos.setAlignment(Pos.CENTER_LEFT);
-        puntos.setMinWidth(100);
+        puntos.setMinWidth(110);
 
         etiquetaTiempo = unaEtiquetaTiempo;
         VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
-        contenedorTiempo.setMinWidth(60);
+        contenedorTiempo.setPrefSize(50, 30);
         contenedorTiempo.setAlignment(Pos.CENTER);
         contenedorTiempo.setStyle("-fx-background-color: #FFFFFF");
 
