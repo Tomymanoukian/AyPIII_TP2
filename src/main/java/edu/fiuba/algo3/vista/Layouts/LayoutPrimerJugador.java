@@ -15,6 +15,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import static edu.fiuba.algo3.vista.Constantes.ESTILO_BOTONES;
+
 public class LayoutPrimerJugador {
     private Pane contenedorPuntuaciones;
 
@@ -36,7 +38,7 @@ public class LayoutPrimerJugador {
         contenedorTexto.setPadding(new Insets(80));
 
         Button enviar = new Button("Siguiente");
-        enviar.setStyle("-fx-border-color: #000000; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
+        enviar.setStyle(ESTILO_BOTONES);
 
         BotonPrimeraPreguntaEventHandler botonSiguiente = new BotonPrimeraPreguntaEventHandler(manejadorDeTurnos);
         enviar.setOnAction(botonSiguiente);
