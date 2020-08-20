@@ -24,53 +24,7 @@ public class ContenedorPrimerReglonPreguntaSinPenalidad {
     private Button bonusX3;
     private Button exclusividad;
 
-    public ContenedorPrimerReglonPreguntaSinPenalidad(PreguntaSinPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta) {
-
-        Label puntos = new Label("Puntos: " +jugador.getPuntaje().getPuntos());
-        Label nombreJugador = new Label(jugador.getNombre());
-        etiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);//Label tiempo = new Label("00:00");
-
-        bonusX2 = new Button("X2");
-        bonusX2.setDisable(true);
-        ContenedorBonus contenedorBonusX2 = new ContenedorBonus(bonusX2, jugador.cantMultiplicadoresX2Restantes());
-
-        bonusX3 = new Button("X3");
-        bonusX3.setDisable(true);
-        ContenedorBonus contenedorBonusX3 = new ContenedorBonus(bonusX3, jugador.cantMultiplicadoresX3Restantes());
-
-        exclusividad = new Button("Ex");
-        BotonExclusividadHandler exclusividadHandler = new BotonExclusividadHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
-        exclusividad.setOnAction(exclusividadHandler);
-        ContenedorBonus contenedorExclusividad = new ContenedorBonus(exclusividad, jugador.cantExclusividadesRestantes());
-
-        VBox contenedorPuntos = new VBox(puntos);
-        contenedorPuntos.setAlignment(Pos.CENTER);
-        contenedorPuntos.setMinWidth(100);
-        contenedorPuntos.setPadding(new Insets(10));
-        VBox contenedorNombreJugador = new VBox(nombreJugador);
-        contenedorNombreJugador.setAlignment(Pos.CENTER);
-        contenedorNombreJugador.setMinWidth(80);
-        //contenedorNombreJugador.setPadding(new Insets(10));
-        VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
-        contenedorTiempo.setMinWidth(50);
-        contenedorTiempo.setAlignment(Pos.CENTER);
-        HBox contenedorBonus = new HBox(contenedorBonusX2.getLayout(), contenedorBonusX3.getLayout(), contenedorExclusividad.getLayout());
-        contenedorBonus.setMinWidth(250);
-        contenedorBonus.setSpacing(3);
-        contenedorBonus.setAlignment(Pos.CENTER);
-
-        this.habilitarExcepciones(jugador);
-
-        layout = new HBox(contenedorPuntos, contenedorNombreJugador, contenedorTiempo, contenedorBonus);
-
-        layout.setAlignment(Pos.CENTER);
-        layout.setStyle("-fx-font-size: 1.25em;");
-        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_CINTA), CornerRadii.EMPTY, Insets.EMPTY)));
-        layout.setSpacing(40);
-        layout.setPadding(new Insets(10));
-    }
-
-    public ContenedorPrimerReglonPreguntaSinPenalidad(PreguntaSinPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta, EtiquetaTiempo unaEtiquetaTiempo) {
+    public ContenedorPrimerReglonPreguntaSinPenalidad(PreguntaSinPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
         Label puntos = new Label("Puntos: " +jugador.getPuntaje().getPuntos());
         Label nombreJugador = new Label(jugador.getNombre());
