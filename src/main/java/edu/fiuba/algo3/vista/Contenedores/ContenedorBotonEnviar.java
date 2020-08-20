@@ -10,6 +10,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
+import static edu.fiuba.algo3.vista.Constantes.*;
+
 public class ContenedorBotonEnviar {
 
     private HBox layout;
@@ -17,13 +19,16 @@ public class ContenedorBotonEnviar {
     public ContenedorBotonEnviar(Jugador jugador, Respuesta respuesta, ManejadorDeTurnos manejadorDeTurnos, Timeline tiempo) {
 
         Button enviar = new Button("Enviar");
-        enviar.setStyle("-fx-border-color: #000000; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
+        enviar.setStyle(ESTILO_BOTONES);
 
         BotonEnviarHandler botonEnviarHandler = new BotonEnviarHandler(jugador, respuesta, manejadorDeTurnos, tiempo);
         enviar.setOnAction(botonEnviarHandler);
 
-        layout = new HBox(enviar);
-        layout.setPadding(new Insets(20));
+        HBox offset = new HBox();
+        offset.setPrefWidth(ANCHO_OPCION);
+
+        layout = new HBox(offset, enviar);
+        layout.setPadding(new Insets(40));
         layout.setAlignment(Pos.BOTTOM_CENTER);
     }
 
