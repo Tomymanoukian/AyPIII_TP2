@@ -21,30 +21,29 @@ public class LayoutPrimerJugador {
     public LayoutPrimerJugador(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos){
 
         Label texto = new Label("Es el turno de: " + jugador.getNombre());
-        Label puntos = new Label("sus puntos actuales son: " + jugador.getPuntaje().getPuntos());
 
-        VBox informacion = new VBox(texto, puntos);
+        VBox informacion = new VBox(texto);
         informacion.setStyle("-fx-font-weight: bold");
         informacion.setAlignment(Pos.CENTER);
         informacion.setPadding(new Insets(50));
         informacion.setSpacing(40);
 
-        Rectangle rectanguloTexto = new Rectangle(20, 20, Constantes.ANCHO_CONTENEDOR_CONSIGNA, Constantes.ALTO_CONTENEDOR_CONSIGNA);
+        Rectangle rectanguloTexto = new Rectangle(20, 20, 450, Constantes.ALTO_CONTENEDOR_CONSIGNA);
         rectanguloTexto.setFill(Color.LAVENDER);
 
         StackPane contenedorTexto = new StackPane(rectanguloTexto, informacion);
         contenedorTexto.setStyle("-fx-font-size: 1.5em;");
-        contenedorTexto.setPadding(new Insets(50));
+        contenedorTexto.setPadding(new Insets(80));
 
         Button enviar = new Button("Siguiente");
-        enviar.setStyle("-fx-border-color: #000000; -fx-font-size: 1.6em; -fx-background-color: #A8E3E7");
+        enviar.setStyle("-fx-border-color: #000000; -fx-font-size: 1.4em; -fx-background-color: #A8E3E7");
 
         BotonPrimeraPreguntaEventHandler botonSiguiente = new BotonPrimeraPreguntaEventHandler(manejadorDeTurnos);
         enviar.setOnAction(botonSiguiente);
 
         VBox contenedorBoton = new VBox(enviar);
-        contenedorBoton.setPadding(new Insets(50));
-        contenedorBoton.setAlignment(Pos.BOTTOM_RIGHT);
+        contenedorBoton.setPadding(new Insets(180));
+        contenedorBoton.setAlignment(Pos.BOTTOM_CENTER);
 
         contenedorPuntuaciones = new VBox(contenedorTexto, contenedorBoton);
         contenedorPuntuaciones.setMinWidth(Constantes.ANCHO_VENTANA);

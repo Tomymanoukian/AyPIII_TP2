@@ -28,6 +28,7 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
 
     public ContenedorPrimerReglonPreguntaConPenalidad(PreguntaConPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta){
 
+        Label puntos = new Label("Puntos: " +jugador.getPuntaje().getPuntos());
         Label nombreJugador = new Label(jugador.getNombre());
         etiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);//Label tiempo = new Label("00:00");
 
@@ -45,14 +46,25 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
         exclusividad.setDisable(true);
         ContenedorBonus contenedorExclusividad = new ContenedorBonus(exclusividad, jugador.cantExclusividadesRestantes());
 
+        VBox contenedorPuntos = new VBox(puntos);
+        contenedorPuntos.setAlignment(Pos.CENTER);
+        contenedorPuntos.setMinWidth(100);
+        contenedorPuntos.setPadding(new Insets(10));
         VBox contenedorNombreJugador = new VBox(nombreJugador);
+        contenedorNombreJugador.setAlignment(Pos.CENTER);
+        contenedorNombreJugador.setMinWidth(80);
+        //contenedorNombreJugador.setPadding(new Insets(10));
         VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
+        contenedorTiempo.setMinWidth(50);
+        contenedorTiempo.setAlignment(Pos.CENTER);
         HBox contenedorBonus = new HBox(contenedorBonusX2.getLayout(), contenedorBonusX3.getLayout(), contenedorExclusividad.getLayout());
+        contenedorBonus.setMinWidth(250);
         contenedorBonus.setSpacing(3);
+        contenedorBonus.setAlignment(Pos.CENTER);
 
         this.habilitarMultiplicadores(jugador);
 
-        layout = new HBox(contenedorNombreJugador, contenedorTiempo, contenedorBonus);
+        layout = new HBox(contenedorPuntos, contenedorNombreJugador, contenedorTiempo, contenedorBonus);
 
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-font-size: 1.25em;");
@@ -63,6 +75,7 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
 
     public ContenedorPrimerReglonPreguntaConPenalidad(PreguntaConPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, Respuesta respuesta, EtiquetaTiempo unaEtiquetaTiempo){
 
+        Label puntos = new Label("Puntos: " +jugador.getPuntaje().getPuntos());
         Label nombreJugador = new Label(jugador.getNombre());
         etiquetaTiempo = unaEtiquetaTiempo;//Label tiempo = new Label("00:00");
 
@@ -80,14 +93,25 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
         exclusividad.setDisable(true);
         ContenedorBonus contenedorExclusividad = new ContenedorBonus(exclusividad, jugador.cantExclusividadesRestantes());
 
+        VBox contenedorPuntos = new VBox(puntos);
+        contenedorPuntos.setAlignment(Pos.CENTER);
+        contenedorPuntos.setMinWidth(100);
+        contenedorPuntos.setPadding(new Insets(10));
         VBox contenedorNombreJugador = new VBox(nombreJugador);
+        contenedorNombreJugador.setAlignment(Pos.CENTER);
+        contenedorNombreJugador.setMinWidth(80);
+        //contenedorNombreJugador.setPadding(new Insets(10));
         VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
+        contenedorTiempo.setMinWidth(50);
+        contenedorTiempo.setAlignment(Pos.CENTER);
         HBox contenedorBonus = new HBox(contenedorBonusX2.getLayout(), contenedorBonusX3.getLayout(), contenedorExclusividad.getLayout());
+        contenedorBonus.setMinWidth(250);
         contenedorBonus.setSpacing(3);
+        contenedorBonus.setAlignment(Pos.CENTER);
 
         this.habilitarMultiplicadores(jugador);
 
-        layout = new HBox(contenedorNombreJugador, contenedorTiempo, contenedorBonus);
+        layout = new HBox(contenedorPuntos, contenedorNombreJugador, contenedorTiempo, contenedorBonus);
 
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-font-size: 1.25em;");
