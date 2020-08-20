@@ -3,16 +3,19 @@ package edu.fiuba.algo3.vista.Escenas;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Preguntas.GroupChoice;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import edu.fiuba.algo3.vista.Layouts.LayoutGroupChoice;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class EscenaGroupChoice implements Escena {
 
     private Pane layout;
     private Pregunta pregunta;
     private ListaOpciones opcionesMostradas;
+    private BarraDeMenu barraDeMenu;
 
     public EscenaGroupChoice(Pregunta unaPregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
@@ -21,9 +24,11 @@ public class EscenaGroupChoice implements Escena {
         opcionesMostradas = new ListaOpciones(groupChoice.getOpcionesGrupoA());
         opcionesMostradas.agregarTodo(groupChoice.getOpcionesGrupoB());
         opcionesMostradas.desordenar();
+        barraDeMenu = new BarraDeMenu();
 
         LayoutGroupChoice layoutGroupChoice = new LayoutGroupChoice(pregunta, this, jugador, manejadorDeTurnos);
-        layout = layoutGroupChoice.getLayout();
+
+        layout = new VBox(barraDeMenu, layoutGroupChoice.getLayout());
     }
 
     @Override
@@ -37,6 +42,7 @@ public class EscenaGroupChoice implements Escena {
     public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
         Pane layout = (new LayoutGroupChoice(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
-        manejadorDeTurnos.getStage().setScene(new Scene(layout));
+        VBox layoutConBarraDeMenu = new VBox(barraDeMenu, layout);
+        manejadorDeTurnos.getStage().setScene(new Scene(layoutConBarraDeMenu));
     }
 }

@@ -4,9 +4,12 @@ import edu.fiuba.algo3.controlador.BotonPrimeraPreguntaEventHandler;
 import edu.fiuba.algo3.controlador.BotonSiguienteEventHandler;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.excepciones.PreguntaCorruptaException;
+import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.Layouts.LayoutFinDelJuego;
 import edu.fiuba.algo3.vista.Layouts.LayoutSiguienteJugador;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.Stack;
@@ -35,31 +38,31 @@ public class ManejadorDeTurnos {
         this.stage = stage;
     }
 
+    public void mostrarLayoutPrimerJugador(){
+        BotonPrimeraPreguntaEventHandler botonSiguiente = new BotonPrimeraPreguntaEventHandler(this);
+
+        stage.setScene(this.escenaConBarraDeMenu(new LayoutSiguienteJugador(jugador1, this, botonSiguiente).getLayout()));
+    }
+
     public void mostrarLayoutSiguienteJugador(){
 
         BotonSiguienteEventHandler botonSiguiente = new BotonSiguienteEventHandler(this);
 
         if(jugador2Respodio && !ultimaPregunta){
-            stage.setScene(new Scene(new LayoutSiguienteJugador(jugador1, this, botonSiguiente).getLayout()));
+            stage.setScene(this.escenaConBarraDeMenu(new LayoutSiguienteJugador(jugador1, this, botonSiguiente).getLayout()));
         }
         else if(!jugador2Respodio){
-            stage.setScene(new Scene(new LayoutSiguienteJugador(jugador2, this, botonSiguiente).getLayout()));
+            stage.setScene(this.escenaConBarraDeMenu(new LayoutSiguienteJugador(jugador2, this, botonSiguiente).getLayout()));
         }
         else{
             mostrarSiguientePregunta();
         }
     }
 
-    public void mostrarLayoutPrimerJugador(){
-        BotonPrimeraPreguntaEventHandler botonSiguiente = new BotonPrimeraPreguntaEventHandler(this);
-
-        stage.setScene(new Scene(new LayoutSiguienteJugador(jugador1, this, botonSiguiente).getLayout()));
-    }
-
     public void mostrarPrimeraPregunta () {
 
         if(pilaDePreguntas.isEmpty()){
-            stage.setScene(new Scene(new LayoutFinDelJuego(jugador1, jugador2).getLayout()));
+            stage.setScene(this.escenaConBarraDeMenu(new LayoutFinDelJuego(jugador1, jugador2).getLayout()));
         }
 
         else {
@@ -87,7 +90,7 @@ public class ManejadorDeTurnos {
             kahoot.evaluarRespuestas(pregunta);
 
             juegoTerminado = true;
-            stage.setScene(new Scene(new LayoutFinDelJuego(jugador1, jugador2).getLayout()));
+            stage.setScene(this.escenaConBarraDeMenu(new LayoutFinDelJuego(jugador1, jugador2).getLayout()));
         }
 
         else if(jugador2Respodio && !juegoTerminado) {
@@ -128,4 +131,13 @@ public class ManejadorDeTurnos {
     public Jugador getJugador1(){ return jugador1;}
 
     public Jugador getJugador2(){ return jugador2;}
+
+    public Scene escenaConBarraDeMenu(Pane pane){
+
+        BarraDeMenu barraDeMenu = new BarraDeMenu();
+
+        VBox vBox = new VBox(barraDeMenu, pane);
+
+        return new Scene(vBox);
+    }
 }
