@@ -37,10 +37,10 @@ class ListaDeMultiplicadores {
 
 ListaDeMultiplicadores "2   "<-- Kahoot
 BonusDePuntaje <.. Kahoot
-ListaDeExclusividades "1  "<-- Kahoot
+ListaDeExclusividades "1"<-- Kahoot
 
-Multiplicador"0..2" <--  ListaDeMultiplicadores
-Exclusividad "0..4" <-- ListaDeExclusividades
+Multiplicador"0..2 " <--  ListaDeMultiplicadores
+Exclusividad "0..4 " <-- ListaDeExclusividades
 
 BonusDePuntaje .> ListaDeExclusividades
 ListaDeMultiplicadores <. BonusDePuntaje

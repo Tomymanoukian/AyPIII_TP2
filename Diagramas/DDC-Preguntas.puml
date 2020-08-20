@@ -12,8 +12,8 @@ abstract class Pregunta {
 }
 
 abstract class VerdaderoFalso {
-    #opcionCorrecta
-    #opcionIncorrecta
+    #Opcion:opcionCorrecta
+    #Opcion:opcionIncorrecta
     +evaluarRespuestaPara(unaRespuesta)
     +getOpcionVerdadera():unaOpcion
     +gerOpcionFalsa():unaOpcion
@@ -28,7 +28,7 @@ class OrderedChoice {
     +calcularPuntajePara(unasOpciones): unPuntaje
     +evaluarRespuesta(unaRespuesta): unPuntaje
     +getOpcionesDesordenadas(): unaListaOpciones
-    +recuperar(JSonObject): unOrderedChoice
+    {static} +recuperar(JSonObject): unOrderedChoice
     +getTipoPregunta(): unString
 }
 
@@ -36,7 +36,7 @@ class GroupChoice {
     -nombreGrupoA
     -nombreGrupoB
     +evaluarRespuestaPara(unaRespuesta): unPuntaje
-    +recuperar(JSonObject): unOrderedChoice
+    {static} +recuperar(JSonObject): unOrderedChoice
     +getTipoPregunta(): unString
 }
 
@@ -49,9 +49,9 @@ Pregunta <|--- MultipleChoice
 Pregunta <|--- OrderedChoice
 Pregunta <|--- GroupChoice
 
-MultipleChoice --> "2    " ListaOpciones
-OrderedChoice --> "1  " ListaOpciones
-GroupChoice --> "  2" ListaOpciones
+MultipleChoice --> "2      " ListaOpciones
+OrderedChoice --> "1 " ListaOpciones
+GroupChoice --> "    2" ListaOpciones
 
  OrderedChoice ..|> PreguntaSinPenalidad
  GroupChoice ..|> PreguntaSinPenalidad

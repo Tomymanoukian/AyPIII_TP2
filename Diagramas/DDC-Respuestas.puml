@@ -48,10 +48,10 @@ Respuesta <|.. RespuestaEnLista
 Respuesta <|.. RespuestaUnica
 
 Pregunta ..> Respuesta
-Kahoot --> Respuesta
+Kahoot --> "2 " Respuesta
 
-RespuestaUnica --> "1" Opcion
-RespuestaEnLista --> "1" ListaDeOpciones
+RespuestaUnica --> "1  " Opcion
+RespuestaEnLista --> "1 " ListaDeOpciones
 RespuestaDeGrupos --> "2" ListaDeOpciones
 
 Opcion "2..6" <- ListaDeOpciones

@@ -14,19 +14,19 @@ abstract class Pregunta {
 class MultipleChoiceClasico {
     +evaluarRespuestaPara(unaRespuesta): unPuntaje
     +calcularPuntajePara()
-    +recuperar(JsonObject): unMultipleChoiceClasico
+    {static} +recuperar(JsonObject): unMultipleChoiceClasico
 }
 
 class MultipleChoiceParcial {
     +evaluarRespuestaPara(unaRespuesta): unPuntaje
     +calcularPuntajePara()
-    +recuperar(JsonObject): unMultipleChoiceParcial
+    {static} +recuperar(JsonObject): unMultipleChoiceParcial
 }
 
 class MultipleChoiceConPenalidad {
     +evaluarRespuestaPara(unaRespuesta): unPuntaje
     +calcularPuntajePara()
-    +recuperar(JsonObject): unMultipleChoiceConPenalidad
+    {static} +recuperar(JsonObject): unMultipleChoiceConPenalidad
 }
 
 abstract class MultipleChoice {
