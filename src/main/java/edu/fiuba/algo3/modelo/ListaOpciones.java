@@ -2,13 +2,12 @@ package edu.fiuba.algo3.modelo;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import edu.fiuba.algo3.modelo.excepciones.OpcionesRepetidasException;
+import edu.fiuba.algo3.modelo.Excepciones.OpcionesRepetidasException;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ListaOpciones {
 

@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.ErrorSinBonusesException;
-import edu.fiuba.algo3.modelo.excepciones.JugadorSinNombreException;
-import edu.fiuba.algo3.modelo.excepciones.OpcionNoValidaException;
+import edu.fiuba.algo3.modelo.Excepciones.ErrorSinBonusesException;
+import edu.fiuba.algo3.modelo.Excepciones.JugadorSinNombreException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

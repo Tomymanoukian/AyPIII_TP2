@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalsoClasico;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
-import edu.fiuba.algo3.modelo.excepciones.OpcionNoValidaException;
+import edu.fiuba.algo3.modelo.Excepciones.OpcionNoValidaException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

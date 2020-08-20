@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.ErrorSinBonusesException;
-import edu.fiuba.algo3.modelo.excepciones.JugadorSinNombreException;
-
-import java.util.Stack;
+import edu.fiuba.algo3.modelo.Excepciones.ErrorSinBonusesException;
+import edu.fiuba.algo3.modelo.Excepciones.JugadorSinNombreException;
 
 public class Jugador {
 
