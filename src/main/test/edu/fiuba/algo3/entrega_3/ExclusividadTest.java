@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.entrega_3;
 
-import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
+import edu.fiuba.algo3.modelo.bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.Puntaje;
 import org.junit.jupiter.api.Test;
 

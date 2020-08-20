@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Preguntas.*;
+import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.excepciones.JugadorNoValidoException;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

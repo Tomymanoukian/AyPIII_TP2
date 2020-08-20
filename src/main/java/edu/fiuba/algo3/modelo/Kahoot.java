@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Bonus.BonusDePuntaje;
-import edu.fiuba.algo3.modelo.Bonus.ListaDeExclusividades;
-import edu.fiuba.algo3.modelo.Bonus.ListaDeMultiplicadores;
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
-import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.bonus.BonusDePuntaje;
+import edu.fiuba.algo3.modelo.bonus.ListaDeExclusividades;
+import edu.fiuba.algo3.modelo.bonus.ListaDeMultiplicadores;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaConPenalidad;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaSinPenalidad;
+import edu.fiuba.algo3.modelo.respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.excepciones.JugadorNoValidoException;
 
 public class Kahoot{

@@ -1,7 +1,8 @@
 package edu.fiuba.algo3.vista.Escenas;
 
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Preguntas.*;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import edu.fiuba.algo3.vista.Layouts.LayoutMultipleChoice;

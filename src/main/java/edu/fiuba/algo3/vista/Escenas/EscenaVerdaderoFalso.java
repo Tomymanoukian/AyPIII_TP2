@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.vista.Escenas;
 
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalsoClasico;
-import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalsoConPenalidad;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalsoClasico;
+import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalsoConPenalidad;
 import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import edu.fiuba.algo3.vista.Layouts.LayoutVerdaderoFalsoConPenalidad;

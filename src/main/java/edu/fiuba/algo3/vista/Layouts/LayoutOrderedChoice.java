@@ -3,10 +3,10 @@ package edu.fiuba.algo3.vista.Layouts;
 import edu.fiuba.algo3.controlador.BotonBajarRespuestaHandler;
 import edu.fiuba.algo3.controlador.BotonSubirRespuestaHandler;
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Preguntas.OrderedChoice;
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaSinPenalidad;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorBotonEnviar;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorConsigna;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorPrimerReglonPreguntaSinPenalidad;
@@ -19,7 +19,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
-import java.util.spi.CurrencyNameProvider;
 
 import static edu.fiuba.algo3.vista.Constantes.*;
 

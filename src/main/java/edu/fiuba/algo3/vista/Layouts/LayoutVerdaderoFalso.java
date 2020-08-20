@@ -3,14 +3,13 @@ package edu.fiuba.algo3.vista.Layouts;
 import edu.fiuba.algo3.controlador.BotonEnviarHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
-import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalso;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
+import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalso;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaUnica;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 
 import static edu.fiuba.algo3.vista.Constantes.*;
 

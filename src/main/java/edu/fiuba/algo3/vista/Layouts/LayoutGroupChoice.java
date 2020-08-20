@@ -2,10 +2,11 @@ package edu.fiuba.algo3.vista.Layouts;
 
 import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Preguntas.GroupChoice;
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestaDeGrupos;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.preguntas.GroupChoice;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaSinPenalidad;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaDeGrupos;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorBotonEnviar;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorConsigna;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorPrimerReglonPreguntaSinPenalidad;

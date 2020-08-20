@@ -4,8 +4,7 @@ import edu.fiuba.algo3.controlador.BotonMultiplicadorX2EventHandler;
 import edu.fiuba.algo3.controlador.BotonMultiplicadorx3EventHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
-import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaConPenalidad;
 import edu.fiuba.algo3.vista.Escenas.Escena;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import javafx.animation.Timeline;
@@ -14,7 +13,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 
 import static edu.fiuba.algo3.vista.Constantes.*;
 

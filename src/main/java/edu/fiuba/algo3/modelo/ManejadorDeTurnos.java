@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.controlador.BotonPrimeraPreguntaEventHandler;
 import edu.fiuba.algo3.controlador.BotonSiguienteEventHandler;
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.excepciones.PreguntaCorruptaException;
 import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.Layouts.LayoutFinDelJuego;

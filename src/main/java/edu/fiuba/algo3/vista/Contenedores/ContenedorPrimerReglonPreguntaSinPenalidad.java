@@ -2,7 +2,7 @@ package edu.fiuba.algo3.vista.Contenedores;
 
 import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaSinPenalidad;
 import edu.fiuba.algo3.vista.Escenas.Escena;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import javafx.animation.Timeline;
@@ -11,7 +11,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 
 import static edu.fiuba.algo3.vista.Constantes.*;
 

@@ -2,11 +2,12 @@ package edu.fiuba.algo3.modelo;
 
 //import javafx.css.converter.LagregarerConverter;
 
-import edu.fiuba.algo3.modelo.Preguntas.*;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestaDeGrupos;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
-import org.junit.Before;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.*;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaDeGrupos;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaEnLista;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaUnica;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.vista.Contenedores;
 
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.vista.Constantes;
-import javafx.geometry.Insets;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;

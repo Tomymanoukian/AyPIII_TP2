@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Preguntas.*;
+import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.excepciones.PreguntaCorruptaException;
 import edu.fiuba.algo3.vista.Escenas.*;
 import javafx.scene.Scene;

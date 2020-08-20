@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.vista.Escenas.EscenaOrderedChoice;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import javafx.event.ActionEvent;

@@ -1,19 +1,16 @@
 package edu.fiuba.algo3.vista.Layouts;
 
-import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
-import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalso;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaSinPenalidad;
+import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalso;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaUnica;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorConsigna;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorPrimerReglonPreguntaSinPenalidad;
 import edu.fiuba.algo3.vista.Escenas.Escena;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
-import javafx.animation.Timeline;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.VBox;
