@@ -100,6 +100,7 @@ public class LayoutOrderedChoice {
     }
 
     private void crearLayout(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
+
         VBox contenedorOpciones = this.obtenerContenedorDeOpciones(opcionesMostradas, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
 
         ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
