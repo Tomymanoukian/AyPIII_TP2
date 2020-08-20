@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import static edu.fiuba.algo3.vista.Constantes.ALTO_CINTA;
 import static edu.fiuba.algo3.vista.Constantes.COLOR_CINTA;
 
 public class ContenedorPrimerReglonPreguntaConPenalidad {
@@ -30,7 +31,7 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
 
         Label puntos = new Label("Puntos: " +jugador.getPuntaje().getPuntos());
         Label nombreJugador = new Label(jugador.getNombre());
-        etiquetaTiempo = unaEtiquetaTiempo;//Label tiempo = new Label("00:00");
+        etiquetaTiempo = unaEtiquetaTiempo;
 
         bonusX2 = new Button("X2");
         BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
@@ -53,7 +54,6 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
         VBox contenedorNombreJugador = new VBox(nombreJugador);
         contenedorNombreJugador.setAlignment(Pos.CENTER);
         contenedorNombreJugador.setMinWidth(80);
-        //contenedorNombreJugador.setPadding(new Insets(10));
         VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
         contenedorTiempo.setMinWidth(50);
         contenedorTiempo.setAlignment(Pos.CENTER);
@@ -71,6 +71,7 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
         layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_CINTA), CornerRadii.EMPTY, Insets.EMPTY)));
         layout.setSpacing(40);
         layout.setPadding(new Insets(10));
+        layout.setPrefHeight(ALTO_CINTA);
     }
 
     public HBox getLayout() {return layout;}
