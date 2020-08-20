@@ -5,6 +5,8 @@ public abstract class Constantes {
     public static final int ANCHO_VENTANA = 600;
     public static final int ALTO_VENTANA = 750;
 
+    public static final int ALTO_CINTA = 60;
+
     public static final int ANCHO_CONTENEDOR_CONSIGNA = 500;
     public static final int ALTO_CONTENEDOR_CONSIGNA = 150;
 
