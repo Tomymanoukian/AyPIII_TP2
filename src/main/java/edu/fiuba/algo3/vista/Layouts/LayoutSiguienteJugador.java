@@ -40,16 +40,6 @@ public class LayoutSiguienteJugador {
         contenedorTexto.setMinHeight(440);
         contenedorTexto.setAlignment(Pos.TOP_CENTER);
 
-
-        /*
-        Rectangle rectanguloTexto = new Rectangle(20, 20,450, Constantes.ALTO_CONTENEDOR_CONSIGNA);
-        rectanguloTexto.setFill(Color.web(COLOR_CONTENEDOR_CONSIGNA));
-
-        StackPane contenedorTexto = new StackPane(rectanguloTexto, informacion);
-        contenedorTexto.setStyle("-fx-font-size: 2em;");
-        contenedorTexto.setPadding(new Insets(80));
-        */
-
         Button enviar = new Button("Siguiente");
         enviar.setOnAction(handlerBotonEnviar);
         enviar.setStyle(ESTILO_BOTONES);
