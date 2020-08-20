@@ -8,11 +8,12 @@ package "modelo" {
     package "Excepciones"{
     }
 
+    package "Preguntas"{
+    }
+
     package "opciones"{
     }
 
-    package "Preguntas"{
-    }
 
     package "Respuestas"{
     }
@@ -27,24 +28,42 @@ package "modelo" {
 }
 
 Preguntas ..> bonus
-Preguntas ..> Excepciones
+Preguntas <...> Excepciones
+Preguntas ..> opciones
+Preguntas ..> Respuestas
+Respuestas ..> opciones
+CreadorDeVistas ...> Excepciones
+Jugador ...> Excepciones
+
+bonus <... Kahoot
+Respuestas <... Kahoot
+Preguntas <... Kahoot
+Excepciones <... Kahoot
+ManejadorDeTurnos ...> Excepciones
+ManejadorDeTurnos ...> Preguntas
+ManejadorDeArchivos ...> Preguntas
+ManejadorDeArchivos ...>Excepciones
+
+@enduml
+
+/*
+Preguntas ..> bonus
+Preguntas <..> Excepciones
 Preguntas ..> opciones
 Preguntas ..> Respuestas
 Respuestas .> opciones
-
 CreadorDeVistas ..> Excepciones
-
 Jugador ..> Excepciones
 
 bonus <.. Kahoot
 Respuestas <.. Kahoot
 Preguntas <.. Kahoot
 Excepciones <.. Kahoot
-bonus <.. Kahoot
-
 ManejadorDeTurnos ..> Excepciones
 ManejadorDeTurnos .> Preguntas
-
 ManejadorDeArchivos .> Preguntas
 ManejadorDeArchivos ..>Excepciones
-@enduml
+
+
+
+*/
