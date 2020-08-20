@@ -5,7 +5,6 @@ skinparam shadowing false
 hide circle
 
 class Jugador {
-    -Puntaje puntaje
     -String nombre
     -int MultiplicadoresX2Restantes
     -int MultiplicadoresX3Restantes
@@ -59,8 +58,10 @@ Jugador " 2" <- Kahoot
 Kahoot .> Pregunta
 Respuesta "2      " <-- Kahoot
 
-Kahoot ..> BonusDePuntaje
+Jugador --> Puntaje
+
 Kahoot ..> Puntaje
+Kahoot ..> BonusDePuntaje
 
 ListaDeExclusividades "2  "<-- Kahoot
 ListaDeMultiplicadores "2   "<-- Kahoot
