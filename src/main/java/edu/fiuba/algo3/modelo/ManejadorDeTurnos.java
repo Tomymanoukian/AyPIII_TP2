@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.controlador.BotonPrimeraPreguntaEventHandler;
+import edu.fiuba.algo3.controlador.BotonSiguienteEventHandler;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.excepciones.PreguntaCorruptaException;
 import edu.fiuba.algo3.vista.Layouts.LayoutFinDelJuego;
-import edu.fiuba.algo3.vista.Layouts.LayoutPrimerJugador;
 import edu.fiuba.algo3.vista.Layouts.LayoutSiguienteJugador;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -34,6 +35,27 @@ public class ManejadorDeTurnos {
         this.stage = stage;
     }
 
+    public void mostrarLayoutSiguienteJugador(){
+
+        BotonSiguienteEventHandler botonSiguiente = new BotonSiguienteEventHandler(this);
+
+        if(jugador2Respodio && !ultimaPregunta){
+            stage.setScene(new Scene(new LayoutSiguienteJugador(jugador1, this, botonSiguiente).getLayout()));
+        }
+        else if(!jugador2Respodio){
+            stage.setScene(new Scene(new LayoutSiguienteJugador(jugador2, this, botonSiguiente).getLayout()));
+        }
+        else{
+            mostrarSiguientePregunta();
+        }
+    }
+
+    public void mostrarLayoutPrimerJugador(){
+        BotonPrimeraPreguntaEventHandler botonSiguiente = new BotonPrimeraPreguntaEventHandler(this);
+
+        stage.setScene(new Scene(new LayoutSiguienteJugador(jugador1, this, botonSiguiente).getLayout()));
+    }
+
     public void mostrarPrimeraPregunta () {
 
         if(pilaDePreguntas.isEmpty()){
@@ -58,23 +80,6 @@ public class ManejadorDeTurnos {
         }
     }
 
-    public void mostrarLayoutSiguienteJugador(){
-
-        if(jugador2Respodio && !ultimaPregunta){
-            stage.setScene(new Scene(new LayoutSiguienteJugador(jugador1, this).getLayout()));
-        }
-        else if(!jugador2Respodio){
-            stage.setScene(new Scene(new LayoutSiguienteJugador(jugador2, this ).getLayout()));
-        }
-        else{
-            mostrarSiguientePregunta();
-        }
-    }
-
-    public void mostrarLayoutPrimerJugador(){
-        stage.setScene(new Scene(new LayoutPrimerJugador(jugador1, this).getLayout()));
-    }
-  
     public void mostrarSiguientePregunta(){
 
         if(pilaDePreguntas.isEmpty() && jugador2Respodio){
