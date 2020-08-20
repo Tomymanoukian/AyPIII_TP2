@@ -19,6 +19,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
+
 public class LayoutVerdaderoFalsoConPenalidad extends LayoutVerdaderoFalso{
 
     public LayoutVerdaderoFalsoConPenalidad(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
@@ -34,6 +36,7 @@ public class LayoutVerdaderoFalsoConPenalidad extends LayoutVerdaderoFalso{
     }
 
     private void crearLayout(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
+
         VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
 
         ContenedorPrimerReglonPreguntaConPenalidad contenedorPrimerReglon = new ContenedorPrimerReglonPreguntaConPenalidad((PreguntaConPenalidad) verdaderoFalso, scene, unJugador, manejadorDeTurnos, unaEtiquetaTiempo);
@@ -43,6 +46,6 @@ public class LayoutVerdaderoFalsoConPenalidad extends LayoutVerdaderoFalso{
         HBox contenedorVerdaderoFalso = this.obtenerContenedorDeOpcionesVoF(verdaderoFalso, unJugador, manejadorDeTurnos, contenedorPrimerReglon.getTiempo());
 
         layout = new VBox(contenedorPrimerReglon.getLayout(), contenedorConsigna.getLayout(), contenedorVerdaderoFalso);
-        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
     }
 }
