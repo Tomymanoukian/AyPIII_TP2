@@ -108,7 +108,12 @@ public class LayoutGroupChoice {
         contenedorOpciones.setMaxWidth(ANCHO_OPCION);
         contenedorOpciones.setAlignment(Pos.CENTER);
 
-        return contenedorOpciones;
+        VBox estructuraContenedorOpciones = new VBox (contenedorOpciones);
+        estructuraContenedorOpciones.setAlignment(Pos.CENTER);
+        estructuraContenedorOpciones.setMinHeight(260);
+        estructuraContenedorOpciones.setMaxHeight(260);
+
+        return estructuraContenedorOpciones;
     }
 
     private void crearLayout(Pregunta pregunta, EscenaGroupChoice escenaGroupChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
@@ -132,5 +137,6 @@ public class LayoutGroupChoice {
         layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
         layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
         layout.setAlignment(Pos.TOP_CENTER);
+        layout.setSpacing(40);
     }
 }
