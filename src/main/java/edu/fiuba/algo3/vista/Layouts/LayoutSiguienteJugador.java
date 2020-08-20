@@ -19,7 +19,7 @@ import static edu.fiuba.algo3.vista.Constantes.ALTO_CINTA;
 
 public class LayoutSiguienteJugador {
 
-    private Pane layout;
+    private VBox layout;
 
     public LayoutSiguienteJugador(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EventHandler<ActionEvent> handlerBotonEnviar){
 
@@ -30,29 +30,40 @@ public class LayoutSiguienteJugador {
         Label texto = new Label("Es el turno de: " + jugador.getNombre());
 
         VBox informacion = new VBox(texto);
-        informacion.setStyle("-fx-font-weight: bold");
+        informacion.setStyle("-fx-font-size: 1.8em; -fx-font-weight: bold");
         informacion.setAlignment(Pos.CENTER);
-        informacion.setSpacing(40);
+        informacion.setBackground(new Background(new BackgroundFill(Color.web(COLOR_CONTENEDOR_CONSIGNA), CornerRadii.EMPTY, Insets.EMPTY)));
+        informacion.setMaxSize(ANCHO_CONTENEDOR_CONSIGNA, ALTO_CONTENEDOR_CONSIGNA);
+        informacion.setPadding((new Insets(80)));
 
+        HBox contenedorTexto = new HBox(informacion);
+        contenedorTexto.setMinHeight(440);
+        contenedorTexto.setAlignment(Pos.TOP_CENTER);
+
+
+        /*
         Rectangle rectanguloTexto = new Rectangle(20, 20,450, Constantes.ALTO_CONTENEDOR_CONSIGNA);
         rectanguloTexto.setFill(Color.web(COLOR_CONTENEDOR_CONSIGNA));
 
         StackPane contenedorTexto = new StackPane(rectanguloTexto, informacion);
-        contenedorTexto.setStyle("-fx-font-size: 1.5em;");
+        contenedorTexto.setStyle("-fx-font-size: 2em;");
         contenedorTexto.setPadding(new Insets(80));
-
+        */
 
         Button enviar = new Button("Siguiente");
-        enviar.setStyle(ESTILO_BOTONES);
         enviar.setOnAction(handlerBotonEnviar);
+        enviar.setStyle(ESTILO_BOTONES);
+        enviar.setAlignment(Pos.BOTTOM_CENTER);
 
-        VBox contenedorBoton = new VBox(enviar);
-        contenedorBoton.setPadding(new Insets(180));
-        contenedorBoton.setAlignment(Pos.BOTTOM_CENTER);
+        HBox contenedorEnviar = new HBox(enviar);
+        contenedorEnviar.setMaxWidth(470);
+        contenedorEnviar.setAlignment(Pos.CENTER_RIGHT);
 
-        layout = new VBox(cinta, contenedorTexto, contenedorBoton);
+        layout = new VBox(cinta, contenedorTexto, contenedorEnviar);
         layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setAlignment(Pos.TOP_CENTER);
+        layout.setSpacing(60);
     }
 
-    public Pane getLayout() {return layout;}
+    public VBox getLayout() {return layout;}
 }
