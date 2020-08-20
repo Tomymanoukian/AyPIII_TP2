@@ -38,7 +38,6 @@ public class LayoutOrderedChoice {
         EtiquetaTiempo unaEtiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);
 
         this.crearLayout(pregunta, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
-
     }
 
     public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
@@ -48,7 +47,6 @@ public class LayoutOrderedChoice {
         respuesta = new RespuestaEnLista(opcionesMostradas);
 
         this.crearLayout(pregunta, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
-
     }
 
     public Pane getLayout() {return layout;}
@@ -93,7 +91,12 @@ public class LayoutOrderedChoice {
         contenedorOpciones.setMaxWidth(ANCHO_OPCION);
         contenedorOpciones.setAlignment(Pos.CENTER);
 
-        return contenedorOpciones;
+        VBox estructuraContenedorOpciones = new VBox (contenedorOpciones);
+        estructuraContenedorOpciones.setAlignment(Pos.CENTER);
+        estructuraContenedorOpciones.setMinHeight(260);
+        estructuraContenedorOpciones.setMaxHeight(260);
+
+        return estructuraContenedorOpciones;
     }
 
     private void crearLayout(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
@@ -108,5 +111,6 @@ public class LayoutOrderedChoice {
         layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
         layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
         layout.setAlignment(Pos.TOP_CENTER);
+        layout.setSpacing(40);
     }
 }
