@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.OpcionAcercaDeEventHandler;
+import edu.fiuba.algo3.controlador.OpcionSalirEventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -18,11 +19,10 @@ public class BarraDeMenu extends MenuBar {
         Menu menuAyuda = new Menu("Ayuda");
 
         MenuItem opcionSalir = new MenuItem("Salir");
-        MenuItem opcionAbrir = new MenuItem("Abrir");
         MenuItem opcionAcercaDe = new MenuItem("Acerca de Kahoot!");
 
-        //OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
-        //opcionSalir.setOnAction(opcionSalirHandler);
+        OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
+        opcionSalir.setOnAction(opcionSalirHandler);
 
         OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
         opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
@@ -32,7 +32,7 @@ public class BarraDeMenu extends MenuBar {
 
         opcionPantallaCompleta.setDisable(true);
 
-        menuArchivo.getItems().addAll(opcionAbrir, new SeparatorMenuItem(), opcionSalir);
+        menuArchivo.getItems().addAll(opcionSalir);
         menuAyuda.getItems().addAll(opcionAcercaDe);
         menuVer.getItems().addAll(opcionPantallaCompleta);
 
