@@ -20,13 +20,7 @@ public class ListaDeExclusividades {
         exclusividades = new ArrayList<>();
         exclusividades.add(exclusividad);
     }
-
-    public ListaDeExclusividades(List<Exclusividad> listExclusividades) {
-
-        exclusividades = new ArrayList<>();
-        exclusividades.addAll(listExclusividades);
-    }
-
+    
     public void agregarExclusividad(Exclusividad unaExclusividad){
         exclusividades.add(unaExclusividad);
     }
