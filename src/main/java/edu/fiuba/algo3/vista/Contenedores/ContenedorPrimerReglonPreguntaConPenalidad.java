@@ -68,7 +68,8 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
         layout.setAlignment(Pos.CENTER);
         layout.setStyle(ESTILO_CINTA);
         layout.setPadding(new Insets(10));
-        layout.setPrefHeight(ALTO_CINTA);
+        layout.setMinHeight(ALTO_CINTA);
+        layout.setMaxHeight(ALTO_CINTA);
     }
 
     public HBox getLayout() {return layout;}

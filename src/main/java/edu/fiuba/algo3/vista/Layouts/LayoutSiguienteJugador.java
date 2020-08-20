@@ -37,7 +37,7 @@ public class LayoutSiguienteJugador {
         informacion.setPadding((new Insets(80)));
 
         HBox contenedorTexto = new HBox(informacion);
-        contenedorTexto.setMinHeight(440);
+        contenedorTexto.setMinHeight(450);
         contenedorTexto.setAlignment(Pos.TOP_CENTER);
 
         Button enviar = new Button("Siguiente");

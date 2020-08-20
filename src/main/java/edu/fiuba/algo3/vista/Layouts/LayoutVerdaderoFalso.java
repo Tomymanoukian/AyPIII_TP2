@@ -16,9 +16,9 @@ import static edu.fiuba.algo3.vista.Constantes.*;
 
 public abstract class LayoutVerdaderoFalso {
 
-    protected Pane layout;
+    protected VBox layout;
 
-    public Pane getLayout() {return layout;}
+    public VBox getLayout() {return layout;}
 
     protected HBox obtenerContenedorDeOpcionesVoF(VerdaderoFalso verdaderoFalso, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, Timeline tiempo){
 
@@ -42,6 +42,11 @@ public abstract class LayoutVerdaderoFalso {
         contenedorDeOpcionesVoF.setSpacing(60);
         contenedorDeOpcionesVoF.setPadding(new Insets(140,0,0,0));
 
-        return contenedorDeOpcionesVoF;
+        HBox estructuraContenedorOpciones = new HBox (contenedorDeOpcionesVoF);
+        estructuraContenedorOpciones.setAlignment(Pos.CENTER);
+        estructuraContenedorOpciones.setMinHeight(470);
+        estructuraContenedorOpciones.setMaxHeight(470);
+
+        return estructuraContenedorOpciones;
     }
 }
