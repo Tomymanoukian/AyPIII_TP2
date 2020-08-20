@@ -109,8 +109,8 @@ public class MockLecturaDeArchivoDePreguntas {
     public Stack<Pregunta> getPilaDePreguntas() {
 
         Stack<Pregunta> pila = new Stack<>();
-        pila.add(orderedChoice);
         pila.add(groupChoice);
+        pila.add(orderedChoice);
         pila.add(multipleChoiceClasico);
         pila.add(multipleChoiceParcial);
         pila.add(multipleChoiceConPenalidad);
