@@ -7,14 +7,18 @@ import edu.fiuba.algo3.vista.Contenedores.ContenedorBienvenida;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorBotonEmpezar;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorNombresJugadores;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+
+import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 
 public class LayoutMenuBienvenida {
 
     private Pane layout;
 
     public LayoutMenuBienvenida(ManejadorDeTurnos manejadorDeTurnos) {
+
         ContenedorBienvenida contenedorBienvenida = new ContenedorBienvenida();
 
         ContenedorNombresJugadores contenedorNombresJugadores = new ContenedorNombresJugadores(manejadorDeTurnos.getJugador1(), manejadorDeTurnos.getJugador2());
@@ -30,10 +34,11 @@ public class LayoutMenuBienvenida {
 
         VBox contenedorInicioDeKahoot = new VBox(contenedorBienvenida.getLayout(), contenedorNombresJugadores.getLayout(), contenedorBotonEmpezar.getLayout());
 
-        contenedorInicioDeKahoot.setSpacing(20);
-        contenedorInicioDeKahoot.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        contenedorInicioDeKahoot.setSpacing(160);
+        contenedorInicioDeKahoot.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        contenedorInicioDeKahoot.setAlignment(Pos.TOP_CENTER);
 
-        layout = new VBox(contenedorInicioDeKahoot);
+        layout = contenedorInicioDeKahoot;
     }
 
     public Pane getLayout(){return layout;}
