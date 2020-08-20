@@ -36,7 +36,7 @@ public abstract class VerdaderoFalso extends Pregunta {
 
         RespuestaUnica respuestaUnica = (RespuestaUnica) respuesta;
 
-        if (!respuestaUnica.esIgualA(opcionCorrecta) && !respuestaUnica.esIgualA(opcionIncorrecta))
+        if (!respuestaUnica.esIgualA(opcionCorrecta) && !respuestaUnica.esIgualA(opcionIncorrecta) && !respuestaUnica.esIgualA(new Opcion("No contestada")))
             throw new OpcionNoValidaException();
 
         return respuestaUnica.getPuntaje();
