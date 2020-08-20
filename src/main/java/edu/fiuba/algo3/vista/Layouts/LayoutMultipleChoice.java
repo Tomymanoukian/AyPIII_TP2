@@ -9,33 +9,38 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+
+import static edu.fiuba.algo3.vista.Constantes.*;
 
 public abstract class LayoutMultipleChoice {
 
-    protected Pane layout;
+    protected VBox layout;
     protected RespuestaEnLista respuesta;
     protected ListaOpciones listaRespuestas;
 
-    public Pane getLayout() {return layout;}
+    public VBox getLayout() {return layout;}
 
-    public StackPane obtenerContenedorDeOpciones(ListaOpciones opcionesMostradas, ListaOpciones listaRespuestas){
+    public VBox obtenerContenedorDeOpciones(ListaOpciones opcionesMostradas, ListaOpciones listaRespuestas){
 
-        VBox checkBoxDeOpciones = new VBox();
-        checkBoxDeOpciones.setAlignment(Pos.CENTER);
+        VBox contenedorOpciones = new VBox(10);
+        contenedorOpciones.setMaxWidth(ANCHO_OPCION);
+        contenedorOpciones.setAlignment(Pos.CENTER);
+        contenedorOpciones.setBackground(new Background(new BackgroundFill(Color.web(COLOR_CONTENEDOR_CONSIGNA), CornerRadii.EMPTY, new Insets(-20))));
 
         int cantidadDeOpcionesAMostrar = opcionesMostradas.cantidadDeOpciones();
 
         for (int i = 0; i < cantidadDeOpcionesAMostrar; i++) {
 
             CheckBox checkBox = new CheckBox(opcionesMostradas.obtener(i).getOpcion());
-            checkBox.setPadding(new Insets(5));
 
-            checkBoxDeOpciones.getChildren().add(checkBox);
+            checkBox.setBackground(new Background(new BackgroundFill(Color.web(COLOR_OPCIONES), CornerRadii.EMPTY, new Insets(0,-10,0,-10))));
+            checkBox.setMinSize(ANCHO_OPCION-20, 30);
+            checkBox.setMaxSize(ANCHO_OPCION-20, 30);
+            checkBox.setAlignment(Pos.CENTER_LEFT);
+
+            contenedorOpciones.getChildren().add(checkBox);
 
             checkBox.setIndeterminate(false);
             String opcion = opcionesMostradas.obtener(i).getOpcion();
@@ -51,12 +56,6 @@ public abstract class LayoutMultipleChoice {
 
             checkBox.setOnAction(event);
         }
-
-        Rectangle rectanguloOpciones = new Rectangle(20, 20, 250, 150);
-        rectanguloOpciones.setFill(Color.LIGHTGRAY);
-
-        StackPane contenedorOpciones = new StackPane(rectanguloOpciones, checkBoxDeOpciones);
-        contenedorOpciones.setStyle("-fx-font-size: 1.2em;");
 
         return contenedorOpciones;
     }
