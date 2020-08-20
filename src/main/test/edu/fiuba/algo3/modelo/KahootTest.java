@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Preguntas.*;
-import edu.fiuba.algo3.modelo.excepciones.JugadorNoValidoException;
+import edu.fiuba.algo3.modelo.Excepciones.JugadorNoValidoException;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -65,27 +62,4 @@ public class KahootTest {
         assertThrows(JugadorNoValidoException.class, ()-> kahoot.agregarExclusividad(vofClasico, otroJugador));
     }
 
-    @Test
-    public void devuelveCorrectamenteAlJugador1GanadorYAlJugador2Perdedor(){
-
-        Kahoot kahoot = new Kahoot();
-
-        kahoot.getJugador1().sumarPuntos(new Puntaje(20));
-        kahoot.getJugador2().sumarPuntos(new Puntaje(10));
-
-        assertEquals(kahoot.getJugador1(), kahoot.getJugadorGanador());
-        assertEquals(kahoot.getJugador2(), kahoot.getJugadorPerdedor());
-    }
-
-    @Test
-    public void devuelveCorrectamenteAlJugador2GanadorYAlJugador1Perdedor(){
-
-        Kahoot kahoot = new Kahoot();
-
-        kahoot.getJugador1().sumarPuntos(new Puntaje(20));
-        kahoot.getJugador2().sumarPuntos(new Puntaje(10));
-
-        assertEquals(kahoot.getJugador1(), kahoot.getJugadorGanador());
-        assertEquals(kahoot.getJugador2(), kahoot.getJugadorPerdedor());
-    }
 }

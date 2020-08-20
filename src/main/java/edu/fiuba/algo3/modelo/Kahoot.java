@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
-import edu.fiuba.algo3.modelo.excepciones.JugadorNoValidoException;
+import edu.fiuba.algo3.modelo.Excepciones.JugadorNoValidoException;
 
 public class Kahoot{
 
@@ -108,22 +108,6 @@ public class Kahoot{
         multiplicadoresJ1.limpiarMultiplicadores();
         multiplicadoresJ2.limpiarMultiplicadores();
 
-    }
-
-    public Jugador getJugadorGanador(){
-
-        if( jugador1.getPuntaje().esMenorQue(jugador2.getPuntaje())){
-            return jugador2;
-        }
-        return jugador1;
-    }
-
-    public Jugador getJugadorPerdedor(){
-
-        if( jugador1.getPuntaje().esMenorQue(jugador2.getPuntaje())){
-            return jugador1;
-        }
-        return jugador2;
     }
 
 

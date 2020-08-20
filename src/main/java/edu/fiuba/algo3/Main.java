@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.List;
 import java.util.Stack;
 
 import static edu.fiuba.algo3.vista.Constantes.*;
@@ -26,9 +27,12 @@ public class Main extends Application {
 
         Kahoot kahoot = new Kahoot();
 
-        MockLecturaDeArchivoDePreguntas mockLecturaDeArchivoDePreguntas = new MockLecturaDeArchivoDePreguntas();
+        ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
+        manejadorDeArchivos.escribirPreguntasDelAltaDePreguntas();
+        manejadorDeArchivos.leerPreguntas();
 
-        Stack<Pregunta> pilaDePreguntas = mockLecturaDeArchivoDePreguntas.getPilaDePreguntas();
+        Stack<Pregunta> pilaDePreguntas = new Stack<>();
+        pilaDePreguntas.addAll(manejadorDeArchivos.getPreguntas());
 
         ManejadorDeTurnos unManejadorDeTurnos = new ManejadorDeTurnos(pilaDePreguntas, kahoot.getJugador1(), kahoot.getJugador2(), kahoot, stage);
 
