@@ -7,76 +7,101 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+import static edu.fiuba.algo3.vista.Constantes.*;
+
 public class LayoutFinDelJuego {
 
-    private Pane contenedorPuntuaciones;
+    private VBox layout;
 
     public LayoutFinDelJuego(Jugador unJugador, Jugador otroJugador) {
 
-        Label textoPrimerJugador = new Label("El jugador: " + unJugador.getNombre());
-        textoPrimerJugador.setStyle("-fx-font-weight: bold");
-        Label puntuacionPrimerJugador = new Label("obtuvo: " + unJugador.getPuntaje().getPuntos() + " puntos");
-        puntuacionPrimerJugador.setStyle("-fx-font-weight: bold");
+        HBox cinta = new HBox();
+        cinta.setStyle(ESTILO_CINTA);
+        cinta.setMinHeight(ALTO_CINTA);
 
-        Rectangle rectanguloPrimerJugador = new Rectangle(20, 20, 260, 100);
-        rectanguloPrimerJugador.setFill(Color.LAVENDER);
-        VBox informacionPrimerJugador = new VBox(textoPrimerJugador, puntuacionPrimerJugador);
-        informacionPrimerJugador.setSpacing(10);
-        informacionPrimerJugador.setAlignment(Pos.CENTER);
+        HBox contenedorResultado = new HBox();
 
-        StackPane contenedorPrimerJugador = new StackPane(rectanguloPrimerJugador, informacionPrimerJugador);
-        contenedorPrimerJugador.setPadding(new Insets(20));
-        contenedorPrimerJugador.setStyle("-fx-font-size: 1.4em;");
-
-        Label textoSegundoJugador = new Label("El jugador: " + otroJugador.getNombre());
-        textoSegundoJugador.setStyle("-fx-font-weight: bold");
-        Label puntuacionSegundoJugador = new Label("obtuvo: " + otroJugador.getPuntaje().getPuntos() + " puntos");
-        puntuacionSegundoJugador.setStyle("-fx-font-weight: bold");
-
-        Rectangle rectanguloSegundoJugador= new Rectangle(20, 20, 260, 100);
-        rectanguloSegundoJugador.setFill(Color.LIGHTGRAY);
-        VBox informacionSegundoJugador = new VBox(textoSegundoJugador, puntuacionSegundoJugador);
-        informacionSegundoJugador.setPadding(new Insets(10));
-        informacionSegundoJugador.setAlignment(Pos.CENTER);
-
-        StackPane contenedorSegundoJugador = new StackPane(rectanguloSegundoJugador, informacionSegundoJugador);
-        contenedorSegundoJugador.setPadding(new Insets(20));
-        contenedorSegundoJugador.setStyle("-fx-font-size: 1.4em;");
-
-        HBox contenedorJugadores = new HBox(contenedorPrimerJugador, contenedorSegundoJugador);
-
-        Label textoResultado = new Label();
         if(unJugador.getPuntaje().getPuntos() > otroJugador.getPuntaje().getPuntos()){
-            textoResultado.setText("El ganador es " + unJugador.getNombre());
+            contenedorResultado.getChildren().add(crearLayoutGanador(unJugador));
         }
         else if(otroJugador.getPuntaje().getPuntos() > unJugador.getPuntaje().getPuntos()){
-            textoResultado.setText("El ganador es " + otroJugador.getNombre());
+            contenedorResultado.getChildren().add(crearLayoutGanador(otroJugador));
         }
         else{
-            textoResultado.setText("Hubo un empate");
+            contenedorResultado.getChildren().add(crearLayoutEmpate());
         }
 
-        textoResultado.setStyle("-fx-font-weight: bold");
+        contenedorResultado.setAlignment(Pos.BOTTOM_CENTER);
+        contenedorResultado.setMinHeight(250);
 
-        Rectangle rectanguloResultado= new Rectangle(20, 20, 350, 100);
-        rectanguloResultado.setFill(Color.LIGHTBLUE);
+        HBox contenedorJugadores = new HBox(crearLayoutJugador(unJugador), crearLayoutJugador(otroJugador));
+        contenedorJugadores.setAlignment(Pos.CENTER);
+        contenedorJugadores.setSpacing(60);
+        contenedorJugadores.setPadding(new Insets(40));
 
-        StackPane contenedorResultado = new StackPane(rectanguloResultado, textoResultado);
-        contenedorResultado.setPadding(new Insets(20));
-        contenedorResultado.setStyle("-fx-font-size: 1.4em;");
-
-        contenedorPuntuaciones = new VBox(contenedorJugadores, contenedorResultado);
-
+        layout = new VBox(cinta, contenedorResultado, contenedorJugadores);
+        layout.setAlignment(Pos.TOP_CENTER);
+        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setSpacing(110);
     }
 
-    public Pane getLayout() {return contenedorPuntuaciones;}
+    public VBox getLayout() {return layout;}
+
+    private VBox crearLayoutJugador (Jugador unJugador) {
+
+        Label textoJugador = new Label(unJugador.getNombre());
+        textoJugador.setStyle("-fx-font-weight: bold");
+        Label puntuacionJugador = new Label(unJugador.getPuntaje().getPuntos() + " puntos");
+        puntuacionJugador.setStyle("-fx-font-weight: bold");
+
+        VBox contenedorJugador = new VBox (textoJugador, puntuacionJugador);
+        contenedorJugador.setBackground(new Background(new BackgroundFill(Color.web(COLOR_GRUPOS), CornerRadii.EMPTY, Insets.EMPTY)));
+        contenedorJugador.setAlignment(Pos.CENTER);
+        contenedorJugador.setSpacing(10);
+        contenedorJugador.setMinSize(200,90);
+
+        contenedorJugador.setStyle("-fx-font-size: 1.4em;");
+
+        return contenedorJugador;
+    }
+
+    private HBox crearLayoutGanador (Jugador jugador) {
+
+        Label textoGanador = new Label("¡¡¡Ganó " + jugador.getNombre() + "!!!");
+        textoGanador.setStyle("-fx-font-size: 2em; -fx-font-weight: bold");
+
+        HBox layoutGanador = new HBox (textoGanador);
+        layoutGanador.setMinSize(400, 200);
+        layoutGanador.setMaxSize(400, 200);
+        layoutGanador.setAlignment(Pos.CENTER);
+        layoutGanador.setBackground(new Background(new BackgroundFill(Color.web("00FFFF"), CornerRadii.EMPTY, Insets.EMPTY)));
+
+        return layoutGanador;
+    }
+
+    private HBox crearLayoutEmpate () {
+
+        Label textoEmpate = new Label("Empate, no hay ganador");
+        textoEmpate.setStyle("-fx-font-size: 2em; -fx-font-weight: bold");
+
+        HBox layoutEmpate = new HBox(textoEmpate);
+        layoutEmpate.setMinSize(400, 200);
+        layoutEmpate.setMaxSize(400, 200);
+        layoutEmpate.setAlignment(Pos.CENTER);
+        layoutEmpate.setBackground(new Background(new BackgroundFill(Color.web("AAAAAA"), CornerRadii.EMPTY, Insets.EMPTY)));
+
+        return layoutEmpate;
+    }
 }
