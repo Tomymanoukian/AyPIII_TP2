@@ -38,7 +38,6 @@ public class EscenaMultipleChoice implements Escena {
             LayoutMultipleChoiceConPenalidad layoutMultipleChoice = new LayoutMultipleChoiceConPenalidad(pregunta, this, jugador, manejadorDeTurnos);
             layout = new VBox(barraDeMenu, layoutMultipleChoice.getLayout());
         }
-
     }
 
     @Override
