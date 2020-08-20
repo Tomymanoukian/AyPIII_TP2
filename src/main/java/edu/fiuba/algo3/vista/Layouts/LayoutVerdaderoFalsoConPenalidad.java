@@ -44,5 +44,6 @@ public class LayoutVerdaderoFalsoConPenalidad extends LayoutVerdaderoFalso{
 
         layout = new VBox(contenedorPrimerReglon.getLayout(), contenedorConsigna.getLayout(), contenedorVerdaderoFalso);
         layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setSpacing(40);
     }
 }
