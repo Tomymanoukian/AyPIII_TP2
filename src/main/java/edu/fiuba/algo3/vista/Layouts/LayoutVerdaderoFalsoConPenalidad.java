@@ -38,11 +38,8 @@ public class LayoutVerdaderoFalsoConPenalidad extends LayoutVerdaderoFalso{
     private void crearLayout(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
 
         VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
-
         ContenedorPrimerReglonPreguntaConPenalidad contenedorPrimerReglon = new ContenedorPrimerReglonPreguntaConPenalidad((PreguntaConPenalidad) verdaderoFalso, scene, unJugador, manejadorDeTurnos, unaEtiquetaTiempo);
-
         ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
-
         HBox contenedorVerdaderoFalso = this.obtenerContenedorDeOpcionesVoF(verdaderoFalso, unJugador, manejadorDeTurnos, contenedorPrimerReglon.getTiempo());
 
         layout = new VBox(contenedorPrimerReglon.getLayout(), contenedorConsigna.getLayout(), contenedorVerdaderoFalso);

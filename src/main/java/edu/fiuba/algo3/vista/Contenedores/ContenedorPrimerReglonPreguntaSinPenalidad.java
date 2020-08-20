@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-import static edu.fiuba.algo3.vista.Constantes.COLOR_CINTA;
+import static edu.fiuba.algo3.vista.Constantes.*;
 
 public class ContenedorPrimerReglonPreguntaSinPenalidad {
 
@@ -26,9 +26,19 @@ public class ContenedorPrimerReglonPreguntaSinPenalidad {
 
     public ContenedorPrimerReglonPreguntaSinPenalidad(PreguntaSinPenalidad pregunta, Escena escena, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
-        Label puntos = new Label("Puntos: " +jugador.getPuntaje().getPuntos());
         Label nombreJugador = new Label(jugador.getNombre());
-        etiquetaTiempo = unaEtiquetaTiempo;//Label tiempo = new Label("00:00");
+        nombreJugador.setAlignment(Pos.CENTER);
+        nombreJugador.setMinWidth(150);
+
+        Label puntos = new Label("Puntos: " +jugador.getPuntaje().getPuntos());
+        puntos.setAlignment(Pos.CENTER_LEFT);
+        puntos.setMinWidth(110);
+
+        etiquetaTiempo = unaEtiquetaTiempo;
+        VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
+        contenedorTiempo.setPrefSize(50, 30);
+        contenedorTiempo.setAlignment(Pos.CENTER);
+        contenedorTiempo.setStyle("-fx-background-color: #FFFFFF");
 
         bonusX2 = new Button("X2");
         bonusX2.setDisable(true);
@@ -43,30 +53,19 @@ public class ContenedorPrimerReglonPreguntaSinPenalidad {
         exclusividad.setOnAction(exclusividadHandler);
         ContenedorBonus contenedorExclusividad = new ContenedorBonus(exclusividad, jugador.cantExclusividadesRestantes());
 
-        VBox contenedorPuntos = new VBox(puntos);
-        contenedorPuntos.setAlignment(Pos.CENTER);
-        contenedorPuntos.setMinWidth(100);
-        contenedorPuntos.setPadding(new Insets(10));
-        VBox contenedorNombreJugador = new VBox(nombreJugador);
-        contenedorNombreJugador.setAlignment(Pos.CENTER);
-        contenedorNombreJugador.setMinWidth(80);
-        //contenedorNombreJugador.setPadding(new Insets(10));
-        VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
-        contenedorTiempo.setMinWidth(50);
-        contenedorTiempo.setAlignment(Pos.CENTER);
         HBox contenedorBonus = new HBox(contenedorBonusX2.getLayout(), contenedorBonusX3.getLayout(), contenedorExclusividad.getLayout());
-        contenedorBonus.setMinWidth(250);
+        contenedorBonus.setMinWidth(260);
         contenedorBonus.setSpacing(3);
-        contenedorBonus.setAlignment(Pos.CENTER);
+        contenedorBonus.setAlignment(Pos.CENTER_RIGHT);
 
         this.habilitarExcepciones(jugador);
 
-        layout = new HBox(contenedorPuntos, contenedorNombreJugador, contenedorTiempo, contenedorBonus);
+        layout = new HBox(nombreJugador, puntos, contenedorTiempo, contenedorBonus);
+
         layout.setAlignment(Pos.CENTER);
-        layout.setStyle("-fx-font-size: 1.25em;");
-        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_CINTA), CornerRadii.EMPTY, Insets.EMPTY)));
-        layout.setSpacing(40);
+        layout.setStyle(ESTILO_CINTA);
         layout.setPadding(new Insets(10));
+        layout.setPrefHeight(ALTO_CINTA);
     }
 
     public HBox getLayout() {
