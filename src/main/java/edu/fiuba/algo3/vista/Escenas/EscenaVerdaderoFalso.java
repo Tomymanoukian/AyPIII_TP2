@@ -8,9 +8,12 @@ import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import edu.fiuba.algo3.vista.Layouts.LayoutVerdaderoFalsoConPenalidad;
 import edu.fiuba.algo3.vista.Layouts.LayoutVerdaderoFalsoSinPenalidad;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+
+import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 
 public class EscenaVerdaderoFalso implements Escena {
 
@@ -31,6 +34,8 @@ public class EscenaVerdaderoFalso implements Escena {
             LayoutVerdaderoFalsoConPenalidad layoutVerdaderoFalso = new LayoutVerdaderoFalsoConPenalidad(pregunta, this, unJugador, manejadorDeTurnos);
             layout = new VBox(barraDeMenu, layoutVerdaderoFalso.getLayout());
         }
+
+        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     @Override
