@@ -22,41 +22,33 @@ import javafx.scene.shape.Rectangle;
 public class LayoutMultipleChoiceSinPenalidad {
 
     private Pane layout;
+    private ListaOpciones listaRespuestas;
+    private RespuestaEnLista respuesta;
 
     public LayoutMultipleChoiceSinPenalidad(Pregunta pregunta, EscenaMultipleChoice escenaMultipleChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        ListaOpciones listaRespuestas = new ListaOpciones();
-        StackPane contenedorOpciones = this.obtenerContenedorDeOpciones(escenaMultipleChoice.getOpcionesMostradas(), listaRespuestas);
-        RespuestaEnLista respuesta = new RespuestaEnLista(listaRespuestas);
+        listaRespuestas = new ListaOpciones();
+        respuesta = new RespuestaEnLista(listaRespuestas);
 
-        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaMultipleChoice, jugador, manejadorDeTurnos, respuesta);
-        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
-        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
+        EtiquetaTiempo unaEtiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);
 
-        VBox contendorPrincipal = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
-        contendorPrincipal.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-        layout = new VBox(contendorPrincipal);
+        this.crearLayout(pregunta, escenaMultipleChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
+
     }
 
     public LayoutMultipleChoiceSinPenalidad(Pregunta pregunta, EscenaMultipleChoice escenaMultipleChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
-        MultipleChoice unMultipleChoice = (MultipleChoice) pregunta;
-        ListaOpciones listaRespuestas = new ListaOpciones();
-        StackPane contenedorOpciones = this.obtenerContenedorDeOpciones(escenaMultipleChoice.getOpcionesMostradas(), listaRespuestas);
-        RespuestaEnLista respuesta = new RespuestaEnLista(listaRespuestas);
+        listaRespuestas = new ListaOpciones();
+        respuesta = new RespuestaEnLista(listaRespuestas);
 
-        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaMultipleChoice, jugador, manejadorDeTurnos, respuesta, unaEtiquetaTiempo);
-        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
-        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
-
-        VBox contendorPrincipal = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
-        contendorPrincipal.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-        layout = new VBox(contendorPrincipal);
+        this.crearLayout(pregunta, escenaMultipleChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
     }
 
-    public Pane getLayout() {return layout;}
+    public Pane getLayout() {
+        return layout;
+    }
 
-    private StackPane obtenerContenedorDeOpciones(ListaOpciones opcionesMostradas, ListaOpciones listaRespuestas){
+    private StackPane obtenerContenedorDeOpciones(ListaOpciones opcionesMostradas, ListaOpciones listaRespuestas) {
 
         VBox checkBoxDeOpciones = new VBox();
         checkBoxDeOpciones.setAlignment(Pos.CENTER);
@@ -93,4 +85,19 @@ public class LayoutMultipleChoiceSinPenalidad {
 
         return contenedorOpciones;
     }
+
+    private void crearLayout(Pregunta pregunta, EscenaMultipleChoice escenaMultipleChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
+
+        StackPane contenedorOpciones = this.obtenerContenedorDeOpciones(escenaMultipleChoice.getOpcionesMostradas(), listaRespuestas);
+
+        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaMultipleChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
+        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
+        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
+
+        VBox contendorPrincipal = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
+        contendorPrincipal.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        layout = new VBox(contendorPrincipal);
+
+    }
+
 }

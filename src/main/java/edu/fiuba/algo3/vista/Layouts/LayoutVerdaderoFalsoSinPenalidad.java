@@ -24,30 +24,16 @@ public class LayoutVerdaderoFalsoSinPenalidad {
 
     public LayoutVerdaderoFalsoSinPenalidad(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
+        EtiquetaTiempo unaEtiquetaTiempo = new EtiquetaTiempo(unJugador, new RespuestaUnica(new Opcion("No Contestada")), manejadorDeTurnos);
 
-        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerReglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) verdaderoFalso, scene, unJugador, manejadorDeTurnos, new RespuestaUnica(verdaderoFalso.getOpcionIncorrecta()));
+        this.crearLayout(pregunta, scene,unJugador, manejadorDeTurnos, unaEtiquetaTiempo);
 
-        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
-
-        HBox contenedorVerdaderoFalso = this.obtenerContenedorDeOpcionesVoF(verdaderoFalso, unJugador, manejadorDeTurnos, contenedorPrimerReglon.getTiempo());
-
-        layout = new VBox(contenedorPrimerReglon.getLayout(), contenedorConsigna.getLayout(), contenedorVerdaderoFalso);
-        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     public LayoutVerdaderoFalsoSinPenalidad(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
-        VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
+        this.crearLayout(pregunta, scene,unJugador, manejadorDeTurnos, unaEtiquetaTiempo);
 
-        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerReglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad)verdaderoFalso, scene, unJugador, manejadorDeTurnos, new RespuestaUnica(verdaderoFalso.getOpcionIncorrecta()), unaEtiquetaTiempo);
-
-        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
-
-        HBox contenedorVerdaderoFalso = this.obtenerContenedorDeOpcionesVoF(verdaderoFalso, unJugador, manejadorDeTurnos, contenedorPrimerReglon.getTiempo());
-
-        layout = new VBox(contenedorPrimerReglon.getLayout(), contenedorConsigna.getLayout(), contenedorVerdaderoFalso);
-        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     public Pane getLayout() {return layout;}
@@ -79,5 +65,18 @@ public class LayoutVerdaderoFalsoSinPenalidad {
         contenedorDeOpcionesVoF.setPadding(new Insets(15));
 
         return contenedorDeOpcionesVoF;
+    }
+
+    private void crearLayout(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
+        VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
+
+        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerReglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad)verdaderoFalso, scene, unJugador, manejadorDeTurnos, unaEtiquetaTiempo);
+
+        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
+
+        HBox contenedorVerdaderoFalso = this.obtenerContenedorDeOpcionesVoF(verdaderoFalso, unJugador, manejadorDeTurnos, contenedorPrimerReglon.getTiempo());
+
+        layout = new VBox(contenedorPrimerReglon.getLayout(), contenedorConsigna.getLayout(), contenedorVerdaderoFalso);
+        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 }

@@ -25,51 +25,36 @@ import static edu.fiuba.algo3.vista.Constantes.*;
 public class LayoutOrderedChoice {
 
     private VBox layout;
+    private ListaOpciones opcionesMostradas;
+    private RespuestaEnLista respuesta;
 
     public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        ListaOpciones opcionesMostradas = escenaOrderedChoice.getOpcionesMostradas();
-
-        RespuestaEnLista respuesta = new RespuestaEnLista(opcionesMostradas);
+        this.obtenerRespuesta(escenaOrderedChoice);
 
         EtiquetaTiempo unaEtiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);
 
-        VBox contenedorOpciones = this.obtenerContenedorDeOpciones(opcionesMostradas, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
-
-        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaOrderedChoice, jugador, manejadorDeTurnos, respuesta, unaEtiquetaTiempo);
-
-        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
-
-        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
-
-        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
-        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
-        layout.setAlignment(Pos.TOP_CENTER);
+        this.crearLayout(pregunta, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
     }
 
     public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
 
-        ListaOpciones opcionesMostradas = escenaOrderedChoice.getOpcionesMostradas();
+        this.obtenerRespuesta(escenaOrderedChoice);
 
-        VBox contenedorOpciones = this.obtenerContenedorDeOpciones(opcionesMostradas, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
-
-        RespuestaEnLista respuesta = new RespuestaEnLista(opcionesMostradas);
-
-        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaOrderedChoice, jugador, manejadorDeTurnos, respuesta, unaEtiquetaTiempo);
-
-        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
-
-        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
-
-        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
-        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
-        layout.setAlignment(Pos.TOP_CENTER);
+        this.crearLayout(pregunta, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
     }
+
 
     public Pane getLayout() {return layout;}
 
-    private VBox obtenerContenedorDeOpciones(ListaOpciones opcionesMostradas, EscenaOrderedChoice escenaOrderedChoice,
-                                             Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
+    private void obtenerRespuesta(EscenaOrderedChoice escenaOrderedChoice) {
+
+        opcionesMostradas = escenaOrderedChoice.getOpcionesMostradas();
+
+        respuesta = new RespuestaEnLista(opcionesMostradas);
+    }
+
+    private VBox obtenerContenedorDeOpciones(EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
 
         ArrayList<HBox> listaHBoxOpciones = new ArrayList<>();
 
@@ -109,5 +94,20 @@ public class LayoutOrderedChoice {
         contenedorOpciones.setAlignment(Pos.CENTER);
 
         return contenedorOpciones;
+    }
+
+    private void crearLayout(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
+
+        VBox contenedorOpciones = this.obtenerContenedorDeOpciones(escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
+
+        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaOrderedChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
+
+        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
+
+        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
+
+        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
+        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setAlignment(Pos.TOP_CENTER);
     }
 }

@@ -22,59 +22,24 @@ import java.util.ArrayList;
 public class LayoutGroupChoice {
 
     private Pane layout;
+    private RespuestaDeGrupos respuesta;
 
     public LayoutGroupChoice(Pregunta pregunta, EscenaGroupChoice escenaGroupChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        GroupChoice groupChoice = (GroupChoice) pregunta;
+        respuesta = new RespuestaDeGrupos(new ListaOpciones(), new ListaOpciones());
 
-        ListaOpciones listaOpciones = escenaGroupChoice.getOpcionesMostradas();
+        EtiquetaTiempo unaEtiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);
 
-        ArrayList<HBox> listaHBox = new ArrayList<>();
-
-        RespuestaDeGrupos respuesta = new RespuestaDeGrupos(new ListaOpciones(), new ListaOpciones());
-
-        VBox contenedorOpciones = this.obtenerContenedorDeOpciones(groupChoice, listaOpciones, respuesta, listaHBox);
-
-        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaGroupChoice, jugador, manejadorDeTurnos, respuesta);
-
-        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
-
-        HBox contenedorGrupos = new HBox(new Label("Grupo"), new Label (groupChoice.getNombreGrupoA()), new Label (groupChoice.getNombreGrupoB()));
-        contenedorGrupos.setAlignment(Pos.CENTER);
-
-        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
-
-        //Se crea el layout final
-
-        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorGrupos, contenedorOpciones, contenedorBotonEnviar.getLayout());
-        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.crearLayout(pregunta, escenaGroupChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
     }
+
 
     public LayoutGroupChoice(Pregunta pregunta, EscenaGroupChoice escenaGroupChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
-        GroupChoice groupChoice = (GroupChoice) pregunta;
+        respuesta = new RespuestaDeGrupos(new ListaOpciones(), new ListaOpciones());
 
-        ListaOpciones listaOpciones = escenaGroupChoice.getOpcionesMostradas();
+        this.crearLayout(pregunta, escenaGroupChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
 
-        ArrayList<HBox> listaHBox = new ArrayList<>();
-
-        RespuestaDeGrupos respuesta = new RespuestaDeGrupos(new ListaOpciones(), new ListaOpciones());
-
-        VBox contenedorOpciones = this.obtenerContenedorDeOpciones(groupChoice, listaOpciones, respuesta, listaHBox);
-
-        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaGroupChoice, jugador, manejadorDeTurnos, respuesta, unaEtiquetaTiempo);
-
-        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
-
-        HBox contenedorGrupos = new HBox(new Label("Grupo"), new Label (groupChoice.getNombreGrupoA()), new Label (groupChoice.getNombreGrupoB()));
-        contenedorGrupos.setAlignment(Pos.CENTER);
-
-        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
-
-        //Se crea el layout final
-
-        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorGrupos, contenedorOpciones, contenedorBotonEnviar.getLayout());
-        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     public Pane getLayout() {
@@ -109,4 +74,32 @@ public class LayoutGroupChoice {
 
         return contenedorOpciones;
     }
+
+    private void crearLayout(Pregunta pregunta, EscenaGroupChoice escenaGroupChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
+
+        GroupChoice groupChoice = (GroupChoice) pregunta;
+
+        ListaOpciones listaOpciones = escenaGroupChoice.getOpcionesMostradas();
+
+        ArrayList<HBox> listaHBox = new ArrayList<>();
+
+        VBox contenedorOpciones = this.obtenerContenedorDeOpciones(groupChoice, listaOpciones, respuesta, listaHBox);
+
+        ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaGroupChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
+
+        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
+
+        HBox contenedorGrupos = new HBox(new Label("Grupo"), new Label (groupChoice.getNombreGrupoA()), new Label (groupChoice.getNombreGrupoB()));
+        contenedorGrupos.setAlignment(Pos.CENTER);
+
+        ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
+
+        //Se crea el layout final
+
+        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorGrupos, contenedorOpciones, contenedorBotonEnviar.getLayout());
+        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+
+
+    }
+
 }

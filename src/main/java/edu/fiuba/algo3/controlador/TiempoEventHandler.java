@@ -30,8 +30,7 @@ public class TiempoEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         segundos--;
-        etiquetaDelTiempo.setText(
-                segundos.toString());
+        etiquetaDelTiempo.setText(segundos.toString());
         if (segundos < 0) {
             tiempo.stop();
             manejadorDeTurnos.getKahoot().setRespuestaJugador(respuesta, jugador);
