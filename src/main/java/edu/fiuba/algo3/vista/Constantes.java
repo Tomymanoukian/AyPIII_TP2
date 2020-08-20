@@ -21,4 +21,6 @@ public abstract class Constantes {
     public static final String COLOR_GRUPOS = "C8E9FF";
 
     public static final String ESTILO_BOTONES = "-fx-font-size: 1.6em; -fx-background-color: #" + COLOR_BOTONES + "; -fx-text-fill: #FFFFFF; -fx-font-weight: bold";
+    public static final String ESTILO_VERDADERO = "-fx-font-size: 1.6em; -fx-background-color: #" + COLOR_BOTONES + "; -fx-text-fill: #FFFFFF; -fx-font-weight: bold";
+    public static final String ESTILO_FALSO = "-fx-font-size: 1.6em; -fx-background-color: #" + COLOR_BOTONES + "; -fx-text-fill: #FFFFFF; -fx-font-weight: bold";
 }
