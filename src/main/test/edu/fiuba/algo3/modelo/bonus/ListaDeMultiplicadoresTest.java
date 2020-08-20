@@ -1,7 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.bonus;
 
 import edu.fiuba.algo3.modelo.Bonus.ListaDeMultiplicadores;
 import edu.fiuba.algo3.modelo.Bonus.Multiplicador;
+import edu.fiuba.algo3.modelo.Puntaje;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

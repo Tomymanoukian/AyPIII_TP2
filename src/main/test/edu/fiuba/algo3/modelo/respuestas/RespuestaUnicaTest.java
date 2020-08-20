@@ -1,6 +1,7 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.respuestas;
 
 
+import edu.fiuba.algo3.modelo.Opcion;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
 import org.junit.jupiter.api.Test;
 
