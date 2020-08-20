@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.bonus;
 
-import edu.fiuba.algo3.modelo.Bonus.*;
 import edu.fiuba.algo3.modelo.Puntaje;
 import org.junit.jupiter.api.Test;
 
