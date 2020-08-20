@@ -27,7 +27,6 @@ public class ContenedorBonus {
 
         contenedorBonus = new HBox(bonus, contenedorCantidadBonus);
         contenedorBonus.setSpacing(3);
-
     }
 
     public HBox getLayout() {

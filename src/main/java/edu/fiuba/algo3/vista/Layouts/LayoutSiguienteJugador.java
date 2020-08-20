@@ -21,7 +21,7 @@ public class LayoutSiguienteJugador {
 
     private VBox layout;
 
-    public LayoutSiguienteJugador(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EventHandler<ActionEvent> handlerBotonEnviar){
+    public LayoutSiguienteJugador(Jugador jugador, EventHandler<ActionEvent> handlerBotonEnviar){
 
         HBox cinta = new HBox();
         cinta.setStyle(ESTILO_CINTA);

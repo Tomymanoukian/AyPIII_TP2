@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 import static edu.fiuba.algo3.vista.Constantes.*;
 
@@ -37,10 +38,9 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
         puntos.setMinWidth(110);
 
         etiquetaTiempo = unaEtiquetaTiempo;
-        VBox contenedorTiempo = new VBox(etiquetaTiempo.getLabel());
-        contenedorTiempo.setPrefSize(50, 30);
-        contenedorTiempo.setAlignment(Pos.CENTER);
-        contenedorTiempo.setStyle("-fx-background-color: #FFFFFF");
+        Circle circuloTimer = new Circle(20, Color.GHOSTWHITE);
+        StackPane contenedorTimer = new StackPane(circuloTimer, etiquetaTiempo.getLabel());
+        contenedorTimer.setAlignment(Pos.CENTER);
 
         bonusX2 = new Button("X2");
         BotonMultiplicadorX2EventHandler multiplicX2Handler = new BotonMultiplicadorX2EventHandler(pregunta, escena, jugador, manejadorDeTurnos, etiquetaTiempo);
@@ -63,7 +63,7 @@ public class ContenedorPrimerReglonPreguntaConPenalidad {
 
         this.habilitarMultiplicadores(jugador);
 
-        layout = new HBox(nombreJugador, puntos, contenedorTiempo, contenedorBonus);
+        layout = new HBox(nombreJugador, puntos, contenedorTimer, contenedorBonus);
 
         layout.setAlignment(Pos.CENTER);
         layout.setStyle(ESTILO_CINTA);

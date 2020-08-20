@@ -62,7 +62,6 @@ public class Kahoot{
 
     public void agregarMultiplicadorX2(PreguntaConPenalidad unaPregunta, Jugador jugador){
 
-
         if(jugador == jugador1) {
             multiplicadoresJ1.agregarMultiplicador(unaPregunta.getMultiplicadorX2());
             jugador.utilizarMultiplicadorX2();
@@ -109,7 +108,6 @@ public class Kahoot{
         multiplicadoresJ2.limpiarMultiplicadores();
 
     }
-
 
     public Puntaje getPuntajeJugador1() {
         return jugador1.getPuntaje();

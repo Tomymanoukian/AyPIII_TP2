@@ -40,7 +40,6 @@ public class EscenaMultipleChoice implements Escena {
         if(pregunta.getClass().getSimpleName().equals(MultipleChoiceConPenalidad.class.getSimpleName())) {
              layoutMultipleChoice = new LayoutMultipleChoiceConPenalidad(pregunta, this, jugador, manejadorDeTurnos);
         }
-
     }
 
     @Override

@@ -20,7 +20,7 @@ public class EtiquetaTiempo {
     public EtiquetaTiempo(Jugador unJugador, Respuesta unaRespuesta, ManejadorDeTurnos unManejadorDeTurnos){
 
         etiquetaDelTiempo.setText(segundos.toString());
-        etiquetaDelTiempo.setTextFill(Color.RED);
+        etiquetaDelTiempo.setTextFill(Color.BLUE);
         if (tiempo != null) {
             tiempo.stop();
         }

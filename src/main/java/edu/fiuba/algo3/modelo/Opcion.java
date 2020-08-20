@@ -32,7 +32,6 @@ public class Opcion {
         return new Opcion(opcion, puntaje);
     }
 
-
     public boolean esIgualA(Opcion unaOpcion) {
         return this.getOpcion().equals(unaOpcion.getOpcion());
     }

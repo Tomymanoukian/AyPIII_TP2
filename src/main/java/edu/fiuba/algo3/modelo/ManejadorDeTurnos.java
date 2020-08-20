@@ -45,7 +45,7 @@ public class ManejadorDeTurnos {
     public void mostrarLayoutPrimerJugador(){
         BotonPrimeraPreguntaEventHandler botonSiguiente = new BotonPrimeraPreguntaEventHandler(this);
 
-        stage.setScene(this.escenaConBarraDeMenu(new LayoutSiguienteJugador(jugador1, this, botonSiguiente).getLayout()));
+        stage.setScene(this.escenaConBarraDeMenu(new LayoutSiguienteJugador(jugador1, botonSiguiente).getLayout()));
     }
 
     public void mostrarLayoutSiguienteJugador(){
@@ -53,10 +53,10 @@ public class ManejadorDeTurnos {
         BotonSiguienteEventHandler botonSiguiente = new BotonSiguienteEventHandler(this);
 
         if(jugador2Respodio && !ultimaPregunta){
-            stage.setScene(this.escenaConBarraDeMenu(new LayoutSiguienteJugador(jugador1, this, botonSiguiente).getLayout()));
+            stage.setScene(this.escenaConBarraDeMenu(new LayoutSiguienteJugador(jugador1, botonSiguiente).getLayout()));
         }
         else if(!jugador2Respodio){
-            stage.setScene(this.escenaConBarraDeMenu(new LayoutSiguienteJugador(jugador2, this, botonSiguiente).getLayout()));
+            stage.setScene(this.escenaConBarraDeMenu(new LayoutSiguienteJugador(jugador2, botonSiguiente).getLayout()));
         }
         else{
             mostrarSiguientePregunta();
@@ -68,7 +68,6 @@ public class ManejadorDeTurnos {
         if(pilaDePreguntas.isEmpty()){
             stage.setScene(this.escenaConBarraDeMenu(new LayoutFinDelJuego(jugador1, jugador2).getLayout()));
         }
-
         else {
             jugador2Respodio = false;
 
@@ -77,7 +76,6 @@ public class ManejadorDeTurnos {
             if(pilaDePreguntas.isEmpty()){
                 ultimaPregunta = true;
             }
-
             try {
                 stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
             } catch (PreguntaCorruptaException e) {
@@ -96,7 +94,6 @@ public class ManejadorDeTurnos {
             juegoTerminado = true;
             stage.setScene(this.escenaConBarraDeMenu(new LayoutFinDelJuego(jugador1, jugador2).getLayout()));
         }
-
         else if(jugador2Respodio && !juegoTerminado) {
 
             kahoot.evaluarRespuestas(pregunta);
@@ -105,7 +102,6 @@ public class ManejadorDeTurnos {
             if(pilaDePreguntas.isEmpty()){
                 ultimaPregunta = true;
             }
-
             try {
                 stage.setScene(CreadorDeVistas.crearSiguienteEscena(pregunta, jugador1, this));
             }

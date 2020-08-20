@@ -44,7 +44,6 @@ public class LayoutMultipleChoiceSinPenalidad extends LayoutMultipleChoice {
         ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
         ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
 
-
         layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorDeOpciones, contenedorBotonEnviar.getLayout());
         layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
         layout.setAlignment(Pos.TOP_CENTER);

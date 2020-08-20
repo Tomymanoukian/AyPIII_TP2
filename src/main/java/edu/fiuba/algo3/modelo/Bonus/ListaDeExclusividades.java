@@ -8,7 +8,6 @@ import java.util.List;
 
 public class ListaDeExclusividades {
 
-
     private final List<Exclusividad> exclusividades;
 
     public ListaDeExclusividades() {

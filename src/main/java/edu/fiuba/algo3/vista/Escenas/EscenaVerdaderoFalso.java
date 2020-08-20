@@ -35,7 +35,6 @@ public class EscenaVerdaderoFalso implements Escena {
             LayoutVerdaderoFalsoConPenalidad layoutVerdaderoFalso = new LayoutVerdaderoFalsoConPenalidad(pregunta, this, unJugador, manejadorDeTurnos);
             layout = new VBox(barraDeMenu, layoutVerdaderoFalso.getLayout());
         }
-
         layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
         layout.setAlignment(Pos.TOP_CENTER);
     }

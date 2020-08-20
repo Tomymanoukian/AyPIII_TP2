@@ -53,7 +53,6 @@ public class ListaOpciones {
             Opcion opcion = Opcion.recuperar(jsonOpcion.getAsJsonObject());
             opciones.agregar(opcion);
         }
-
         return opciones;
     }
 
@@ -196,7 +195,6 @@ public class ListaOpciones {
         for (Opcion opcion : listaOpciones) {
             jsonArrayDeOpciones.add(opcion.guardar());
         }
-
         return jsonArrayDeOpciones;
     }
 
