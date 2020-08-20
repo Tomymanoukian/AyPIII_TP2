@@ -1,6 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.preguntas;
 
 import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
+import edu.fiuba.algo3.modelo.ListaOpciones;
+import edu.fiuba.algo3.modelo.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.MultipleChoiceClasico;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import org.junit.jupiter.api.BeforeEach;

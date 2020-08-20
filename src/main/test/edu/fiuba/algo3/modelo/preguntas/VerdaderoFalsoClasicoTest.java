@@ -1,7 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.preguntas;
 
 import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
+import edu.fiuba.algo3.modelo.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalsoClasico;
+import edu.fiuba.algo3.modelo.Puntaje;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
 import edu.fiuba.algo3.modelo.Excepciones.OpcionNoValidaException;
 import org.junit.jupiter.api.BeforeEach;
