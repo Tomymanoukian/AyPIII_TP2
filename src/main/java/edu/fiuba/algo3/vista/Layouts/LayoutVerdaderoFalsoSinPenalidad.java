@@ -18,9 +18,9 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.VBox;
 
-public class LayoutVerdaderoFalsoSinPenalidad {
+import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 
-    private Pane layout;
+public class LayoutVerdaderoFalsoSinPenalidad extends LayoutVerdaderoFalso{
 
     public LayoutVerdaderoFalsoSinPenalidad(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
 
@@ -34,38 +34,8 @@ public class LayoutVerdaderoFalsoSinPenalidad {
         this.crearLayout(pregunta, scene,unJugador, manejadorDeTurnos, unaEtiquetaTiempo);
     }
 
-    public Pane getLayout() {return layout;}
-
-    private HBox obtenerContenedorDeOpcionesVoF(VerdaderoFalso verdaderoFalso, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, Timeline tiempo){
-
-        Button botonVerdadero = new Button(verdaderoFalso.getOpcionVerdadera().getOpcion());
-        BotonEnviarHandler botonVerdaderoHandler = new BotonEnviarHandler(unJugador, new RespuestaUnica(verdaderoFalso.getOpcionVerdadera()), manejadorDeTurnos, tiempo);
-        botonVerdadero.setOnAction(botonVerdaderoHandler);
-
-        HBox contenedroVerdadero = new HBox(botonVerdadero);
-        contenedroVerdadero.setPadding(new Insets(10));
-        contenedroVerdadero.setBackground(new Background(new BackgroundFill(Color.CORNFLOWERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        Button botonFalso = new Button(verdaderoFalso.getOpcionFalsa().getOpcion());
-        BotonEnviarHandler botonFalsoHandler = new BotonEnviarHandler(unJugador, new RespuestaUnica(verdaderoFalso.getOpcionFalsa()), manejadorDeTurnos, tiempo);
-        botonFalso.setOnAction(botonFalsoHandler);
-
-        HBox contenedorFalso = new HBox(botonFalso);
-        contenedorFalso.setPadding(new Insets(10));
-        contenedorFalso.setBackground(new Background(new BackgroundFill(Color.CRIMSON, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        HBox contenedorDeOpcionesVoF = new HBox(contenedroVerdadero, contenedorFalso);
-        contenedorDeOpcionesVoF.setAlignment(Pos.CENTER);
-        contenedorDeOpcionesVoF.setStyle("-fx-font-weight: bold");
-        contenedorDeOpcionesVoF.setStyle("-fx-font-size: 1.5em;");
-
-        contenedorDeOpcionesVoF.setSpacing(10);
-        contenedorDeOpcionesVoF.setPadding(new Insets(15));
-
-        return contenedorDeOpcionesVoF;
-    }
-
     private void crearLayout(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
+
         VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
 
         ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerReglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad)verdaderoFalso, scene, unJugador, manejadorDeTurnos, unaEtiquetaTiempo);
@@ -75,6 +45,6 @@ public class LayoutVerdaderoFalsoSinPenalidad {
         HBox contenedorVerdaderoFalso = this.obtenerContenedorDeOpcionesVoF(verdaderoFalso, unJugador, manejadorDeTurnos, contenedorPrimerReglon.getTiempo());
 
         layout = new VBox(contenedorPrimerReglon.getLayout(), contenedorConsigna.getLayout(), contenedorVerdaderoFalso);
-        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
     }
 }
