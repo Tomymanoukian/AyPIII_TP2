@@ -4,6 +4,8 @@ import edu.fiuba.algo3.controlador.BotonSiguienteEventHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
 import edu.fiuba.algo3.vista.Constantes;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -18,7 +20,7 @@ public class LayoutSiguienteJugador {
 
     private Pane contenedorPuntuaciones;
 
-    public LayoutSiguienteJugador(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos){
+    public LayoutSiguienteJugador(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EventHandler<ActionEvent> handlerBotonEnviar){
 
         Label texto = new Label("Es el turno de: " + jugador.getNombre());
         Label puntos = new Label("sus puntos actuales son: " + jugador.getPuntaje().getPuntos());
@@ -36,12 +38,9 @@ public class LayoutSiguienteJugador {
         contenedorTexto.setStyle("-fx-font-size: 1.5em;");
         contenedorTexto.setPadding(new Insets(50));
 
-
         Button enviar = new Button("Siguiente");
         enviar.setStyle("-fx-border-color: #000000; -fx-font-size: 1.6em; -fx-background-color: #A8E3E7");
-
-        BotonSiguienteEventHandler botonSiguiente = new BotonSiguienteEventHandler(manejadorDeTurnos);
-        enviar.setOnAction(botonSiguiente);
+        enviar.setOnAction(handlerBotonEnviar);
 
         VBox contenedorBoton = new VBox(enviar);
         contenedorBoton.setPadding(new Insets(50));
