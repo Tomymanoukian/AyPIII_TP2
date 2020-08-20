@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.Mocks;
+package edu.fiuba.algo3.Mocks;
 
 import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.opciones.Opcion;

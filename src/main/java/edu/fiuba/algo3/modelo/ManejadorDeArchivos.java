@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import com.google.gson.*;
-import edu.fiuba.algo3.modelo.Mocks.MockAltaDePreguntas;
+import edu.fiuba.algo3.Mocks.MockAltaDePreguntas;
 import edu.fiuba.algo3.modelo.Preguntas.*;
 import edu.fiuba.algo3.modelo.Excepciones.ErrorDeEscrituraException;
 import edu.fiuba.algo3.modelo.Excepciones.ErrorDeLecturaException;
