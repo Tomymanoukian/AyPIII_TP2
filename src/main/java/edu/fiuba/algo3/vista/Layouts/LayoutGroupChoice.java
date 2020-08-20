@@ -24,6 +24,7 @@ import static edu.fiuba.algo3.vista.Constantes.*;
 public class LayoutGroupChoice {
 
     private VBox layout;
+    protected VBox contenedorDeOpciones;
     private RespuestaDeGrupos respuesta;
 
     public LayoutGroupChoice(Pregunta pregunta, EscenaGroupChoice escenaGroupChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
@@ -32,13 +33,19 @@ public class LayoutGroupChoice {
 
         EtiquetaTiempo unaEtiquetaTiempo = new EtiquetaTiempo(jugador, respuesta, manejadorDeTurnos);
 
+        GroupChoice groupChoice = (GroupChoice) pregunta;
+        ListaOpciones listaOpciones = escenaGroupChoice.getOpcionesMostradas();
+        ArrayList<HBox> listaHBox = new ArrayList<>();
+        this.crearContenedorDeOpciones(groupChoice, listaOpciones, listaHBox);
+
         this.crearLayout(pregunta, escenaGroupChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
     }
 
     public LayoutGroupChoice(Pregunta pregunta, EscenaGroupChoice escenaGroupChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
-        respuesta = new RespuestaDeGrupos(new ListaOpciones(), new ListaOpciones());
+        respuesta = escenaGroupChoice.getRespuesta();
 
+        contenedorDeOpciones = escenaGroupChoice.getContenedorDeOpciones();
         this.crearLayout(pregunta, escenaGroupChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
     }
 
@@ -46,13 +53,13 @@ public class LayoutGroupChoice {
         return layout;
     }
 
-    private VBox obtenerContenedorDeOpciones(GroupChoice groupChoice, ListaOpciones listaOpciones, ArrayList<HBox> listaHBox) {
+    private void crearContenedorDeOpciones(GroupChoice groupChoice, ListaOpciones listaOpciones, ArrayList<HBox> listaHBox) {
 
         Label opcion = new Label("Opciones");
-        Label grupo1 = new Label (groupChoice.getNombreGrupoA());
-        Label grupo2 = new Label (groupChoice.getNombreGrupoB());
+        Label grupo1 = new Label(groupChoice.getNombreGrupoA());
+        Label grupo2 = new Label(groupChoice.getNombreGrupoB());
 
-        opcion.setPrefWidth(ANCHO_OPCION-ANCHO_GRUPO*2);
+        opcion.setPrefWidth(ANCHO_OPCION - ANCHO_GRUPO * 2);
         opcion.setAlignment(Pos.CENTER);
         grupo1.setPrefWidth(ANCHO_GRUPO);
         grupo1.setAlignment(Pos.CENTER);
@@ -74,7 +81,7 @@ public class LayoutGroupChoice {
             botonGrupoA.setToggleGroup(grupoDeBotones);
             botonGrupoA.setOnAction(new BotonAsignarGrupoHandler(listaOpciones.obtener(i), respuesta.getOpcionesSeleccionadasGrupoB(), respuesta.getOpcionesSeleccionadasGrupoA()));
 
-            HBox contenedorBotonGrupoA = new HBox (botonGrupoA);
+            HBox contenedorBotonGrupoA = new HBox(botonGrupoA);
             contenedorBotonGrupoA.setPrefWidth(ANCHO_GRUPO);
             contenedorBotonGrupoA.setAlignment(Pos.CENTER);
 
@@ -82,12 +89,12 @@ public class LayoutGroupChoice {
             botonGrupoB.setToggleGroup(grupoDeBotones);
             botonGrupoB.setOnAction(new BotonAsignarGrupoHandler(listaOpciones.obtener(i), respuesta.getOpcionesSeleccionadasGrupoA(), respuesta.getOpcionesSeleccionadasGrupoB()));
 
-            HBox contenedorBotonGrupoB = new HBox (botonGrupoB);
+            HBox contenedorBotonGrupoB = new HBox(botonGrupoB);
             contenedorBotonGrupoB.setPrefWidth(ANCHO_GRUPO);
             contenedorBotonGrupoB.setAlignment(Pos.CENTER);
 
             Label nombreOpcion = new Label(listaOpciones.obtener(i).getOpcion());
-            nombreOpcion.setPrefWidth(ANCHO_OPCION-ANCHO_GRUPO*2-10);
+            nombreOpcion.setPrefWidth(ANCHO_OPCION - ANCHO_GRUPO * 2 - 10);
             nombreOpcion.setAlignment(Pos.CENTER_LEFT);
 
             HBox linea = new HBox(nombreOpcion, contenedorBotonGrupoA, contenedorBotonGrupoB);
@@ -108,23 +115,15 @@ public class LayoutGroupChoice {
         contenedorOpciones.setMaxWidth(ANCHO_OPCION);
         contenedorOpciones.setAlignment(Pos.CENTER);
 
-        VBox estructuraContenedorOpciones = new VBox (contenedorOpciones);
+        VBox estructuraContenedorOpciones = new VBox(contenedorOpciones);
         estructuraContenedorOpciones.setAlignment(Pos.CENTER);
         estructuraContenedorOpciones.setMinHeight(260);
         estructuraContenedorOpciones.setMaxHeight(260);
 
-        return estructuraContenedorOpciones;
+        contenedorDeOpciones = estructuraContenedorOpciones;
     }
 
-    private void crearLayout(Pregunta pregunta, EscenaGroupChoice escenaGroupChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
-
-        GroupChoice groupChoice = (GroupChoice) pregunta;
-
-        ListaOpciones listaOpciones = escenaGroupChoice.getOpcionesMostradas();
-
-        ArrayList<HBox> listaHBox = new ArrayList<>();
-
-        VBox contenedorOpciones = this.obtenerContenedorDeOpciones(groupChoice, listaOpciones, listaHBox);
+    private void crearLayout(Pregunta pregunta, EscenaGroupChoice escenaGroupChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
         ContenedorPrimerReglonPreguntaSinPenalidad contenedorPrimerRenglon = new ContenedorPrimerReglonPreguntaSinPenalidad((PreguntaSinPenalidad) pregunta, escenaGroupChoice, jugador, manejadorDeTurnos, unaEtiquetaTiempo);
 
@@ -132,11 +131,17 @@ public class LayoutGroupChoice {
 
         ContenedorBotonEnviar contenedorBotonEnviar = new ContenedorBotonEnviar(jugador, respuesta, manejadorDeTurnos, contenedorPrimerRenglon.getTiempo());
 
-        //Se crea el layout final
-
-        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorOpciones, contenedorBotonEnviar.getLayout());
+        layout = new VBox(contenedorPrimerRenglon.getLayout(), contenedorConsigna.getLayout(), contenedorDeOpciones, contenedorBotonEnviar.getLayout());
         layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
         layout.setAlignment(Pos.TOP_CENTER);
         layout.setSpacing(40);
+    }
+
+    public RespuestaDeGrupos getRespuesta() {
+        return respuesta;
+    }
+
+    public VBox getContenedorDeOpciones() {
+        return contenedorDeOpciones;
     }
 }

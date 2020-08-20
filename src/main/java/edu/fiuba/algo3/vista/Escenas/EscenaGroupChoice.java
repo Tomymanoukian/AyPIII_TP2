@@ -3,9 +3,11 @@ package edu.fiuba.algo3.vista.Escenas;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Preguntas.GroupChoice;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestaDeGrupos;
 import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import edu.fiuba.algo3.vista.Layouts.LayoutGroupChoice;
+import edu.fiuba.algo3.vista.Layouts.LayoutMultipleChoice;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,7 +18,7 @@ import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 
 public class EscenaGroupChoice implements Escena {
 
-    private VBox layout;
+    private LayoutGroupChoice layoutGroupChoice;
     private Pregunta pregunta;
     private ListaOpciones opcionesMostradas;
     private BarraDeMenu barraDeMenu;
@@ -30,15 +32,14 @@ public class EscenaGroupChoice implements Escena {
         opcionesMostradas.desordenar();
         barraDeMenu = new BarraDeMenu(manejadorDeTurnos.getStage());
 
-        LayoutGroupChoice layoutGroupChoice = new LayoutGroupChoice(pregunta, this, jugador, manejadorDeTurnos);
-
-        layout = new VBox(barraDeMenu, layoutGroupChoice.getLayout());
-        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
-        layout.setAlignment(Pos.TOP_CENTER);
+        layoutGroupChoice = new LayoutGroupChoice(pregunta, this, jugador, manejadorDeTurnos);
     }
 
     @Override
     public Scene getEscena() {
+        VBox layout = new VBox(barraDeMenu, layoutGroupChoice.getLayout());
+        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setAlignment(Pos.TOP_CENTER);
         return (new Scene(layout));
     }
 
@@ -52,5 +53,13 @@ public class EscenaGroupChoice implements Escena {
         layoutConBarraDeMenu.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
         layoutConBarraDeMenu.setAlignment(Pos.TOP_CENTER);
         manejadorDeTurnos.getStage().setScene(new Scene(layoutConBarraDeMenu));
+    }
+
+    public RespuestaDeGrupos getRespuesta() {
+        return layoutGroupChoice.getRespuesta();
+    }
+
+    public VBox getContenedorDeOpciones() {
+        return layoutGroupChoice.getContenedorDeOpciones();
     }
 }

@@ -17,12 +17,15 @@ import static edu.fiuba.algo3.vista.Constantes.*;
 public abstract class LayoutMultipleChoice {
 
     protected VBox layout;
+    protected VBox contenedorDeOpciones;
     protected RespuestaEnLista respuesta;
-    protected ListaOpciones listaRespuestas;
+    protected ListaOpciones opcionesSeleccionadas;
 
-    public VBox getLayout() {return layout;}
+    public VBox getLayout() {
+        return layout;
+    }
 
-    public VBox obtenerContenedorDeOpciones(ListaOpciones opcionesMostradas, ListaOpciones listaRespuestas){
+    public void crearContenedorDeOpciones(ListaOpciones opcionesMostradas, ListaOpciones listaRespuestas) {
 
         VBox contenedorOpciones = new VBox(10);
         contenedorOpciones.setMaxWidth(ANCHO_OPCION);
@@ -35,9 +38,9 @@ public abstract class LayoutMultipleChoice {
 
             CheckBox checkBox = new CheckBox(opcionesMostradas.obtener(i).getOpcion());
 
-            checkBox.setBackground(new Background(new BackgroundFill(Color.web(COLOR_OPCIONES), CornerRadii.EMPTY, new Insets(0,-10,0,-10))));
-            checkBox.setMinSize(ANCHO_OPCION-20, 30);
-            checkBox.setMaxSize(ANCHO_OPCION-20, 30);
+            checkBox.setBackground(new Background(new BackgroundFill(Color.web(COLOR_OPCIONES), CornerRadii.EMPTY, new Insets(0, -10, 0, -10))));
+            checkBox.setMinSize(ANCHO_OPCION - 20, 30);
+            checkBox.setMaxSize(ANCHO_OPCION - 20, 30);
             checkBox.setAlignment(Pos.CENTER_LEFT);
 
             contenedorOpciones.getChildren().add(checkBox);
@@ -62,6 +65,14 @@ public abstract class LayoutMultipleChoice {
         estructuraContenedorOpciones.setMinHeight(260);
         estructuraContenedorOpciones.setMaxHeight(260);
 
-        return estructuraContenedorOpciones;
+        contenedorDeOpciones = estructuraContenedorOpciones;
+    }
+
+    public VBox getContenedorDeOpciones() {
+        return contenedorDeOpciones;
+    }
+
+    public ListaOpciones getOpcionesSeleccionadas() {
+        return opcionesSeleccionadas;
     }
 }
