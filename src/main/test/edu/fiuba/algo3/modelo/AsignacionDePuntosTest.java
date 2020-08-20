@@ -39,8 +39,8 @@ public class AsignacionDePuntosTest {
         RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(opcionFalsaCorrecta);
         RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoClasico.getOpcionIncorrecta());
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaVerderoFalsoClasico);
 
@@ -59,8 +59,8 @@ public class AsignacionDePuntosTest {
         RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(opcionFalsaCorrecta);
         RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoConPenalidad.getOpcionIncorrecta());
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaVerderoFalsoConPenalidad);
 
@@ -90,8 +90,8 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
@@ -123,8 +123,8 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
@@ -154,8 +154,8 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
@@ -184,8 +184,8 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
@@ -216,8 +216,8 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceClasico);
@@ -250,8 +250,8 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceClasico);
@@ -282,8 +282,8 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceClasico);
 
@@ -314,8 +314,8 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador1(respuestasJugador1);
-        kahoot.setRespuestaJugador2(respuestasJugador2);
+        kahoot.setRespuestaJugador(respuestasJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestasJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaGroupChoice);
 
@@ -347,8 +347,8 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador1(respuestasJugador1);
-        kahoot.setRespuestaJugador2(respuestasJugador2);
+        kahoot.setRespuestaJugador(respuestasJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestasJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaGroupChoice);
 
@@ -380,8 +380,8 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador1(respuestasJugador1);
-        kahoot.setRespuestaJugador2(respuestasJugador2);
+        kahoot.setRespuestaJugador(respuestasJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestasJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaGroupChoice);
 
@@ -412,8 +412,8 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador1(respuestasJugador1);
-        kahoot.setRespuestaJugador2(respuestasJugador2);
+        kahoot.setRespuestaJugador(respuestasJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestasJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaGroupChoice);
 
@@ -446,8 +446,8 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador1(respuestasJugador1);
-        kahoot.setRespuestaJugador2(respuestasJugador2);
+        kahoot.setRespuestaJugador(respuestasJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestasJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaGroupChoice);
 
@@ -478,8 +478,8 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador1(respuestasJugador1);
-        kahoot.setRespuestaJugador2(respuestasJugador2);
+        kahoot.setRespuestaJugador(respuestasJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestasJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaOrderedChoice);
 
@@ -511,8 +511,8 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador1(respuestasJugador1);
-        kahoot.setRespuestaJugador2(respuestasJugador2);
+        kahoot.setRespuestaJugador(respuestasJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestasJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
 
@@ -546,8 +546,8 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador1(respuestasJugador1);
-        kahoot.setRespuestaJugador2(respuestasJugador2);
+        kahoot.setRespuestaJugador(respuestasJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestasJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
 
@@ -583,8 +583,8 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador1(opcionesJugador1);
-        kahoot.setRespuestaJugador2(opcionesJugador2);
+        kahoot.setRespuestaJugador(opcionesJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(opcionesJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
 
@@ -605,8 +605,8 @@ public class AsignacionDePuntosTest {
         RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(opcionFalsaCorrecta);
         RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoClasico.getOpcionIncorrecta());
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
         kahoot.agregarExclusividad(preguntaVerderoFalsoClasico, kahoot.getJugador1());
 
@@ -626,8 +626,8 @@ public class AsignacionDePuntosTest {
         RespuestaUnica respuestaDelJugador1 = new RespuestaUnica(opcionFalsaCorrecta);
         RespuestaUnica respuestaDelJugador2 = new RespuestaUnica(preguntaVerderoFalsoConPenalidad.getOpcionIncorrecta());
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
         kahoot.agregarMultiplicadorX2(preguntaVerderoFalsoConPenalidad, kahoot.getJugador2());
 
@@ -659,8 +659,8 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
         kahoot.agregarExclusividad(preguntaMultipleChoiceParcial, kahoot.getJugador1());
 
@@ -692,8 +692,8 @@ public class AsignacionDePuntosTest {
         RespuestaEnLista respuestaDelJugador1 = new RespuestaEnLista(opcionesSeleccionadas);
         RespuestaEnLista respuestaDelJugador2 = new RespuestaEnLista(opcionesSeleccionadas);
 
-        kahoot.setRespuestaJugador1(respuestaDelJugador1);
-        kahoot.setRespuestaJugador2(respuestaDelJugador2);
+        kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
         kahoot.agregarExclusividad(preguntaMultipleChoiceParcial, kahoot.getJugador1());
 
@@ -726,8 +726,8 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador1(respuestasJugador1);
-        kahoot.setRespuestaJugador2(respuestasJugador2);
+        kahoot.setRespuestaJugador(respuestasJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestasJugador2, kahoot.getJugador2());
 
         kahoot.agregarExclusividad(preguntaGroupChoice, kahoot.getJugador1());
         kahoot.agregarExclusividad(preguntaGroupChoice, kahoot.getJugador2());
@@ -761,8 +761,8 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador1(respuestasJugador1);
-        kahoot.setRespuestaJugador2(respuestasJugador2);
+        kahoot.setRespuestaJugador(respuestasJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestasJugador2, kahoot.getJugador2());
 
         kahoot.agregarMultiplicadorX2(preguntaMultipleChoiceConPenalidad, kahoot.getJugador1());
         kahoot.agregarMultiplicadorX2(preguntaMultipleChoiceConPenalidad, kahoot.getJugador2());
@@ -800,8 +800,8 @@ public class AsignacionDePuntosTest {
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador1(respuestasJugador1);
-        kahoot.setRespuestaJugador2(respuestasJugador2);
+        kahoot.setRespuestaJugador(respuestasJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestasJugador2, kahoot.getJugador2());
 
         kahoot.agregarMultiplicadorX2(preguntaMultipleChoiceConPenalidad, kahoot.getJugador1());
         kahoot.agregarMultiplicadorX3(preguntaMultipleChoiceConPenalidad, kahoot.getJugador1());

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
-import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
+import edu.fiuba.algo3.modelo.bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.opciones.Opcion;

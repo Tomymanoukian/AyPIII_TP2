@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Bonus.Multiplicador;
+import edu.fiuba.algo3.modelo.bonus.Multiplicador;
 import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalsoConPenalidad;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
 import edu.fiuba.algo3.modelo.opciones.Opcion;

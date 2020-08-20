@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.Preguntas;
 
 import com.google.gson.JsonObject;
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
+import edu.fiuba.algo3.modelo.bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
