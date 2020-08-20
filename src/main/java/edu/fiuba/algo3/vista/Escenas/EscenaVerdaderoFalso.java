@@ -24,7 +24,7 @@ public class EscenaVerdaderoFalso implements Escena {
     public EscenaVerdaderoFalso(Pregunta unaPregunta, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos){
 
         pregunta = unaPregunta;
-        barraDeMenu = new BarraDeMenu();
+        barraDeMenu = new BarraDeMenu(manejadorDeTurnos.getStage());
 
         if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoClasico.class.getSimpleName())) {
             LayoutVerdaderoFalsoSinPenalidad layoutVerdaderoFalso = new LayoutVerdaderoFalsoSinPenalidad(pregunta, this, unJugador, manejadorDeTurnos);

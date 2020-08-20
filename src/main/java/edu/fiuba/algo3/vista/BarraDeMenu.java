@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.*;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -8,30 +9,34 @@ import javafx.stage.Stage;
 
 public class BarraDeMenu extends MenuBar {
 
-    MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
+    private MenuItem opcionPantallaCompleta = new MenuItem("Maximizar tamaño");
+    private MenuItem opcionSalirDePantallaCompleta = new MenuItem("Minimizar tamaño");
 
-    public BarraDeMenu(/*Stage stage*/) {
+    public BarraDeMenu(Stage stage) {
 
         Menu menuArchivo = new Menu("Archivo");
         Menu menuVer = new Menu("Ver");
         Menu menuAyuda = new Menu("Ayuda");
 
         MenuItem opcionSalir = new MenuItem("Salir");
-        MenuItem opcionAbrir = new MenuItem("Abrir");
-        MenuItem opcionAcercaDe = new MenuItem("Acerca de...");
+        MenuItem opcionAcercaDe = new MenuItem("Acerca de Kahoot!");
 
-        //OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
-        //opcionSalir.setOnAction(opcionSalirHandler);
+        OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
+        opcionSalir.setOnAction(opcionSalirHandler);
 
-        //OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
-        //opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
+        OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
+        opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
 
-        //OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
-        //opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
+        OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionSalirDePantallaCompleta, menuVer);
+        opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
 
-        opcionPantallaCompleta.setDisable(true);
+        OpcionSalirDePantallaCompletaEventHandler opcionSalirDePantallaCompletaEventHandler = new OpcionSalirDePantallaCompletaEventHandler(stage, opcionPantallaCompleta, menuVer);
+        opcionSalirDePantallaCompleta.setOnAction(opcionSalirDePantallaCompletaEventHandler);
 
-        menuArchivo.getItems().addAll(opcionAbrir, new SeparatorMenuItem(), opcionSalir);
+        KeyEscEventHandler keyEscEventHandler = new KeyEscEventHandler(opcionSalirDePantallaCompleta);
+        stage.getScene().setOnKeyPressed(keyEscEventHandler);
+
+        menuArchivo.getItems().addAll(opcionSalir);
         menuAyuda.getItems().addAll(opcionAcercaDe);
         menuVer.getItems().addAll(opcionPantallaCompleta);
 

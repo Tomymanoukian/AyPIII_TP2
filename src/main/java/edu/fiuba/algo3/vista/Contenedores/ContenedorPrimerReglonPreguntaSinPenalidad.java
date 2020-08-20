@@ -3,7 +3,6 @@ package edu.fiuba.algo3.vista.Contenedores;
 import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
-import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import edu.fiuba.algo3.vista.Escenas.Escena;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import javafx.animation.Timeline;
@@ -59,7 +58,7 @@ public class ContenedorPrimerReglonPreguntaSinPenalidad {
         contenedorBonus.setSpacing(3);
         contenedorBonus.setAlignment(Pos.CENTER);
 
-        this.habilitarExcepciones(jugador);
+        this.habilitarexclusividades(jugador);
 
         layout = new HBox(contenedorPuntos, contenedorNombreJugador, contenedorTiempo, contenedorBonus);
         layout.setAlignment(Pos.CENTER);
@@ -77,7 +76,7 @@ public class ContenedorPrimerReglonPreguntaSinPenalidad {
         return etiquetaTiempo.getTiempo();
     }
 
-    private void habilitarExcepciones(Jugador jugador) {
+    private void habilitarexclusividades(Jugador jugador) {
 
         if (jugador.cantExclusividadesRestantes() == 0) {
             exclusividad.setDisable(true);

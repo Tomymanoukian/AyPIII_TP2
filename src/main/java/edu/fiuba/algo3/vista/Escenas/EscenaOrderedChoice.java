@@ -22,7 +22,7 @@ public class EscenaOrderedChoice implements Escena {
         OrderedChoice orderedChoice = (OrderedChoice)unaPregunta;
         pregunta = unaPregunta;
         opcionesMostradas = new ListaOpciones(orderedChoice.getOpcionesDesordenadas());
-        barraDeMenu = new BarraDeMenu();
+        barraDeMenu = new BarraDeMenu(manejadorDeTurnos.getStage());
 
         LayoutOrderedChoice layoutOrderedChoice = new LayoutOrderedChoice(pregunta, this, jugador, manejadorDeTurnos);
         layout = new VBox(barraDeMenu, layoutOrderedChoice.getLayout());
