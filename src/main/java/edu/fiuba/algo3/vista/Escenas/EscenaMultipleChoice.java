@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Preguntas.*;
 import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
+import edu.fiuba.algo3.vista.Layouts.LayoutMultipleChoice;
 import edu.fiuba.algo3.vista.Layouts.LayoutMultipleChoiceConPenalidad;
 import edu.fiuba.algo3.vista.Layouts.LayoutMultipleChoiceSinPenalidad;
 import javafx.geometry.Insets;
@@ -16,7 +17,7 @@ import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 
 public class EscenaMultipleChoice implements Escena {
 
-    private VBox layout;
+    private LayoutMultipleChoice layoutMultipleChoice;
     private Pregunta pregunta;
     private ListaOpciones opcionesMostradas;
     private BarraDeMenu barraDeMenu;
@@ -31,23 +32,22 @@ public class EscenaMultipleChoice implements Escena {
         barraDeMenu = new BarraDeMenu(manejadorDeTurnos.getStage());
 
         if(pregunta.getClass().getSimpleName().equals(MultipleChoiceClasico.class.getSimpleName())) {
-            LayoutMultipleChoiceSinPenalidad layoutMultipleChoice = new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos);
-            layout = new VBox(barraDeMenu, layoutMultipleChoice.getLayout());
+             layoutMultipleChoice = new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos);
         }
         if(pregunta.getClass().getSimpleName().equals(MultipleChoiceParcial.class.getSimpleName())) {
-            LayoutMultipleChoiceSinPenalidad layoutMultipleChoice = new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos);
-            layout = new VBox(barraDeMenu, layoutMultipleChoice.getLayout());
+             layoutMultipleChoice = new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos);
         }
         if(pregunta.getClass().getSimpleName().equals(MultipleChoiceConPenalidad.class.getSimpleName())) {
-            LayoutMultipleChoiceConPenalidad layoutMultipleChoice = new LayoutMultipleChoiceConPenalidad(pregunta, this, jugador, manejadorDeTurnos);
-            layout = new VBox(barraDeMenu, layoutMultipleChoice.getLayout());
+             layoutMultipleChoice = new LayoutMultipleChoiceConPenalidad(pregunta, this, jugador, manejadorDeTurnos);
         }
-        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
-        layout.setAlignment(Pos.TOP_CENTER);
+
     }
 
     @Override
     public Scene getEscena() {
+        VBox layout = new VBox(barraDeMenu, layoutMultipleChoice.getLayout());
+        layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setAlignment(Pos.TOP_CENTER);
         return (new Scene(layout));
     }
 
@@ -77,5 +77,13 @@ public class EscenaMultipleChoice implements Escena {
             layoutConBarraDeMenu.setAlignment(Pos.TOP_CENTER);
             manejadorDeTurnos.getStage().setScene(new Scene(layoutConBarraDeMenu));
         }
+    }
+
+    public VBox getContenedorDeOpciones() {
+        return layoutMultipleChoice.getContenedorDeOpciones();
+    }
+
+    public ListaOpciones getOpcionesSeleccionadas() {
+        return layoutMultipleChoice.getOpcionesSeleccionadas();
     }
 }
