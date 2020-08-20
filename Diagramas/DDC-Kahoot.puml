@@ -27,7 +27,7 @@ class Kahoot {
 
 abstract class Pregunta {
     -consigna
-    {abstract}+evaluarRespuestaPara(unasRespuestas, unJugador)
+    {abstract}+evaluarRespuestaPara(unasRespuestas, unJugador):unPuntaje
     +getTipoDePregunta():String
     +guardar():JsonObject
 }
