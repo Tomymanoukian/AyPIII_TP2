@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-import static edu.fiuba.algo3.vista.Constantes.ESTILO_BOTONES;
+import static edu.fiuba.algo3.vista.Constantes.*;
 
 public abstract class LayoutVerdaderoFalso {
 
@@ -25,22 +25,22 @@ public abstract class LayoutVerdaderoFalso {
         Button botonVerdadero = new Button(verdaderoFalso.getOpcionVerdadera().getOpcion());
         BotonEnviarHandler botonVerdaderoHandler = new BotonEnviarHandler(unJugador, new RespuestaUnica(verdaderoFalso.getOpcionVerdadera()), manejadorDeTurnos, tiempo);
         botonVerdadero.setOnAction(botonVerdaderoHandler);
-        //botonVerdadero.setPrefWidth(105);
-        botonVerdadero.setStyle(ESTILO_BOTONES);
+        botonVerdadero.setMinSize(200, 70);
+        botonVerdadero.setStyle(ESTILO_VERDADERO);
 
         Button botonFalso = new Button(verdaderoFalso.getOpcionFalsa().getOpcion());
         BotonEnviarHandler botonFalsoHandler = new BotonEnviarHandler(unJugador, new RespuestaUnica(verdaderoFalso.getOpcionFalsa()), manejadorDeTurnos, tiempo);
         botonFalso.setOnAction(botonFalsoHandler);
-        //botonFalso.setPrefWidth(105);
-        botonFalso.setStyle(ESTILO_BOTONES);
+        botonFalso.setMinSize(200, 70);
+        botonFalso.setStyle(ESTILO_FALSO);
 
         HBox contenedorDeOpcionesVoF = new HBox(botonVerdadero, botonFalso);
         contenedorDeOpcionesVoF.setAlignment(Pos.CENTER);
         contenedorDeOpcionesVoF.setStyle("-fx-font-weight: bold");
         contenedorDeOpcionesVoF.setStyle("-fx-font-size: 1.5em;");
 
-        contenedorDeOpcionesVoF.setSpacing(10);
-        contenedorDeOpcionesVoF.setPadding(new Insets(15));
+        contenedorDeOpcionesVoF.setSpacing(60);
+        contenedorDeOpcionesVoF.setPadding(new Insets(140,0,0,0));
 
         return contenedorDeOpcionesVoF;
     }
