@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Bonus.BonusDePuntaje;
-import edu.fiuba.algo3.modelo.Bonus.ListaDeExclusividades;
-import edu.fiuba.algo3.modelo.Bonus.ListaDeMultiplicadores;
+import edu.fiuba.algo3.modelo.bonus.BonusDePuntaje;
+import edu.fiuba.algo3.modelo.bonus.ListaDeExclusividades;
+import edu.fiuba.algo3.modelo.bonus.ListaDeMultiplicadores;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
@@ -39,14 +39,6 @@ public class Kahoot{
         else{
             throw new JugadorNoValidoException();
         }
-    }
-
-    public void setRespuestaJugador1(Respuesta unaRespuesta) {
-        respuestaJugador1 = unaRespuesta;
-    }
-
-    public void setRespuestaJugador2(Respuesta unaRespuesta) {
-        respuestaJugador2 = unaRespuesta;
     }
 
     public void agregarExclusividad(PreguntaSinPenalidad unaPregunta, Jugador jugador){

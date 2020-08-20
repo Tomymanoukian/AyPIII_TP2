@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
 
-import edu.fiuba.algo3.modelo.Bonus.Multiplicador;
+import edu.fiuba.algo3.modelo.bonus.Multiplicador;
 import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.MultipleChoiceConPenalidad;

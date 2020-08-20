@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
-import edu.fiuba.algo3.modelo.Bonus.Multiplicador;
+import edu.fiuba.algo3.modelo.bonus.Multiplicador;
 
 public interface PreguntaConPenalidad {
 
