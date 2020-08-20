@@ -70,6 +70,11 @@ public class OrderedChoice extends Pregunta implements PreguntaSinPenalidad {
     }
 
     @Override
+    public String getTipoDePregunta() {
+        return "Ordered choice";
+    }
+
+    @Override
     public Exclusividad getExclusividad() {
         return new Exclusividad();
     }

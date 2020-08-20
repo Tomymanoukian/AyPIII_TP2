@@ -52,6 +52,11 @@ public class MultipleChoiceParcial extends MultipleChoice implements PreguntaSin
     }
 
     @Override
+    public String getTipoDePregunta() {
+        return "Multiple Choice con puntaje parcial";
+    }
+
+    @Override
     public Exclusividad getExclusividad() {
         return new Exclusividad();
     }

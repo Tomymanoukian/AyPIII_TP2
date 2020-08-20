@@ -15,4 +15,6 @@ public abstract class Pregunta {
     public abstract Puntaje evaluarRespuestaPara(Respuesta respuesta);
 
     public abstract JsonObject guardar();
+
+    public abstract String getTipoDePregunta();
 }
