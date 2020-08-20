@@ -46,11 +46,14 @@ public class EscenaVerdaderoFalso implements Escena {
 
         if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoClasico.class.getSimpleName())) {
             Pane layout = (new LayoutVerdaderoFalsoSinPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
-            manejadorDeTurnos.getStage().setScene(new Scene(layout));
+            VBox layoutConBarraDeMenu = new VBox(barraDeMenu, layout);
+            layoutConBarraDeMenu.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+            manejadorDeTurnos.getStage().setScene(new Scene(layoutConBarraDeMenu));
         }
         if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoConPenalidad.class.getSimpleName())) {
             Pane layout = (new LayoutVerdaderoFalsoConPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
             VBox layoutConBarraDeMenu = new VBox(barraDeMenu, layout);
+            layoutConBarraDeMenu.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
             manejadorDeTurnos.getStage().setScene(new Scene(layoutConBarraDeMenu));
         }
     }
