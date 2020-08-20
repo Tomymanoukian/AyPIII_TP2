@@ -6,6 +6,7 @@ import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.Layouts.LayoutMenuBienvenida;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -35,6 +36,7 @@ public class Main extends Application {
         stage.setScene(new Scene(vBox));
         vBox.getChildren().addAll(new BarraDeMenu(stage), new LayoutMenuBienvenida(unManejadorDeTurnos).getLayout());
         vBox.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        vBox.setAlignment(Pos.TOP_CENTER);
 
         stage.setWidth(ANCHO_VENTANA);
         stage.setHeight(ALTO_VENTANA);

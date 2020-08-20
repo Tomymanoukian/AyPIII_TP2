@@ -9,6 +9,7 @@ import edu.fiuba.algo3.vista.EtiquetaTiempo;
 import edu.fiuba.algo3.vista.Layouts.LayoutVerdaderoFalsoConPenalidad;
 import edu.fiuba.algo3.vista.Layouts.LayoutVerdaderoFalsoSinPenalidad;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -17,7 +18,7 @@ import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 
 public class EscenaVerdaderoFalso implements Escena {
 
-    private Pane layout;
+    private VBox layout;
     private Pregunta pregunta;
     private BarraDeMenu barraDeMenu;
 
@@ -36,6 +37,7 @@ public class EscenaVerdaderoFalso implements Escena {
         }
 
         layout.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setAlignment(Pos.TOP_CENTER);
     }
 
     @Override
@@ -48,12 +50,14 @@ public class EscenaVerdaderoFalso implements Escena {
             Pane layout = (new LayoutVerdaderoFalsoSinPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
             VBox layoutConBarraDeMenu = new VBox(barraDeMenu, layout);
             layoutConBarraDeMenu.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+            layoutConBarraDeMenu.setAlignment(Pos.TOP_CENTER);
             manejadorDeTurnos.getStage().setScene(new Scene(layoutConBarraDeMenu));
         }
         if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoConPenalidad.class.getSimpleName())) {
             Pane layout = (new LayoutVerdaderoFalsoConPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
             VBox layoutConBarraDeMenu = new VBox(barraDeMenu, layout);
             layoutConBarraDeMenu.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+            layoutConBarraDeMenu.setAlignment(Pos.TOP_CENTER);
             manejadorDeTurnos.getStage().setScene(new Scene(layoutConBarraDeMenu));
         }
     }

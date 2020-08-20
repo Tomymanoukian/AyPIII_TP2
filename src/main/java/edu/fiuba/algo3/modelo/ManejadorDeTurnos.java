@@ -8,6 +8,7 @@ import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.Layouts.LayoutFinDelJuego;
 import edu.fiuba.algo3.vista.Layouts.LayoutSiguienteJugador;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -141,6 +142,7 @@ public class ManejadorDeTurnos {
 
         VBox vBox = new VBox(barraDeMenu, pane);
         vBox.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
+        vBox.setAlignment(Pos.TOP_CENTER);
 
         return new Scene(vBox);
     }
