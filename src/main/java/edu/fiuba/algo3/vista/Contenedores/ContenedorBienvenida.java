@@ -17,8 +17,8 @@ public class ContenedorBienvenida {
 
     public ContenedorBienvenida(){
 
-        Label bienvenida = new Label("Bienvenidos a Kahoot!");
-        bienvenida.setStyle("-fx-font-weight: bold");
+        Label bienvenida = new Label("¡¡¡Bienvenidos a Kahoot!!!");
+        bienvenida.setStyle("-fx-font-weight: bold; -fx-font-size: 2em;");
 
         contenedorBienvenida = new VBox(bienvenida);
         contenedorBienvenida.setAlignment(Pos.CENTER);
