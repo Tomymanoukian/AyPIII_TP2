@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
 import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
 
 public class OrderedChoice extends Pregunta implements PreguntaSinPenalidad {
 

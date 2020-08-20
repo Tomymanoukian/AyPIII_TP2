@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Bonus.Multiplicador;
 import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalsoConPenalidad;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaUnica;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

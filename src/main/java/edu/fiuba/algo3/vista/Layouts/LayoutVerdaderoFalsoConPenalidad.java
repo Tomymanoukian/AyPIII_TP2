@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.vista.Layouts;
 
-import edu.fiuba.algo3.controlador.BotonEnviarHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
-import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
 import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalso;
@@ -12,10 +11,7 @@ import edu.fiuba.algo3.vista.Contenedores.ContenedorConsigna;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorPrimerReglonPreguntaConPenalidad;
 import edu.fiuba.algo3.vista.Escenas.Escena;
 import edu.fiuba.algo3.vista.EtiquetaTiempo;
-import javafx.animation.Timeline;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 

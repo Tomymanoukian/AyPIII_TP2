@@ -1,6 +1,7 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.opciones;
 
 import com.google.gson.JsonObject;
+import edu.fiuba.algo3.modelo.Puntaje;
 
 public class Opcion {
 
@@ -17,12 +18,6 @@ public class Opcion {
 
         opcion = unaRespuesta;
         puntaje = unPuntaje;
-    }
-
-    public Opcion (Opcion unaOpcion) {
-
-        opcion = unaOpcion.getOpcion();
-        puntaje = unaOpcion.getPuntaje();
     }
 
     public static Opcion recuperar(JsonObject jsonOpcion) {

@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.Respuestas;
 
-import edu.fiuba.algo3.modelo.ListaOpciones;
-import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
 
 public class RespuestaDeGrupos implements Respuesta {
 
