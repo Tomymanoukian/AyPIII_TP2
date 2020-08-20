@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista.Layouts;
 import edu.fiuba.algo3.controlador.BotonEnviarHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
+import edu.fiuba.algo3.modelo.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaConPenalidad;
 import edu.fiuba.algo3.modelo.Preguntas.VerdaderoFalso;
@@ -24,30 +25,14 @@ public class LayoutVerdaderoFalsoConPenalidad {
 
     public LayoutVerdaderoFalsoConPenalidad(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
 
-        VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
-
-        ContenedorPrimerReglonPreguntaConPenalidad contenedorPrimerReglon = new ContenedorPrimerReglonPreguntaConPenalidad((PreguntaConPenalidad) verdaderoFalso, scene, unJugador, manejadorDeTurnos, new RespuestaUnica(verdaderoFalso.getOpcionIncorrecta()));
-
-        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
-
-        HBox contenedorVerdaderoFalso = this.obtenerContenedorDeOpcionesVoF(verdaderoFalso, unJugador, manejadorDeTurnos, contenedorPrimerReglon.getTiempo());
-
-        layout = new VBox(contenedorPrimerReglon.getLayout(), contenedorConsigna.getLayout(), contenedorVerdaderoFalso);
-        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        EtiquetaTiempo unaEtiquetaTiempo = new EtiquetaTiempo(unJugador, new RespuestaUnica(new Opcion("No contestada")), manejadorDeTurnos);
+        this.crearLayout(pregunta, scene, unJugador, manejadorDeTurnos, unaEtiquetaTiempo);
     }
 
     public LayoutVerdaderoFalsoConPenalidad(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
-        VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
+        this.crearLayout(pregunta, scene, unJugador, manejadorDeTurnos, unaEtiquetaTiempo);
 
-        ContenedorPrimerReglonPreguntaConPenalidad contenedorPrimerReglon = new ContenedorPrimerReglonPreguntaConPenalidad((PreguntaConPenalidad) verdaderoFalso, scene, unJugador, manejadorDeTurnos, new RespuestaUnica(verdaderoFalso.getOpcionIncorrecta()), unaEtiquetaTiempo);
-
-        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
-
-        HBox contenedorVerdaderoFalso = this.obtenerContenedorDeOpcionesVoF(verdaderoFalso, unJugador, manejadorDeTurnos, contenedorPrimerReglon.getTiempo());
-
-        layout = new VBox(contenedorPrimerReglon.getLayout(), contenedorConsigna.getLayout(), contenedorVerdaderoFalso);
-        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     public Pane getLayout() {return layout;}
@@ -79,5 +64,18 @@ public class LayoutVerdaderoFalsoConPenalidad {
         contenedorDeOpcionesVoF.setPadding(new Insets(15));
 
         return contenedorDeOpcionesVoF;
+    }
+
+    private void crearLayout(Pregunta pregunta, Escena scene, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo){
+        VerdaderoFalso verdaderoFalso = (VerdaderoFalso)pregunta;
+
+        ContenedorPrimerReglonPreguntaConPenalidad contenedorPrimerReglon = new ContenedorPrimerReglonPreguntaConPenalidad((PreguntaConPenalidad) verdaderoFalso, scene, unJugador, manejadorDeTurnos, unaEtiquetaTiempo);
+
+        ContenedorConsigna contenedorConsigna = new ContenedorConsigna(pregunta);
+
+        HBox contenedorVerdaderoFalso = this.obtenerContenedorDeOpcionesVoF(verdaderoFalso, unJugador, manejadorDeTurnos, contenedorPrimerReglon.getTiempo());
+
+        layout = new VBox(contenedorPrimerReglon.getLayout(), contenedorConsigna.getLayout(), contenedorVerdaderoFalso);
+        layout.setBackground(new Background(new BackgroundFill(Color.GHOSTWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 }
