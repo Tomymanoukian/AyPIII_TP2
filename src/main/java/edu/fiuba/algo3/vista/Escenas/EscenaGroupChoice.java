@@ -24,7 +24,7 @@ public class EscenaGroupChoice implements Escena {
         opcionesMostradas = new ListaOpciones(groupChoice.getOpcionesGrupoA());
         opcionesMostradas.agregarTodo(groupChoice.getOpcionesGrupoB());
         opcionesMostradas.desordenar();
-        barraDeMenu = new BarraDeMenu();
+        barraDeMenu = new BarraDeMenu(manejadorDeTurnos.getStage());
 
         LayoutGroupChoice layoutGroupChoice = new LayoutGroupChoice(pregunta, this, jugador, manejadorDeTurnos);
 

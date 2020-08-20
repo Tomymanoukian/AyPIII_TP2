@@ -134,7 +134,7 @@ public class ManejadorDeTurnos {
 
     public Scene escenaConBarraDeMenu(Pane pane){
 
-        BarraDeMenu barraDeMenu = new BarraDeMenu();
+        BarraDeMenu barraDeMenu = new BarraDeMenu(stage);
 
         VBox vBox = new VBox(barraDeMenu, pane);
 

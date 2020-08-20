@@ -27,7 +27,9 @@ public class Main extends Application {
 
         ManejadorDeTurnos unManejadorDeTurnos = new ManejadorDeTurnos(pilaDePreguntas, kahoot.getJugador1(), kahoot.getJugador2(), kahoot, stage);
 
-        stage.setScene(new Scene( new VBox(new BarraDeMenu(), new LayoutMenuBienvenida(unManejadorDeTurnos).getLayout())));
+        VBox vBox = new VBox();
+        stage.setScene(new Scene(vBox));
+        vBox.getChildren().addAll(new BarraDeMenu(stage), new LayoutMenuBienvenida(unManejadorDeTurnos).getLayout());
 
         stage.setWidth(ANCHO_VENTANA);
         stage.setHeight(ALTO_VENTANA);

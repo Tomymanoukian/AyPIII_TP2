@@ -24,7 +24,7 @@ public class EscenaMultipleChoice implements Escena {
         opcionesMostradas = new ListaOpciones(multipleChoice.getOpcionesCorrectas());
         opcionesMostradas.agregarTodo(multipleChoice.getOpcionesIncorrectas());
         opcionesMostradas.desordenar();
-        barraDeMenu = new BarraDeMenu();
+        barraDeMenu = new BarraDeMenu(manejadorDeTurnos.getStage());
 
         if(pregunta.getClass().getSimpleName().equals(MultipleChoiceClasico.class.getSimpleName())) {
             LayoutMultipleChoiceSinPenalidad layoutMultipleChoice = new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos);
