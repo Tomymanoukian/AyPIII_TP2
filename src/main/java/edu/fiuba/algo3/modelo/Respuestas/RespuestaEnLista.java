@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo.Respuestas;
 
-import edu.fiuba.algo3.modelo.ListaOpciones;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
 import edu.fiuba.algo3.modelo.Puntaje;
-import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
 public class RespuestaEnLista implements Respuesta {
 

@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Preguntas.*;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

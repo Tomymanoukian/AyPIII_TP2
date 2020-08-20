@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaSinPenalidad;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorBotonEnviar;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorConsigna;
 import edu.fiuba.algo3.vista.Contenedores.ContenedorPrimerReglonPreguntaSinPenalidad;

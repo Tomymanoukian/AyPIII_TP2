@@ -2,8 +2,8 @@ package edu.fiuba.algo3.modelo.respuestas;
 
 import java.util.Arrays;
 
-import edu.fiuba.algo3.modelo.ListaOpciones;
-import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;

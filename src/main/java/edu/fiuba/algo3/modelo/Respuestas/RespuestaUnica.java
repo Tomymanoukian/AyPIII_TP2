@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo.Respuestas;
 
-import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.Puntaje;
-import edu.fiuba.algo3.modelo.Respuestas.Respuesta;
 
 public class RespuestaUnica implements Respuesta {
 

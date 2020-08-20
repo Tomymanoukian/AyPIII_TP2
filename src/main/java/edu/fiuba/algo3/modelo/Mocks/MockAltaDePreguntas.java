@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.Mocks;
 
-import edu.fiuba.algo3.modelo.ListaOpciones;
-import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.*;
 import edu.fiuba.algo3.modelo.Puntaje;
 

@@ -1,8 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.opciones;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import edu.fiuba.algo3.modelo.Excepciones.OpcionesRepetidasException;
+import edu.fiuba.algo3.modelo.Puntaje;
 
 import java.util.ArrayList;
 import java.util.Collections;

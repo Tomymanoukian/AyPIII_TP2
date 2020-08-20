@@ -1,6 +1,7 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.opciones;
 
 import com.google.gson.JsonObject;
+import edu.fiuba.algo3.modelo.Puntaje;
 
 public class Opcion {
 

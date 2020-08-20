@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.opciones;
 
-import edu.fiuba.algo3.modelo.Opcion;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

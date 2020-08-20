@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.Preguntas;
 
 import com.google.gson.JsonObject;
 import edu.fiuba.algo3.modelo.Bonus.Exclusividad;
-import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.Puntaje;
 
 public class VerdaderoFalsoClasico extends VerdaderoFalso implements PreguntaSinPenalidad {
