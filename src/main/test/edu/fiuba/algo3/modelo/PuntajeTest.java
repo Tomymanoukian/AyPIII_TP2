@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -47,6 +48,22 @@ public class PuntajeTest {
         Puntaje otroPuntaje = new Puntaje(12);
         assertTrue(puntaje.esMenorQue(otroPuntaje));
 
+    }
+
+    @Test
+    public void comparaCorrectamenteQueSeanIgualesDosPuntajes(){
+        Puntaje puntaje = new Puntaje(4);
+        Puntaje otroPuntaje = new Puntaje(4);
+
+        assertTrue(puntaje.esIgualQue(otroPuntaje));
+    }
+
+    @Test
+    public void comparaCorrectamenteQueNoSeanIgualesDosPuntajes(){
+        Puntaje puntaje = new Puntaje(4);
+        Puntaje otroPuntaje = new Puntaje(5);
+
+        assertFalse(puntaje.esIgualQue(otroPuntaje));
     }
 
 }
