@@ -25,8 +25,8 @@ import static edu.fiuba.algo3.vista.Constantes.*;
 public class LayoutOrderedChoice {
 
     private VBox layout;
-    private RespuestaEnLista respuesta;
-    private ListaOpciones opcionesMostradas;
+    private final RespuestaEnLista respuesta;
+    private final ListaOpciones opcionesMostradas;
 
     public LayoutOrderedChoice(Pregunta pregunta, EscenaOrderedChoice escenaOrderedChoice, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 

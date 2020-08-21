@@ -16,7 +16,7 @@ import java.util.List;
 public class ManejadorDeArchivos {
 
     static String FILENAME_RELATIVE_PATH = "preguntas.json";
-    private List<Pregunta> preguntasDelJuego;
+    private final List<Pregunta> preguntasDelJuego;
 
     public ManejadorDeArchivos() {
         preguntasDelJuego = new ArrayList<>();

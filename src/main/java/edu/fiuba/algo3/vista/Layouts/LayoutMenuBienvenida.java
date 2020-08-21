@@ -15,7 +15,7 @@ import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 
 public class LayoutMenuBienvenida {
 
-    private Pane layout;
+    private final Pane layout;
 
     public LayoutMenuBienvenida(ManejadorDeTurnos manejadorDeTurnos) {
 

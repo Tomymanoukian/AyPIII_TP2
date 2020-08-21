@@ -35,16 +35,6 @@ public class VerdaderoFalsoConPenalidadTest {
     }
 
     @Test
-    public void testSeLePideLaRespuestaCorrectaAUnVoFConPenalidadYTienePuntajeUno() {
-        VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoVerdadero("Consigna:");
-
-        Opcion opcionCorrecta = opcionVerdaderaCorrecta;
-
-        assertEquals("Verdadero", opcionCorrecta.getOpcion());
-        assertEquals(1, opcionCorrecta.getPuntaje().getPuntos());
-    }
-
-    @Test
     public void testSeLePideLaRespuestaIncorrectaAUnVoFConPenalidadYTienePuntajeMenosUno() {
         VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad = VerdaderoFalsoConPenalidad.crearVerdaderoFalsoCorrectoVerdadero("Consigna:");
 

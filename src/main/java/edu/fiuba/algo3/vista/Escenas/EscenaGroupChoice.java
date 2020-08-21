@@ -18,10 +18,10 @@ import static edu.fiuba.algo3.vista.Constantes.COLOR_FONDO;
 
 public class EscenaGroupChoice implements Escena {
 
-    private LayoutGroupChoice layoutGroupChoice;
-    private Pregunta pregunta;
-    private ListaOpciones opcionesMostradas;
-    private BarraDeMenu barraDeMenu;
+    private final LayoutGroupChoice layoutGroupChoice;
+    private final Pregunta pregunta;
+    private final ListaOpciones opcionesMostradas;
+    private final BarraDeMenu barraDeMenu;
 
     public EscenaGroupChoice(Pregunta unaPregunta, Jugador jugador, ManejadorDeTurnos manejadorDeTurnos) {
 

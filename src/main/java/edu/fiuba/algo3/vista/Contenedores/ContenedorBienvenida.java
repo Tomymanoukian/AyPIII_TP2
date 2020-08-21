@@ -13,7 +13,7 @@ import static edu.fiuba.algo3.vista.Constantes.COLOR_CINTA;
 
 public class ContenedorBienvenida {
 
-    private VBox contenedorBienvenida;
+    private final VBox contenedorBienvenida;
 
     public ContenedorBienvenida(){
 

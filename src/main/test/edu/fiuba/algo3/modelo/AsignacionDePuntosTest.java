@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-//import javafx.css.converter.LagregarerConverter;
-
 import edu.fiuba.algo3.modelo.Preguntas.*;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaDeGrupos;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
@@ -11,21 +9,84 @@ import edu.fiuba.algo3.modelo.opciones.Opcion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class AsignacionDePuntosTest {
-    private Opcion opcionVerdaderaCorrecta;
     private Opcion opcionFalsaCorrecta;
 
+    private String consignaMultipleChoice;
+    private Opcion opcionCorrectaTierra;
+    private Opcion opcionCorrectaMarte;
+    private Opcion opcionCorrectaJupiter;
+    private Opcion opcionCorrectaSaturno;
+    private Opcion opcionIncorrectaAzul;
+    private Opcion opcionIncorrectaAmarillo;
+
+    private Opcion opcionIncorrectaAzulPenalidad;
+    private Opcion opcionIncorrectaAmarilloPenalidad;
+
+    private String consignaGroupChoice;
+    private String nombreGrupoA;
+    private String nombreGrupoB;
+    private Opcion opcion1DeGrupoA;
+    private Opcion opcion2DeGrupoA;
+    private Opcion opcion3DeGrupoA;
+    private Opcion opcion1DeGrupoB;
+    private Opcion opcion2DeGrupoB;
+    private Opcion opcion3DeGrupoB;
+
+
+    private String consignaOrderdChoice;
+    private Opcion primerOpcion;
+    private Opcion segundaOpcion;
+    private Opcion terceraOpcion;
+    private Opcion cuartaOpcion;
+    private Opcion quintaOpcion;
+
+
     @BeforeEach
-    public void setup() {
-        opcionVerdaderaCorrecta = new Opcion("Verdadero", new Puntaje(1));
+    public void setupOpcionesVerdaderoFalso() {
         opcionFalsaCorrecta = new Opcion("Falso", new Puntaje(1));
+    }
+
+    @BeforeEach
+    public void setupOpcionesMultipleChoice() {
+        consignaMultipleChoice = "Indicar cuales de los siguientes con planetas:";
+        opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
+        opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
+        opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
+        opcionCorrectaSaturno = new Opcion("Saturno", new Puntaje(1));
+        opcionIncorrectaAzul = new Opcion("Azul", new Puntaje(0));
+        opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
+
+        opcionIncorrectaAzulPenalidad = new Opcion("Azul", new Puntaje(-1));
+        opcionIncorrectaAmarilloPenalidad = new Opcion("Amarillo", new Puntaje(-1));
+    }
+
+    @BeforeEach
+    public void setupOpcionesGroupChoice() {
+        consignaGroupChoice = "Agrupe en las categorias A y B:";
+        nombreGrupoA = "Grupo A";
+        nombreGrupoB = "Grupo B";
+
+        opcion1DeGrupoA = new Opcion("respuesta1GrupoA");
+        opcion2DeGrupoA = new Opcion("respuesta2GrupoA");
+        opcion3DeGrupoA = new Opcion("respuesta3GrupoA");
+        opcion1DeGrupoB = new Opcion("respuesta1GrupoB");
+        opcion2DeGrupoB = new Opcion("respuesta2GrupoB");
+        opcion3DeGrupoB = new Opcion("respuesta3GrupoB");
+    }
+
+    @BeforeEach
+    public void setupOpcionesOrderedChoice() {
+        consignaOrderdChoice = "Ordene correctamente las opciones:";
+
+        primerOpcion = new Opcion("1er Opcion");
+        segundaOpcion = new Opcion("2da Opcion");
+        terceraOpcion = new Opcion("3era Opcion");
+        cuartaOpcion = new Opcion("4ta Opcion");
+        quintaOpcion = new Opcion("5ta Opcion");
     }
 
     @Test
@@ -70,20 +131,11 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceParcialJugadorAciertanTodasLasRespuestasCorrectasSumandolesCorrectamenteLosPuntosDeLasRespuestasCorrectas() {
-        String consigna = "Indicar cuales de los siguientes con planetas:";
-
-
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaAzul.con(opcionIncorrectaAmarillo);
         ListaOpciones opcionesSeleccionadas = new ListaOpciones(opcionesCorrectas);
 
-        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
@@ -93,7 +145,6 @@ public class AsignacionDePuntosTest {
         kahoot.setRespuestaJugador(respuestaDelJugador1, kahoot.getJugador1());
         kahoot.setRespuestaJugador(respuestaDelJugador2, kahoot.getJugador2());
 
-
         kahoot.evaluarRespuestas(preguntaMultipleChoiceParcial);
 
         assertEquals(3, kahoot.getPuntajeJugador1().getPuntos());
@@ -102,21 +153,12 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceParcialJugadoresAciertanTodasLasOpcionesCorrectasYUnaIncorrectaSumandoCeroPuntos() {
-        String consigna = "Indicar cuales de los siguientes con planetas:";
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaAzul.con(opcionIncorrectaAmarillo);
 
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionIncorrectaAzul = new Opcion("Azul", new Puntaje(0));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
+        ListaOpciones opcionesSeleccionadas = opcionesCorrectas.con(opcionIncorrectaAzul);
 
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionIncorrectaAzul, opcionIncorrectaAmarillo));
-        ListaOpciones opcionesSeleccionadas = new ListaOpciones();
-        opcionesSeleccionadas.agregarTodo(opcionesCorrectas);
-        opcionesSeleccionadas.agregar(opcionIncorrectaAzul);
-
-        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
@@ -135,19 +177,12 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceParcialJugadoresAciertanAlgunasCorrectasYNingunaIncorrectaSumandolesCorrectamenteLosPuntos() {
-        String consigna = "Indicar cuales de los siguientes con planetas:";
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaAzul.con(opcionIncorrectaAmarillo);
 
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
+        ListaOpciones opcionesSeleccionadas = opcionCorrectaTierra.con(opcionCorrectaMarte);
 
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
-        ListaOpciones opcionesSeleccionadas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte));
-
-        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
@@ -165,19 +200,12 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceParcialJugadoresNoAciertaNingunaCorrectasSumandolesCeroPuntos() {
-        String consigna = "Indicar cuales de los siguientes con planetas:";
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaAzul.con(opcionIncorrectaAmarillo);
+        ListaOpciones opcionesSeleccionadas = new ListaOpciones();
+        opcionesSeleccionadas.agregar(opcionIncorrectaAmarillo);
 
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
-        ListaOpciones opcionesSeleccionadas = new ListaOpciones(Arrays.asList(opcionIncorrectaAmarillo));
-
-        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
@@ -196,20 +224,12 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceClasicoJugadorAciertaTodasLasOpcionesCorrectasSumandoleUnPunto() {
-        String consigna = "Indicar cuales de los siguientes con planetas:";
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaAzul.con(opcionIncorrectaAmarillo);
 
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
-
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
         ListaOpciones opcionesSeleccionadas = new ListaOpciones(opcionesCorrectas);
 
-        MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
@@ -228,22 +248,14 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceClasicoJugadoresAciertanTodasLasRespuestasCorrectasYUnaIncorrectaSumandolesCeroPuntos() {
-        String consigna = "Indicar cuales de los siguientes con planetas:";
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaAzul.con(opcionIncorrectaAmarillo);
 
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
-
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
         ListaOpciones opcionesSeleccionadas = new ListaOpciones();
         opcionesSeleccionadas.agregarTodo(opcionesCorrectas);
-        opcionesSeleccionadas.agregar(opcionInorrectaAzul);
+        opcionesSeleccionadas.agregar(opcionIncorrectaAzul);
 
-        MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
@@ -262,20 +274,12 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceClasicoJugadoesrNoAciertanNingunaRespuestasCorrectasSumandolesCeroPuntos() {
-        String consigna = "Indicar cuales de los siguientes con planetas:";
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaAzul.con(opcionIncorrectaAmarillo);
 
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
-
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
         ListaOpciones opcionesSeleccionadas = new ListaOpciones(opcionesIncorrectas);
 
-        MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceClasico preguntaMultipleChoiceClasico = new MultipleChoiceClasico(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
@@ -293,21 +297,10 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testGroupChoiceJugador1YJugador2AgrupanCorrectamenteLasRespuestasAsignandolesUnPuntoACadaUno() {
-        String consigna = "Agrupe en las categorias A y B:";
-        String nombreGrupoA = "Grupo A";
-        String nombreGrupoB = "Grupo B";
+        ListaOpciones opcionesGrupoA = opcion1DeGrupoA.con(opcion2DeGrupoA).con(opcion3DeGrupoA);
+        ListaOpciones opcionesGrupoB = opcion1DeGrupoB.con(opcion2DeGrupoB).con(opcion3DeGrupoB);
 
-        Opcion opcion1DeGrupoA = new Opcion("respuesta1GrupoA");
-        Opcion opcion2DeGrupoA = new Opcion("respuesta2GrupoA");
-        Opcion opcion3DeGrupoA = new Opcion("respuesta3GrupoA");
-        Opcion opcion1DeGrupoB = new Opcion("respuesta1GrupoB");
-        Opcion opcion2DeGrupoB = new Opcion("respuesta2GrupoB");
-        Opcion opcion3DeGrupoB = new Opcion("respuesta3GrupoB");
-
-        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
-        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
-
-        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
+        GroupChoice preguntaGroupChoice = new GroupChoice(consignaGroupChoice, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
 
         RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB);
         RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB);
@@ -325,22 +318,10 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testGroupChoiceJugador1AgrupaCorrectamenteLasOpcionesYJugador2AgrupaIncorrectamenteLasOpcionesAsignandolesCorrectamenteLosPuntajes() {
-        String consigna = "Agrupe en las categorias A y B:";
-        String nombreGrupoA = "Grupo A";
-        String nombreGrupoB = "Grupo B";
+        ListaOpciones opcionesGrupoA = opcion1DeGrupoA.con(opcion2DeGrupoA).con(opcion3DeGrupoA);
+        ListaOpciones opcionesGrupoB = opcion1DeGrupoB.con(opcion2DeGrupoB).con(opcion3DeGrupoB);
 
-
-        Opcion opcion1DeGrupoA = new Opcion("respuesta1GrupoA");
-        Opcion opcion2DeGrupoA = new Opcion("respuesta2GrupoA");
-        Opcion opcion3DeGrupoA = new Opcion("respuesta3GrupoA");
-        Opcion opcion1DeGrupoB = new Opcion("respuesta1GrupoB");
-        Opcion opcion2DeGrupoB = new Opcion("respuesta2GrupoB");
-        Opcion opcion3DeGrupoB = new Opcion("respuesta3GrupoB");
-
-        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
-        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
-
-        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
+        GroupChoice preguntaGroupChoice = new GroupChoice(consignaGroupChoice, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
 
         RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB);
         RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
@@ -358,22 +339,10 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testGroupChoiceJugador1YJugador2AgrupanIncorrectamenteLasOpcionesAsignandolesCeroPuntosACadaUno() {
-        String consigna = "Agrupe en las categorias A y B:";
-        String nombreGrupoA = "Grupo A";
-        String nombreGrupoB = "Grupo B";
+        ListaOpciones opcionesGrupoA = opcion1DeGrupoA.con(opcion2DeGrupoA).con(opcion3DeGrupoA);
+        ListaOpciones opcionesGrupoB = opcion1DeGrupoB.con(opcion2DeGrupoB).con(opcion3DeGrupoB);
 
-
-        Opcion opcion1DeGrupoA = new Opcion("respuestaGrupoA1");
-        Opcion opcion2DeGrupoA = new Opcion("respuestaGrupoA2");
-        Opcion opcion3DeGrupoA = new Opcion("respuestaGrupoA3");
-        Opcion opcion1DeGrupoB = new Opcion("respuestaGrupoB1");
-        Opcion opcion2DeGrupoB = new Opcion("respuestaGrupoB2");
-        Opcion opcion3DeGrupoB = new Opcion("respuestaGrupoB3");
-
-        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
-        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
-
-        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
+        GroupChoice preguntaGroupChoice = new GroupChoice(consignaGroupChoice, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
 
         RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
         RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
@@ -391,21 +360,9 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testOrderedChoiceJugador1YJugador2OrdenanCorrectamenteLasOpcionesAsignandolesCeroPuntosACadaUno() {
+        ListaOpciones opcionesOrdenadasCorrectamente = primerOpcion.con(segundaOpcion).con(terceraOpcion).con(cuartaOpcion).con(quintaOpcion);
 
-        String consigna = "Ordene correctamente las opciones:";
-
-        Opcion primerOpcion = new Opcion("1er Opcion");
-        Opcion segundaOpcion = new Opcion("2da Opcion");
-        Opcion terceraOpcion = new Opcion("3era Opcion");
-        Opcion cuartaOpcion = new Opcion("4ta Opcion");
-        Opcion quintaOpcion = new Opcion("5ta Opcion");
-
-
-        List<Opcion> respuestasOrdenadasCorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion, cuartaOpcion, quintaOpcion));
-        ListaOpciones opcionesOrdenadasCorrectamente = new ListaOpciones(respuestasOrdenadasCorrectamenteList);
-
-
-        OrderedChoice preguntaGroupChoice = new OrderedChoice(consigna, opcionesOrdenadasCorrectamente);
+        OrderedChoice preguntaGroupChoice = new OrderedChoice(consignaOrderdChoice, opcionesOrdenadasCorrectamente);
 
         RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasCorrectamente));
         RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasCorrectamente));
@@ -423,23 +380,10 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testOrderedChoiceJugador1YJugador2OrdenanIncorrectamenteLasOpcionesAsignandolesCeroPuntosACadaUno() {
+        ListaOpciones opcionesOrdenadasCorrectamente = primerOpcion.con(segundaOpcion).con(terceraOpcion).con(cuartaOpcion).con(quintaOpcion);
+        ListaOpciones opcionesOrdenadasInorrectamente = primerOpcion.con(terceraOpcion).con(segundaOpcion).con(cuartaOpcion).con(quintaOpcion);
 
-        String consigna = "Ordene correctamente las opciones:";
-
-        Opcion primerOpcion = new Opcion("1er Opcion");
-        Opcion segundaOpcion = new Opcion("2da Opcion");
-        Opcion terceraOpcion = new Opcion("3era Opcion");
-        Opcion cuartaOpcion = new Opcion("4ta Opcion");
-        Opcion quintaOpcion = new Opcion("5ta Opcion");
-
-
-        List<Opcion> respuestasOrdenadasCorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion, cuartaOpcion, quintaOpcion));
-        ListaOpciones opcionesOrdenadasCorrectamente = new ListaOpciones(respuestasOrdenadasCorrectamenteList);
-        List<Opcion> respuestasOrdenadasInorrectamenteList = new ArrayList<>(Arrays.asList(primerOpcion, terceraOpcion, segundaOpcion, cuartaOpcion, quintaOpcion));
-        ListaOpciones opcionesOrdenadasInorrectamente = new ListaOpciones(respuestasOrdenadasInorrectamenteList);
-
-
-        OrderedChoice preguntaGroupChoice = new OrderedChoice(consigna, opcionesOrdenadasCorrectamente);
+        OrderedChoice preguntaGroupChoice = new OrderedChoice(consignaOrderdChoice, opcionesOrdenadasCorrectamente);
 
         RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasInorrectamente));
         RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasInorrectamente));
@@ -457,21 +401,10 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testOrderedChoiceJugador1OrdenaCorrectamenteLasOpcionesYJugador2OrdenaInorrectamenteLasOpcionesAsignandolesCorrectamenteLosPuntajes() {
-        String consigna = "Ordene correctamente las opciones:";
+        ListaOpciones opcionesOrdenadasCorrectamente = primerOpcion.con(segundaOpcion).con(terceraOpcion).con(cuartaOpcion).con(quintaOpcion);
+        ListaOpciones opcionesOrdenadasInorrectamente = primerOpcion.con(terceraOpcion).con(segundaOpcion).con(cuartaOpcion).con(quintaOpcion);
 
-
-        Opcion primerOpcion = new Opcion("1er Opcion");
-        Opcion segundaOpcion = new Opcion("2da Opcion");
-        Opcion terceraOpcion = new Opcion("3era Opcion");
-        Opcion cuartaOpcion = new Opcion("4ta Opcion");
-        Opcion quintaOpcion = new Opcion("5ta Opcion");
-
-
-        ListaOpciones opcionesOrdenadasCorrectamente = new ListaOpciones(new ArrayList<>(Arrays.asList(primerOpcion, segundaOpcion, terceraOpcion, cuartaOpcion, quintaOpcion)));
-        ListaOpciones opcionesOrdenadasInorrectamente = new ListaOpciones(new ArrayList<>(Arrays.asList(primerOpcion, terceraOpcion, segundaOpcion, cuartaOpcion, quintaOpcion)));
-
-
-        OrderedChoice preguntaOrderedChoice = new OrderedChoice(consigna, opcionesOrdenadasCorrectamente);
+        OrderedChoice preguntaOrderedChoice = new OrderedChoice(consignaOrderdChoice, opcionesOrdenadasCorrectamente);
 
         RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasCorrectamente));
         RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesOrdenadasInorrectamente));
@@ -490,24 +423,14 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceConPenalidadJugador1AciertaCuatroOpcionesYJugador2AciertaCuatroOpcionesSumandolesCorrectamenteCuatroPuntos() {
-
-        String consigna = "Indicar cuales de los siguientes con planetas:";
-
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionCorrectaSaturno = new Opcion("Saturno", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(-1));
-
-        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
-        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionInorrectaAzul));
-        ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter).con(opcionCorrectaSaturno);
+        ListaOpciones opcionesIncorrectas = new ListaOpciones();
+        opcionesIncorrectas.agregar(opcionIncorrectaAzulPenalidad);
 
         RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesCorrectas));
         RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesCorrectas));
 
-        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
@@ -522,27 +445,16 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceConPenalidadJugador1EligeTresOpcionesCorrectasYUnaIncorrectaYJugador2EligeDosOpcionesCorrectasYDosIncorrectaAsignandolesCorrectamenteLosPuntos() {
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaAzulPenalidad.con(opcionIncorrectaAmarilloPenalidad);
 
-        String consigna = "Indicar cuales de los siguientes con planetas:";
+        ListaOpciones opcionesJugador1 = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter).con(opcionIncorrectaAzulPenalidad);
+        ListaOpciones opcionesJugador2 = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionIncorrectaAmarilloPenalidad).con(opcionIncorrectaAzulPenalidad);
 
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(-1));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(-1));
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(opcionesJugador1);
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(opcionesJugador2);
 
-        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
-        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
-        ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
-
-        List<Opcion> respuestasJugador1List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionInorrectaAzul));
-        List<Opcion> respuestasJugador2List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionIncorrectaAmarillo, opcionInorrectaAzul));
-
-        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(respuestasJugador1List));
-        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(respuestasJugador2List));
-
-        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
@@ -557,42 +469,27 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceConPenalidadJugador1EligeUnaOpcionYDosIncorrectasYJugador2EligeCeroOpcionesCorrectasYDosIncorrectaAsignandolesCorrectamenteLosPuntos() {
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaAzulPenalidad.con(opcionIncorrectaAmarilloPenalidad);
 
-        String consigna = "Indicar cuales de los siguientes con planetas:";
+        ListaOpciones opcionesJugador1 = opcionCorrectaTierra.con(opcionIncorrectaAmarilloPenalidad).con(opcionIncorrectaAzulPenalidad);
+        ListaOpciones opcionesJugador2 = opcionIncorrectaAzulPenalidad.con(opcionIncorrectaAmarilloPenalidad);
 
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionCorrectaSaturno = new Opcion("Saturno", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(-1));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(-1));
+        RespuestaEnLista respuestaJugador1 = new RespuestaEnLista(opcionesJugador1);
+        RespuestaEnLista respuestaJugador2 = new RespuestaEnLista(opcionesJugador2);
 
-
-        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
-        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaJupiter, opcionCorrectaSaturno));
-        ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
-
-        List<Opcion> opcionesJugador1List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionIncorrectaAmarillo, opcionInorrectaAzul));
-        List<Opcion> opcionesJugador2List = new ArrayList<>(Arrays.asList(opcionIncorrectaAmarillo, opcionInorrectaAzul));
-
-        RespuestaEnLista opcionesJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesJugador1List));
-        RespuestaEnLista opcionesJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesJugador2List));
-
-        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
-        kahoot.setRespuestaJugador(opcionesJugador1, kahoot.getJugador1());
-        kahoot.setRespuestaJugador(opcionesJugador2, kahoot.getJugador2());
+        kahoot.setRespuestaJugador(respuestaJugador1, kahoot.getJugador1());
+        kahoot.setRespuestaJugador(respuestaJugador2, kahoot.getJugador2());
 
         kahoot.evaluarRespuestas(preguntaMultipleChoiceConPenalidad);
 
         assertEquals(-1, kahoot.getPuntajeJugador1().getPuntos());
         assertEquals(-2, kahoot.getPuntajeJugador2().getPuntos());
     }
-
-    //comienza test con bonus
 
     @Test
     public void testVerdaderoFalsoClasicoJugador1AsertaYJugador2FallaSumandoCorrectamenteLosPuntajesConUnaExclusividad() {
@@ -639,20 +536,12 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceParcialJugadorAciertanTodasLasRespuestasCorrectasSumandolesCorrectamenteLosPuntosDeLasRespuestasCorrectasConUnaExclusividad() {
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaAzul.con(opcionIncorrectaAmarillo);
 
-        String consigna = "Indicar cuales de los siguientes con planetas:";
-
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
         ListaOpciones opcionesSeleccionadas = new ListaOpciones(opcionesCorrectas);
 
-        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
@@ -672,20 +561,13 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceParcialJugadoresNoAciertaNingunaCorrectasSumandolesCeroPuntosConExclusividad() {
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaAzul.con(opcionIncorrectaAmarillo);
 
-        String consigna = "Indicar cuales de los siguientes con planetas:";
+        ListaOpciones opcionesSeleccionadas = new ListaOpciones();
+        opcionesSeleccionadas.agregar(opcionIncorrectaAmarillo);
 
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(0));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(0));
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
-        ListaOpciones opcionesSeleccionadas = new ListaOpciones(Arrays.asList(opcionIncorrectaAmarillo));
-
-        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceParcial preguntaMultipleChoiceParcial = new MultipleChoiceParcial(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
@@ -705,21 +587,10 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testGroupChoiceJugador1AgrupaCorrectamenteLasOpcionesYJugador2AgrupaIncorrectamenteLasOpcionesAsignandolesCorrectamenteLosPuntajesConDosExclusividades() {
-        String consigna = "Agrupe en las categorias A y B:";
-        String nombreGrupoA = "Grupo A";
-        String nombreGrupoB = "Grupo B";
+        ListaOpciones opcionesGrupoA = opcion1DeGrupoA.con(opcion2DeGrupoA).con(opcion3DeGrupoA);
+        ListaOpciones opcionesGrupoB = opcion1DeGrupoB.con(opcion2DeGrupoB).con(opcion3DeGrupoB);
 
-        Opcion opcion1DeGrupoA = new Opcion("respuesta1GrupoA");
-        Opcion opcion2DeGrupoA = new Opcion("respuesta2GrupoA");
-        Opcion opcion3DeGrupoA = new Opcion("respuesta3GrupoA");
-        Opcion opcion1DeGrupoB = new Opcion("respuesta1GrupoB");
-        Opcion opcion2DeGrupoB = new Opcion("respuesta2GrupoB");
-        Opcion opcion3DeGrupoB = new Opcion("respuesta3GrupoB");
-
-        ListaOpciones opcionesGrupoA = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoA, opcion2DeGrupoA, opcion3DeGrupoA)));
-        ListaOpciones opcionesGrupoB = new ListaOpciones(new ArrayList<>(Arrays.asList(opcion1DeGrupoB, opcion2DeGrupoB, opcion3DeGrupoB)));
-
-        GroupChoice preguntaGroupChoice = new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
+        GroupChoice preguntaGroupChoice = new GroupChoice(consignaGroupChoice, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
 
         RespuestaDeGrupos respuestasJugador1 = new RespuestaDeGrupos(opcionesGrupoA, opcionesGrupoB);
         RespuestaDeGrupos respuestasJugador2 = new RespuestaDeGrupos(opcionesGrupoB, opcionesGrupoA);
@@ -740,24 +611,14 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceConPenalidadJugador1AciertaCuatroOpcionesYJugador2AciertaCuatroOpcionesSumandolesCorrectamenteOchoPuntosConDosMultiplicadoresX2() {
-
-        String consigna = "Indicar cuales de los siguientes con planetas:";
-
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionCorrectaSaturno = new Opcion("Saturno", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(-1));
-
-        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter, opcionCorrectaSaturno));
-        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionInorrectaAzul));
-        ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter).con(opcionCorrectaSaturno);
+        ListaOpciones opcionesIncorrectas = new ListaOpciones();
+        opcionesIncorrectas.agregar(opcionIncorrectaAzulPenalidad);
 
         RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(opcionesCorrectas));
         RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(opcionesCorrectas));
 
-        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 
@@ -775,28 +636,16 @@ public class AsignacionDePuntosTest {
 
     @Test
     public void testMultipleChoiceConPenalidadJugador1EligeTresOpcionesCorrectasYUnaIncorrectaYJugador2EligeDosOpcionesCorrectasYDosIncorrectaAsignandolesCorrectamenteLosPuntosConDosMultiplicadoresDeUnJugador() {
+        ListaOpciones opcionesCorrectas = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionCorrectaJupiter);
+        ListaOpciones opcionesIncorrectas = opcionIncorrectaAzulPenalidad.con(opcionIncorrectaAmarilloPenalidad);
 
-        String consigna = "Indicar cuales de los siguientes con planetas:";
+        ListaOpciones opcionesJugador1 = opcionCorrectaTierra.con(opcionCorrectaJupiter).con(opcionCorrectaMarte).con(opcionIncorrectaAzulPenalidad);
+        ListaOpciones opcionesJugador2 = opcionCorrectaTierra.con(opcionCorrectaMarte).con(opcionIncorrectaAmarilloPenalidad).con(opcionIncorrectaAzulPenalidad);
 
-        Opcion opcionCorrectaTierra = new Opcion("Tierra", new Puntaje(1));
-        Opcion opcionCorrectaMarte = new Opcion("Marte", new Puntaje(1));
-        Opcion opcionCorrectaJupiter = new Opcion("Jupiter", new Puntaje(1));
-        Opcion opcionInorrectaAzul = new Opcion("Azul", new Puntaje(-1));
-        Opcion opcionIncorrectaAmarillo = new Opcion("Amarillo", new Puntaje(-1));
+        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(opcionesJugador1);
+        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(opcionesJugador2);
 
-        List<Opcion> opcionesCorrectasList = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionCorrectaJupiter));
-        List<Opcion> opcionesIncorrectasList = new ArrayList<>(Arrays.asList(opcionInorrectaAzul, opcionIncorrectaAmarillo));
-
-        ListaOpciones opcionesCorrectas = new ListaOpciones(opcionesCorrectasList);
-        ListaOpciones opcionesIncorrectas = new ListaOpciones(opcionesIncorrectasList);
-
-        List<Opcion> respuestasJugador1List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaJupiter, opcionCorrectaMarte, opcionInorrectaAzul));
-        List<Opcion> respuestasJugador2List = new ArrayList<>(Arrays.asList(opcionCorrectaTierra, opcionCorrectaMarte, opcionIncorrectaAmarillo, opcionInorrectaAzul));
-
-        RespuestaEnLista respuestasJugador1 = new RespuestaEnLista(new ListaOpciones(respuestasJugador1List));
-        RespuestaEnLista respuestasJugador2 = new RespuestaEnLista(new ListaOpciones(respuestasJugador2List));
-
-        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
+        MultipleChoiceConPenalidad preguntaMultipleChoiceConPenalidad = new MultipleChoiceConPenalidad(consignaMultipleChoice, opcionesCorrectas, opcionesIncorrectas);
 
         Kahoot kahoot = new Kahoot();
 

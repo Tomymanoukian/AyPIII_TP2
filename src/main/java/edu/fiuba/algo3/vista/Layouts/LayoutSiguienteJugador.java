@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.vista.Layouts;
 
-import edu.fiuba.algo3.controlador.BotonSiguienteEventHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.ManejadorDeTurnos;
-import edu.fiuba.algo3.vista.Constantes;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -12,14 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 import static edu.fiuba.algo3.vista.Constantes.*;
-import static edu.fiuba.algo3.vista.Constantes.ALTO_CINTA;
 
 public class LayoutSiguienteJugador {
 
-    private VBox layout;
+    private final VBox layout;
 
     public LayoutSiguienteJugador(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EventHandler<ActionEvent> handlerBotonEnviar){
 

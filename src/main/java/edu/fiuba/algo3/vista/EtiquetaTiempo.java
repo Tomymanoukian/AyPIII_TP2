@@ -12,7 +12,7 @@ import javafx.util.Duration;
 
 public class EtiquetaTiempo {
 
-    private static Integer inicialTiempo = 30;
+    private static final Integer inicialTiempo = 30;
     private Timeline tiempo;
     Label etiquetaDelTiempo = new Label();
     private Integer segundos = inicialTiempo;

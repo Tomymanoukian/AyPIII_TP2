@@ -1,18 +1,15 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
 
-import edu.fiuba.algo3.modelo.bonus.Multiplicador;
-import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 import edu.fiuba.algo3.modelo.Preguntas.MultipleChoiceConPenalidad;
 import edu.fiuba.algo3.modelo.Puntaje;
 import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
+import edu.fiuba.algo3.modelo.bonus.Multiplicador;
+import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 import org.junit.jupiter.api.BeforeEach;
-import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -40,8 +37,8 @@ public class MultipleChoiceConPenalidadTest {
         opcionIncorrecta1 = new Opcion("Ketchup",new Puntaje(-1));
         opcionIncorrecta2 = new Opcion("Mostaza",new Puntaje(-1));
 
-        opcionesCorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionCorrecta1, opcionCorrecta2)));
-        opcionesIncorrectas = new ListaOpciones(new ArrayList<>(Arrays.asList(opcionIncorrecta1,opcionIncorrecta2)));
+        opcionesCorrectas = opcionCorrecta1.con(opcionCorrecta2);
+        opcionesIncorrectas = opcionIncorrecta1.con(opcionIncorrecta2);
 
         opcionesElegidas = new ListaOpciones();
     }

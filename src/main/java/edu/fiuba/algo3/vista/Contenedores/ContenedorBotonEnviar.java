@@ -14,7 +14,7 @@ import static edu.fiuba.algo3.vista.Constantes.*;
 
 public class ContenedorBotonEnviar {
 
-    private HBox layout;
+    private final HBox layout;
 
     public ContenedorBotonEnviar(Jugador jugador, Respuesta respuesta, ManejadorDeTurnos manejadorDeTurnos, Timeline tiempo) {
 

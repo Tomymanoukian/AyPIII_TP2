@@ -12,8 +12,8 @@ import static edu.fiuba.algo3.vista.Constantes.ESTILO_BOTONES;
 
 public class ContenedorBotonEmpezar {
 
-    private HBox contenedorBoton;
-    private Button iniciarJuego;
+    private final HBox contenedorBoton;
+    private final Button iniciarJuego;
 
     public ContenedorBotonEmpezar(TextField nombreJugador1, TextField nombreJugador2, ManejadorDeTurnos manejadorDeTurnos) {
 

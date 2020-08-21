@@ -36,7 +36,9 @@ public class Opcion {
         return opcion;
     }
 
-    public Puntaje getPuntaje() { return puntaje; }
+    public Puntaje getPuntaje() {
+        return puntaje;
+    }
 
     public JsonObject guardar() {
 
@@ -48,5 +50,12 @@ public class Opcion {
 
     public boolean tieneLaMisma(String opcionBuscada) {
         return (this.opcion.equals(opcionBuscada));
+    }
+
+    public ListaOpciones con(Opcion otraOpcion) {
+        ListaOpciones listaDeOpciones = new ListaOpciones();
+        listaDeOpciones.agregar(this);
+        listaDeOpciones.agregar(otraOpcion);
+        return listaDeOpciones;
     }
 }
