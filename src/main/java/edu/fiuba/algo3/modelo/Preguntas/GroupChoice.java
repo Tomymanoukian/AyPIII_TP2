@@ -9,7 +9,7 @@ import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
 
 public class GroupChoice extends Pregunta implements PreguntaSinPenalidad {
-
+    private static final String NOMBRE_DE_PREGUNTA = "Group Choice";
     private final ListaOpciones opcionesGrupoA;
     private final ListaOpciones opcionesGrupoB;
     private final String nombreGrupoA;
@@ -36,6 +36,10 @@ public class GroupChoice extends Pregunta implements PreguntaSinPenalidad {
         ListaOpciones opcionesGrupoA = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesGrupoA"));
         ListaOpciones opcionesGrupoB = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesGrupoB"));
         return new GroupChoice(consigna, nombreGrupoA, opcionesGrupoA, nombreGrupoB, opcionesGrupoB);
+    }
+
+    public static String getNombreDePregunta(){
+        return NOMBRE_DE_PREGUNTA;
     }
 
     @Override
@@ -71,7 +75,7 @@ public class GroupChoice extends Pregunta implements PreguntaSinPenalidad {
     public JsonObject guardar() {
 
         JsonObject jsonGroupChoice = new JsonObject();
-        jsonGroupChoice.addProperty("tipoDePregunta", GroupChoice.class.getName());
+        jsonGroupChoice.addProperty("tipoDePregunta", GroupChoice.getNombreDePregunta());
         jsonGroupChoice.addProperty("consigna", consigna);
         jsonGroupChoice.addProperty("nombreGrupoA", nombreGrupoA);
         jsonGroupChoice.addProperty("nombreGrupoB", nombreGrupoB);
@@ -82,7 +86,7 @@ public class GroupChoice extends Pregunta implements PreguntaSinPenalidad {
 
     @Override
     public String getTipoDePregunta() {
-        return "Group choice";
+        return NOMBRE_DE_PREGUNTA;
     }
 
     @Override

@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 
 public class MultipleChoiceClasico extends MultipleChoice implements PreguntaSinPenalidad{
+    private static final String NOMBRE_DE_PREGUNTA = "Multiple Choice Clásico";
 
     public MultipleChoiceClasico(String unaConsigna, ListaOpciones unasOpcionesCorrectas, ListaOpciones unasOpcionesIncorrectas) {
         super();
@@ -44,6 +45,10 @@ public class MultipleChoiceClasico extends MultipleChoice implements PreguntaSin
         return puntaje;
     }
 
+    public static String getNombreDePregunta(){
+        return NOMBRE_DE_PREGUNTA;
+    }
+
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
 
@@ -54,7 +59,7 @@ public class MultipleChoiceClasico extends MultipleChoice implements PreguntaSin
     public JsonObject guardar() {
 
         JsonObject jsonMultipleChoiceClasico = new JsonObject();
-        jsonMultipleChoiceClasico.addProperty("tipoDePregunta", MultipleChoiceClasico.class.getName());
+        jsonMultipleChoiceClasico.addProperty("tipoDePregunta", MultipleChoiceClasico.getNombreDePregunta());
         jsonMultipleChoiceClasico.addProperty("consigna", consigna);
         jsonMultipleChoiceClasico.add("opcionesCorrectas", opcionesCorrectas.guardar());
         jsonMultipleChoiceClasico.add("opcionesIncorrectas", opcionesIncorrectas.guardar());
@@ -63,7 +68,7 @@ public class MultipleChoiceClasico extends MultipleChoice implements PreguntaSin
 
     @Override
     public String getTipoDePregunta() {
-        return "Multiple Choice clásico";
+        return NOMBRE_DE_PREGUNTA;
     }
 
     @Override

@@ -54,25 +54,25 @@ public class ManejadorDeArchivos {
         //Dependiendo del tipo de pregunta lee el json de formas diferentes
         String tipoDePregunta = jsonPregunta.get("tipoDePregunta").getAsString();
 
-        if (VerdaderoFalsoClasico.class.getName().equals(tipoDePregunta)) {
+        if (VerdaderoFalsoClasico.getNombreDePregunta().equals(tipoDePregunta)) {
             return VerdaderoFalsoClasico.recuperar(jsonPregunta);
         }
-        if (VerdaderoFalsoConPenalidad.class.getName().equals(tipoDePregunta)) {
+        if (VerdaderoFalsoConPenalidad.getNombreDePregunta().equals(tipoDePregunta)) {
             return VerdaderoFalsoConPenalidad.recuperar(jsonPregunta);
         }
-        if (MultipleChoiceClasico.class.getName().equals(tipoDePregunta)) {
+        if (MultipleChoiceClasico.getNombreDePregunta().equals(tipoDePregunta)) {
             return MultipleChoiceClasico.recuperar(jsonPregunta);
         }
-        if (MultipleChoiceParcial.class.getName().equals(tipoDePregunta)) {
+        if (MultipleChoiceParcial.getNombreDePregunta().equals(tipoDePregunta)) {
             return MultipleChoiceParcial.recuperar(jsonPregunta);
         }
-        if (MultipleChoiceConPenalidad.class.getName().equals(tipoDePregunta)) {
+        if (MultipleChoiceConPenalidad.getNombreDePregunta().equals(tipoDePregunta)) {
             return MultipleChoiceConPenalidad.recuperar(jsonPregunta);
         }
-        if (OrderedChoice.class.getName().equals(tipoDePregunta)) {
+        if (OrderedChoice.getNombreDePregunta().equals(tipoDePregunta)) {
             return OrderedChoice.recuperar(jsonPregunta);
         }
-        if (GroupChoice.class.getName().equals(tipoDePregunta)) {
+        if (GroupChoice.getNombreDePregunta().equals(tipoDePregunta)) {
             return GroupChoice.recuperar(jsonPregunta);
         }
         return null;
