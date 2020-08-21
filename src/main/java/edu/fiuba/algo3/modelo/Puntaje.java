@@ -38,6 +38,10 @@ public class Puntaje {
         return puntos < otroPuntaje.getPuntos();
     }
 
+    public boolean esIgualQue(Puntaje otroPuntaje){
+        return puntos == otroPuntaje.getPuntos();
+    }
+
     public JsonObject guardar() {
 
         JsonObject jsonPuntaje = new JsonObject();
