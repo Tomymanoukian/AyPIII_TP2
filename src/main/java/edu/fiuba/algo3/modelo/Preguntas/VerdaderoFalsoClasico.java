@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.Puntaje;
 
 public class VerdaderoFalsoClasico extends VerdaderoFalso implements PreguntaSinPenalidad {
+    private static final String NOMBRE_DE_PREGUNTA = "Verdadero/Falso clásico";
 
     public static VerdaderoFalsoClasico recuperar(JsonObject jsonPregunta) {
 
@@ -36,11 +37,15 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso implements PreguntaSin
         return new VerdaderoFalsoClasico(unaConsigna, opcionFalsa, opcionVerdadera);
     }
 
+    public static String getNombreDePregunta(){
+        return NOMBRE_DE_PREGUNTA;
+    }
+
     @Override
     public JsonObject guardar() {
 
         JsonObject jsonVoFClasico = new JsonObject();
-        jsonVoFClasico.addProperty("tipoDePregunta",VerdaderoFalsoClasico.class.getName());
+        jsonVoFClasico.addProperty("tipoDePregunta",VerdaderoFalsoClasico.getNombreDePregunta());
         jsonVoFClasico.addProperty("consigna",consigna);
         jsonVoFClasico.add("opcionCorrecta",opcionCorrecta.guardar());
         jsonVoFClasico.add("opcionIncorrecta",opcionIncorrecta.guardar());
@@ -49,7 +54,7 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso implements PreguntaSin
 
     @Override
     public String getTipoDePregunta() {
-        return "Verdadero/Falso clásico";
+        return NOMBRE_DE_PREGUNTA;
     }
 
     @Override

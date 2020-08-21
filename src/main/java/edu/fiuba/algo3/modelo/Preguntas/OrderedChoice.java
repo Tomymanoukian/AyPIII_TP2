@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 import edu.fiuba.algo3.modelo.opciones.ListaOpciones;
 
 public class OrderedChoice extends Pregunta implements PreguntaSinPenalidad {
+    private static final String NOMBRE_DE_PREGUNTA = "Ordered Choice";
 
     private final ListaOpciones opcionesOrdenadas;
 
@@ -26,6 +27,10 @@ public class OrderedChoice extends Pregunta implements PreguntaSinPenalidad {
         String consigna = jsonPregunta.get("consigna").getAsString();
         ListaOpciones opcionesOrdenadas = ListaOpciones.recuperar(jsonPregunta.getAsJsonArray("opcionesOrdenadas"));
         return new OrderedChoice(consigna, opcionesOrdenadas);
+    }
+
+    public static String getNombreDePregunta(){
+        return NOMBRE_DE_PREGUNTA;
     }
 
     public ListaOpciones getOpciones() {
@@ -64,7 +69,7 @@ public class OrderedChoice extends Pregunta implements PreguntaSinPenalidad {
     public JsonObject guardar() {
 
         JsonObject jsonOrderedChoice = new JsonObject();
-        jsonOrderedChoice.addProperty("tipoDePregunta", OrderedChoice.class.getName());
+        jsonOrderedChoice.addProperty("tipoDePregunta", OrderedChoice.getNombreDePregunta());
         jsonOrderedChoice.addProperty("consigna", consigna);
         jsonOrderedChoice.add("opcionesOrdenadas", opcionesOrdenadas.guardar());
         return jsonOrderedChoice;
@@ -72,7 +77,7 @@ public class OrderedChoice extends Pregunta implements PreguntaSinPenalidad {
 
     @Override
     public String getTipoDePregunta() {
-        return "Ordered choice";
+        return NOMBRE_DE_PREGUNTA;
     }
 
     @Override

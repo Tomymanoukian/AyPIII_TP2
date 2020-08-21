@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 
 public class MultipleChoiceParcial extends MultipleChoice implements PreguntaSinPenalidad {
+    private static final String NOMBRE_DE_PREGUNTA = "Multiple Choice con Puntaje Parcial";
 
     public MultipleChoiceParcial(String unaConsigna, ListaOpciones unasOpcionesCorrectas, ListaOpciones unasOpcionesIncorrectas) {
         super();
@@ -29,6 +30,10 @@ public class MultipleChoiceParcial extends MultipleChoice implements PreguntaSin
         return new MultipleChoiceParcial(consigna, opcionesCorrectas, opcionesIncorrectas);
     }
 
+    public static String getNombreDePregunta(){
+        return NOMBRE_DE_PREGUNTA;
+    }
+
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
 
@@ -44,7 +49,7 @@ public class MultipleChoiceParcial extends MultipleChoice implements PreguntaSin
     public JsonObject guardar() {
 
         JsonObject jsonMultipleChoiceParcial = new JsonObject();
-        jsonMultipleChoiceParcial.addProperty("tipoDePregunta", MultipleChoiceParcial.class.getName());
+        jsonMultipleChoiceParcial.addProperty("tipoDePregunta", MultipleChoiceParcial.getNombreDePregunta());
         jsonMultipleChoiceParcial.addProperty("consigna", consigna);
         jsonMultipleChoiceParcial.add("opcionesCorrectas", opcionesCorrectas.guardar());
         jsonMultipleChoiceParcial.add("opcionesIncorrectas", opcionesIncorrectas.guardar());
@@ -53,7 +58,7 @@ public class MultipleChoiceParcial extends MultipleChoice implements PreguntaSin
 
     @Override
     public String getTipoDePregunta() {
-        return "Multiple Choice con puntaje parcial";
+        return NOMBRE_DE_PREGUNTA;
     }
 
     @Override

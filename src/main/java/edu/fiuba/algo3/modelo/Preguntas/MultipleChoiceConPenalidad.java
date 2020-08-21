@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.Respuestas.RespuestaEnLista;
 import edu.fiuba.algo3.modelo.Excepciones.CantidadDeOpcionesInvalidaException;
 
 public class MultipleChoiceConPenalidad extends MultipleChoice implements PreguntaConPenalidad {
+    private static final String NOMBRE_DE_PREGUNTA = "Multiple Choice con Penalidad";
 
     public MultipleChoiceConPenalidad(String unaConsigna, ListaOpciones unasOpcionesCorrectas, ListaOpciones unasOpcionesIncorrectas) {
         super();
@@ -29,6 +30,10 @@ public class MultipleChoiceConPenalidad extends MultipleChoice implements Pregun
         return new MultipleChoiceConPenalidad(consigna, opcionesCorrectas, opcionesIncorrectas);
     }
 
+    public static String getNombreDePregunta(){
+        return NOMBRE_DE_PREGUNTA;
+    }
+
     @Override
     public Puntaje evaluarRespuestaPara(Respuesta respuesta) {
 
@@ -41,7 +46,7 @@ public class MultipleChoiceConPenalidad extends MultipleChoice implements Pregun
     public JsonObject guardar() {
 
         JsonObject jsonMultipleChoiceConPenalidad = new JsonObject();
-        jsonMultipleChoiceConPenalidad.addProperty("tipoDePregunta",MultipleChoiceConPenalidad.class.getName());
+        jsonMultipleChoiceConPenalidad.addProperty("tipoDePregunta",MultipleChoiceConPenalidad.getNombreDePregunta());
         jsonMultipleChoiceConPenalidad.addProperty("consigna", consigna);
         jsonMultipleChoiceConPenalidad.add("opcionesCorrectas", opcionesCorrectas.guardar());
         jsonMultipleChoiceConPenalidad.add("opcionesIncorrectas", opcionesIncorrectas.guardar());
@@ -50,7 +55,7 @@ public class MultipleChoiceConPenalidad extends MultipleChoice implements Pregun
 
     @Override
     public String getTipoDePregunta() {
-        return "Multiple Choice con penalidad";
+        return NOMBRE_DE_PREGUNTA;
     }
 
     @Override
