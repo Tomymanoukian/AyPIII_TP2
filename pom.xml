@@ -73,7 +73,7 @@
               
                 <configuration>
                     <excludes>
-                        <exclude>**/edu/fiuba/algo3/vista</exclude>
+                        <exclude>**/edu/fiuba/algo3/vista/*</exclude>
                     </excludes>
                 </configuration>
               
