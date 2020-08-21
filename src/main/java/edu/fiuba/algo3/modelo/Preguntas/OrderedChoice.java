@@ -81,6 +81,11 @@ public class OrderedChoice extends Pregunta implements PreguntaSinPenalidad {
     }
 
     @Override
+    public boolean esElMismoTipoDePreguinta(Pregunta unaPregunta) {
+        return NOMBRE_DE_PREGUNTA.equals(unaPregunta.getTipoDePregunta());
+    }
+
+    @Override
     public Exclusividad getExclusividad() {
         return new Exclusividad();
     }
