@@ -22,16 +22,16 @@ public class EscenaVerdaderoFalso implements Escena {
     private final Pregunta pregunta;
     private final BarraDeMenu barraDeMenu;
 
-    public EscenaVerdaderoFalso(Pregunta unaPregunta, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos){
+    public EscenaVerdaderoFalso(Pregunta unaPregunta, Jugador unJugador, ManejadorDeTurnos manejadorDeTurnos) {
 
         pregunta = unaPregunta;
         barraDeMenu = new BarraDeMenu(manejadorDeTurnos.getStage());
 
-        if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoClasico.class.getSimpleName())) {
+        if (pregunta.getTipoDePregunta().equals(VerdaderoFalsoClasico.getNombreDePregunta())) {
             LayoutVerdaderoFalsoSinPenalidad layoutVerdaderoFalso = new LayoutVerdaderoFalsoSinPenalidad(pregunta, this, unJugador, manejadorDeTurnos);
             layout = new VBox(barraDeMenu, layoutVerdaderoFalso.getLayout());
         }
-        if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoConPenalidad.class.getSimpleName())) {
+        if (pregunta.getTipoDePregunta().equals(VerdaderoFalsoConPenalidad.getNombreDePregunta())) {
             LayoutVerdaderoFalsoConPenalidad layoutVerdaderoFalso = new LayoutVerdaderoFalsoConPenalidad(pregunta, this, unJugador, manejadorDeTurnos);
             layout = new VBox(barraDeMenu, layoutVerdaderoFalso.getLayout());
         }
@@ -41,19 +41,21 @@ public class EscenaVerdaderoFalso implements Escena {
     }
 
     @Override
-    public Scene getEscena() { return (new Scene(layout));}
+    public Scene getEscena() {
+        return (new Scene(layout));
+    }
 
     @Override
     public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
-        if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoClasico.class.getSimpleName())) {
+        if (pregunta.getTipoDePregunta().equals(VerdaderoFalsoClasico.getNombreDePregunta())) {
             Pane layout = (new LayoutVerdaderoFalsoSinPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
             VBox layoutConBarraDeMenu = new VBox(barraDeMenu, layout);
             layoutConBarraDeMenu.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
             layoutConBarraDeMenu.setAlignment(Pos.TOP_CENTER);
             manejadorDeTurnos.getStage().setScene(new Scene(layoutConBarraDeMenu));
         }
-        if(pregunta.getClass().getSimpleName().equals(VerdaderoFalsoConPenalidad.class.getSimpleName())) {
+        if (pregunta.getTipoDePregunta().equals(VerdaderoFalsoConPenalidad.getNombreDePregunta())) {
             Pane layout = (new LayoutVerdaderoFalsoConPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
             VBox layoutConBarraDeMenu = new VBox(barraDeMenu, layout);
             layoutConBarraDeMenu.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
