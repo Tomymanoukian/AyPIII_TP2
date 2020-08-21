@@ -32,14 +32,14 @@ public class EscenaMultipleChoice implements Escena {
         opcionesMostradas.desordenar();
         barraDeMenu = new BarraDeMenu(manejadorDeTurnos.getStage());
 
-        if(pregunta.getClass().getSimpleName().equals(MultipleChoiceClasico.class.getSimpleName())) {
-             layoutMultipleChoice = new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos);
+        if (pregunta.getTipoDePregunta().equals(MultipleChoiceClasico.getNombreDePregunta())) {
+            layoutMultipleChoice = new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos);
         }
-        if(pregunta.getClass().getSimpleName().equals(MultipleChoiceParcial.class.getSimpleName())) {
-             layoutMultipleChoice = new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos);
+        if (pregunta.getTipoDePregunta().equals(MultipleChoiceParcial.getNombreDePregunta())) {
+            layoutMultipleChoice = new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos);
         }
-        if(pregunta.getClass().getSimpleName().equals(MultipleChoiceConPenalidad.class.getSimpleName())) {
-             layoutMultipleChoice = new LayoutMultipleChoiceConPenalidad(pregunta, this, jugador, manejadorDeTurnos);
+        if (pregunta.getTipoDePregunta().equals(MultipleChoiceConPenalidad.getNombreDePregunta())) {
+            layoutMultipleChoice = new LayoutMultipleChoiceConPenalidad(pregunta, this, jugador, manejadorDeTurnos);
         }
 
     }
@@ -52,26 +52,28 @@ public class EscenaMultipleChoice implements Escena {
         return (new Scene(layout));
     }
 
-    public ListaOpciones getOpcionesMostradas() {return opcionesMostradas;}
+    public ListaOpciones getOpcionesMostradas() {
+        return opcionesMostradas;
+    }
 
     @Override
     public void actualizar(Jugador jugador, ManejadorDeTurnos manejadorDeTurnos, EtiquetaTiempo unaEtiquetaTiempo) {
 
-        if(pregunta.getClass().getSimpleName().equals(MultipleChoiceClasico.class.getSimpleName())) {
+        if (pregunta.getTipoDePregunta().equals(MultipleChoiceClasico.getNombreDePregunta())) {
             Pane layout = (new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
             VBox layoutConBarraDeMenu = new VBox(barraDeMenu, layout);
             layoutConBarraDeMenu.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
             layoutConBarraDeMenu.setAlignment(Pos.TOP_CENTER);
             manejadorDeTurnos.getStage().setScene(new Scene(layoutConBarraDeMenu));
         }
-        if(pregunta.getClass().getSimpleName().equals(MultipleChoiceParcial.class.getSimpleName())) {
+        if (pregunta.getTipoDePregunta().equals(MultipleChoiceParcial.getNombreDePregunta())) {
             Pane layout = (new LayoutMultipleChoiceSinPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
             VBox layoutConBarraDeMenu = new VBox(barraDeMenu, layout);
             layoutConBarraDeMenu.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
             layoutConBarraDeMenu.setAlignment(Pos.TOP_CENTER);
             manejadorDeTurnos.getStage().setScene(new Scene(layoutConBarraDeMenu));
         }
-        if(pregunta.getClass().getSimpleName().equals(MultipleChoiceConPenalidad.class.getSimpleName())) {
+        if (pregunta.getTipoDePregunta().equals(MultipleChoiceConPenalidad.getNombreDePregunta())) {
             Pane layout = (new LayoutMultipleChoiceConPenalidad(pregunta, this, jugador, manejadorDeTurnos, unaEtiquetaTiempo)).getLayout();
             VBox layoutConBarraDeMenu = new VBox(barraDeMenu, layout);
             layoutConBarraDeMenu.setBackground(new Background(new BackgroundFill(Color.web(COLOR_FONDO), CornerRadii.EMPTY, Insets.EMPTY)));
