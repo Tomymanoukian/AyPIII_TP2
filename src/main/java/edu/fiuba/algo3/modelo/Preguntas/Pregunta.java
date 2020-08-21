@@ -17,4 +17,6 @@ public abstract class Pregunta {
     public abstract JsonObject guardar();
 
     public abstract String getTipoDePregunta();
+
+    public abstract boolean esElMismoTipoDePreguinta(Pregunta unaPregunta);
 }

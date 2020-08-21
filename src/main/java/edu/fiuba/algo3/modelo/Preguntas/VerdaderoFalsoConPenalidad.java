@@ -58,6 +58,11 @@ public class VerdaderoFalsoConPenalidad extends VerdaderoFalso implements Pregun
     }
 
     @Override
+    public boolean esElMismoTipoDePreguinta(Pregunta unaPregunta) {
+        return NOMBRE_DE_PREGUNTA.equals(unaPregunta.getTipoDePregunta());
+    }
+
+    @Override
     public Multiplicador getMultiplicadorX2() {
         return new Multiplicador(2);
     }
