@@ -2,9 +2,6 @@
 
 package "modelo" {
 
-    package "bonus"{
-    }
-
     package "Excepciones"{
     }
 
@@ -14,8 +11,10 @@ package "modelo" {
     package "opciones"{
     }
 
-
     package "Respuestas"{
+    }
+
+    package "bonus"{
     }
 
     Class CreadorDeVistas
@@ -23,35 +22,37 @@ package "modelo" {
     Class Kahoot
     Class ManejadorDeArchivos
     Class ManejadorDeTurnos
-
-
 }
 
-Preguntas ..> bonus
-Preguntas <...> Excepciones
 Preguntas ..> opciones
 Preguntas ..> Respuestas
-Respuestas ..> opciones
-CreadorDeVistas ...> Excepciones
-Jugador ...> Excepciones
+Preguntas ..> bonus
 
-bonus <... Kahoot
-Respuestas <... Kahoot
-Preguntas <... Kahoot
-Excepciones <... Kahoot
+Preguntas <..> Excepciones
+opciones <. Respuestas
+
+Excepciones <.. CreadorDeVistas
+Jugador ..> Excepciones
+
+bonus <.. Kahoot
+Respuestas <.. Kahoot
+Preguntas <.. Kahoot
+Excepciones <.. Kahoot
+
 ManejadorDeTurnos ...> Excepciones
 ManejadorDeTurnos ...> Preguntas
-ManejadorDeArchivos ...> Preguntas
-ManejadorDeArchivos ...>Excepciones
+
+ManejadorDeArchivos ..>Excepciones
+ManejadorDeArchivos ..> Preguntas
 
 @enduml
 
 /*
 Preguntas ..> bonus
 Preguntas <..> Excepciones
-Preguntas ..> opciones
+opciones <.. Preguntas
 Preguntas ..> Respuestas
-Respuestas .> opciones
+opciones <.. Respuestas
 CreadorDeVistas ..> Excepciones
 Jugador ..> Excepciones
 
@@ -59,11 +60,9 @@ bonus <.. Kahoot
 Respuestas <.. Kahoot
 Preguntas <.. Kahoot
 Excepciones <.. Kahoot
+
 ManejadorDeTurnos ..> Excepciones
 ManejadorDeTurnos .> Preguntas
 ManejadorDeArchivos .> Preguntas
 ManejadorDeArchivos ..>Excepciones
-
-
-
 */
