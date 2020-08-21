@@ -2,7 +2,6 @@
 
 Main -> Kahoot: <<create>>
 Main -> ManejadorDeArchivos: <<create>>
-Main -> ManejadorDeArchivos: escribirPreguntasDelAltaDePreguntas()
 Main -> ManejadorDeArchivos: leerPreguntas()
 Main -> ManejadorDeArchivos: getPreguntas()
 ManejadorDeArchivos --> Main: preguntas
