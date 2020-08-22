@@ -34,8 +34,8 @@ JavaFX 11.0.2
 
 ## Ejecución de las pruebas
 
-Todo el conjunto de pruebas se encuentra en el directorio "AyPIII_TP2/src/main/test". 
+Todo el conjunto de pruebas se encuentra en el directorio "src/main/test". 
 
 ## Ejecución de la aplicación
 
-Para la ejecución del programa se debe ejecutar la clase Main.
+Para la ejecución del programa se debe ejecutar la clase "src/main/java/edu/fiuba/algo3/Main.java".
