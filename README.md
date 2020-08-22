@@ -28,12 +28,14 @@ Listado de software/herramientas necesarias para el proyecto
 ```
 Java 14.0.1
 Maven 3.6.0
+JUnit 5.4.0
+JavaFX 11.0.2
 ```
 
 ## Ejecución de las pruebas
 
-Explicación de como ejecutar las pruebas
+Todo el conjunto de pruebas se encuentra en el directorio "AyPIII_TP2/src/main/test". 
 
 ## Ejecución de la aplicación
 
-Explicación de como ejecutar la aplicación
+Para la ejecución del programa se debe ejecutar la clase Main.
